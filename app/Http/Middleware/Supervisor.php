@@ -15,6 +15,8 @@ class Supervisor
      */
     public function handle($request, Closure $next)
     {
+        return $next($request);
+        /*
         if (!Auth::check()) {
             return redirect()->route('login');
         }
@@ -42,6 +44,7 @@ class Supervisor
         if (Auth::user()->role == 2) {
             return redirect()->route('university');
         }
+        */
     }
 
 }

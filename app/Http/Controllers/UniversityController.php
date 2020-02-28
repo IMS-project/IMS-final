@@ -35,7 +35,8 @@ class UniversityController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $id = $university->id;
+        return route('University_coordinator')->with('university_id', $id);
     }
 
     /**

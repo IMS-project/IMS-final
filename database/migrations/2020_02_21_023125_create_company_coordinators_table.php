@@ -17,7 +17,6 @@ class CreateCompanyCoordinatorsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('company_id');
-            $table->string('address')->nullable();
             $table->timestamps();
         });
         Schema::table('company_coordinators', function (Blueprint $table){

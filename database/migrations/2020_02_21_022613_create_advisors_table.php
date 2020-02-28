@@ -17,7 +17,6 @@ class CreateAdvisorsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('university_id');
-            $table->string('address')->nullable();
             $table->timestamps();
         });
         Schema::table('advisors', function (Blueprint $table){

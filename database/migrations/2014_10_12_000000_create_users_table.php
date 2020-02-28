@@ -18,12 +18,12 @@ class CreateUsersTable extends Migration
            $table->bigIncrements('id');
            $table->string('first_name');
            $table->string('last_name')->nullable();
+           $table->string('address')->nullable();
            $table->string('sex')->nullable();
            $table->string('phone')->nullable();
-           $table->string('email')->nullable();
+           $table->string('email',191)->unique();
            $table->timestamp('email_verified_at')->nullable();
            $table->string('password');
-           $table->integer('role')->nullable();
            $table->rememberToken();
            $table->timestamps();
        });

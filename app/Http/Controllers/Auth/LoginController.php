@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
-
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Auth;
@@ -26,6 +25,9 @@ class LoginController extends Controller
      *
      * @var string
      */
+
+    protected $redirectTo = '/home';
+    /*
     protected $redirectTo;
     public function redirectTo()
     {
@@ -61,9 +63,10 @@ class LoginController extends Controller
          
         // return $next($request);
     } 
+    */
     public function __construct()
     {
-        // $this->middleware('guest')->except('logout');
+         //$this->middleware('guest')->except('logout');
     }
 }
     

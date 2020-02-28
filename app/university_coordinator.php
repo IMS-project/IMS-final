@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class university_coordinator extends Model
+class University_coordinator extends Model
 {
     //
     public function users(){

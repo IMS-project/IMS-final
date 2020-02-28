@@ -36,7 +36,9 @@ class UniversityCoordinatorController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //Uc::create([
+            //'ui' => $u
+        //]);
     }
 
     /**

@@ -16,7 +16,9 @@ class Company
      */
     public function handle($request, Closure $next)
     {
-        if (!Auth::check()) {
+        
+        return $next($request);
+        /*if (!Auth::check()) {
             return redirect()->route('login');
         }
 
@@ -42,7 +44,7 @@ class Company
 
         if (Auth::user()->role == 2) {
             return redirect()->route('univesity');
-        }
+        }*/
     }
 }
 

@@ -15,12 +15,13 @@ class CreateAdminsTable extends Migration
     {
         Schema::create('admins', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('address');
-            $table->string('user_id');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
         });
+        Schema::table('admins', function (Blueprint $table) {
+        $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+    });
     }
-
     /**
      * Reverse the migrations.
      *

@@ -16,6 +16,9 @@ class Advisor
      */
     public function handle($request, Closure $next)
     {
+        return $next($request);
+        /*
+
         if (!Auth::check()) {
             return redirect()->route('login');
         }
@@ -42,7 +45,7 @@ class Advisor
 
         if (Auth::user()->role == 2) {
             return redirect()->route('university');
-        }
+        }*/
     }
 
 }

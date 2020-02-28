@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\User;
+use App\Advisor;
+
 class UsersController extends Controller
 {
     /**
@@ -41,7 +44,24 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = new User();
+        $user->first_name = $request->first_name;
+        $user->last_name = $request->last_name;
+        $user->address = $request->address;
+        $user->sex = $request->sex;
+        $user->phone = $request->phone;
+        $user->email = $reques->email;
+        $user->password = $request->password;
+        $user->role = $request->role;
+        $user->save();
+        //add to univ coordinator table
+        //$univ_id = auth()->user()->university_id;
+        University_coordinator::create([
+        'user_id' => $user->id,
+         'address'=>$request->address,
+        'university_id'=>university_id, 
+        ]);
+
     }
 
     /**

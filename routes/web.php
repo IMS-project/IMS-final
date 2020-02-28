@@ -18,21 +18,38 @@
     }  
     });  
 */
-
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth/login');
 });
-//Route::get('/admin', 'AdminController@index')->name('admin');
+
+//Route::get('/', function () {
+ //   return view('welcome');
+//});
+Route::get('/admin', 'AdminController@index')->name('admin');
 
 Auth::routes();
 
-//Route::get('/home', 'HomeController@index')->name('home');
-//Route::get('/students/home', function () 
- //  return view('/students.home');
-//});
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/student', function () {
+   return view('student');
+});
+Route::get('/roles', 'PermissionController@Permission');
+Route::group(['middleware' => 'role:advisor'], function() {
+
+    Route::get('/admin', function() {
+ 
+       return 'Welcome Admin';
+       
+    });
+ 
+ });
+ 
+/*
 Route::get('/advisor', 'AdvisorController@index')->name('advisor')->middleware('advisor');
 Route::get('/admin', 'AdminController@index')->name('admin')->middleware('admin');
 Route::get('/supervisor', 'SupervisorController@index')->name('supervisor')->middleware('supervisor');
 Route::get('/student', 'StudentController@index')->name('student')->middleware('student');
 Route::get('/university', 'UniversityCoordinatorController@index')->name('university')->middleware('university');
 Route::get('/company', 'CompanyCoordinatorController@index')->name('company')->middleware('company');
+*/

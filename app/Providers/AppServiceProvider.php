@@ -27,3 +27,4 @@ class AppServiceProvider extends ServiceProvider
         schema::defaultstringLength(191);
     }
 }
+
