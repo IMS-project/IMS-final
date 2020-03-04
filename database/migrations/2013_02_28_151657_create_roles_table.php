@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUniversitiesTable extends Migration
+class CreateRolesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateUniversitiesTable extends Migration
      */
     public function up()
     {
-        Schema::create('unversities', function (Blueprint $table) {
+        Schema::create('roles', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('name');
-            $table->string('address');  
-            $table->string('profile');            
+            $table->string('name'); // edit posts
+            $table->string('slug')->unique(); //edit-posts
+            $table->json('permission')->nullable()->default('{}');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateUniversitiesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('universities');
+        Schema::dropIfExists('roles');
     }
 }

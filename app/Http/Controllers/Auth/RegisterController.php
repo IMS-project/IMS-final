@@ -29,9 +29,9 @@ class RegisterController extends Controller
      * @var string
      */
     //protected $redirectTo = RouteServiceProvider::HOME;
-    //protected $redirectTo = '/home';
+     protected $redirectTo = '/';
     //protected $redirectTo;
-    protected $redirectTo = '/';
+   /* protected $redirectTo = '/';
     public function redirectTo()
     {
         switch(Auth::user()->role){
@@ -66,7 +66,7 @@ class RegisterController extends Controller
          
         // return $next($request);
     } 
-    
+    */
 
     /**
      * Create a new controller instance.
@@ -90,9 +90,10 @@ class RegisterController extends Controller
             'first_name' => ['required', 'string', 'max:255'],
             'last_name' => ['required', 'string', 'max:255'],
             // 'phone' => ['required', 'string', 'max:255'],
-            // 'user_id' => ['required', 'string', 'max:255'],
+            'address' => ['required', 'string', 'max:255'],
             // 'sex' => ['required', 'string', 'max:255'],
-            // 'role_id' => ['required', 'string', 'max:255'],
+            //'role' => ['required', 'string', 'max:255'],
+            'role' => 'required|exists:roles,id', // validating role
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -105,13 +106,21 @@ class RegisterController extends Controller
      * @return \App\User
      */
     protected function create(array $data)
-    {        $data['role']=6;
-        return User::create([
+    {     
+       $user = User::create([
             'role' => $data['role'],
             'first_name' => $data['first_name'],
             'last_name' => $data['last_name'],
+            'address'=>$data['address'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+        
+          $user->roles()->attach($data['role']);
+        return $user;
     }
+    public function showRegistrationForm(){
+        $roles = \App\Role::orderBy('name')->pluck('name','id');
+        return view('auth.register',compact('roles'));
+    } 
 }

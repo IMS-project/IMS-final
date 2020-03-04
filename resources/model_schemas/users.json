@@ -1,0 +1,286 @@
+[
+    {
+        "name": "id",
+        "dbType": "bigInteger,true,true",
+        "htmlType": null,
+        "validations": null,
+        "searchable": false,
+        "fillable": false,
+        "primary": true,
+        "inForm": false,
+        "inIndex": false,
+        "inView": false
+    },
+    {
+        "name": "first_name",
+        "dbType": "string,191",
+        "htmlType": "text",
+        "validations": "required",
+        "searchable": true,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true,
+        "inView": true
+    },
+    {
+        "name": "last_name",
+        "dbType": "string,191:nullable",
+        "htmlType": "text",
+        "validations": null,
+        "searchable": true,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true,
+        "inView": true
+    },
+    {
+        "name": "address",
+        "dbType": "string,191:nullable",
+        "htmlType": "text",
+        "validations": null,
+        "searchable": true,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true,
+        "inView": true
+    },
+    {
+        "name": "sex",
+        "dbType": "string,191:nullable",
+        "htmlType": "text",
+        "validations": null,
+        "searchable": true,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true,
+        "inView": true
+    },
+    {
+        "name": "phone",
+        "dbType": "string,191:nullable",
+        "htmlType": "text",
+        "validations": null,
+        "searchable": true,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true,
+        "inView": true
+    },
+    {
+        "name": "email",
+        "dbType": "string,191",
+        "htmlType": "text",
+        "validations": "required",
+        "searchable": true,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true,
+        "inView": true
+    },
+    {
+        "name": "email_verified_at",
+        "dbType": "datetime:nullable",
+        "htmlType": "date",
+        "validations": null,
+        "searchable": true,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true,
+        "inView": true
+    },
+    {
+        "name": "password",
+        "dbType": "string,191",
+        "htmlType": "text",
+        "validations": "required",
+        "searchable": true,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true,
+        "inView": true
+    },
+    {
+        "name": "role",
+        "dbType": "bigInteger,false,true",
+        "htmlType": null,
+        "validations": "required",
+        "searchable": true,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true,
+        "inView": true
+    },
+    {
+        "name": "remember_token",
+        "dbType": "string,100:nullable",
+        "htmlType": "text",
+        "validations": null,
+        "searchable": true,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true,
+        "inView": true
+    },
+    {
+        "name": "created_at",
+        "dbType": "datetime:nullable",
+        "htmlType": "date",
+        "validations": null,
+        "searchable": false,
+        "fillable": false,
+        "primary": false,
+        "inForm": false,
+        "inIndex": false,
+        "inView": false
+    },
+    {
+        "name": "updated_at",
+        "dbType": "datetime:nullable",
+        "htmlType": "date",
+        "validations": null,
+        "searchable": false,
+        "fillable": false,
+        "primary": false,
+        "inForm": false,
+        "inIndex": false,
+        "inView": false
+    },
+    {
+        "type": "relation",
+        "relation": "mt1,Role,role"
+    },
+    {
+        "type": "relation",
+        "relation": "1tm,Admin,user_id"
+    },
+    {
+        "type": "relation",
+        "relation": "1tm,Advisor,university_id"
+    },
+    {
+        "type": "relation",
+        "relation": "1tm,Advisor,user_id"
+    },
+    {
+        "type": "relation",
+        "relation": "1tm,Attendance,advisor_id"
+    },
+    {
+        "type": "relation",
+        "relation": "1tm,Attendance,student_id"
+    },
+    {
+        "type": "relation",
+        "relation": "1tm,Attendance,supervisor_id"
+    },
+    {
+        "type": "relation",
+        "relation": "1tm,Chat,reciever_id"
+    },
+    {
+        "type": "relation",
+        "relation": "1tm,Chat,sender_id"
+    },
+    {
+        "type": "relation",
+        "relation": "1tm,CompanyCoordinator,company_id"
+    },
+    {
+        "type": "relation",
+        "relation": "1tm,CompanyCoordinator,user_id"
+    },
+    {
+        "type": "relation",
+        "relation": "1tm,Department,university_id"
+    },
+    {
+        "type": "relation",
+        "relation": "1tm,Department,user_id"
+    },
+    {
+        "type": "relation",
+        "relation": "1tm,Placement,company_id"
+    },
+    {
+        "type": "relation",
+        "relation": "1tm,Placement,student_id"
+    },
+    {
+        "type": "relation",
+        "relation": "1tm,Placement,university_id"
+    },
+    {
+        "type": "relation",
+        "relation": "1tm,Report,advisor_id"
+    },
+    {
+        "type": "relation",
+        "relation": "1tm,Report,student_id"
+    },
+    {
+        "type": "relation",
+        "relation": "1tm,Report,supervisor_id"
+    },
+    {
+        "type": "relation",
+        "relation": "mtm,Role,roles_users"
+    },
+    {
+        "type": "relation",
+        "relation": "1tm,Student,advisor_id"
+    },
+    {
+        "type": "relation",
+        "relation": "1tm,Student,company_id"
+    },
+    {
+        "type": "relation",
+        "relation": "1tm,Student,department_id"
+    },
+    {
+        "type": "relation",
+        "relation": "1tm,Student,supervisor_id"
+    },
+    {
+        "type": "relation",
+        "relation": "1tm,Student,university_id"
+    },
+    {
+        "type": "relation",
+        "relation": "1tm,Student,user_id"
+    },
+    {
+        "type": "relation",
+        "relation": "1tm,Supervisor,company_id"
+    },
+    {
+        "type": "relation",
+        "relation": "1tm,Supervisor,user_id"
+    },
+    {
+        "type": "relation",
+        "relation": "1tm,University,user_id"
+    },
+    {
+        "type": "relation",
+        "relation": "1tm,UniversityCoordinator,university_id"
+    },
+    {
+        "type": "relation",
+        "relation": "1tm,UniversityCoordinator,user_id"
+    },
+    {
+        "type": "relation",
+        "relation": "mtm,Permission,users_permissions"
+    }
+]

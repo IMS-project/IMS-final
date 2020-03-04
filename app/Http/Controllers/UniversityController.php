@@ -2,85 +2,155 @@
 
 namespace App\Http\Controllers;
 
-use App\University;
+use App\Http\Requests\CreateUniversityRequest;
+use App\Http\Requests\UpdateUniversityRequest;
+use App\Repositories\UniversityRepository;
+use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
+use Flash;
+use Response;
 
-class UniversityController extends Controller
+class UniversityController extends AppBaseController
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    /** @var  UniversityRepository */
+    private $universityRepository;
+
+    public function __construct(UniversityRepository $universityRepo)
     {
-        //
+        $this->universityRepository = $universityRepo;
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Display a listing of the University.
      *
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     *
+     * @return Response
+     */
+    public function index(Request $request)
+    {
+        $universities = $this->universityRepository->all();
+
+        return view('universities.index')
+            ->with('universities', $universities);
+    }
+
+    /**
+     * Show the form for creating a new University.
+     *
+     * @return Response
      */
     public function create()
     {
-        //
+        return view('universities.create');
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created University in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param CreateUniversityRequest $request
+     *
+     * @return Response
      */
-    public function store(Request $request)
+    public function store(CreateUniversityRequest $request)
     {
-        $id = $university->id;
-        return route('University_coordinator')->with('university_id', $id);
+        $input = $request->all();
+
+        $university = $this->universityRepository->create($input);
+
+        Flash::success('University saved successfully.');
+
+        return redirect(route('universities.index'));
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified University.
      *
-     * @param  \App\University  $university
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     *
+     * @return Response
      */
-    public function show(University $university)
+    public function show($id)
     {
-        //
+        $university = $this->universityRepository->find($id);
+
+        if (empty($university)) {
+            Flash::error('University not found');
+
+            return redirect(route('universities.index'));
+        }
+
+        return view('universities.show')->with('university', $university);
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for editing the specified University.
      *
-     * @param  \App\University  $university
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     *
+     * @return Response
      */
-    public function edit(University $university)
+    public function edit($id)
     {
-        //
+        $university = $this->universityRepository->find($id);
+
+        if (empty($university)) {
+            Flash::error('University not found');
+
+            return redirect(route('universities.index'));
+        }
+
+        return view('universities.edit')->with('university', $university);
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified University in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\University  $university
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @param UpdateUniversityRequest $request
+     *
+     * @return Response
      */
-    public function update(Request $request, University $university)
+    public function update($id, UpdateUniversityRequest $request)
     {
-        //
+        $university = $this->universityRepository->find($id);
+
+        if (empty($university)) {
+            Flash::error('University not found');
+
+            return redirect(route('universities.index'));
+        }
+
+        $university = $this->universityRepository->update($request->all(), $id);
+
+        Flash::success('University updated successfully.');
+
+        return redirect(route('universities.index'));
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified University from storage.
      *
-     * @param  \App\University  $university
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     *
+     * @throws \Exception
+     *
+     * @return Response
      */
-    public function destroy(University $university)
+    public function destroy($id)
     {
-        //
+        $university = $this->universityRepository->find($id);
+
+        if (empty($university)) {
+            Flash::error('University not found');
+
+            return redirect(route('universities.index'));
+        }
+
+        $this->universityRepository->delete($id);
+
+        Flash::success('University deleted successfully.');
+
+        return redirect(route('universities.index'));
     }
 }

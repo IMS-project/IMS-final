@@ -5,18 +5,19 @@ use App\Permissions\HasPermissionsTrait;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
     use Notifiable;
-    use HasPermissionsTrait;
+    use HasRoles;
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'first_name','last_name', 'address','email', 'password'
+        'first_name','last_name', 'address','email', 'password','role'
     ];
 
     /**
@@ -36,7 +37,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
- 
+    public function roles(){
+        return $this->belongsToMany(Role::class,'roles_users');
+    }
     public function student(){
         return $this->hasOne('App\Student');
     }
@@ -49,6 +52,11 @@ class User extends Authenticatable
     public function admin(){
         return $this->hasOne('App\Admin');
     }
+
+    public function university(){    
+        return $this->belongsTo('App\University');
+    }
+    
     public function university_coordinator(){
         return $this->hasOne('App\University_coordinator');
     }
@@ -57,5 +65,20 @@ class User extends Authenticatable
     }
     public function chats(){
         return $this->hasMany('App/Chat');
+    }
+
+    public function hasAccess(array $permissions ){
+       foreach($this->roles as $role){
+           if($role->hasAccess($permissions)){
+               return true;
+           }
+          
+}
+return false;
+  }
+
+  public function inRole(string $roleSlug)
+    {
+        return $this->roles()->where('slug', $roleSlug)->count() == 1;
     }
 }
