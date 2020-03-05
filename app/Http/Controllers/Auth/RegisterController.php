@@ -87,15 +87,15 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'first_name' => ['required', 'string', 'max:255'],
-            'last_name' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string', 'max:255'],
+            //'last_name' => ['required', 'string', 'max:255'],
             // 'phone' => ['required', 'string', 'max:255'],
-            'address' => ['required', 'string', 'max:255'],
+            //'address' => ['required', 'string', 'max:255'],
             // 'sex' => ['required', 'string', 'max:255'],
-            //'role' => ['required', 'string', 'max:255'],
-            'role' => 'required|exists:roles,id', // validating role
+            //'role' => 'required|exists:roles,id', // validating role
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'role' => ['required', 'string', 'max:255'],
         ]);
     }
 
@@ -108,10 +108,11 @@ class RegisterController extends Controller
     protected function create(array $data)
     {     
        $user = User::create([
-            'role' => $data['role'],
-            'first_name' => $data['first_name'],
-            'last_name' => $data['last_name'],
-            'address'=>$data['address'],
+            //'role' => $data['role'],
+            //'first_name' => $data['first_name'],
+            'name' => $data['name'],
+            //'last_name' => $data['last_name'],
+            //'address'=>$data['address'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
@@ -123,4 +124,5 @@ class RegisterController extends Controller
         $roles = \App\Role::orderBy('name')->pluck('name','id');
         return view('auth.register',compact('roles'));
     } 
+
 }

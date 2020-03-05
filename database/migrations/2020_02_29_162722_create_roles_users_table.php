@@ -16,6 +16,7 @@ class CreateRolesUsersTable extends Migration
         Schema::create('roles_users', function (Blueprint $table) {
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('role_id');
+            $table->softDeletes();
 
            // $table->unique(['user_id','role_id']);
          //FOREIGN KEY CONSTRAINTS

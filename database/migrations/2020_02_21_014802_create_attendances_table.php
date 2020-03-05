@@ -19,7 +19,8 @@ class CreateAttendancesTable extends Migration
             $table->unsignedBigInteger('advisor_id');
             $table->unsignedBigInteger('supervisor_id');
             $table->date('date');
-            $table->boolean('status');   
+            $table->boolean('status'); 
+            $table->softDeletes();  
             $table->timestamps();
         });
         Schema::table('attendances', function (Blueprint $table){

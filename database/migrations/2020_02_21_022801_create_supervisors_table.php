@@ -17,6 +17,7 @@ class CreateSupervisorsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('company_id');
+            $table->softDeletes();
             $table->timestamps();
         });
         Schema::table('supervisors', function (Blueprint $table){

@@ -19,6 +19,7 @@ class CreateChatsTable extends Migration
             $table->unsignedBigInteger('reciever_id');
             $table->text('body');
             $table->string('date');
+            $table->softDeletes();
             $table->timestamps();
         });
         Schema::table('chats', function (Blueprint $table){

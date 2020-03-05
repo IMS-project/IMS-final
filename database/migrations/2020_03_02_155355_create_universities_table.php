@@ -18,7 +18,8 @@ class CreateUniversitiesTable extends Migration
             $table->string('name');
             $table->string('address');  
             $table->unsignedBigInteger('user_id');
-            $table->string('profile')->nullable();            
+            $table->string('profile')->nullable();
+            $table->softDeletes();            
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

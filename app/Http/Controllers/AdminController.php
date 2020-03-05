@@ -2,90 +2,155 @@
 
 namespace App\Http\Controllers;
 
-use App\Admin;
+use App\Http\Requests\CreateAdminRequest;
+use App\Http\Requests\UpdateAdminRequest;
+use App\Repositories\AdminRepository;
+use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
+use Flash;
+use Response;
 
-class AdminController extends Controller
+class AdminController extends AppBaseController
 {
+    /** @var  AdminRepository */
+    private $adminRepository;
+
+    public function __construct(AdminRepository $adminRepo)
+    {
+        $this->adminRepository = $adminRepo;
+    }
+
     /**
-     * Display a listing of the resource.
+     * Display a listing of the Admin.
      *
-     * @return \Illuminate\Http\Response
-     * 
+     * @param Request $request
+     *
+     * @return Response
      */
-    public function __construct()
+    public function index(Request $request)
     {
-        $this->middleware('auth');
-    }
+        $admins = $this->adminRepository->all();
 
-    public function index()
-    {
-        return view('admin');
+        return view('admins.index')
+            ->with('admins', $admins);
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Show the form for creating a new Admin.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function create()
     {
-        //
+        return view('admins.create');
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created Admin in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param CreateAdminRequest $request
+     *
+     * @return Response
      */
-    public function store(Request $request)
+    public function store(CreateAdminRequest $request)
     {
-        //
+        $input = $request->all();
+
+        $admin = $this->adminRepository->create($input);
+
+        Flash::success('Admin saved successfully.');
+
+        return redirect(route('admins.index'));
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified Admin.
      *
-     * @param  \App\Admin  $admin
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     *
+     * @return Response
      */
-    public function show(Admin $admin)
+    public function show($id)
     {
-        //
+        $admin = $this->adminRepository->find($id);
+
+        if (empty($admin)) {
+            Flash::error('Admin not found');
+
+            return redirect(route('admins.index'));
+        }
+
+        return view('admins.show')->with('admin', $admin);
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for editing the specified Admin.
      *
-     * @param  \App\Admin  $admin
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     *
+     * @return Response
      */
-    public function edit(Admin $admin)
+    public function edit($id)
     {
-        //
+        $admin = $this->adminRepository->find($id);
+
+        if (empty($admin)) {
+            Flash::error('Admin not found');
+
+            return redirect(route('admins.index'));
+        }
+
+        return view('admins.edit')->with('admin', $admin);
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified Admin in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Admin  $admin
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @param UpdateAdminRequest $request
+     *
+     * @return Response
      */
-    public function update(Request $request, Admin $admin)
+    public function update($id, UpdateAdminRequest $request)
     {
-        //
+        $admin = $this->adminRepository->find($id);
+
+        if (empty($admin)) {
+            Flash::error('Admin not found');
+
+            return redirect(route('admins.index'));
+        }
+
+        $admin = $this->adminRepository->update($request->all(), $id);
+
+        Flash::success('Admin updated successfully.');
+
+        return redirect(route('admins.index'));
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified Admin from storage.
      *
-     * @param  \App\Admin  $admin
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     *
+     * @throws \Exception
+     *
+     * @return Response
      */
-    public function destroy(Admin $admin)
+    public function destroy($id)
     {
-        //
+        $admin = $this->adminRepository->find($id);
+
+        if (empty($admin)) {
+            Flash::error('Admin not found');
+
+            return redirect(route('admins.index'));
+        }
+
+        $this->adminRepository->delete($id);
+
+        Flash::success('Admin deleted successfully.');
+
+        return redirect(route('admins.index'));
     }
 }

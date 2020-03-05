@@ -6,18 +6,21 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable
 {
     use Notifiable;
     use HasRoles;
+    
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
+    protected $softDelete = true;
     protected $fillable = [
-        'first_name','last_name', 'address','email', 'password','role'
+        'name', 'address','email', 'password','role'
     ];
 
     /**

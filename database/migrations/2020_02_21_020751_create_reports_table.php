@@ -21,6 +21,7 @@ class CreateReportsTable extends Migration
             $table->string('text');
             $table->float('evaluation')->nullable();
             $table->string('attachment')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
         Schema::table('reports', function (Blueprint $table){

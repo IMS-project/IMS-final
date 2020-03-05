@@ -21,6 +21,7 @@ class CreateCompaniesTable extends Migration
             $table->string('field_of_study');
             $table->integer('min_grade');
            $table->string('student_benefit');
+           $table->softDeletes();
             $table->timestamps();
         });
     }

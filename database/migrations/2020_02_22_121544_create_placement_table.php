@@ -22,6 +22,7 @@ class CreatePlacementTable extends Migration
             $table->date('start_date');
             $table->date('end_date');
             $table->unsignedInteger('number_of_days');
+            $table->softDeletes();
             $table->timestamps();
         });
         Schema::table('placements', function (Blueprint $table) {

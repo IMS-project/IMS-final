@@ -2,85 +2,155 @@
 
 namespace App\Http\Controllers;
 
-use App\Advisor;
+use App\Http\Requests\CreateAdvisorRequest;
+use App\Http\Requests\UpdateAdvisorRequest;
+use App\Repositories\AdvisorRepository;
+use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
+use Flash;
+use Response;
 
-class AdvisorController extends Controller
+class AdvisorController extends AppBaseController
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    /** @var  AdvisorRepository */
+    private $advisorRepository;
+
+    public function __construct(AdvisorRepository $advisorRepo)
     {
-        //
-        return view('advisor');
+        $this->advisorRepository = $advisorRepo;
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Display a listing of the Advisor.
      *
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     *
+     * @return Response
+     */
+    public function index(Request $request)
+    {
+        $advisors = $this->advisorRepository->all();
+
+        return view('advisors.index')
+            ->with('advisors', $advisors);
+    }
+
+    /**
+     * Show the form for creating a new Advisor.
+     *
+     * @return Response
      */
     public function create()
     {
-        //
+        return view('advisors.create');
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store a newly created Advisor in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param CreateAdvisorRequest $request
+     *
+     * @return Response
      */
-    public function store(Request $request)
+    public function store(CreateAdvisorRequest $request)
     {
-        //
+        $input = $request->all();
+
+        $advisor = $this->advisorRepository->create($input);
+
+        Flash::success('Advisor saved successfully.');
+
+        return redirect(route('advisors.index'));
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified Advisor.
      *
-     * @param  \App\Advisor  $advisor
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     *
+     * @return Response
      */
-    public function show(Advisor $advisor)
+    public function show($id)
     {
-        //
+        $advisor = $this->advisorRepository->find($id);
+
+        if (empty($advisor)) {
+            Flash::error('Advisor not found');
+
+            return redirect(route('advisors.index'));
+        }
+
+        return view('advisors.show')->with('advisor', $advisor);
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for editing the specified Advisor.
      *
-     * @param  \App\Advisor  $advisor
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     *
+     * @return Response
      */
-    public function edit(Advisor $advisor)
+    public function edit($id)
     {
-        //
+        $advisor = $this->advisorRepository->find($id);
+
+        if (empty($advisor)) {
+            Flash::error('Advisor not found');
+
+            return redirect(route('advisors.index'));
+        }
+
+        return view('advisors.edit')->with('advisor', $advisor);
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update the specified Advisor in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Advisor  $advisor
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @param UpdateAdvisorRequest $request
+     *
+     * @return Response
      */
-    public function update(Request $request, Advisor $advisor)
+    public function update($id, UpdateAdvisorRequest $request)
     {
-        //
+        $advisor = $this->advisorRepository->find($id);
+
+        if (empty($advisor)) {
+            Flash::error('Advisor not found');
+
+            return redirect(route('advisors.index'));
+        }
+
+        $advisor = $this->advisorRepository->update($request->all(), $id);
+
+        Flash::success('Advisor updated successfully.');
+
+        return redirect(route('advisors.index'));
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Remove the specified Advisor from storage.
      *
-     * @param  \App\Advisor  $advisor
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     *
+     * @throws \Exception
+     *
+     * @return Response
      */
-    public function destroy(Advisor $advisor)
+    public function destroy($id)
     {
-        //
+        $advisor = $this->advisorRepository->find($id);
+
+        if (empty($advisor)) {
+            Flash::error('Advisor not found');
+
+            return redirect(route('advisors.index'));
+        }
+
+        $this->advisorRepository->delete($id);
+
+        Flash::success('Advisor deleted successfully.');
+
+        return redirect(route('advisors.index'));
     }
 }

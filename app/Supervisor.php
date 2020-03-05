@@ -3,10 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Supervisor extends Model
 {
     //
+    protected $softDelete = true;
     public function roles(){    
         return $this->belongsToMany('App\Role');
     }

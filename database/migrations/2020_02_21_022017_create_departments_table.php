@@ -18,6 +18,7 @@ class CreateDepartmentsTable extends Migration
             $table->string('department_name');
             $table->unsignedBigInteger('university_id');
             $table->unsignedBigInteger('user_id');
+            $table->softDeletes();
             $table->timestamps();
         });
         Schema::table('departments', function (Blueprint $table){

@@ -23,6 +23,7 @@ class CreateStudentsTable extends Migration
             $table->unsignedBigInteger('year');
             $table->unsignedBigInteger('department_id');
             $table->unsignedBigInteger('grade');
+            $table->softDeletes();
             $table->timestamps();
         });
         Schema::table('students', function (Blueprint $table){

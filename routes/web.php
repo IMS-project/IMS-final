@@ -79,3 +79,27 @@ Route::resource('universities', 'UniversityController');
 Route::resource('companies', 'CompaniesController');
 
 Route::resource('chats', 'ChatsController');
+
+Route::resource('students', 'StudentsController');
+
+Route::resource('departments', 'DepartmentsController');
+
+Route::resource('advisors', 'AdvisorController');
+
+Route::resource('supervisors', 'SupervisorsController');
+
+Route::resource('universityCoordinators', 'University_coordinatorsController');
+
+Route::resource('companyCoordinators', 'Company_coordinatorsController');
+
+Route::resource('placements', 'PlacementsController');
+
+Route::resource('reports', 'ReportsController');
+
+Route::resource('admins', 'AdminController');
+
+Route::resource('roles', 'RolesController');
+
+Route::resource('permissions', 'permissionsController');
+
+Route::resource('attendances', 'AttendancesController');

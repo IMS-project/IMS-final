@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>InfyOm Laravel Generator | Registration Page</title>
+    <title>Internship | Registration Page</title>
 
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
@@ -34,7 +34,7 @@
 <body class="hold-transition register-page">
 <div class="register-box">
     <div class="register-logo">
-        <a href="{{ url('/home') }}"><b>InfyOm </b>Generator</a>
+        <a href="{{ url('/home') }}"><b>Ims </b>Generator</a>
     </div>
 
     <div class="register-box-body">
@@ -46,6 +46,22 @@
             <div class="form-group has-feedback{{ $errors->has('name') ? ' has-error' : '' }}">
                 <input type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="Full Name">
                 <span class="glyphicon glyphicon-user form-control-feedback"></span>
+
+                @if ($errors->has('name'))
+                    <span class="help-block">
+                        <strong>{{ $errors->first('name') }}</strong>
+                    </span>
+                @endif
+            </div>
+            <div class="form-group has-feedback{{ $errors->has('role') ? ' has-error' : '' }}">
+            
+                <select name="role" id="name" type ="text" class="form-control" value="{{ old('role') }}">
+                @foreach ($roles as $id=>$role)
+                <option value="{{$id}}">{{$id}}</option>
+                    
+                @endforeach
+            </select>
+                
 
                 @if ($errors->has('name'))
                     <span class="help-block">
