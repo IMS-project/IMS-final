@@ -1,7 +1,7 @@
 <!-- First Name Field -->
 <div class="form-group">
-    {!! Form::label('first_name', 'First Name:') !!}
-    <p>{{ $users->first_name }}</p>
+    {!! Form::label('name', ' Name:') !!}
+    <p>{{ $users->name }}</p>
 </div>
 
 <!-- Last Name Field -->

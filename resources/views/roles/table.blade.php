@@ -3,8 +3,8 @@
         <thead>
             <tr>
                 <th>Name</th>
-        <th>Slug</th>
-        <th>Permission</th>
+        <th></th>
+        <th></th>
                 <th colspan="3">Action</th>
             </tr>
         </thead>

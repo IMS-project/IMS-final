@@ -56,8 +56,8 @@
             <div class="form-group has-feedback{{ $errors->has('role') ? ' has-error' : '' }}">
             
                 <select name="role" id="name" type ="text" class="form-control" value="{{ old('role') }}">
-                @foreach ($roles as $id=>$role)
-                <option value="{{$id}}">{{$id}}</option>
+                @foreach ($roles as $role)
+                <option value="{{ $role->id }}">{{$role->name}}</option>
                     
                 @endforeach
             </select>

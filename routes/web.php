@@ -19,7 +19,7 @@
     });  
 */
 Route::get('/', function () {
-    return view('university.create');
+    return view('home');
 });
 
 //Route::get('/', function () {

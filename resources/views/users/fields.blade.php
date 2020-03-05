@@ -10,7 +10,7 @@
     {!! Form::text('last_name', null, ['class' => 'form-control']) !!}
 </div>-->
 
-<!-- Address Field -->
+<!-- Address Field 
 <div class="form-group col-sm-6">
     {!! Form::label('address', 'Address:') !!}
     {!! Form::text('address', null, ['class' => 'form-control']) !!}
