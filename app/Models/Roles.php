@@ -33,8 +33,7 @@ class Roles extends Model
 
     public $fillable = [
         'name',
-        'slug',
-        'permission'
+        
     ];
 
     /**
@@ -45,8 +44,7 @@ class Roles extends Model
     protected $casts = [
         'id' => 'integer',
         'name' => 'string',
-        'slug' => 'string',
-        'permission' => 'string'
+        
     ];
 
     /**
@@ -56,16 +54,12 @@ class Roles extends Model
      */
     public static $rules = [
         'name' => 'required',
-        'slug' => 'required'
+        
     ];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      **/
-    public function permissions()
-    {
-        return $this->belongsToMany(\App\Models\Permission::class, 'roles_permissions');
-    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany

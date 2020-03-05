@@ -70,18 +70,7 @@ class User extends Authenticatable
         return $this->hasMany('App/Chat');
     }
 
-    public function hasAccess(array $permissions ){
-       foreach($this->roles as $role){
-           if($role->hasAccess($permissions)){
-               return true;
-           }
-          
-}
-return false;
+    
   }
 
-  public function inRole(string $roleSlug)
-    {
-        return $this->roles()->where('slug', $roleSlug)->count() == 1;
-    }
-}
+  

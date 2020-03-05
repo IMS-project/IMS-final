@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 use App\User;
+use App\Role;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -121,8 +122,8 @@ class RegisterController extends Controller
         return $user;
     }
     public function showRegistrationForm(){
-        $roles = \App\Role::orderBy('name')->pluck('name','id');
-        return view('auth.register',compact('roles'));
+        $roles = Role::orderBy('name')->get();
+        return view('auth.register')->with('roles', $roles);
     } 
 
 }
