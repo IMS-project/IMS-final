@@ -20,7 +20,7 @@
 */
 
 Route::get('/', function () {
-    return view('auth/login');
+    return view('home');
 });
 //Route::get('/admin', 'AdminController@index')->name('admin');
 
