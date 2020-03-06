@@ -20,7 +20,7 @@ class User extends Authenticatable
      */
     protected $softDelete = true;
     protected $fillable = [
-        'name', 'address','email', 'password','role'
+        'name', 'address','email', 'password','role',
     ];
 
     /**

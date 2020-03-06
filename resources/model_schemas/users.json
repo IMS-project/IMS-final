@@ -12,22 +12,10 @@
         "inView": false
     },
     {
-        "name": "first_name",
+        "name": "name",
         "dbType": "string,191",
         "htmlType": "text",
         "validations": "required",
-        "searchable": true,
-        "fillable": true,
-        "primary": false,
-        "inForm": true,
-        "inIndex": true,
-        "inView": true
-    },
-    {
-        "name": "last_name",
-        "dbType": "string,191:nullable",
-        "htmlType": "text",
-        "validations": null,
         "searchable": true,
         "fillable": true,
         "primary": false,
@@ -130,6 +118,18 @@
         "inForm": true,
         "inIndex": true,
         "inView": true
+    },
+    {
+        "name": "deleted_at",
+        "dbType": "datetime:nullable",
+        "htmlType": "date",
+        "validations": null,
+        "searchable": false,
+        "fillable": false,
+        "primary": false,
+        "inForm": false,
+        "inIndex": false,
+        "inView": false
     },
     {
         "name": "created_at",
@@ -278,9 +278,5 @@
     {
         "type": "relation",
         "relation": "1tm,UniversityCoordinator,user_id"
-    },
-    {
-        "type": "relation",
-        "relation": "mtm,Permission,users_permissions"
     }
 ]

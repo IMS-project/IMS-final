@@ -3,9 +3,9 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use App\Models\users;
+use App\Models\Users;
 
-class UpdateusersRequest extends FormRequest
+class UpdateUsersRequest extends FormRequest
 {
 
     /**
@@ -25,7 +25,7 @@ class UpdateusersRequest extends FormRequest
      */
     public function rules()
     {
-        $rules = users::$rules;
+        $rules = Users::$rules;
         
         return $rules;
     }

@@ -2,14 +2,13 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Models\users;
+use App\Models\Users;
 use Faker\Generator as Faker;
 
-$factory->define(users::class, function (Faker $faker) {
+$factory->define(Users::class, function (Faker $faker) {
 
     return [
-        'first_name' => $faker->word,
-        'last_name' => $faker->word,
+        'name' => $faker->word,
         'address' => $faker->word,
         'sex' => $faker->word,
         'phone' => $faker->word,
@@ -18,6 +17,7 @@ $factory->define(users::class, function (Faker $faker) {
         'password' => $faker->word,
         'role' => $faker->word,
         'remember_token' => $faker->word,
+        'deleted_at' => $faker->date('Y-m-d H:i:s'),
         'created_at' => $faker->date('Y-m-d H:i:s'),
         'updated_at' => $faker->date('Y-m-d H:i:s')
     ];

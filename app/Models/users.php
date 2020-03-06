@@ -6,9 +6,9 @@ use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * Class users
+ * Class Users
  * @package App\Models
- * @version March 3, 2020, 11:22 pm UTC
+ * @version March 6, 2020, 12:10 am UTC
  *
  * @property \App\Models\Role role
  * @property \Illuminate\Database\Eloquent\Collection admins
@@ -41,9 +41,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property \Illuminate\Database\Eloquent\Collection universities
  * @property \Illuminate\Database\Eloquent\Collection universityCoordinators
  * @property \Illuminate\Database\Eloquent\Collection universityCoordinator18s
- * @property \Illuminate\Database\Eloquent\Collection permissions
- * @property string first_name
- * @property string last_name
+ * @property string name
  * @property string address
  * @property string sex
  * @property string phone
@@ -53,7 +51,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  * @property integer role
  * @property string remember_token
  */
-class users extends Model
+class Users extends Model
 {
     use SoftDeletes;
 
@@ -68,16 +66,14 @@ class users extends Model
 
 
     public $fillable = [
-        'first_name',
-        'last_name',
+        'name',
         'address',
         'sex',
         'phone',
         'email',
-        'email_verified_at',
         'password',
-        'role',
-        'remember_token'
+        'role'
+        
     ];
 
     /**
@@ -87,8 +83,7 @@ class users extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'first_name' => 'string',
-        'last_name' => 'string',
+        'name' => 'string',
         'address' => 'string',
         'sex' => 'string',
         'phone' => 'string',
@@ -105,7 +100,7 @@ class users extends Model
      * @var array
      */
     public static $rules = [
-        'first_name' => 'required',
+        'name' => 'required',
         'email' => 'required',
         'password' => 'required',
         'role' => 'required'
@@ -357,13 +352,5 @@ class users extends Model
     public function universityCoordinator18s()
     {
         return $this->hasMany(\App\Models\UniversityCoordinator::class, 'user_id');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-     **/
-    public function permissions()
-    {
-        return $this->belongsToMany(\App\Models\Permission::class, 'users_permissions');
     }
 }

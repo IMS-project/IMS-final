@@ -8,8 +8,9 @@
             <i class="fa fa-angle-left pull-right"></i>
         </span>
     </a>
+    
 <ul class="treeview-menu">
-
+    @if(Auth::user()->role == 1)
 <li class="treeview">
     <a href="#">
         <i class="fa fa-dashboard"></i>
@@ -39,6 +40,8 @@
 </li>
 </ul>
 </li>
+@endif
+@if(Auth::user()->role == 2)
 <li class="treeview">
     <a href="#">
         <i class="fa fa-user"></i>
@@ -64,9 +67,10 @@
 <li class="{{ Request::is('placements*') ? 'active' : '' }}">
     <a href="{{ route('placements.index') }}"><i class="fa fa-edit"></i><span>Placements</span></a>
 </li>
-
 </ul>
 </li>
+@endif
+@if(Auth::user()->role == 3)
 <li class="treeview">
     <a href="#">
         <i class="fa fa-dashboard"></i>
@@ -87,7 +91,7 @@
 </li>
 </ul>
 </li>
-
+@endif
 
 <li class="treeview">
     <a href="#">
@@ -103,6 +107,7 @@
 </li>
 </ul>
 </li>
+@if(Auth::user()->role == 4)
 <li class="treeview">
     <a href="#">
         <i class="fa fa-dashboard"></i>
@@ -123,6 +128,7 @@
     </li>
     </ul>
     </li>
+    @endif
 <li class="treeview">
     <a href="#">
         <i class="fa fa-dashboard"></i>
@@ -138,20 +144,6 @@
 </li>
 </ul>
 </li>
-<li class="treeview">
-    <a href="#">
-        <i class="fa fa-dashboard"></i>
-        <span>permissions</span>
-        <span class="pull-right-container">
-            <i class="fa fa-angle-left pull-right"></i>
-        </span>
-    </a>
-<ul class="treeview-menu">
-
-<li class="{{ Request::is('permissions*') ? 'active' : '' }}">
-    <a href="{{ route('permissions.index') }}"><i class="fa fa-edit"></i><span>Permissions</span></a>
-</li>
 </ul>
 </li>
-
 

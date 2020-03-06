@@ -2,26 +2,26 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CreateusersRequest;
-use App\Http\Requests\UpdateusersRequest;
-use App\Repositories\usersRepository;
+use App\Http\Requests\CreateUsersRequest;
+use App\Http\Requests\UpdateUsersRequest;
+use App\Repositories\UsersRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
 
-class usersController extends AppBaseController
+class UsersController extends AppBaseController
 {
-    /** @var  usersRepository */
+    /** @var  UsersRepository */
     private $usersRepository;
 
-    public function __construct(usersRepository $usersRepo)
+    public function __construct(UsersRepository $usersRepo)
     {
         $this->usersRepository = $usersRepo;
     }
 
     /**
-     * Display a listing of the users.
+     * Display a listing of the Users.
      *
      * @param Request $request
      *
@@ -36,7 +36,7 @@ class usersController extends AppBaseController
     }
 
     /**
-     * Show the form for creating a new users.
+     * Show the form for creating a new Users.
      *
      * @return Response
      */
@@ -46,13 +46,13 @@ class usersController extends AppBaseController
     }
 
     /**
-     * Store a newly created users in storage.
+     * Store a newly created Users in storage.
      *
-     * @param CreateusersRequest $request
+     * @param CreateUsersRequest $request
      *
      * @return Response
      */
-    public function store(CreateusersRequest $request)
+    public function store(CreateUsersRequest $request)
     {
         $input = $request->all();
 
@@ -64,7 +64,7 @@ class usersController extends AppBaseController
     }
 
     /**
-     * Display the specified users.
+     * Display the specified Users.
      *
      * @param int $id
      *
@@ -84,7 +84,7 @@ class usersController extends AppBaseController
     }
 
     /**
-     * Show the form for editing the specified users.
+     * Show the form for editing the specified Users.
      *
      * @param int $id
      *
@@ -104,14 +104,14 @@ class usersController extends AppBaseController
     }
 
     /**
-     * Update the specified users in storage.
+     * Update the specified Users in storage.
      *
      * @param int $id
-     * @param UpdateusersRequest $request
+     * @param UpdateUsersRequest $request
      *
      * @return Response
      */
-    public function update($id, UpdateusersRequest $request)
+    public function update($id, UpdateUsersRequest $request)
     {
         $users = $this->usersRepository->find($id);
 
@@ -129,7 +129,7 @@ class usersController extends AppBaseController
     }
 
     /**
-     * Remove the specified users from storage.
+     * Remove the specified Users from storage.
      *
      * @param int $id
      *
