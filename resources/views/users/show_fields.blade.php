@@ -3,8 +3,6 @@
     {!! Form::label('name', 'Name:') !!}
     <p>{{ $users->name }}</p>
 </div>
-
-<
 <div class="form-group">
     {!! Form::label('role', 'Role:') !!}
     <p>{{ $users->role }}</p>
