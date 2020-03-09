@@ -17,6 +17,7 @@ class UniversityController extends AppBaseController
 
     public function __construct(UniversityRepository $universityRepo)
     {
+        $this->middleware('auth');
         $this->universityRepository = $universityRepo;
     }
 

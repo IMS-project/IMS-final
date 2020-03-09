@@ -17,6 +17,7 @@ class AdvisorController extends AppBaseController
 
     public function __construct(AdvisorRepository $advisorRepo)
     {
+        $this->middleware('auth');
         $this->advisorRepository = $advisorRepo;
     }
 

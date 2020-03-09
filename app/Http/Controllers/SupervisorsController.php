@@ -17,6 +17,7 @@ class SupervisorsController extends AppBaseController
 
     public function __construct(SupervisorsRepository $supervisorsRepo)
     {
+        $this->middleware('auth');
         $this->supervisorsRepository = $supervisorsRepo;
     }
 

@@ -18,6 +18,8 @@
     }  
     });  
 */
+Route::get('import-excel','ImportExcelController@index');
+Route::post('import-excel','ImportExcelController@import');
 Route::get('/', function () {
     return view('home');
 });
@@ -29,7 +31,7 @@ Route::get('/admin', 'AdminController@index')->name('admin');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
+Route::get('students/import-excel','ImportExcelController@index');
 Route::get('/student', function () {
    return view('student');
 });

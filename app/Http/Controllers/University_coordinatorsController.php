@@ -17,6 +17,7 @@ class University_coordinatorsController extends AppBaseController
 
     public function __construct(University_coordinatorsRepository $universityCoordinatorsRepo)
     {
+        $this->middleware('auth');
         $this->universityCoordinatorsRepository = $universityCoordinatorsRepo;
     }
 

@@ -27,6 +27,7 @@ class StudentsController extends AppBaseController
      *
      * @return Response
      */
+    
     public function index(Request $request)
     {
         $students = $this->studentsRepository->all();

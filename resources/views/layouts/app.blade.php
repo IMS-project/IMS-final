@@ -37,11 +37,12 @@
     <div class="wrapper">
         <!-- Main Header -->
         <header class="main-header">
-
-            <!-- Logo -->
-            <a href="#" class="logo">
-                <b>IMS</b>
-            </a>
+            <a href="#" class="logo" >
+                <!-- mini logo for sidebar mini 50x50 pixels -->
+                <span class="logo-mini"><b>Inter</b>ship</span>
+                <!-- logo for regular state and mobile devices -->
+                <span class="logo-lg"><b>Intern</b>ship</span>
+              </a>
 
             <!-- Header Navbar -->
             <nav class="navbar navbar-static-top" role="navigation">
@@ -65,8 +66,9 @@
                             <ul class="dropdown-menu">
                                 <!-- The user image in the menu -->
                                 <li class="user-header">
-                                    <img src="http://infyom.com/images/logo/blue_logo_150x150.jpg"
+                                    <img src="images/3.jpg"
                                          class="img-circle" alt="User Image"/>
+                                         
                                     <p>
                                         {{ Auth::user()->name }}
                                         <small>Member since {{ Auth::user()->created_at->format('M. Y') }}</small>

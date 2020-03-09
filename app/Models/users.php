@@ -68,11 +68,11 @@ class Users extends Model
     public $fillable = [
         'name',
         'address',
-        'sex',
-        'phone',
+        //'sex',
+        // 'phone',
         'email',
-        'password',
-        'role'
+        // 'password',
+        // 'role'
         
     ];
 
@@ -85,13 +85,13 @@ class Users extends Model
         'id' => 'integer',
         'name' => 'string',
         'address' => 'string',
-        'sex' => 'string',
-        'phone' => 'string',
         'email' => 'string',
-        'email_verified_at' => 'datetime',
-        'password' => 'string',
-        'role' => 'integer',
-        'remember_token' => 'string'
+        // 'sex' => 'string',
+        // 'phone' => 'string',
+        // 'email_verified_at' => 'datetime',
+        // 'password' => 'string',
+        // 'role' => 'integer',
+        // 'remember_token' => 'string'
     ];
 
     /**

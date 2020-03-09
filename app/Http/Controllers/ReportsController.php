@@ -17,6 +17,7 @@ class ReportsController extends AppBaseController
 
     public function __construct(ReportsRepository $reportsRepo)
     {
+        $this->middleware('auth');
         $this->reportsRepository = $reportsRepo;
     }
 

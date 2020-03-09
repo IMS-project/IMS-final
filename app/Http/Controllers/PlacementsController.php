@@ -17,6 +17,7 @@ class PlacementsController extends AppBaseController
 
     public function __construct(PlacementsRepository $placementsRepo)
     {
+        $this->middleware('auth');
         $this->placementsRepository = $placementsRepo;
     }
 

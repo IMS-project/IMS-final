@@ -4,8 +4,12 @@
     <p>{{ $users->name }}</p>
 </div>
 <div class="form-group">
-    {!! Form::label('role', 'Role:') !!}
-    <p>{{ $users->role }}</p>
+    <select name="role" id="name" type ="text" class="form-control" value="{{ old('role') }}">
+        @foreach ($roles as $role)
+        <option value="{{ $role->id }}">{{$role->name}}</option>
+            
+        @endforeach
+    </select>
 </div>
 
 <!-- Remember Token Field 

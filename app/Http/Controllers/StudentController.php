@@ -13,7 +13,7 @@ class StudentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {  $this->middleware('auth');
         //
         return view('student');
     }
