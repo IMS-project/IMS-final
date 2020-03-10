@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Contracts\Auth\Access\Gate as GateContract;
 use App\Http\Controllers;
 use App\University;
 class AuthServiceProvider extends ServiceProvider
@@ -11,13 +12,14 @@ class AuthServiceProvider extends ServiceProvider
     /**
      * The policy mappings for the application.
      *
-     * @var array
+     * @var array 
      */
     //protected $policies = [
     //'App\Model' => 'App\Policies\ModelPolicy',
     //];
     protected $policies = [
-        University::class => UniversityPolicy::class,
+      //  University::class => UniversityPolicy::class,
+      'App\Model'=>'App\Policies\Modelpolicy',
     ];
 
     /**
@@ -25,12 +27,28 @@ class AuthServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot(GateContract $gate)
     {
-        $this->registerPolicies();
-        $this->registerUniversityPolicies();
-
-        //
+        $this->registerPolicies($gate);
+        //$this->registerUniversityPolicies();
+        $gate->define('isAdmin',function($user){
+            return $user->role == 'Admin';
+        });
+        $gate->define('isStudent',function($user){
+            return $user->role == 'Student';
+        });
+        $gate->define('isAdvisor',function($user){
+            return $user->role == 'Advisor';
+        });
+        $gate->define('isUni_coordinator',function($user){
+            return $user->role == 'Univ_coordinator';
+        });
+        $gate->define('isComp_coordinator',function($user){
+            return $user->role == 'Comp_coordinator';
+        });
+        $gate->define('isSupervisor',function($user){
+            return $user->role == 'Supervisor';
+        });
     }
 
     public function registerUniversityPolicies(){
@@ -50,5 +68,8 @@ class AuthServiceProvider extends ServiceProvider
 
             });
        }
+
+       //test cases
+       
     }
 
