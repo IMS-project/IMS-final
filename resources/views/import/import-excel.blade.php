@@ -1,25 +1,6 @@
-<html lang="en">
+@extends('layouts.app')
 
-<head>
-
-    <title>Laravel Import Export to Excel , CSV Example - bishrulhaq.com</title>
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-</head>
-
-<style>
-
-    .container{
-
-        margin-top: 10%;
-
-    }
-
-</style>
-
-<body>
-
+@section('content')
 <div class="container">
 
     @if ($errors->any())
@@ -58,21 +39,10 @@
     <div class="card">
 
         <div class="card-body">
-<!--
-            <h5 class="card-title">Laravel Import Export to Excel , CSV Example</h5>
 
-            <a href="{{ url('downloadData/xlsx') }}"><button class="btn btn-dark">Download Excel xlsx</button></a>
-
-            <a href="{{ url('downloadData/xls') }}"><button class="btn btn-success">Download Excel xls</button></a>
-
-            <a href="{{ url('downloadData/csv') }}"><button class="btn btn-info">Download CSV</button></a>
-
--->
             <form style="border: 4px solid #a1a1a1;margin-top: 15px;padding: 10px;" action="{{ url('/import/import-excel') }}" class="form-horizontal" method="post" enctype="multipart/form-data">
 
                 @csrf
-
-
                 <input type="file" name="import_file" class="form-control" />
 
                 <button class="btn btn-primary">Import File</button>
@@ -111,7 +81,4 @@
 
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/ 4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
-</body>
-
-</html>
-
+@endsection
