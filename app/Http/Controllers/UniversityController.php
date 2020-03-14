@@ -9,6 +9,7 @@ use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
 use Response;
+use App\University;
 
 class UniversityController extends AppBaseController
 {
@@ -56,11 +57,19 @@ class UniversityController extends AppBaseController
     {
         $input = $request->all();
 
-        $university = $this->universityRepository->create($input);
+        University::create($input);
+        // $university = $this->universityRepository->create($input);
 
         Flash::success('University saved successfully.');
 
         return redirect(route('universities.index'));
+        // $this->validate($request,['name'=>'required',
+        // //     'address'=>'required']);
+        //     $uni = new University;
+        //     $uni->name = $request->input('name');
+        //     $univ->address = $request->input('address');
+        //    $uni->save();
+        //    return redirect('/universites')->with('success','inserted successfully');
     }
 
     /**

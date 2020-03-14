@@ -25,6 +25,10 @@ class CreateUniversityRequest extends FormRequest
      */
     public function rules()
     {
-        return University::$rules;
+        // return University::;
+       return [
+           'name'=>'required',
+            'address'=>'required'
+       ];
     }
 }
