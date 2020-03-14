@@ -55,6 +55,10 @@ class UniversityController extends AppBaseController
     public function store(CreateUniversityRequest $request)
     {
         $input = $request->all();
+        $input = $request()->validate(["name"=>"required", 
+        "addres"=>"required"
+        ]);
+        
 
         $university = $this->universityRepository->create($input);
 
