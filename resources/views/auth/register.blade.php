@@ -55,19 +55,19 @@
             </div>
             
            <!--radiobutton -->
- <div id="gender-group" class="form-group{{ $errors->has('sex') ? ' has-error' : '' }}">
- <label for="gender" class="col-md-4 control-label">Gender</label>
-<div class="col-md-6">
- <div><input id="female" type="radio"class="form-control" name="sex" value="Female" {{ (old('sex') == 'female') ? 'checked' : '' }} >Female</div>
- <div><input id="male" type="radio"class="form-control" name="sex" value="Male" {{ (old('sex') == 'male') ? 'checked' : '' }} >Male</div>
- @if ($errors->has('sex'))
- <span class="help-block">
- <strong>{{ $errors->first('gender') }}</strong>
- </span>
- @endif
+   <div id="gender-group" class="form-group{{ $errors->has('sex') ? ' has-error' : '' }}">
+   <label for="gender" class="col-md-4 control-label">Gender</label>
+  <div class="col-md-6">
+  <div><input id="female" type="radio"class="form-control" name="sex" value="Female" {{ (old('sex') == 'female') ? 'checked' : '' }} >Female</div><br>
+  <div><input id="male" type="radio"class="form-control" name="sex" value="Male" {{ (old('sex') == 'male') ? 'checked' : '' }} >Male</div>
+      @if ($errors->has('sex'))
+   <span class="help-block">
+   <strong>{{ $errors->first('gender') }}</strong>
+   </span>
+     @endif
  </div>
  </div>
- 
+//
             <div class="form-group has-feedback{{ $errors->has('phone') ? ' has-error' : '' }}">
                 <input type="text" class="form-control" name="phone" value="{{ old('phone') }}" placeholder="phone">
 
@@ -77,6 +77,7 @@
                     </span>
                 @endif
             </div>
+
             <div class="form-group has-feedback{{ $errors->has('role') ? ' has-error' : '' }}">
             
                 <select name="role" id="name" type ="text" class="form-control" value="{{ old('role') }}">
