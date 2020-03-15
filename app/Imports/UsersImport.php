@@ -20,14 +20,12 @@ class UsersImport implements ToCollection
     {
         //
         // $this->attributes['password'] = Hash::make($value);
-        $user = new User([
+      return new User([
             'name'=>$collection[0],
-            // 'address'=>$collection[2],
-            'sex'=>$collection[1],
-            'phone'=>$collection[2],
-            // 'role'=>$collection[5],
-            'email'=>$collection[3],
-            'password'=>$collection[5],
+            'address'=>$collection[1],
+            'sex'=>$collection[2],
+            'phone'=>$collection[3],
+            'email'=>$collection[4],
 
         ]);
         // $student = new Student([

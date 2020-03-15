@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Imports\UsersImport;
 use App\User;
+use App\Role;
 use DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -15,7 +16,8 @@ class ImportController extends Controller
     public function index()
     {
         $users = User::orderBy('created_at', 'DESC')->get();
-        return view('import/import-excel', compact('users'));
+        return view('import/import-excel', ['roles' => Role::pluck('name', 'id')
+        ])->withusers($users);
     }
 
     public function import(Request $request)
@@ -25,21 +27,23 @@ class ImportController extends Controller
         ]);
 
         $data = Excel::import(new UsersImport, request()->file('import_file'));
-        // $path = $request->file('import_file')->getRealpath();
-        // $data = Excel::load($path)->get();
+        // return back();
+        // // $path = $request->file('import_file')->getRealpath();
+        // // $data = Excel::load($path)->get();
 
-        // $insert_data = array();
+        // // $insert_data = array();
         if ($data) {
             $password = Hash::make(str_random(8));
+            
             foreach ($data as $row) {
              
                 $insert_data[] = array(
                     'name' => $row['name'],
-                    // 'address' => $row['address'],
+                    'address' => $row['address'],
                     'sex' => $row['sex'],
                     'phone' => $row['phone'],
                     'email' => $row['email'],
-                    // 'role' => 6,
+                    'role' => $request->get('id'),
                     'password' => $password,
                 );
                 //   }
