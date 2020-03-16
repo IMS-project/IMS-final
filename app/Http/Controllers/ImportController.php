@@ -32,7 +32,7 @@ class ImportController extends Controller
         // // $data = Excel::load($path)->get();
 
         // // $insert_data = array();
-        if ($data) {
+        if (count($data) >0){
             $password = Hash::make(str_random(8));
             
             foreach ($data as $row) {

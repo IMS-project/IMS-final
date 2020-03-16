@@ -18,6 +18,7 @@ class UniversityController extends AppBaseController
 
     public function __construct(UniversityRepository $universityRepo)
     {
+        $this->middleware('auth');
         $this->universityRepository = $universityRepo;
     }
 
@@ -56,25 +57,14 @@ class UniversityController extends AppBaseController
     public function store(CreateUniversityRequest $request)
     {
         $input = $request->all();
-        $input = $request()->validate(["name"=>"required", 
-        "addres"=>"required"
-        ]);
-        
 
-        University::create($input);
-        // $university = $this->universityRepository->create($input);
+        $university = $this->universityRepository->create($input);
 
         Flash::success('University saved successfully.');
 
         return redirect(route('universities.index'));
-        // $this->validate($request,['name'=>'required',
-        // //     'address'=>'required']);
-        //     $uni = new University;
-        //     $uni->name = $request->input('name');
-        //     $univ->address = $request->input('address');
-        //    $uni->save();
-        //    return redirect('/universites')->with('success','inserted successfully');
     }
+
 
     /**
      * Display the specified University.

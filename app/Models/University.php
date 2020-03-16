@@ -33,7 +33,9 @@ class University extends Model
      * @var array
      */
     protected $casts = [
-        'id' => 'integer'
+        'id' => 'integer',
+        'name' => 'string',
+        'address' => 'string',
     ];
 
     /**
