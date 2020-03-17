@@ -24,3 +24,5 @@ Route::resource('universities', 'UniversityController');
 
 Route::get('import/import-excel','ImportController@index');
 Route::post('import/import-excel','ImportController@import');
+Route::resource('departments', 'DepartmentController');
+Route::resource('unicoordinator', 'UniCoordiantorController');

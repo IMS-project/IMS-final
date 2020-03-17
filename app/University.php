@@ -18,4 +18,14 @@ class University extends Model
     protected $dates = ['deleted_at'];
    
     protected $fillable = ['name','address'];
+
+    public function department(){
+        return $this->hasMany('App\Department');
+    }
+    public function students(){
+        return $this->hasMany('App\Student');
+    }
+    public function coordinator(){
+        return $this->hasMany('App\UniCoordinator');
+    }
 }

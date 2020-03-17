@@ -2,10 +2,10 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
-class CreateUniversitiesTable extends Migration
+class CreatePlacementsTable extends Migration
 {
-
     /**
      * Run the migrations.
      *
@@ -13,12 +13,9 @@ class CreateUniversitiesTable extends Migration
      */
     public function up()
     {
-        Schema::create('universities', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            $table->string('address');
+        Schema::create('placements', function (Blueprint $table) {
+            $table->bigIncrements('id');
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 
@@ -29,6 +26,6 @@ class CreateUniversitiesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('universities');
+        Schema::dropIfExists('placements');
     }
 }
