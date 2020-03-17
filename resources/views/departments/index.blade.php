@@ -1,6 +1,4 @@
 @extends('layouts.app')
-
-<h1>from deparments</h1>
 @section('content')
     <section class="content-header">
         <h1 class="pull-left">Departments</h1>
