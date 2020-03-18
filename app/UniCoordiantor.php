@@ -14,4 +14,5 @@ class UniCoordiantor extends Model
     public function university(){    
         return $this->belongsTo('App\University');
     }
+    
 }

@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\University;
 
-use App\UniCoordiantor;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Role;
 use App\User;
 use App\University;
-
-class UniCoordiantorController extends Controller
+use App\UniCoordiantor;
+class UniCoordinatorController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -39,7 +39,7 @@ class UniCoordiantorController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, User $user )
+      public function store(Request $request, User $user )
     {
         $coordinator = new UniCoordiantor;
         $user->name = $request->name;
@@ -57,13 +57,15 @@ class UniCoordiantorController extends Controller
         return redirect(route('universities.index'));
     }
 
+    
+
     /**
      * Display the specified resource.
      *
-     * @param  \App\UniCoordiantor  $uniCoordiantor
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(UniCoordiantor $uniCoordiantor)
+    public function show($id)
     {
         //
     }
@@ -71,10 +73,10 @@ class UniCoordiantorController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\UniCoordiantor  $uniCoordiantor
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(UniCoordiantor $uniCoordiantor)
+    public function edit($id)
     {
         //
     }
@@ -83,10 +85,10 @@ class UniCoordiantorController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\UniCoordiantor  $uniCoordiantor
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, UniCoordiantor $uniCoordiantor)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -94,10 +96,10 @@ class UniCoordiantorController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\UniCoordiantor  $uniCoordiantor
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(UniCoordiantor $uniCoordiantor)
+    public function destroy($id)
     {
         //
     }
