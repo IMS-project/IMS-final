@@ -1,85 +1,82 @@
 <?php
 
-namespace App\Http\Controllers\Company;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use App\CompCoordinator;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use flush;
 
-class CompcoordinatorController extends Controller
+use App\Role;
+use App\User;
+use App\Company;
+
+class CompCoordinatorController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    //
     public function index()
     {
-        //
+        $roles =Role::orderBy('name')->get();
+        $company = Company::orderBy('created_at')->get();
+        return view('companies.coordinator.create')->with('role', $roles)
+        ->with('company', $company);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        return view('companies.coordinator.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function store(Request $request, User $user )
+    {
+
+        $data=request()->validate([
+            "name"=>"required",
+            "email"=>"required|email",
+            "password"=>"required",
+            "sex"=>"required",
+            "phone"=>"required",
+
+        ]);
+        User::create($data);
+
+        $coordinator = new CompCoordinator;
+        $user->name = $request->name;
+        $user->sex = $request->sex;
+        $user->phone = $request->phone;
+        $user->role = $request->role;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        // Hash::make($data['password']),
+
+
+        $user->save(); //then
+
+        $id = $user->id;
+        $coordinator->user_id = $id;
+        $coordinator->company_id = $request->company;
+        $coordinator->save();
+        Flash::success('saved successfully.');
+        return redirect(route('companies.coordinator.index'));
+    }
+
+    public function show(UniCoordiantor $uniCoordiantor)
+    {
+        //
+    }
+    public function edit(UniCoordiantor $uniCoordiantor)
     {
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
+    public function update(Request $request, UniCoordiantor $uniCoordiantor)
+    {
+        //
+    }
+    public function destroy(UniCoordiantor $uniCoordiantor)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }
