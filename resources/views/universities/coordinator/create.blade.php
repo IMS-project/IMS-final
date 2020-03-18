@@ -5,6 +5,7 @@
     <h1>
         coordinators
     </h1>
+{{-- <a href="{{ route('')}}"></a><button class="btn btn-primary"> View List</button> --}}
 </section>
 <div class="content">
     @include('adminlte-templates::common.errors')
@@ -15,7 +16,7 @@
             <div class="form-group row">
                 <lable for = "name" class = "col-sm-1 col-form-label">name</lable>
                 <div class="col-sm-6">
-                    <input type="text" name="name" class="form-control" id="name" placeholder="user name">
+                    <input type="text" name="name" class="form-control" id="name" placeholder="user name" required>
             </div></div>
 
 
@@ -23,17 +24,17 @@
             <div class="form-group row">
                 <lable for = "email" class = "col-sm-1 col-form-label">email</lable>
                 <div class="col-sm-6">
-                    <input type="email" name="email" class="form-control" id="titleid" placeholder="email">
+                    <input type="email" name="email" class="form-control" id="titleid" placeholder="email" required>
             </div></div>
             <div class="form-group row">
                 <lable for = "password" class = "col-sm-1 col-form-label">password</lable>
                 <div class="col-sm-6">
-                    <input type="password" name="password" class="form-control" id="titleid" placeholder="password">
+                    <input type="password" name="password" class="form-control" id="titleid" placeholder="password" required>
             </div></div>
             <div class="form-group row">
                 <lable for = "phone" class = "col-sm-1 col-form-label">phone</lable>
                 <div class="col-sm-6">
-                    <input type="text" name="phone" class="form-control" id="phone" placeholder="phone">
+                    <input type="text" name="phone" class="form-control" id="phone" placeholder="phone" required>
             </div></div>
             
 
@@ -77,6 +78,7 @@
                 <div class="form-group row">
                     <div class="col-sm-6 pull-right">
                 <button class="btn btn-success" type="submit"> Register</button>
+                <a href="{{ route('universities.index') }}" class="btn btn-default">Cancel</a>
             </div>
                 </div>
         </form>

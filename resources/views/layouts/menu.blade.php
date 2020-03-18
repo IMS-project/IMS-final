@@ -22,5 +22,8 @@
 <li class="{{ Request::is('departments*') ? 'active' : '' }}">
     <a href= "{{route('departments.index')}}"><i class="fa fa-edit"></i><span>departments</span></a>
 </li>
+<li class="{{ Request::is('unicoordinator*') ? 'active' : '' }}">
+    <a href= "{{route('unicoordinator.index')}}"><i class="fa fa-edit"></i><span>coordinator</span></a>
+</li>
 </ul>
 </li>

@@ -65,7 +65,8 @@ class UniCoordiantorController extends Controller
      */
     public function show(UniCoordiantor $uniCoordiantor)
     {
-        //
+        $uniCoordiantor = UniCoordiantor::all();
+        return redirect(route('universities.coordinator.show'));
     }
 
     /**
@@ -74,9 +75,10 @@ class UniCoordiantorController extends Controller
      * @param  \App\UniCoordiantor  $uniCoordiantor
      * @return \Illuminate\Http\Response
      */
-    public function edit(UniCoordiantor $uniCoordiantor)
+    public function edit(UniCoordiantor $uniCoordiantor,$id)
     {
-        //
+        $uniCoordiantor = UniCoordiantor::find($id);
+        
     }
 
     /**

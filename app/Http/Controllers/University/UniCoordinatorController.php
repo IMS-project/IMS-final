@@ -19,8 +19,11 @@ class UniCoordinatorController extends Controller
     public function index()
     {
         $role =Role::orderBy('name')->get();
-        $university = University::orderBy('created_at')->get();
-        return view('universities.coordinator.create')->with('roles',$role)->with('university',$university);
+        //$university = University::orderBy('created_at')->get();
+        //
+        $listuniId = UniCoordiantor::all();
+        //$arr[]= new arr['universityname'];
+        return view('universities.coordinator.index')->with('roles',$role)->with('universityco',$listuniId);
     }
 
     /**
@@ -29,8 +32,9 @@ class UniCoordinatorController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        return view('universities.coordinator.create');
+    {  $role =Role::orderBy('name')->get();
+      $university = University::orderBy('created_at')->get();
+        return view('universities.coordinator.create')->with('roles',$role)->with('university',$university);
     }
 
     /**
@@ -67,7 +71,9 @@ class UniCoordinatorController extends Controller
      */
     public function show($id)
     {
-        //
+        $uniCoordiantor = UniCoordiantor::all()->where('id',$id);
+        //$unicoo = $uniCoordiantor;
+        return view('universities.coordinator.show')->with('unicoordinator',$uniCoordiantor);
     }
 
     /**
@@ -78,7 +84,9 @@ class UniCoordinatorController extends Controller
      */
     public function edit($id)
     {
-        //
+        $uniCoordiantor = UniCoordiantor::all()->where('id',$id);
+        return view('universities.coordinator.edit')->with('unicoordinator',$uniCoordiantor);
+
     }
 
     /**
@@ -90,7 +98,23 @@ class UniCoordinatorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // $this->validate($request,['name'=>'required',
+        // 'address'=>'required']);
+        $coordinator = UniCoordiantor::find($id);
+        $user = User::find($id);
+        $user->name = $request->name;
+        $user->sex = $request->sex;
+        $user->phone = $request->phone;
+        $user->role = $request->role;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        $user->save();
+        $id = $user->id;
+        $coordinator->user_id = $id;
+        $coordinator->university_id = $request->university;
+        $coordinator->save();
+        return redirect(route('universities.index'));
+
     }
 
     /**
@@ -101,6 +125,10 @@ class UniCoordinatorController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $coordinator = UniCoordiantor::find($id);
+        $coordinator->delete();
+        return redirect(route('universities.index'));
+
+
     }
 }
