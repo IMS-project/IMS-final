@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Imports;
 
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use App\Imports\UsersImport;
 use App\User;
 use App\Role;
 use DB;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 // use Excel;
 use Maatwebsite\Excel\Facades\Excel;
@@ -58,3 +59,4 @@ class ImportController extends Controller
 
     }
 }
+

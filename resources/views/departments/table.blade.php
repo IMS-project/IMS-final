@@ -9,15 +9,15 @@
             </tr>
         </thead>
         <tbody>
-        @foreach($universities as $university)
+        @foreach($departments as $dep)
             <tr>
-                <td>{{ $university->name }}</td>
-            <td>{{ $university->address }}</td>
+                <td>{{ $dep->name }}</td>
+            <td>{{ $dep->address }}</td>
                 <td>
-                    {!! Form::open(['route' => ['universities.destroy', $university->id], 'method' => 'delete']) !!}
+                    {!! Form::open(['route' => ['departments.destroy', $dep->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>
-                        <a href="{{ route('universities.show', [$university->id]) }}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>
-                        <a href="{{ route('universities.edit', [$university->id]) }}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-edit"></i></a>
+                        <a href="{{ route('departments.show', [$dep->id]) }}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>
+                        <a href="{{ route('departments.edit', [$dep->id]) }}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-edit"></i></a>
                         {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
                     </div>
                     {!! Form::close() !!}

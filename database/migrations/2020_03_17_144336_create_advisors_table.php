@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUniCordinatorsTable extends Migration
+class CreateAdvisorsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,14 @@ class CreateUniCordinatorsTable extends Migration
      */
     public function up()
     {
-        Schema::create('uni_cordinators', function (Blueprint $table) {
+        Schema::create('advisors', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('user_id')->nullable();;
-            
-            $table->unsignedBigInteger('university_id')->nullable();;
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('university_id');
             $table->timestamps();
-
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('university_id')->references('id')->on('universities')->onDelete('cascade');
+
         });
     }
 
@@ -32,6 +31,6 @@ class CreateUniCordinatorsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('uni_cordinators');
+        Schema::dropIfExists('advisors');
     }
 }

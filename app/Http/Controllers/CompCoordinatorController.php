@@ -48,6 +48,8 @@ class CompCoordinatorController extends Controller
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
         // Hash::make($data['password']),
+
+
         $user->save(); //then
 
         $id = $user->id;
