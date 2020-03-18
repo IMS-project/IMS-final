@@ -2,62 +2,62 @@
 
 namespace App\Http\Controllers;
 
-use App\CompCoordinator;
+use App\UniCoordinator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-use flush;
+use Flash;
 
 use App\Role;
 use App\User;
-use App\Company;
+use App\University;
 
-class CompCoordinatorController extends Controller
+class UniCoordinatorController extends Controller
 {
     //
     public function index()
     {
-        $roles =Role::orderBy('name')->get();
-        $company = Company::orderBy('created_at')->get();
-        return view('companies.coordinator.create')->with('role', $roles)
-        ->with('company', $company);
+        $role =Role::orderBy('name')->get();
+        $university = University::orderBy('created_at')->get();
+        return view('universities.coordinator.create')->with('roles',$role)->with('university',$university);
     }
 
     public function create()
     {
-        return view('companies.coordinator.create');
+        return view('universities.coordinator.create');
     }
 
     public function store(Request $request, User $user )
     {
 
-        $data=request()->validate([
+    $data=request()->validate([
             "name"=>"required",
             "email"=>"required|email",
             "password"=>"required",
             "sex"=>"required",
             "phone"=>"required",
-
         ]);
         User::create($data);
 
-        $coordinator = new CompCoordinator;
+        $coordinator = new UniCoordinator;
         $user->name = $request->name;
         $user->sex = $request->sex;
-        $user->phone = $request->phone;
+        $user->phone = $request->phone; 
         $user->role = $request->role;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
         // Hash::make($data['password']),
+        $user->save();
 
-
-        $user->save(); //then
-
+        $data=request()->validate([
+            "user_id"=>"required",
+            "university_id"=>"required",
+        ]);
         $id = $user->id;
         $coordinator->user_id = $id;
-        $coordinator->company_id = $request->company;
-        $coordinator->save();
-        Flash::success('saved successfully.');
-        return redirect(route('companies.coordinator.index'));
+        $coordinator->university_id = $request->university;
+        //$coordinator->save();
+        //Flash::success('saved successfully.');
+        return redirect(route('universities.index'));
     }
 
     public function show(UniCoordiantor $uniCoordiantor)
@@ -77,6 +77,4 @@ class CompCoordinatorController extends Controller
     {
         //
     }
-
-
 }

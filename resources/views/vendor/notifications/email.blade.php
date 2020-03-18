@@ -56,7 +56,7 @@
     [
         'actionText' => $actionText,
         'actionURL' => $actionUrl,
-        'displayableActionUrl' => $displayableActionUrl,
+        'displayableActionUrl' => $actionUrl,
     ]
 )
 @endslot

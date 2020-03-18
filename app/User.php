@@ -9,20 +9,16 @@ use App\Role;
 class User extends Authenticatable
 {
     use Notifiable;
-
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-
     protected $fillable = [
         'name','sex','phone','email', 'password'
     ];
-
     /**
      * The attributes that should be hidden for arrays.
-     *
      * @var array
      */
     protected $hidden = [
@@ -38,14 +34,14 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+
     public function roles(){
         return $this->belongsToMany('App\Role');
     }
-    public function student(){
-        return $this->hasOne('App\Student');
-    }
-    public function coordinator(){
-        return $this->hasOne('App\UniCoordiantor');
-    }
-}
+
+    //public function coordinator(){
+        //return $this->hasOne('App\Coordinator');}
+
+    }    
+      
 

@@ -2,84 +2,109 @@
 
 namespace App\Http\Controllers;
 
-use App\Company;
-use Illuminate\Http\Request;
 
+use App\Company;
+
+use Illuminate\Http\Request;
+App\Http\Controllers\Company::class;
+use Flash;
 class CompanyController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+    //
+    public function index(Request $request)
     {
-        //
+       $companies =Company::all();
+    
+        return view('companies.index')->with('companies',$companies);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
         //
+        return view('companies.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         //
+        $data= request()->validate([
+            "name"=>"required", 
+            "address"=>"required"
+            ]);
+  
+          Company::create($data); // this is to save the data
+           $company= new Company();
+    
+            $company->name=request('name');
+            $company->address=request('address');
+            //$company->save();
+            Flash::success('Companies saved successfully.');
+       
+        return Redirect()->route('companies.index');
+        // return redirect('/index');
+
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Company  $company
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Company $company)
+    public function show($id)
     {
-        //
+        // dd($company); dd is link lead to show the details
+          $company = Company::find($id);
+
+       // $university = $this->universityRepository->find($id);
+
+        if (empty($company)) {
+
+            return redirect(route('companies.show_fields'))->with('error', 'Company not found');
+        }
+
+        return view('companies.show')->with('company', $company);
+
+    }
+    
+   // public function edit(\app\Company $company)
+    public function edit($id)
+    {
+        $company = Company::find($id);
+
+        if (empty($company)) {
+
+            return redirect(route('companies.edit'))->with('error', 'Company not found');
+        }
+
+        return view('companies.edit')->with('company', $company);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Company  $company
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Company $company)
+    
+    public function update(Company $company, Request $request)
     {
-        //
+        //$company = Company::find($id); //notice
+        if (empty($company)) {
+            return redirect(route('companies.index'))->with('error', 'Company not found');
+        }
+         $company->name = $request->name;
+        $company->address = $request->address;
+        $company->save();
+        //$company->update($id); //notice
+        Flash::success('saved successfully');
+
+        return redirect(route('companies.index'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Company  $company
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Company $company)
-    {
-        //
+    public function destroy($id)
+     {
+        $company = Company::find($id);
+
+        if (empty($company)) {
+
+            
+            return redirect(route('companies.index'))->with('error', 'Company not found');
+        }
+    
+         $company->delete($id);  //notice
+         
+         Flash::success('comoany deleted successfully.');
+        return redirect(route('companies.index'));
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Company  $company
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Company $company)
-    {
-        //
-    }
 }

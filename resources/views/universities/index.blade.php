@@ -4,8 +4,13 @@
     <section class="content-header">
         <h1 class="pull-left">Universities</h1>
         <h1 class="pull-right">
+<<<<<<< HEAD
            <a class="btn btn-primary pull-right" style="margin-top: -10px;margin-bottom: 5px" href="{{ route('universities.create') }}"><i class="fa fa-plus-circle">Add New</i></a>
            <a class="btn btn-primary pull-right" style="margin-top: -10px;margin-bottom: 5px" href="{{ route('unicoordinator.create') }}"><i class="fa fa-plus-circle">Add Coo</i></a>
+=======
+           <a class="btn btn-primary pull-right" style=
+           "margin-top: -10px;margin-bottom: 5px" href="{{ route('universities.create') }}"><i class="fa fa-plus-circle">Add New</i></a>
+>>>>>>> 267d8cb10b9d6e5bfafd0f1636589b09bb987c2d
         </h1>
     </section>
     <div class="content">

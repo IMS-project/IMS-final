@@ -6,18 +6,28 @@ use Illuminate\Database\Eloquent\Model;
 
 class Company extends Model
 {
+    //
+ 
 
-    protected $fillable = [
-        'name','address',
-    ];
+    public $table = 'companies';
     
-    public function internship(){
-        return $this->hasMany('App\Internship');
+    const CREATED_AT = 'created_at';
+    const UPDATED_AT = 'updated_at';
+    
+    protected $dates = ['deleted_at'];
+
+    protected $fillable=["name", "address"];
+
+   // protected $guarded=[];
+   public function department(){
+        return $this->hasMany('App\Department');
     }
-    public function supervisor(){
-        return $this->hasMany('App\Supervisor');
+    
+    public function students(){
+        return $this->hasMany('App\Student');
     }
-    public function cooordinator(){
-        return $this->hasone('App\comp_coordinator');
+
+    public function coordinator(){
+        return $this->hasMany('App\}خةحCoordinator');
     }
 }
