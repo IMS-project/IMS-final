@@ -8,7 +8,6 @@
                 
             </tr>
         </thead>
-
         <tbody>
         @foreach($universities as $university)
             <tr>
@@ -22,7 +21,7 @@
                         {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
                     </div>
                     {!! Form::close() !!}
-              </td>
+                </td>
             </tr>
         @endforeach
         </tbody>

@@ -67,7 +67,7 @@
      @endif
  </div>
  </div>
-//
+
             <div class="form-group has-feedback{{ $errors->has('phone') ? ' has-error' : '' }}">
                 <input type="text" class="form-control" name="phone" value="{{ old('phone') }}" placeholder="phone">
 

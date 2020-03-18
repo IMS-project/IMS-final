@@ -20,7 +20,13 @@ Auth::routes(['verify' => true]);
 
 Route::get('/home', 'HomeController@index')->middleware('verified');
 
-Route::resource('universities', 'UniversityController');
-
 Route::get('import/import-excel','ImportController@index');
 Route::post('import/import-excel','ImportController@import');
+
+Route::resource('universities', 'UniversityController');
+Route::resource('companies', 'CompanyController');
+
+Route::resource('UniCoordinator', 'UniCoordinatorController');
+Route::resource('CompCoordinator', 'CompCoordinatorController');
+Route::resource('departmants', 'DepartmentController');
+

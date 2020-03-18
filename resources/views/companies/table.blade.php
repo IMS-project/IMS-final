@@ -1,5 +1,5 @@
 <div class="table-responsive">
-    <table class="table" id="universities-table">
+    <table class="table" id="companies-table">
         <thead>
             <tr>
                 <th>Name</th>
@@ -10,15 +10,15 @@
         </thead>
 
         <tbody>
-        @foreach($universities as $university)
+        @foreach($companies as $company)
             <tr>
-                <td>{{ $university->name }}</td>
-            <td>{{ $university->address }}</td>
+                <td>{{ $company->name }}</td>
+            <td>{{ $company->address }}</td>
                 <td>
-                    {!! Form::open(['route' => ['universities.destroy', $university->id], 'method' => 'delete']) !!}
+                    {!! Form::open(['route' => ['companies.destroy',$company->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>
-                        <a href="{{ route('universities.show', [$university->id]) }}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>
-                        <a href="{{ route('universities.edit', [$university->id]) }}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-edit"></i></a>
+                        <a href="{{ route('companies.show', [$company->id]) }}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>
+                        <a href="{{ route('companies.edit', [$company->id]) }}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-edit"></i></a>
                         {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
                     </div>
                     {!! Form::close() !!}

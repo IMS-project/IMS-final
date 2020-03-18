@@ -17,7 +17,6 @@ class CreateRolesUsersTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('role_id');
             $table->softDeletes();
-
            // $table->unique(['user_id','role_id']);
          //FOREIGN KEY CONSTRAINTS
            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
