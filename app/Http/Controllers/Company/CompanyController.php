@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Company;
 
 
-use App\Company;
+ use App\Company;
 
 use Illuminate\Http\Request;
-App\Http\Controllers\Company::class;
+use App\Http\Controllers\Controller;
 use Flash;
 class CompanyController extends Controller
 {
@@ -36,7 +36,7 @@ class CompanyController extends Controller
           Company::create($data); // this is to save the data
            $company= new Company();
     
-            $company->name=request('name');
+            $company->name=request('name');+
             $company->address=request('address');
             //$company->save();
             Flash::success('Companies saved successfully.');

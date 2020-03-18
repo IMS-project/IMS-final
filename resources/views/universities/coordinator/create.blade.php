@@ -8,7 +8,7 @@
     </h1>
 {{-- <a href="{{ route('')}}"></a><button class="btn btn-primary"> View List</button> --}}
 </section>
-<div class="content">
+ <div class="content">
     @include('adminlte-templates::common.errors')
     <div class="box box-primary">
         <div class="box-body">
@@ -19,7 +19,6 @@
                 <div class="col-sm-6">
                     <input type="text" name="name" class="form-control" id="name" placeholder="user name" required>
             </div></div>
-
 
 
             <div class="form-group row">
@@ -37,9 +36,8 @@
                 <div class="col-sm-6">
                     <input type="text" name="phone" class="form-control" id="phone" placeholder="phone" required>
             </div></div>
-            
 
-            
+
             <div class="form-group row">
             <lable for = "gender" class = "col-sm-1 col-form-label">gender</lable>
             <div class="col-sm-6">
@@ -49,9 +47,8 @@
                 </select>
             </div>
             </div>
-
-
             
+
             <div class="form-group row">
                 <lable for = "phone" class = "col-sm-1 col-form-label">user type</lable>
                 <div class="col-sm-6">
@@ -68,20 +65,21 @@
             <div class="form-group row">
                 <lable for = "phone" class = "col-sm-1 col-form-label">university</lable>
                 <div class="col-sm-6">
-                <select name="university" id="name" type ="text" class="form-control" value="{{ old('university_id') }}">
-                    @foreach ($university as $uni)
-                    <option value="{{ $uni->id }}">{{$uni->name}}</option>
+                   <select name="university" id="name" type ="text" class="form-control" value="{{ old('university_id') }}">
+                     @foreach ($university as $uni)
+                     <option value="{{ $uni->id }}">{{$uni->name}}</option>
                         
-                    @endforeach
-            </select> 
-                </div></div>
+                     @endforeach
+                  </select> 
+              </div>
+            </div>
 
                 <div class="form-group row">
-                    <div class="col-sm-6 pull-right">
-                <button class="btn btn-success" type="submit"> Register</button>
-                <a href="{{ route('universities.index') }}" class="btn btn-default">Cancel</a>
-            </div>
-                </div>
+                  <div class="col-sm-6 pull-right">
+                    <button class="btn btn-success" type="submit"> Register</button>
+                    <a href="{{ route('universities.index') }}" class="btn btn-default">Cancel</a>
+                 </div>
+               </div>
         </form>
 
     </div>

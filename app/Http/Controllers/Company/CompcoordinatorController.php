@@ -1,10 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Company;
 
 use App\CompCoordinator;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+
+
 use flush;
 
 use App\Role;
@@ -18,7 +21,7 @@ class CompCoordinatorController extends Controller
     {
         $roles =Role::orderBy('name')->get();
         $company = Company::orderBy('created_at')->get();
-        return view('companies.coordinator.create')->with('role', $roles)
+        return view('companies.coordinator.index')->with('role', $roles)
         ->with('company', $company);
     }
 
@@ -48,8 +51,6 @@ class CompCoordinatorController extends Controller
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
         // Hash::make($data['password']),
-
-
         $user->save(); //then
 
         $id = $user->id;
@@ -57,7 +58,7 @@ class CompCoordinatorController extends Controller
         $coordinator->company_id = $request->company;
         $coordinator->save();
         Flash::success('saved successfully.');
-        return redirect(route('companies.coordinator.index'));
+        return redirect(route('companies.index'));
     }
 
     public function show(UniCoordiantor $uniCoordiantor)
