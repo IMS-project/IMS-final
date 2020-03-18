@@ -11,7 +11,7 @@
     @include('adminlte-templates::common.errors')
     <div class="box box-primary">
         <div class="box-body">
-        <form method="post" action="{{ route('unicoordinator.store')}}">
+        <form method="post" action="{{ route('UniCoordinator.store')}}">
             {{csrf_field()}}
             <div class="form-group row">
                 <lable for = "name" class = "col-sm-1 col-form-label">name</lable>
