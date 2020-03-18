@@ -31,7 +31,7 @@ class ImportController extends Controller
         // return back();
         // // $path = $request->file('import_file')->getRealpath();
         // // $data = Excel::load($path)->get();
-
+         $role = Role::where('id'==6);
         // // $insert_data = array();
         if ($data){
             $password = Hash::make(str_random(8));
@@ -42,7 +42,7 @@ class ImportController extends Controller
                     'name' => $row['name'],
                     'sex' => $row['sex'],
                     'phone' => $row['phone'],
-                    'role' => $row['role'],
+                    'role' =>$role,
                     'email' => $row['email'],
                     'password' => $password,
                 );

@@ -58,7 +58,6 @@
 <table class="table table-bordered">
     <tr>
         <th>name</th>
-        <th>address</th>
         <th>sex</th>
         <th>phone</th>
         <th>email</th>
@@ -66,7 +65,6 @@
 @foreach ($users as $user)
 <tr>
     <td>{{$user->name}}</td>
-    <td>{{$user->address}}</td>
     <td>{{$user->sex}}</td>
     <td>{{$user->phone}}</td>
     <td>{{$user->email}}</td>

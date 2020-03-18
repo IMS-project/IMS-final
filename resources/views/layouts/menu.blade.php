@@ -22,8 +22,15 @@
 <li class="{{ Request::is('departments*') ? 'active' : '' }}">
     <a href= "{{route('departments.index')}}"><i class="fa fa-edit"></i><span>departments</span></a>
 </li>
+<<<<<<< HEAD
+<li class="{{ Request::is('unicoordinator*') ? 'active' : '' }}">
+    <a href= "{{route('unicoordinator.index')}}"><i class="fa fa-edit"></i><span>coordinator</span></a>
+</li>
+</ul>
+=======
 <li class="{{ Request::is('companies*') ? 'active' : '' }}">
     <a href="{{ route('companies.index') }}"><i class="fa fa-edit"></i><span>company</span></a>
+>>>>>>> 267d8cb10b9d6e5bfafd0f1636589b09bb987c2d
 </li>
 <li class="{{ Request::is('UniCoordinator*') ? 'active' : '' }}">
     <a href="{{ route('UniCoordinator.index') }}"><i class="fa fa-edit"></i><span>Uni_coordinator</span></a>
