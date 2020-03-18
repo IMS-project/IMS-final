@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Controller;
 
 use App\UniCoordiantor;
 use Illuminate\Http\Request;
