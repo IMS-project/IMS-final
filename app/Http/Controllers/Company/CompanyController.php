@@ -36,7 +36,7 @@ class CompanyController extends Controller
           Company::create($data); // this is to save the data
            $company= new Company();
     
-            $company->name=request('name');+
+            $company->name=request('name');
             $company->address=request('address');
             //$company->save();
             Flash::success('Companies saved successfully.');

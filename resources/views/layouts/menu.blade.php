@@ -8,7 +8,7 @@
     </a>
     <ul class="treeview-menu"> -->
 <li class="{{ Request::is('universities*') ? 'active' : '' }}">
-    <a href="{{ route('universities.index') }}"><i class="fa fa-edit"></i><span>university</span></a>
+    <a href="{{ route('universities.index') }}"><i class="fa fa-graduation-cap" style="font-size:20px"></i><span>university</span></a>
 </li>
 
 <!-- {{-- <li class="{{ Request::is('universities*') ? 'active' : '' }}">
@@ -17,7 +17,8 @@
 <li>
 </li>
 <li class="{{ Request::is('usersimport*') ? 'active' : '' }}">
-    <a href= "{{asset('import/import-excel')}}"><i class="fa fa-edit"></i><span>import</span></a>
+    <a href= "{{asset('import/import-excel')}}"><i class="fa fa-edit"></i><span>student</span></a>
+    <a href= "{{asset('import/import-excel')}}"><i class="fa fa-edit"></i><span>addd</span></a>
 </li>
 <li class="{{ Request::is('departments*') ? 'active' : '' }}">
     <a href= "{{route('departments.index')}}"><i class="fa fa-edit"></i><span>departments</span></a>

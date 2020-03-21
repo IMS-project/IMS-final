@@ -20,8 +20,8 @@ class CompCoordinatorController extends Controller
     public function index()
     {
         $roles =Role::orderBy('name')->get();
-        $company = Company::orderBy('created_at')->get();
-        return view('companies.coordinator.index')->with('role', $roles)
+        $company = CompCoordinator::all();
+        return view('companies.coordinator.index')->with('roles', $roles)
         ->with('company', $company);
     }
 

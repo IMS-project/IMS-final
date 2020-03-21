@@ -23,7 +23,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach( $company as $ls)
+            @foreach($company as $ls)
             <tr>
                 <td>{{ $ls->id}}</td>
                 <td>{{ $ls->user_id }}</td>

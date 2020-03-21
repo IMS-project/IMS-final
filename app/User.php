@@ -35,13 +35,18 @@ class User extends Authenticatable
     ];
 
 
-    public function roles(){
+    public function role(){
         return $this->belongsToMany('App\Role');
     }
 
-    //public function coordinator(){
-        //return $this->hasOne('App\Coordinator');}
+    public function coordinator(){
+        return $this->hasOne('App\Coordinator');}
+        public function advisor(){
+            return $this->hasOne('App\Advisor');
+        }
+    }  
+    
 
-    }    
-      
+    
+
 
