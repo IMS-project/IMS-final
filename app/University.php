@@ -29,4 +29,7 @@ class University extends Model
     public function coordinator(){
         return $this->hasMany('App\UniCoordinator');
     }
+    public function advisor(){
+        return $this->hasMany('App\UniCoordinator');
+    }
 }
