@@ -18,6 +18,7 @@ class CreateDepartmentsTable extends Migration
             $table->string('department_name');
             $table->unsignedBigInteger('university_id');
             $table->timestamps();
+            
             $table->foreign('university_id')->references('id')->on('universities')->onDelete('cascade');
     
         });

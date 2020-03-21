@@ -5,47 +5,47 @@ namespace App\Http\Controllers\University;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+
+
 use App\Role;
 use App\User;
 use App\University;
-use App\UniCoordiantor;
+use App\UniCoordinator;
+
+use Flash;
+
 class UniCoordinatorController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        $role =Role::orderBy('name')->get();
+        //$role = Role::orderBy('name')->get();
         //$university = University::orderBy('created_at')->get();
-        //
-        $listuniId = UniCoordiantor::all();
-        //$arr[]= new arr['universityname'];
-        return view('universities.coordinator.index')->with('roles',$role)->with('universityco',$listuniId);
-    }
+    
+        $uniooordinator = UniCoordinator::all(); 
+        // $userid = $uniooordinator->user_id;
+        // $unid = $uniooordinator->university_id;
 
+        // $user = User::find($userid);
+        // $university = University::find($unid);
+        // dd($user);
+        //$listuniId = UniCoordinator::all();
+        //$arr[]= new arr['universityname'];
+        return view('universities.coordinator.index')->with('cor', $uniooordinator );
+    }
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {  $role =Role::orderBy('name')->get();
-      $university = University::orderBy('created_at')->get();
-        return view('universities.coordinator.create')->with('roles',$role)->with('university',$university);
+    {  $role =Role::orderBy('name')->get(); 
+       $university = University::orderBy('created_at')->get();
+        return view('universities.coordinator.create')->with('roles',$role)->with('universities',$university);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
       public function store(Request $request, User $user )
     {
-        $coordinator = new UniCoordiantor;
+        $coordinator = new UniCoordinator;
         $user->name = $request->name;
         $user->sex = $request->sex;
         $user->phone = $request->phone;
@@ -58,10 +58,9 @@ class UniCoordinatorController extends Controller
         $coordinator->user_id = $id;
         $coordinator->university_id = $request->university;
         $coordinator->save();
-        return redirect(route('universities.index'));
+        $uniooordinator = UniCoordinator::all(); 
+        return view('universities.coordinator.index')->with('cor',$uniooordinator )->with('success',' saved successfully.');
     }
-
-    
 
     /**
      * Display the specified resource.
@@ -71,9 +70,19 @@ class UniCoordinatorController extends Controller
      */
     public function show($id)
     {
-        $uniCoordiantor = UniCoordiantor::all()->where('id',$id);
-        //$unicoo = $uniCoordiantor;
-        return view('universities.coordinator.show')->with('unicoordinator',$uniCoordiantor);
+        $un = UniCoordinator::find($id);
+        
+        //dd($advisor);
+        $userid= $un->user_id;
+        $unid=  $un->university_id;
+
+         $user = User::find($userid);
+         $university = University::find($unid);
+      //  return view('universities.coordinator.show')->with('coordinators',$uniCoordinator);
+
+         //dd($role);
+        return view('universities.coordinator.show')->with('user', $user)->with('coor',$un)->with('university',$university);
+
     }
 
     /**
@@ -84,23 +93,17 @@ class UniCoordinatorController extends Controller
      */
     public function edit($id)
     {
-        $uniCoordiantor = UniCoordiantor::all()->where('id',$id);
-        return view('universities.coordinator.edit')->with('unicoordinator',$uniCoordiantor);
+        $uniCoordiantor = UniCoordinator::all()->where('id',$id);
+        return view('universities.coordinator.edit')->with('coordinators',$uniCoordiantor);
 
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function update(Request $request, $id)
     {
         // $this->validate($request,['name'=>'required',
         // 'address'=>'required']);
-        $coordinator = UniCoordiantor::find($id);
+        $coordinator = UniCoordinator::find($id);
         $user = User::find($id);
         $user->name = $request->name;
         $user->sex = $request->sex;
@@ -113,7 +116,7 @@ class UniCoordinatorController extends Controller
         $coordinator->user_id = $id;
         $coordinator->university_id = $request->university;
         $coordinator->save();
-        return redirect(route('universities.index'));
+        return redirect('UniCordinator.index')->with('success, record done!');
 
     }
 
@@ -125,9 +128,9 @@ class UniCoordinatorController extends Controller
      */
     public function destroy($id)
     {
-        $coordinator = UniCoordiantor::find($id);
+        $coordinator = UniCoordinator::find($id);
         $coordinator->delete();
-        return redirect(route('universities.index'));
+        return redirect(route('UniCoordinator.index'));
 
 
     }

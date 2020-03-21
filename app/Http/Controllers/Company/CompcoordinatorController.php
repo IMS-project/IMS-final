@@ -2,17 +2,16 @@
 
 namespace App\Http\Controllers\Company;
 
-use App\CompCoordinator;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-
 
 use flush;
 
 use App\Role;
 use App\User;
 use App\Company;
+use App\CompCoordinator;
 
 class CompCoordinatorController extends Controller
 {
@@ -21,25 +20,27 @@ class CompCoordinatorController extends Controller
     {
         $roles =Role::orderBy('name')->get();
         $company = Company::orderBy('created_at')->get();
-        return view('companies.coordinator.index')->with('role', $roles)
-        ->with('company', $company);
+        $compcordinator = CompCoordinator::all();
+        
+        return view('companies.coordinator.index')->with('role', $roles)->with('company', $company);
     }
 
     public function create()
     {
-        return view('companies.coordinator.create');
-    }
 
+      $role =Role::orderBy('name')->get(); 
+       $university = University::orderBy('created_at')->get();
+        return view('companies.coordinator.create')->with('roles',$role)->with('universities',$university);
+    }
+       
     public function store(Request $request, User $user )
     {
-
         $data=request()->validate([
             "name"=>"required",
             "email"=>"required|email",
             "password"=>"required",
             "sex"=>"required",
             "phone"=>"required",
-
         ]);
         User::create($data);
 
@@ -57,7 +58,7 @@ class CompCoordinatorController extends Controller
         $coordinator->user_id = $id;
         $coordinator->company_id = $request->company;
         $coordinator->save();
-        Flash::success('saved successfully.');
+        //Flash::success('saved successfully.');
         return redirect(route('companies.index'));
     }
 

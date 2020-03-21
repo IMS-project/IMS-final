@@ -11,25 +11,26 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+    Route::get('/', function () {
+        return view('welcome');
+    });
 
+    Auth::routes(['verify' => true]);
 
-Auth::routes(['verify' => true]);
+    Route::get('/home', 'HomeController@index')->middleware('verified');
 
-Route::get('/home', 'HomeController@index')->middleware('verified');
-Route::get('import/import-excel','ImportController@index');
-Route::post('import/import-excel','ImportController@import');
+    Route::resource('universities', 'University\UniversityController');
+    Route::resource('UniCoordinator', 'University\UniCoordinatorController');
+     Route::resource('Advisor', 'University\AdvisorController');
 
- Route::resource('universities', 'UniversityController');
-Route::resource('companies', 'Company\CompanyController');
+    Route::resource('companies', 'Company\CompanyController');
+    Route::resource('CompCoordinator','Company\CompCoordinatorController');
 
-Route::resource('UniCoordinator', 'University\UniCoordinatorController');
-Route::resource('CompCoordinator', 'Company\CompCoordinatorController');
-Route::resource('departments',  'DepartmentController');
-Route::resource('universities', 'University\UniversityController');
+    Route::resource('departments',  'University\DepartmentController');
 
-Route::get('import/import-excel','Imports\ImportController@index');
-Route::post('import/import-excel','Imports\ImportController@import');
+    //Route::get('import/import-excel','ImportController@index');
+    //Route::post('import/import-excel','ImportController@import');
+    Route::get('import/import-excel','Imports\ImportController@index');
+    Route::post('import/import-excel','Imports\ImportController@import');
+
 

@@ -6,17 +6,20 @@
             University
         </h1>
     </section>
+    
     <div class="content">
         @include('adminlte-templates::common.errors')
         <div class="box box-primary">
             <div class="box-body">
-                <div class="row">
+
+                 <div class="row">
                     {!! Form::open(['route' => 'universities.store']) !!}
 
                         @include('universities.fields')
 
                     {!! Form::close() !!}
                 </div>
+
             </div>
         </div>
     </div>

@@ -4,16 +4,15 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Advisor extends Model
+class UniCoordinator extends Model
 {
-    
-
+    //
 
     const CREATED_AT = 'created_at';
     const UPDATED_AT = 'updated_at';
     protected $dates = ['deleted_at'];
 
-    protected $table= 'advisors';
+    protected $table= 'uni_coordiantors';
 
     protected $fillable=['user_id', 'university_id'];
   
