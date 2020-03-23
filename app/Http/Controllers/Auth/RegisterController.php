@@ -43,7 +43,8 @@ class RegisterController extends Controller
     }
 
     /**
-     * Get a validator for an incoming registration request.
+     * Get a validator for a
+     * n incoming registration request.
      *
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
@@ -51,12 +52,13 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'first_name' => ['required', 'string', 'max:255'],
+            'last_name' => ['required', 'string', 'max:255'],
             'sex' => ['required'],
             'phone' => ['required', 'string', 'max:255'],
             'role' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            // 'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
     }
 
@@ -68,13 +70,16 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $password = Hash::make(str_random(8));
         $user = User::create([
-            'name' => $data['name'],
+            'first_name' => $data['first_name'],
+            'last_name' => $data['last_name'],
             'sex' => $data['sex'],
             'phone' => $data['phone'],
             'role' => $data['role'],
             'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+             'password' => $password ,
+        
 
         ]);
         $user->roles()->attach($data['role']);

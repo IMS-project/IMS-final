@@ -25,7 +25,7 @@
                         <thead>
                             <tr>
                                 <th>Id</th>
-                                <th>Name</th>
+                                <th>First Name</th>
                                 <th>From Company</th>
                                 <th colspan="3">Action</th>
                             </tr>
@@ -34,7 +34,7 @@
             @foreach($supervisors as $sup)
             <tr>
                 <td>{{ $sup->id}}</td>
-                <td>{{ $sup->user->name}}</td>
+                <td>{{ $sup->user->first_name}}</td>
                 <td>{{ $sup->company->name}}</td>
                 <td>
                     {!! Form::open(['route' => ['Supervisor.destroy',  $sup->id], 'method' => 'delete']) !!}

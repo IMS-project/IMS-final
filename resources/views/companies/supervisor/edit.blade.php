@@ -17,29 +17,33 @@
             @method('PUT')
 
             <div class="form-group row">
-                <lable for = "name" class = "col-sm-1 col-form-label">name</lable>
+                <lable for = "first name" class = "col-sm-1 col-form-label"><h5>First Name:</h5></lable>
                 <div class="col-sm-6">
-                    <input type="text" name="name" class="form-control" value="{{$users->name}}" id="name" placeholder="user name" required>
+                    <input type="text" name="first name" class="form-control" value="{{$users->first_name}}" id="name" placeholder="first_name" required>
             </div></div>
 
             <div class="form-group row">
-                <lable for = "email" class = "col-sm-1 col-form-label">email</lable>
+                <lable for = "last name" class = "col-sm-1 col-form-label"><h5>Last Name:</h5></lable>
+                <div class="col-sm-6">
+                    <input type="text" name="last name" class="form-control" value="{{$users->last_name}}" id="name" placeholder="last_name" required>
+            </div></div>
+
+            <div class="form-group row">
+                <lable for = "email" class = "col-sm-1 col-form-label"><h5>Email:</h5></lable>
                 <div class="col-sm-6">
                     <input type="email" name="email" class="form-control" id="titleid" value="{{$users->email}}" placeholder="email" required>
             </div></div>
             
             <div class="form-group row">
-                <lable for = "phone" class = "col-sm-1 col-form-label">phone</lable>
+                <lable for = "phone" class = "col-sm-1 col-form-label"><h5>Phone:</h5></lable>
                 <div class="col-sm-6">
                     <input type="text" name="phone" class="form-control" id="phone" value="{{$users->phone}}"  placeholder="phone" required>
             </div></div>
 
             <div class="form-group row">
-            <lable for = "gender" class = "col-sm-1 col-form-label">gender</lable>
+            <lable for = "gender" class = "col-sm-1 col-form-label"><h5>Gender:</h5></lable>
             <div class="col-sm-6">
                 <select id="" class=" form-control" name = 'sex'  required>
-                    <!-- <option value="Male" id="male" type="radio" name="sex">Male</option>
-                    <option value="Female" id="female" type="radio" name="sex">Female</option> -->
                     @if ($users->sex=="Male")
                     <option value="male" selected>Male</option>
                     <option value="female">Female</option>
@@ -54,7 +58,7 @@
 
 
             <div class="form-group row">
-                <lable for = "phone" class = "col-sm-1 col-form-label">company</lable>
+                <lable for = "phone" class = "col-sm-1 col-form-label"><h5>Company:</h5></lable>
                 <div class="col-sm-6">
 
                    <select name="university" id="name" type ="text" class="form-control" value="{{ $company->name }}">

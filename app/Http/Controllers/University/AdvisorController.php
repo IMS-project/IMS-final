@@ -45,7 +45,8 @@ class AdvisorController extends Controller
     {
         //
         $advisor = new Advisor;
-        $user->name = $request->name;
+        $user->first_name = $request->first_name;
+        $user->last_name = $request->last_name;
         $user->sex = $request->sex;
         $user->phone = $request->phone;
         $user->role = $request->role;
@@ -59,7 +60,7 @@ class AdvisorController extends Controller
         $advisor->save();
         Flash::success(' saved successfully.');
         $advisor = Advisor::all();
-        return view('universities.advisor.index')->with('advisors', $advisor);
+        return redirect()->route('Advisor.index')->with('advisors', $advisor);
 
     }
 
@@ -102,7 +103,8 @@ class AdvisorController extends Controller
         //
         $advisor = Advisor::find($id);
         $user = User::find($id);
-        $user->name = $request->name;
+        $user->first_name = $request->first_name;
+        $user->last_name = $request->last_name;
         $user->sex = $request->sex;
         $user->phone = $request->phone;
         $user->role = $request->role;

@@ -2,7 +2,7 @@
     <table class="table" id="companies-table">
         <thead>
             <tr>
-                <th>Name</th>
+                <th>Name of Company</th>
                 <th>Address</th>
                 <th colspan="3">Action</th>
                 

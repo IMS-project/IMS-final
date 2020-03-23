@@ -34,7 +34,8 @@ class SupervisorController extends Controller
     {
         //
         $supervisor = new Supervisor;
-        $user->name = $request->name;
+        $user->first_name = $request->first_name;
+        $user->last_name = $request->last_name;
         $user->sex = $request->sex;
         $user->phone = $request->phone;
         $user->role = $request->role;
@@ -93,7 +94,8 @@ class SupervisorController extends Controller
         //
         $supervisor = Supervisor::find($id);
         $user = User::find($id);
-        $user->name = $request->name;
+        $user->first_name = $request->first_name;
+        $user->last_name = $request->last_name;
         $user->sex = $request->sex;
         $user->phone = $request->phone;
         $user->role = $request->role;

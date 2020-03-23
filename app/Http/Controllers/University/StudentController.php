@@ -4,69 +4,85 @@ namespace App\Http\Controllers\University;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+
+use App\Role;
+use App\User;
+use App\University;
+use App\Student;
+use App\Company;
+use App\Department;
+
+use Flash;
+
 
 class StudentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         //
+        $student = Student::all();
+        return view('universities.student.index')->with('students', $student);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         //
+        $role = Role::orderBy('name')->get();
+        $university = University::orderBy('created_at')->get();
+        $dep = Department::orderBy('department_name')->get();
+        return view('universities.student.create')->with('roles',$role)->with('universities' ,$university)->with('departments',$dep);
+
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+   
     public function store(Request $request)
     {
-        //
+   
+    
+           $student = new Student;
+           $user = new User;
+           $university = new University;
+           $dep = new Department;
+
+           $user->first_name = $request->first_name;
+           $user->last_name = $request->last_name;
+           $user->sex = $request->sex;
+           $user->phone = $request->phone;
+           $user->role = $request->role;
+           $user->email = $request->email;
+           $user->password = Hash::make($request->password);  // Hash::make($data['password']),
+           $user->save();
+         
+           $id = $user->id;
+           $student->student_id = $request->student_id;
+           $student->user_id = $id;
+           $student->department_id = $request->department;
+           $student->university_id = $request->university;
+           $student->semester_term = $request->semister;
+           $student->year = $request->year;
+           $student->grade = $request->grade;
+           
+           
+           $student->save();
+           Flash::success('saved successfully.');
+           $stu = Student::all();
+           return view('universities.student.index')->with('students', $stu);
+
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function show($id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+ 
     public function edit($id)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
         //
