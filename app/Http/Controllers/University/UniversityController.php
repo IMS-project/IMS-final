@@ -12,6 +12,7 @@ namespace App\Http\Controllers\University;
     use App\University;
     use App\Department;
     use App\Advisor;
+    use App\Role;
 
     class UniversityController extends AppBaseController
     {
@@ -32,8 +33,9 @@ namespace App\Http\Controllers\University;
         }
       
         public function create()
-        {
-            return view('universities.create');
+        {   $role =Role::orderBy('name')->get(); 
+            $university = University::orderBy('created_at')->get();
+            return view('universities.create')->with('roles',$role)->with('universities',$university);
         }
 
         public function store(CreateUniversityRequest $request)

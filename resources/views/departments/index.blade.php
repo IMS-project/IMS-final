@@ -1,12 +1,18 @@
 @extends('layouts.app')
 @section('content')
-    <section class="content-header">
-        <h1 class="pull-left">Departments</h1>
-        <h1 class="pull-right">
-           <a class="btn btn-primary pull-right" style="margin-top: -10px;margin-bottom: 5px" href="{{ route('departments.create') }}">Add New</a>
-        </h1>
-    </section>
-    <div class="content"> 
+    
+<section class="content-header">
+    <h1>
+ Departments
+   
+    <a class="btn btn-primary pull-right" style=
+    "margin-top: -10px;margin-bottom: 5px" href="{{ route('UniCoordinator.create') }}"><i class="fa fa-plus-circle">Add NEW</i></a>
+    </h1>
+</section>
+<div class="content">
+    @include('adminlte-templates::common.errors')
+    <div class="box box-primary">
+        <div class="box-body">
     <table class="table" id="advisor-table">
                 <thead>
                     <tr>
@@ -28,5 +34,7 @@
                 </tbody>
             </table>  
     </div>
+    </div>
+</div>
 @endsection
 

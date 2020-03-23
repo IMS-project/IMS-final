@@ -3,11 +3,12 @@
 @section('content')
 
 <section class="content-header">
-    <h1>
+   <h1>
  Advisors
-    </h1>
+   
     <a class="btn btn-primary pull-right" style=
     "margin-top: -10px;margin-bottom: 5px" href="{{ route('Advisor.create') }}"><i class="fa fa-plus-circle">Add NEW</i></a>
+</h1>
 </section>
 
 <div class="content">

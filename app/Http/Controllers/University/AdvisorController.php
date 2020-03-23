@@ -21,7 +21,7 @@ class AdvisorController extends Controller
        // $role = Role::orderBy('name')->get();
        // $university = University::orderBy('created_at')->get();
 
-        $advisor = \App\Advisor::all();
+        $advisor = Advisor::all();
        
         return view('universities.advisor.index')->with('advisors', $advisor);
     }
@@ -58,8 +58,8 @@ class AdvisorController extends Controller
         $advisor->university_id = $request->university;
         $advisor->save();
         Flash::success(' saved successfully.');
-        return view('universities.advisor.index');
-
+        $advisor = Advisor::all();
+        return view('universities.advisor.index')->with('advisors', $advisor);
 
     }
 

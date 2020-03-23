@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Company;
 
 use App\Internship;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class InternshipController extends Controller
 {
@@ -14,7 +15,7 @@ class InternshipController extends Controller
      */
     public function index()
     {
-        //
+        return view('companies.internships.index');
     }
 
     /**

@@ -16,7 +16,8 @@
                     {!! Form::open(['route' => 'universities.store']) !!}
 
                         @include('universities.fields')
-
+                        @yield('universities.coordinator.create'); 
+                        {{-- @include('universities.coordinator.create') --}}
                     {!! Form::close() !!}
                 </div>
 

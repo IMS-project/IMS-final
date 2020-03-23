@@ -12,6 +12,7 @@ use App\Role;
 use App\User;
 use App\Company;
 use App\CompCoordinator;
+use App\University;
 
 class CompCoordinatorController extends Controller
 {
