@@ -29,6 +29,8 @@
          Route::resource('Supervisor','Company\SupervisorController');
 
 
+    Route::resource('departments',  'University\DepartmentController');
+    Route::resource('internships',  'Company\InternshipController');
 
     //Route::get('import/import-excel','ImportController@index');
     //Route::post('import/import-excel','ImportController@import');

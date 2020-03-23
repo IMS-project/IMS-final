@@ -66,7 +66,7 @@
                 <lable for = "phone" class = "col-sm-1 col-form-label">university</lable>
                 <div class="col-sm-6">
                    <select name="university" id="name" type ="text" class="form-control" value="{{ old('university_id') }}">
-                     @foreach ($universities as $uni)
+                     @foreach ($university as $uni)
                      <option value="{{ $uni->id }}">{{$uni->name}}</option>
                         
                      @endforeach

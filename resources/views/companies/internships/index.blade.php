@@ -2,7 +2,7 @@
 
 @section('content')
     <section class="content-header">
-        <h1 class="pull-left">upcomming events</h1>
+        <h1 class="pull-left">Internhsip posts</h1>
        
     </section>
     <div class="content">

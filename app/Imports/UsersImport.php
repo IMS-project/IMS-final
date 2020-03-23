@@ -25,7 +25,7 @@ class UsersImport implements ToCollection
             'name'=>$collection[1],
             'sex'=>$collection[2],
             'phone'=>$collection[3],
-            // 'role'=>$collection[3],
+             'role'=>$collection[3],
             'email'=>$collection[4],
             
             // 'password'=>@$collection[6],

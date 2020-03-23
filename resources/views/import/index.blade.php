@@ -3,8 +3,7 @@
 @section('content')
 <section class="content-header">
     <h1 class="pull-left">import-excel</h1>
-    <a class="btn btn-primary pull-right" style=
-    "margin-top: -10px;margin-bottom: 5px" href="{{ route('Advisor.create') }}"><i class="fa fa-plus-circle">Add Student</i></a>
+    
    
 </section>
 
@@ -29,7 +28,24 @@
         </div>
 
    
+    <table class="table table-bordered striped">
+        <tr>
+            <th>name</th>
+            <th>sex</th>
+            <th>phone</th>
+            <th>email</th>
+        </tr>
+    @foreach ($users as $user)
+    <tr>
+        <td>{{$user->name}}</td>
+        <td>{{$user->sex}}</td>
+        <td>{{$user->phone}}</td>
+        <td>{{$user->email}}</td>
     
+    </tr>
+        
+    @endforeach
+    </table>
 </div>
 </div>
 
