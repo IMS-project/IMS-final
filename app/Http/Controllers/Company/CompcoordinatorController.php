@@ -18,32 +18,22 @@ class CompCoordinatorController extends Controller
     //
     public function index()
     {
-        $roles =Role::orderBy('name')->get();
-        $company = Company::orderBy('created_at')->get();
+        //$roles =Role::orderBy('name')->get();
+        //$company = Company::orderBy('created_at')->get();
         $compcordinator = CompCoordinator::all();
-        
-        return view('companies.coordinator.index')->with('role', $roles)->with('company', $company);
+        return view('companies.coordinator.index')->with('compcord',   $compcordinator);
     }
 
     public function create()
     {
-
       $role =Role::orderBy('name')->get(); 
-       $university = University::orderBy('created_at')->get();
-        return view('companies.coordinator.create')->with('roles',$role)->with('universities',$university);
+       $company = Company::orderBy('created_at')->get();
+        return view('companies.coordinator.create')->with('roles',$role)->with('companys',$company);
     }
        
     public function store(Request $request, User $user )
     {
-        $data=request()->validate([
-            "name"=>"required",
-            "email"=>"required|email",
-            "password"=>"required",
-            "sex"=>"required",
-            "phone"=>"required",
-        ]);
-        User::create($data);
-
+    
         $coordinator = new CompCoordinator;
         $user->name = $request->name;
         $user->sex = $request->sex;
@@ -59,25 +49,67 @@ class CompCoordinatorController extends Controller
         $coordinator->company_id = $request->company;
         $coordinator->save();
         //Flash::success('saved successfully.');
-        return redirect(route('companies.index'));
+        return redirect(route('CompCoordinator.index'));
     }
+    public function show($id)
+    {
+        $com = CompCoordinator::find($id);
+        //dd($advisor);
+        $userid= $com->user_id;
+        $unid=  $com->company_id;
 
-    public function show(UniCoordiantor $uniCoordiantor)
-    {
-        //
+         $user = User::find($userid);
+         $company = Company::find($unid);
+   
+         //dd($role);
+        return view('companies.coordinator.show')->with('user', $user)->with('coordinator',$com)->with('company',$company);
     }
-    public function edit(UniCoordiantor $uniCoordiantor)
-    {
-        //
-    }
+        public function edit($id)
+            {
+                $compcoordiantor = CompCoordinator::find($id);
+                //dd();
+                $userid = $compcoordiantor->user_id;
+                $unid = $compcoordiantor->company_id;
+                // $rolid= $compcoordiantor->role_id;
+            $user = User::find($userid);
 
-    public function update(Request $request, UniCoordiantor $uniCoordiantor)
+            $company = Company::find($unid);
+            $companys = Company::all();
+                //  $roles = Role::find($rolid);
+                //  $rolled = Role::all();
+                return view('companies.coordinator.edit')->with('coordinators',$compcoordiantor)
+                                                            ->with('users', $user)
+                                                            ->with('company',  $company)
+                                                            ->with('companies ', $companys );
+                                                            
+                                                         
+            }
+
+    public function update(Request $request,$id)
     {
         //
+        $coordiantor = CompCoordinator::find($id);
+        $user = User::find($id);
+        $user->name = $request->name;
+        $user->sex = $request->sex;
+        $user->phone = $request->phone;
+        $user->role = $request->role;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        $user->save();
+        $id = $user->id;
+        $coordinator->user_id = $id;
+        $coordinator->company_id = $request->company ;
+        $coordinator->save();
+        return redirect()->route('CompCoordinator.index')->with('success,update done!');
     }
     public function destroy(UniCoordiantor $uniCoordiantor)
     {
         //
+        $coordiantor = CompCoordinator::find($id);
+        $coordinator->delete();
+        return redirect(route('CompCoordinator.index'));
+
     }
 
 

@@ -20,25 +20,25 @@ class DepartmentController extends Controller
     }
     public function store(Request $request)
     {
-        $this->validate($request,['name'=>'required',
-        'university_id'=>'required']
-        );
+        // $this->validate($request,['name'=>'required',
+        // 'university_id'=>'required']
+        // );
         $deparment = new Department;
         $department->name = $request->input('name');
         $department->university_id = $request->input('university_id');
+        $department->user_id = $request->input('user_id');
+
+        Flash::success('University saved successfully.');
+            return redirect(route('departments.index'));
 
     }
     public function show($id)
     {
         //
+
+
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         //

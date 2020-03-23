@@ -6,7 +6,7 @@
     <h1>
      comp_coordinators
     </h1>
-{{-- <a href="{{ route('')}}"></a><button class="btn btn-primary">View List</button> --}} <!-- the back is comment -->
+{{-- <a href="{{ route('')}}"></a><button class="btn btn-primary">View List</button> --}}
 </section>
 
  <div class="content">
@@ -43,35 +43,32 @@
 
 
             <div class="form-group row">
-            <lable for = "gender" class = "col-sm-1 col-form-label">gender</lable>
-            <div class="col-sm-6">
+             <lable for = "gender" class = "col-sm-1 col-form-label">gender</lable>
+             <div class="col-sm-6">
                 <select id="" class=" form-control" name = 'sex' required>
                     <option value="Male" id="male" type="radio" name="sex">Male</option>
                     <option value="Female" id="female" type="radio" name="sex">Female</option>
                 </select>
-            </div>
+             </div>
             </div>
             
             <div class="form-group row">
                 <lable for = "phone" class = "col-sm-1 col-form-label">user type</lable>
-                <div class="col-sm-6">
+              <div class="col-sm-6">
                 <select name="role" id="name" type ="text" class="form-control" value="{{ old('role') }}">
-                @foreach ($roles as $role )
-                <select name="role" id="name" type ="text" class="form-control" value="{{ old("role") }}">
-                @foreach ($roles as $role)
-
-                <option value="{{ $role->id }}">{{$role->name}}</option>
-                    
-                @endforeach
-            </select> 
-                </div></div>
-        
+                    @foreach ($roles as $role )
+                    <option value="{{ $role->id }}">{{$role->name}}</option>
+                    @endforeach
+                </select> 
+               </div>
+            </div>
+    
 
             <div class="form-group row">
                 <lable for = "phone" class = "col-sm-1 col-form-label">company</lable>
                 <div class="col-sm-6">
                    <select name="company" id="name" type ="text" class="form-control" value="{{ old('company_id') }}">
-                     @foreach ($company as $dep)
+                     @foreach ($companys as $dep)
                      <option value="{{ $dep->id }}">{{$dep->name}}</option>
                         
                      @endforeach
@@ -79,17 +76,16 @@
               </div>
             </div>
 
-                <div class="form-group row">
+                 <div class="form-group row">
                   <div class="col-sm-6 pull-right">
                     <button class="btn btn-success" type="submit"> Register</button>
-                    <a href="{{ route('companies.index') }}" class="btn btn-default">Cancel</a>
-                 </div>
-               </div>
+                    <a href="{{ route('CompCoordinator.index') }}" class="btn btn-default">Cancel</a>
+                  </div>
+                </div>
         </form>
-
+        
     </div>
-    <div class="col-sm-2"></div>
-</div>
+    <div class="col-sm-2"></div> 
+ </div>
 </div>
 @endsection()
-

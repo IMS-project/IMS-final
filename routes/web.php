@@ -19,14 +19,16 @@
 
     Route::get('/home', 'HomeController@index')->middleware('verified');
 
-    Route::resource('universities', 'University\UniversityController');
+      Route::resource('universities', 'University\UniversityController');
     Route::resource('UniCoordinator', 'University\UniCoordinatorController');
-     Route::resource('Advisor', 'University\AdvisorController');
+           Route::resource('Advisor', 'University\AdvisorController');
+      Route::resource('departments',  'University\DepartmentController');
 
-    Route::resource('companies', 'Company\CompanyController');
+          Route::resource('companies', 'Company\CompanyController');
     Route::resource('CompCoordinator','Company\CompCoordinatorController');
+         Route::resource('Supervisor','Company\SupervisorController');
 
-    Route::resource('departments',  'University\DepartmentController');
+
 
     //Route::get('import/import-excel','ImportController@index');
     //Route::post('import/import-excel','ImportController@import');

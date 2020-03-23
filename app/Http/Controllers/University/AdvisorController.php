@@ -21,7 +21,7 @@ class AdvisorController extends Controller
        // $role = Role::orderBy('name')->get();
        // $university = University::orderBy('created_at')->get();
 
-        $advisor = \App\Advisor::all();
+        $advisor = Advisor::all();
        
         return view('universities.advisor.index')->with('advisors', $advisor);
     }
@@ -63,12 +63,6 @@ class AdvisorController extends Controller
 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {   $advisor = Advisor::find($id);
         //dd($advisor);
@@ -77,55 +71,59 @@ class AdvisorController extends Controller
          $user = User::find($userid);
          $university = University::find($unid);
          //dd($role);
-        return view('universities.advisor.show')->with('users', $user)->with('advisors',$advisor)->with('university',$university);
+        return view('universities.advisor.show')->with('users', $user)
+        ->with('advisors',$advisor)->with('university',$university);
 
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
-        //
         $advisor = Advisor::find($id);
         //dd($advisor);
-
         $userid = $advisor->user_id;
          $unid=$advisor->university_id;
-          $rolid=$advisor->roles_id;
+          $rolid=$advisor->role_id;
         
         $user = User::find($userid);
-
         $university = University::find($unid);
         $universitys = University::all();
-         $roles = Role::find($rolid);
-         $rolled = Role::all();
+        // $roles = Role::find($rolid);
+        // $rolled = Role::all();
         return view('universities.advisor.edit')->with('users', $user)
                                                 ->with('advisors',$advisor)
-                                                ->with('university',$university)->with('universitys',$universitys)
-                                                ->with('roles', $roles)->with('rolled', $rolled);
+                                                ->with('university',$university)
+                                                ->with('universitys',$universitys);
+                                                //->with('roles', $roles)->with('rolled', $rolled);
 
 }
      
     public function update(Request $request, $id)
     {
         //
+        $advisor = Advisor::find($id);
+        $user = User::find($id);
+        $user->name = $request->name;
+        $user->sex = $request->sex;
+        $user->phone = $request->phone;
+        $user->role = $request->role;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        $user->save();
+
+        $id = $user->id;
+        $advisor->user_id = $id;
+        $advisor->university_id = $request->university;
+        $advisor->save();
+        Flash::success(' updated successfully');
+        return redirect('Advisor.index');
+
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         //
-        $coordinator = Advisor::find($id);
-        $coordinator->delete();
+        $advisor = Advisor::find($id);
+        $advisor->delete();
         return redirect(route('Advisor.index'));
 
     }

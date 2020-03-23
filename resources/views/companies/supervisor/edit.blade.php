@@ -1,18 +1,18 @@
-  @extends('layouts.app')
+@extends('layouts.app')
 
-  @section('content')
-    <section class="content-header">
-        <h1>
-    Coodinators
-        </h1>
-    {{-- <a href="{{ route('')}}"></a><button class="btn btn-primary"> View List</button> --}}
-    </section>
-    <div class="content">
-    @include('adminlte-templates::common.errors')
+@section('content')
+<section class="content-header">
+    <h1>
+    Supervisors
+    </h1>
+{{-- <a href="{{ route('')}}"></a><button class="btn btn-primary"> View List</button> --}}
+</section>
+
+   <div class="content">
+       @include('adminlte-templates::common.errors')
     <div class="box box-primary">
       
-
-        <form method="post" action="{{ route('UniCoordinator.update', $coordinators->id)}}" enctype="multipart/form-data">
+        <form method="post" action="{{ route('Supervisor.update', $supervisors->id)}}" enctype="multipart/form-data">
             {{csrf_field()}}
             @method('PUT')
 
@@ -48,19 +48,21 @@
                     <option value="female" selected>Female</option>
                     @endif
               </select> 
-              </div>
-             </div>
+            </div> 
+        </div>
+
+
 
             <div class="form-group row">
-                <lable for = "phone" class = "col-sm-1 col-form-label">university</lable>
+                <lable for = "phone" class = "col-sm-1 col-form-label">company</lable>
                 <div class="col-sm-6">
 
-                   <select name="university" id="name" type ="text" class="form-control" value="{{ $university->name }}">
-                     @foreach ($universitys as $uni)
-                     @if ($university->name==$uni->name)
-                     <option value="{{ $uni->id }}" selected>{{$uni->name}}</option>
+                   <select name="university" id="name" type ="text" class="form-control" value="{{ $company->name }}">
+                     @foreach ($companys as $c)
+                     @if ($company->name==$c->name)
+                     <option value="{{ $c->id }}" selected>{{$c->name}}</option>
                      @else
-                     <option value="{{ $uni->id }}">{{$uni->name}}</option>
+                     <option value="{{ $c->id }}">{{$c->name}}</option>
                     @endif  
                      @endforeach
                  </select>  
@@ -70,7 +72,7 @@
                     <div class="form-group row">
                     <div class="col-sm-6 pull-right">
                         <button class="btn btn-success" type="submit"> update</button>
-                        <a href="{{ route('UniCoordinator.index') }}" class="btn btn-default">Cancel</a>
+                        <a href="{{ route('Supervisor.index') }}" class="btn btn-default">Cancel</a>
                     </div>
                     </div>
         </form>

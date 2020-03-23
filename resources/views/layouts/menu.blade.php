@@ -33,7 +33,11 @@
         </li>
 
         <li class="{{ Request::is('Advisor*') ? 'active' : '' }}">
-        <a href="{{ route('Advisor.index') }}"><i class="fa fa-edit"></i><span>Avisor</span></a>
+        <a href="{{ route('Advisor.index') }}"><i class="fa fa-edit"></i><span>Advisor</span></a>
+        </li>
+
+        <li class="{{ Request::is('Supervisor*') ? 'active' : '' }}">
+        <a href="{{ route('Supervisor.index') }}"><i class="fa fa-edit"></i><span>Supervisor</span></a>
         </li>
 
 

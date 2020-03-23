@@ -22,7 +22,7 @@ class University extends Model
         return $this->hasMany('App\Department');
     }
     
-    public function students(){
+    public function student(){
         return $this->hasMany('App\Student');
     }
 
@@ -30,6 +30,6 @@ class University extends Model
         return $this->hasMany('App\UniCoordinator');
     }
     public function advisor(){
-        return $this->hasMany('App\UniCoordinator');
+        return $this->hasMany('App\Advisor');
     }
 }

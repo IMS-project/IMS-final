@@ -4,7 +4,7 @@
 @section('content')
 <section class="content-header">
     <h1>
-        Uni_coordinators
+       University Coordinators
     </h1>
 {{-- <a href="{{ route('')}}"></a><button class="btn btn-primary"> View List</button> --}}
 </section>

@@ -25,11 +25,6 @@ class UniCoordinatorController extends Controller
         // $userid = $uniooordinator->user_id;
         // $unid = $uniooordinator->university_id;
 
-        // $user = User::find($userid);
-        // $university = University::find($unid);
-        // dd($user);
-        //$listuniId = UniCoordinator::all();
-        //$arr[]= new arr['universityname'];
         return view('universities.coordinator.index')->with('cor', $uniooordinator );
     }
     /**
@@ -93,11 +88,22 @@ class UniCoordinatorController extends Controller
      */
     public function edit($id)
     {
-        $uniCoordiantor = UniCoordinator::all()->where('id',$id);
-        return view('universities.coordinator.edit')->with('coordinators',$uniCoordiantor);
+        $uniCoordiantor = UniCoordinator::find($id);
+        //dd();
+        $userid =  $uniCoordiantor->user_id;
+        $unid= $uniCoordiantor->university_id;
+         $rolid= $uniCoordiantor->roles_id;
+       $user = User::find($userid);
+
+       $university = University::find($unid);
+       $universitys = University::all();
+        //  $roles = Role::find($rolid);
+        //  $rolled = Role::all();
+        return view('universities.coordinator.edit')->with('coordinators',$uniCoordiantor)
+                                                    ->with('users', $user)
+                                                    ->with('university',$university)->with('universitys',$universitys);
 
     }
-
     
     public function update(Request $request, $id)
     {
@@ -116,7 +122,7 @@ class UniCoordinatorController extends Controller
         $coordinator->user_id = $id;
         $coordinator->university_id = $request->university;
         $coordinator->save();
-        return redirect('UniCordinator.index')->with('success, record done!');
+        return redirect('UniCordinator.index')->with('success,update done!');
 
     }
 

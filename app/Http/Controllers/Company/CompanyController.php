@@ -21,7 +21,6 @@ class CompanyController extends Controller
 
     public function create()
     {
-        //
         return view('companies.create');
     }
 
@@ -32,10 +31,10 @@ class CompanyController extends Controller
             "name"=>"required", 
             "address"=>"required"
             ]);
-  
           Company::create($data); // this is to save the data
+
+          
            $company= new Company();
-    
             $company->name=request('name');
             $company->address=request('address');
             //$company->save();

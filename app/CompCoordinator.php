@@ -14,8 +14,8 @@ class CompCoordinator extends Model
     protected $table= 'comp_coordinators';
     protected $fillable=['user_id', 'company_id'];
   
-    public function users(){
-        return $this->hasone('App\User');
+    public function user(){
+        return $this->belongsTo('App\User');
     }
     public function company(){    
         return $this->belongsTo('App\Company');

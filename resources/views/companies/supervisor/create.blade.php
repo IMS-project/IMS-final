@@ -1,9 +1,9 @@
- @extends('layouts.app')
+@extends('layouts.app')
 
 @section('content')
 <section class="content-header">
     <h1>
-      Advisors
+    Supervisors
     </h1>
 {{-- <a href="{{ route('')}}"></a><button class="btn btn-primary"> View List</button> --}}
 </section>
@@ -13,7 +13,7 @@
     <div class="box box-primary">
       <div class="box-body">
 
-        <form method="post" action="{{ route('Advisor.store')}}">
+        <form method="post" action="{{ route('Supervisor.store')}}">
             {{csrf_field()}}
             <div class="form-group row">
                 <lable for = "name" class = "col-sm-1 col-form-label">name</lable>
@@ -59,27 +59,26 @@
                    <select name="role" type ="text" class="form-control" value="{{ old('role') }}">
                       @foreach($roles as $rol)
                         <option value="{{ $rol->id }}">{{$rol->name}}</option>
-                    
                      @endforeach
                   </select> 
                 </div>
             </div>
         
             <div class="form-group row">
-                <lable for = "phone" class = "col-sm-1 col-form-label">university</lable>
-                <div class="col-sm-6">
-                <select name="university" id="name" type ="text" class="form-control" value="{{ old('university_id') }}">
-                     @foreach ($universities as $uni)
-                     <option value="{{ $uni->id }}">{{$uni->name}}</option>
+               <lable for = "phone" class = "col-sm-1 col-form-label">company</lable>
+                 <div class="col-sm-6">
+                  <select name="company" id="name" type ="text" class="form-control" value="{{ old('company_id') }}">
+                     @foreach ($companies as $co)
+                     <option value="{{ $co->id }}">{{$co->name}}</option>
                      @endforeach
-                  </select> 
+                   </select> 
               </div>
             </div>
 
                 <div class="form-group row">
                   <div class="col-sm-6 pull-right">
                     <button class="btn btn-success" type="submit"> Register</button>
-                    <a href="{{ route('Advisor.index') }}" class="btn btn-default">Cancel</a>
+                    <a href="{{ route('Supervisor.index') }}" class="btn btn-default">Cancel</a>
                  </div>
                </div>
         </form>

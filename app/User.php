@@ -9,41 +9,35 @@ use App\Role;
 class User extends Authenticatable
 {
     use Notifiable;
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
+  
     protected $fillable = [
         'name','sex','phone','email', 'password'
     ];
-    /**
-     * The attributes that should be hidden for arrays.
-     * @var array
-     */
+   
     protected $hidden = [
         'password', 'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
 
     public function role(){
         return $this->belongsToMany('App\Role');
     }
 
     public function coordinator(){
-        return $this->hasOne('App\Coordinator');
+        return $this->hasOne('App\UniCoordinator');
     }
     public function advisor(){
         return $this->hasOne('App\Advisor');
+    }
+
+    public function compcoordinator(){
+        return $this->hasOne('App\CompCoordinator');
+    }
+    public function supervisor(){
+        return $this->hasOne('App\Supervisor');
     }
 
 }
