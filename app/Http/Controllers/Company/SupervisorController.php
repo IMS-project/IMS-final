@@ -5,13 +5,12 @@ namespace App\Http\Controllers\Company;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Flash;
 
 use App\Role;
  use App\User;
  use App\Company;
  use App\Supervisor;
-
- use Flash;
 
 class SupervisorController extends Controller
 {
@@ -34,7 +33,9 @@ class SupervisorController extends Controller
     {
         //
         $supervisor = new Supervisor;
-        $user->name = $request->name;
+
+        $user->first_name = $request->first_name;
+        $user->last_name = $request->last_name;
         $user->sex = $request->sex;
         $user->phone = $request->phone;
         $user->role = $request->role;
@@ -47,7 +48,8 @@ class SupervisorController extends Controller
         $supervisor->company_id = $request->company;
         $supervisor->save();
         Flash::success(' saved successfully');
-        return redirect()->route('Supervisor.index');
+        $supervisor = Supervisor::all();
+        return redirect()->route('Supervisor.index')->with('supervisors', $supervisor);
     
     }
 
@@ -93,7 +95,8 @@ class SupervisorController extends Controller
         //
         $supervisor = Supervisor::find($id);
         $user = User::find($id);
-        $user->name = $request->name;
+        $user->first_name = $request->first_name;
+        $user->last_name = $request->last_name;
         $user->sex = $request->sex;
         $user->phone = $request->phone;
         $user->role = $request->role;
@@ -112,9 +115,9 @@ class SupervisorController extends Controller
     public function destroy($id)
     {
         //
-        $supervisor = Superviser::find($id);
+        $supervisor = Supervisor::find($id);
         $supervisor->delete();
-        return redirect()->route('Supeervisor.index');
+        return redirect()->route('Supervisor.index');
 
     }
 }

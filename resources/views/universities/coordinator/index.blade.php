@@ -25,7 +25,7 @@
                             <thead>
                                 <tr>
                                     <th>Id</th>
-                                    <th>Name </th>
+                                    <th>First Name</th>
                                     <th>From Univesity </th>
                                     <th colspan="3">Action</th>
                                 </tr>
@@ -35,7 +35,7 @@
                             @foreach($cor as $c )
                             <tr>
                                 <td>{{ $c->id}}</td>
-                                <td>{{ $c->user->name}}</td>
+                                <td>{{ $c->user->first_name}}</td>
                                 <td>{{ $c->university->name}}</td>
                                 <td>
                                     {!! Form::open(['route' => ['UniCoordinator.destroy', $c->id], 'method' => 'delete']) !!}

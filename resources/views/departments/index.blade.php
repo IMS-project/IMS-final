@@ -20,11 +20,11 @@
    <div class="box-body">
 
    <section class="container-fluid">
-      <table class="table" id="advisor-table">
+      <table class="table" id="departments-table">
             <thead>
                 <tr>
                     <th>Id</th>
-                    <th>Departments</th> 
+                    <th>Name Of Departments</th> 
                     <th>Univesity Name</th>
                     <th>Univesity Address</th>
                 </tr>
@@ -33,9 +33,9 @@
             @foreach($depar as $dep )
             <tr> 
                 <td>{{ $dep->id}}</td>
-                <td>{{$dep->department_name }}</td>
+                <td>{{ $dep->department_name }}</td>
                 <td>{{ $dep->university->name }}</td>
-                <td>{{$dep->university->address }}</td>
+                <td>{{ $dep->university->address }}</td>
                 <td>
                     {!! Form::open(['route' => ['departments.destroy', $dep->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>

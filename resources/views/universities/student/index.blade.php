@@ -4,10 +4,10 @@
 
 <section class="content-header">
     <h1>
- Advisors
+   Students
     </h1>
     <a class="btn btn-primary pull-right" style=
-    "margin-top: -10px;margin-bottom: 5px" href="{{ route('Advisor.create') }}"><i class="fa fa-plus-circle">Add NEW</i></a>
+    "margin-top: -10px;margin-bottom: 5px" href="{{ route('Student.create') }}"><i class="fa fa-plus-circle">Add NEW</i></a>
 </section>
 
 <div class="content">
@@ -16,32 +16,32 @@
     @include('flash::message')
     <div class="clearfix"></div>
 
-        @include('adminlte-templates::common.errors')
-        <div class="box box-primary">
-            <div class="box-body">
+    @include('adminlte-templates::common.errors')
+    <div class="box box-primary">
+        <div class="box-body">
 
                 <section class="container-fluid">
-                    <table class="table" id="universities-table">
+                    <table class="table" id="students-table">
                             <thead>
                                 <tr>
                                     <th>Id</th>
-                                    <th>Name</th>
+                                    <th>First Name</th>
                                     <th>From Univesity </th>
                                     <th colspan="3">Action</th>
                                 </tr>
                             </thead>
 
                         <tbody>
-                            @foreach($advisors as $c )
+                            @foreach($students as $stu )
                             <tr>
-                                <td>{{ $c->id}}</td>
-                                <td>{{ $c->user->name}}</td>
-                                <td>{{ $c->university->name}}</td>
+                                <td>{{ $stu->id}}</td>
+                                <td>{{ $stu->user->first_name }}</td>
+                                <td>{{ $stu->university->name }}</td>
                                 <td>
-                                    {!! Form::open(['route' => ['Advisor.destroy', $c->id], 'method' => 'delete']) !!}
+                                    {!! Form::open(['route' => ['UniCoordinator.destroy', $stu->id], 'method' => 'delete']) !!}
                                     <div class='btn-group'>
-                                        <a href="{{ route('Advisor.show',$c->id) }}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>
-                                        <a href="{{ route('Advisor.edit', $c->id) }}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-edit"></i></a>
+                                        <a href="{{ route('Student.show',$stu->id) }}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>
+                                        <a href="{{ route('Student.edit', $stu->id) }}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-edit"></i></a>
                                         {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
                                     </div>
                                     {!! Form::close() !!}
@@ -54,6 +54,4 @@
                 </div> 
              </div> 
         </div> 
-
-
-@endsection       
+@endsection

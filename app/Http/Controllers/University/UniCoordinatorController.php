@@ -41,7 +41,8 @@ class UniCoordinatorController extends Controller
       public function store(Request $request, User $user )
     {
         $coordinator = new UniCoordinator;
-        $user->name = $request->name;
+        $user->first_name = $request->first_name;
+        $user->last_name = $request->last_name;
         $user->sex = $request->sex;
         $user->phone = $request->phone;
         $user->role = $request->role;
@@ -53,16 +54,11 @@ class UniCoordinatorController extends Controller
         $coordinator->user_id = $id;
         $coordinator->university_id = $request->university;
         $coordinator->save();
+        Flash::success(' saved successfully.');
         $uniooordinator = UniCoordinator::all(); 
-        return view('universities.coordinator.index')->with('cor',$uniooordinator )->with('success',' saved successfully.');
+        return redirect()->route('UniCoordinator.index')->with('cor',$uniooordinator );
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         $un = UniCoordinator::find($id);
@@ -111,7 +107,8 @@ class UniCoordinatorController extends Controller
         // 'address'=>'required']);
         $coordinator = UniCoordinator::find($id);
         $user = User::find($id);
-        $user->name = $request->name;
+        $user->first_name = $request->first_name;
+        $user->last_name = $request->last_name;
         $user->sex = $request->sex;
         $user->phone = $request->phone;
         $user->role = $request->role;

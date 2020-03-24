@@ -10,7 +10,7 @@
     {!! Form::label('address', 'Address:') !!}
     {!! Form::text('address', null, ['class' => 'form-control']) !!}
 </div>
-@include('universities.coordinator.create')
+
 
 <!-- Submit Field -->
 <div class="form-group col-sm-12">

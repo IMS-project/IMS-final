@@ -44,7 +44,17 @@
             @csrf
 
             <div class="form-group has-feedback{{ $errors->has('name') ? ' has-error' : '' }}">
-                <input type="text" class="form-control" name="name" value="{{ old('name') }}" placeholder="Full Name">
+                <input type="text" class="form-control" name="first_name" value="{{ old('first_name') }}" placeholder="First Name">
+                <span class="glyphicon glyphicon-user form-control-feedback"></span>
+
+                @if ($errors->has('name'))
+                    <span class="help-block">
+                        <strong>{{ $errors->first('name') }}</strong>
+                    </span>
+                @endif
+            </div>
+            <div class="form-group has-feedback{{ $errors->has('name') ? ' has-error' : '' }}">
+                <input type="text" class="form-control" name="last_name" value="{{ old('last_name') }}" placeholder="Last Name">
                 <span class="glyphicon glyphicon-user form-control-feedback"></span>
 
                 @if ($errors->has('name'))
@@ -55,18 +65,30 @@
             </div>
             
            <!--radiobutton -->
-   <div id="gender-group" class="form-group{{ $errors->has('sex') ? ' has-error' : '' }}">
+
+           <div class="form-group row"  id="gender-group">
+             <lable for = "gender" class = "col-sm-1 col-form-label"><h5>Gender:</h5></lable><br><br>
+             <div class="col-md-6">
+                <select id="" class=" form-control" name = 'sex' required>
+                    <option value="Male" id="male" type="radio" name="sex">Male</option>
+                    <option value="Female" id="female" type="radio" name="sex">Female</option>
+                </select>
+             </div>
+            </div>
+
+
+   <!-- <div id="gender-group" class="form-group{{ $errors->has('sex') ? ' has-error' : '' }}">
    <label for="gender" class="col-md-4 control-label">Gender</label>
   <div class="col-md-6">
-  <div><input id="female" type="radio"class="form-control" name="sex" value="Female" {{ (('sex') == 'female') ? 'checked' : '' }} >Female</div><br>
-  <div><input id="male" type="radio"class="form-control" name="sex" value="Male" {{ (('sex') == 'male') ? 'checked' : '' }} >Male</div>
+<input id="female" type="radio"class="form-control" name="sex" value="Female" {{ (('sex') == 'female') ? 'checked' : '' }} >Female</div>
+<input id="male" type="radio"class="form-control" name="sex" value="Male" {{ (('sex') == 'male') ? 'checked' : '' }} >Male</div>
       @if ($errors->has('sex'))
    <span class="help-block">
    <strong>{{ $errors->first('gender') }}</strong>
    </span>
      @endif
  </div>
- </div>
+ </div> -->
            //     <div class="form-group has-feedback{{ $errors->has('phone') ? ' has-error' : '' }}">
                 <input type="text" class="form-control" name="phone" value="{{ old('phone') }}" placeholder="phone">
 
@@ -105,7 +127,7 @@
                 @endif
             </div>
 
-            <div class="form-group has-feedback{{ $errors->has('password') ? ' has-error' : '' }}">
+            <!-- <div class="form-group has-feedback{{ $errors->has('password') ? ' has-error' : '' }}">
                 <input type="password" class="form-control" name="password" placeholder="Password">
                 <span class="glyphicon glyphicon-lock form-control-feedback"></span>
 
@@ -114,9 +136,9 @@
                         <strong>{{ $errors->first('password') }}</strong>
                     </span>
                 @endif
-            </div>
+            </div> -->
 
-            <div class="form-group has-feedback{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
+            <!-- <div class="form-group has-feedback{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
                 <input type="password" name="password_confirmation" class="form-control" placeholder="Confirm password">
                 <span class="glyphicon glyphicon-lock form-control-feedback"></span>
 
@@ -125,7 +147,7 @@
                         <strong>{{ $errors->first('password_confirmation') }}</strong>
                     </span>
                 @endif
-            </div>
+            </div> -->
 
             <div class="row">
                 <div class="col-xs-8">

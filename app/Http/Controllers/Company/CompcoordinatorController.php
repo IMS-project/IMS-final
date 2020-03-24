@@ -5,13 +5,13 @@ namespace App\Http\Controllers\Company;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
-
-use flush;
+use Flash;
 
 use App\Role;
 use App\User;
 use App\Company;
 use App\CompCoordinator;
+use App\University;
 
 class CompCoordinatorController extends Controller
 {
@@ -35,7 +35,9 @@ class CompCoordinatorController extends Controller
     {
     
         $coordinator = new CompCoordinator;
-        $user->name = $request->name;
+
+        $user->first_name = $request->first_name;
+        $user->last_name = $request->last_name;
         $user->sex = $request->sex;
         $user->phone = $request->phone;
         $user->role = $request->role;
@@ -48,8 +50,9 @@ class CompCoordinatorController extends Controller
         $coordinator->user_id = $id;
         $coordinator->company_id = $request->company;
         $coordinator->save();
-        //Flash::success('saved successfully.');
-        return redirect(route('CompCoordinator.index'));
+        Flash::success('saved successfully.');
+        $compcordinator = CompCoordinator::all();
+        return redirect()->route('CompCoordinator.index')->with('coordinators' , $coordinator);
     }
     public function show($id)
     {
@@ -90,7 +93,8 @@ class CompCoordinatorController extends Controller
         //
         $coordiantor = CompCoordinator::find($id);
         $user = User::find($id);
-        $user->name = $request->name;
+        $user->first_name = $request->first_name;
+        $user->last_name = $request->last_name;
         $user->sex = $request->sex;
         $user->phone = $request->phone;
         $user->role = $request->role;

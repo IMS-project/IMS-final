@@ -5,36 +5,36 @@ namespace App\Http\Controllers\University;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request; 
 use App\Department;
-
+use App\University;
+use Flash;
 class DepartmentController extends Controller
 {
     public function index()
     {
-        $deparment = Department::all();
-        return view('departments.index')->with('depar',$deparment);
+        $department = Department::all();
+        return view('departments.index')->with('depar',$department);
     }
     public function create()
-    {
-       return view('departments.create');
+    { 
+        $university = University::orderBy('created_at','desc')->get();
+       return view('departments.create')->with('university',$university);
         
     }
     public function store(Request $request)
     {
-        // $this->validate($request,['name'=>'required',
-        // 'university_id'=>'required']
-        // );
-        $deparment = new Department;
-        $department->name = $request->input('name');
-        $department->university_id = $request->input('university_id');
-        $department->user_id = $request->input('user_id');
+        
+        $department = new Department;
 
-        Flash::success('University saved successfully.');
-            return redirect(route('departments.index'));
+        $department->department_name = $request->department_name;
+        $department->university_id = $request->university;
+        Flash::success('department saved successfully.');
+            return redirect(route('departments.index'))->with('dep', $department );
 
     }
     public function show($id)
     {
         //
+        
 
 
     }
