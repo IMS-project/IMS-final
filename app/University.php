@@ -22,11 +22,14 @@ class University extends Model
         return $this->hasMany('App\Department');
     }
     
-    public function students(){
+    public function student(){
         return $this->hasMany('App\Student');
     }
 
     public function coordinator(){
         return $this->hasMany('App\UniCoordinator');
+    }
+    public function advisor(){
+        return $this->hasMany('App\Advisor');
     }
 }

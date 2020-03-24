@@ -15,10 +15,10 @@ class CreateSupervisorsTable extends Migration
     {
         Schema::create('supervisors', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('user_id');
-            
-            $table->unsignedBigInteger('company_id');
+             $table->unsignedBigInteger('user_id');
+             $table->unsignedBigInteger('company_id');
             $table->timestamps();
+            
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
 

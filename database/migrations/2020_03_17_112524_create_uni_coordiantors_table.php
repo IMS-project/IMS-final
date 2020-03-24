@@ -15,9 +15,8 @@ class CreateUniCoordiantorsTable extends Migration
     {
         Schema::create('uni_coordiantors', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('user_id');
-            
-            $table->unsignedBigInteger('university_id');
+             $table->unsignedBigInteger('user_id');
+             $table->unsignedBigInteger('university_id');
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

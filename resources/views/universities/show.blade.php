@@ -10,7 +10,9 @@
      <div class="box box-primary">
          <div class="box-body">
             <div class="row" style="padding-left: 20px">
+
                 @include('universities.show_fields')
+                
                 <a href="{{ route('universities.index') }}" class="btn btn-default">Back</a>
              </div>
             </div>

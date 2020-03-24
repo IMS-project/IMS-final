@@ -23,11 +23,14 @@ class Company extends Model
         return $this->hasMany('App\Department');
     }
     
-    public function students(){
+    public function student(){
         return $this->hasMany('App\Student');
     }
 
     public function coordinator(){
-        return $this->hasMany('App\}خةحCoordinator');
+        return $this->hasMany('App\CopmCoordinator');
+    }
+    public function supervisor(){
+        return $this->hasMany('App\Supervisor');
     }
 }

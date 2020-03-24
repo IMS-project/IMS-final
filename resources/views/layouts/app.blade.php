@@ -17,6 +17,7 @@
 
 <link rel="stylesheet" href="fontawesome/css/fontawesome.css">
 <link rel="stylesheet" href="fontawesome/css/all.css">-->
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.4.3/css/AdminLTE.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.4.3/css/skins/_all-skins.min.css">
 
@@ -29,7 +30,7 @@
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/css/bootstrap-datetimepicker.min.css">
-
+    <link rel="stylesheet" href="{{asset('new/fontawesome-free/css/all.min.css')}}">
     @yield('css')
 </head>
 
@@ -48,7 +49,7 @@
                 <!-- Header Navbar -->
                 <nav class="navbar navbar-static-top" role="navigation">
                     <!-- Sidebar toggle button-->
-                    <a href="">sisay</a>
+                    
                     <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
                         <span class="sr-only">Toggle navigation</span> 
                     </a>
@@ -60,7 +61,7 @@
                                 <!-- Menu Toggle Button -->
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <!-- The user image in the navbar-->
-                                <img src="http://infyom.com/images/logo/blue_logo_150x150.jpg"
+                                <img src="{{asset('images/a.jpg')}}"
                                      class="user-image" alt="User Image"/>
                                 <!-- hidden-xs hides the username on small devices so only the image appears. -->
                                 <span class="hidden-xs">{{ Auth::user()->name }}</span>
@@ -69,7 +70,7 @@
                             <ul class="dropdown-menu">
                                 <!-- The user image in the menu -->
                                 <li class="user-header">
-                                    <<img src="http://infyom.com/images/logo/blue_logo_150x150.jpg"
+                                    <<img src="{{asset('images/a.jpg')}}"
                                     class="user-image" alt="User Image"/>
                                     <p>
                                         {{ Auth::user()->name }}

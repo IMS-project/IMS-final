@@ -1,14 +1,42 @@
+
 @extends('layouts.app')
 
 @section('content')
-<section class="content-header">
-    <h1 class="pull-left">Universities</h1>
-    <h1 class="pull-right">
-       {{-- <a class="btn btn-primary pull-right" style="margin-top: -10px;margin-bottom: 5px" href="{{ route('universities.create') }}"><i class="fa fa-plus-circle">Add New</i></a> --}}
-       <a class="btn btn-primary pull-right" style="margin-top: -10px;margin-bottom: 5px" href="{{ route('unicoordinator.create') }}"><i class="fa fa-plus-circle">Add Coo</i></a>
-    </h1>
-</section>
-  @foreach($unicoordinator as $l)
-        <h3>{{ $l->user_id}}</h3>
-  @endforeach
+    <section class="content-header"> <h1> Coordinator</h1></section>
+
+  <div class="content">
+     <div class="box box-primary">
+         <div class="box-body">
+            <div class="row" style="padding-left: 20px">
+
+                <div class="form-group">
+                    {!! Form::label('name', 'Name:') !!}
+                    <p>{{ $user->name }}</p>
+                </div>
+                <div class="form-group">
+                    {!! Form::label('email', 'Email:') !!}
+                    <p>{{ $user->email }}</p>
+                </div>
+
+                <div class="form-group">
+                    {!! Form::label('phone', 'Phone:') !!}
+                    <p>{{ $user->phone }}</p>
+                </div>
+                <div class="form-group">
+                    {!! Form::label('sex', 'sex:') !!}
+                    <p>{{ $user->sex }}</p>
+                </div>
+                <div class="form-group">
+                    {!! Form::label('university', 'university:') !!}
+                    <p>{{ $university->name }}</p>
+                </div>
+                
+                    <a href="{{ route('UniCoordinator.index') }}" class="btn btn-default">Back</a>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+
 @endsection

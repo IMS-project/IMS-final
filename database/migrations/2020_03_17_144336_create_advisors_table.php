@@ -15,9 +15,10 @@ class CreateAdvisorsTable extends Migration
     {
         Schema::create('advisors', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('university_id');
+             $table->unsignedBigInteger('user_id');
+             $table->unsignedBigInteger('university_id');
             $table->timestamps();
+
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('university_id')->references('id')->on('universities')->onDelete('cascade');
 
