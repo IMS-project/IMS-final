@@ -18,7 +18,7 @@
               <div class="form-group row">
                   <lable for = "name" class = "col-sm-1 col-form-label">Department Name:</lable>
                    <div class="col-sm-6">
-                    <input type="text" name="department_name" class="form-control" id="name" placeholder="department name" required>
+                    <input type="text" name="name" class="form-control" id="name" placeholder="department name" required>
                    </div>
                 </div>
 

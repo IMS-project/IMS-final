@@ -48,7 +48,7 @@ class SupervisorController extends Controller
         $supervisor->company_id = $request->company;
         $supervisor->save();
         Flash::success(' saved successfully');
-        $supervisor = Supervisor::all();
+        $supervisor = Supervisor::all(); 
         return redirect()->route('Supervisor.index')->with('supervisors', $supervisor);
     
     }

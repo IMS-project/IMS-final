@@ -10,16 +10,14 @@ class Adminseeder extends Seeder
      * @return void
      */
     public function run()
-    {
-        $user = User::create([
-            'first_name'=>'sisay',
-            'last_name'=>'melaku',
-            'sex'=>'male',
-            'phone'=>'09090909',
-            'role'=>6,
-            'email'=>'sisaymelaku@gmail.com',
-            'password'=>bcrypt('123456')
-        ]);
+    {$user = User::create([
+        'first_name'=>'sisay',
+        'last_name'=>'melaku',
+        'sex'=>'male',
+        'phone'=>'09090909',
+        'role'=>6,
+        'email'=>'sisaymelaku@gmail.com',
+        'password'=>bcrypt('123456')
+    ]);
     }
-
 }

@@ -17,24 +17,22 @@ class DepartmentController extends Controller
     public function create()
     { 
         $university = University::orderBy('created_at','desc')->get();
-       return view('departments.create')->with('university',$university);
-        
+       return view('departments.create')->with('university',$university); 
     }
     public function store(Request $request)
     {
         
         $department = new Department;
 
-        $department->department_name = $request->department_name;
+        $department->department_name = $request->name;
         $department->university_id = $request->university;
+        $department->save();
         Flash::success('department saved successfully.');
-            return redirect(route('departments.index'))->with('dep', $department );
-
+        return redirect(route('departments.index'))->with('dep', $department );
     }
     public function show($id)
     {
         //
-        
 
 
     }
