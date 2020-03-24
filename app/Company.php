@@ -33,4 +33,7 @@ class Company extends Model
     public function supervisor(){
         return $this->hasMany('App\Supervisor');
     }
+    public function internship(){
+        return $this->hasMany('App\Internship');
+    }
 }

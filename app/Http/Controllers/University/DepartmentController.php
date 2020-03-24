@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\University;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request; 
+use Illuminate\Http\Request;
+
+use App\User; 
 use App\Department;
 use App\University;
 use Flash;
@@ -27,13 +29,21 @@ class DepartmentController extends Controller
 
         $department->department_name = $request->department_name;
         $department->university_id = $request->university;
+        $department->save();
         Flash::success('department saved successfully.');
-            return redirect(route('departments.index'))->with('dep', $department );
+        return redirect(route('departments.index'))->with('dep', $department );
 
     }
     public function show($id)
     {
-        //
+        $dept =Department::find($id);
+        //dd($advisor);
+        $userid= $dept->user_id;
+        $unid=  $dept->university_id;
+
+         $user = User::find($userid);
+         $university = University::find($unid);
+        return view('universities.coordinator.show')->with('user', $user)->with('depart',$dept)->with('university',$university);
         
 
 
