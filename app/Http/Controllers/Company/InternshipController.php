@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers\Company;
 
-use App\Internship;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+use App\User; 
+use App\Internship;
+use App\Department;
+use App\Company;
+use Flash;
+
 class InternshipController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         return view('companies.internships.index');

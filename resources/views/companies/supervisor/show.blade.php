@@ -9,10 +9,15 @@
          <div class="box-body">
             <div class="row" style="padding-left: 20px">
 
-                <div class="form-group">
-                    {!! Form::label('name', 'Name:') !!}
-                    <p>{{ $users->name }}</p>
+            <div class="form-group">
+                    {!! Form::label('first_name', 'First_Name:') !!}
+                    <p>{{ $user->first_name }}</p>
                 </div>
+                <div class="form-group">
+                    {!! Form::label('last_name', 'Last_Name:') !!}
+                    <p>{{ $user->last_name }}</p>
+                </div>
+
                 <div class="form-group">
                     {!! Form::label('email', 'Email:') !!}
                     <p>{{ $users->email }}</p>

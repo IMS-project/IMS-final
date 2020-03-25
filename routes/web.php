@@ -29,7 +29,7 @@
          Route::resource('Supervisor','Company\SupervisorController');
 
     Route::resource('departments',  'University\DepartmentController');
-    Route::resource('internships',  'Company\InternshipController');
+    Route::resource('Internship',  'Company\InternshipController');
   
     Route::get('import/import-excel','Imports\ImportController@index');
     Route::post('import/import-excel','Imports\ImportController@import');

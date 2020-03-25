@@ -27,19 +27,17 @@ class StudentController extends Controller
 
     public function create()
     {
-        //
+
         $role = Role::orderBy('name')->get();
         $university = University::orderBy('created_at')->get();
-        $dep = Department::orderBy('department_name')->get();
+        $dep = Department::all();
+        // dd( $university);
         return view('universities.student.create')->with('roles',$role)->with('universities' ,$university)->with('departments',$dep);
 
     }
 
-   
     public function store(Request $request)
     {
-   
-    
            $student = new Student;
            $user = new User;
            $university = new University;
@@ -60,21 +58,33 @@ class StudentController extends Controller
            $student->department_id = $request->department;
            $student->university_id = $request->university;
            $student->semester_term = $request->semister;
-           $student->year = $request->year;
+           $student->class_year = $request->year;
            $student->grade = $request->grade;
-           
-           
            $student->save();
+
            Flash::success('saved successfully.');
            $stu = Student::all();
            return view('universities.student.index')->with('students', $stu);
 
     }
 
-    
     public function show($id)
     {
         //
+        $student = Student::find($id);
+        //dd($advisor);
+        $userid = $student->user_id;
+        $unid = $student->university_id;
+        $depid = $student->department_id;
+        
+         $department = Department::find( $depid);     
+         $user = User::find($userid);
+         $university = University::find($unid);
+         //dd($role);
+        return view('universities.student.show')->with('users', $user)
+        ->with('students',$student)
+        ->with('university',$university)
+        ->with('department', $department);
     }
 
  

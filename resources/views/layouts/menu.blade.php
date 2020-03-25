@@ -46,7 +46,7 @@
         <a href="{{ route('CompCoordinator.index') }}"><i class="fa fa-edit"></i><span>Comp_coordinators</span></a>
         </li>
         <li class="{{ Request::is('internships*') ? 'active' : '' }}">
-            <a href="{{ route('internships.index') }}"><i class="fa fa-edit"></i><span>internships</span></a>
+            <a href="{{ route('Internship.index') }}"><i class="fa fa-edit"></i><span>internships</span></a>
             </li>
 
         <li class="{{ Request::is('Supervisor*') ? 'active' : '' }}">
