@@ -12,27 +12,24 @@ use App\University;
 use App\Student;
 use App\Company;
 use App\Department;
-
 use Flash;
-
 
 class StudentController extends Controller
 {
     public function index()
     {
-        //
-        $student = Student::all();
+        $student =Student::orderBy('created_at','desc')->paginate(3);
         return view('universities.student.index')->with('students', $student);
     }
 
     public function create()
     {
-
         $role = Role::orderBy('name')->get();
         $university = University::orderBy('created_at')->get();
         $dep = Department::all();
         // dd( $university);
         return view('universities.student.create')->with('roles',$role)->with('universities' ,$university)->with('departments',$dep);
+        // return view('universities.student.create', compact('roles', 'universities', 'departments'));
 
     }
 
@@ -70,7 +67,6 @@ class StudentController extends Controller
 
     public function show($id)
     {
-        //
         $student = Student::find($id);
         //dd($advisor);
         $userid = $student->user_id;
@@ -90,7 +86,7 @@ class StudentController extends Controller
  
     public function edit($id)
     {
-        //
+        
     }
 
     public function update(Request $request, $id)

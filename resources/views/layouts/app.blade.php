@@ -70,7 +70,7 @@
                             <ul class="dropdown-menu">
                                 <!-- The user image in the menu -->
                                 <li class="user-header">
-                                    <<img src="{{asset('images/a.jpg')}}"
+                                    <img src="{{asset('images/a.jpg')}}"
                                     class="user-image" alt="User Image"/>
                                     <p>
                                         {{ Auth::user()->first_name }}

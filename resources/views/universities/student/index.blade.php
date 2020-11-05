@@ -24,8 +24,8 @@
                     <table class="table" id="students-table">
                             <thead>
                                 <tr>
-                                    <th>Id</th>
-                                    <th>First Name</th>
+                                    <th>SN</th>
+                                    <th>Name</th>
                                     <th>From Univesity </th>
                                     <th colspan="3">Action</th>
                                 </tr>

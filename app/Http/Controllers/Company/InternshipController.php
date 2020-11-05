@@ -14,8 +14,8 @@ use Flash;
 class InternshipController extends Controller
 {
     public function index()
-    {
-        return view('companies.internships.index');
+    {  $intern = Internship::all();
+        return view('companies.internships.index')->with('posts',$intern);
     }
 
     /**
@@ -24,8 +24,9 @@ class InternshipController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        //
+    {  $company = Company::orderBy('created_at')->get();
+      
+        return view('companies.internships.create')->with('company',$company);
     }
 
     /**
@@ -36,7 +37,15 @@ class InternshipController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $intern = new Internship;
+        $intern->company_id = $request->company;
+        $intern->work_area = $request->work_area;
+        $intern->offer_capacity = $request->offer_capacity;
+        $intern->mini_grade = $request->grade;
+        $intern->other_skills = $request->skills;
+        $intern->save();
+        return view('companies.internships.index');
+
     }
 
     /**

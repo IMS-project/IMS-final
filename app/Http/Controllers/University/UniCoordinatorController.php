@@ -89,7 +89,7 @@ class UniCoordinatorController extends Controller
         $userid =  $uniCoordiantor->user_id;
         $unid= $uniCoordiantor->university_id;
          $rolid= $uniCoordiantor->roles_id;
-       $user = User::find($userid);
+        $user = User::find($userid);
 
        $university = University::find($unid);
        $universitys = University::all();

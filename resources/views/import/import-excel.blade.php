@@ -4,7 +4,7 @@
 <section class="content-header">
     <h1 class="pull-left">import-excel</h1>
     <a class="btn btn-primary pull-right" style=
-    "margin-top: -10px;margin-bottom: 5px" href="{{ route('Advisor.create') }}"><i class="fa fa-plus-circle">Add Student</i></a>
+    "margin-top: -10px;margin-bottom: 5px" href="{{ route('Student.create') }}"><i class="fa fa-plus-circle">Add Student</i></a>
    
 </section>
 
