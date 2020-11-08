@@ -1,12 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Applicant;
 use Illuminate\Http\Request;
 use App\Company;
 use App\Student;
 use App\User;
+use DB;
+use Flash;
 use Illuminate\Support\Facades\Auth;
 class ApplicantController extends Controller
 {
@@ -41,20 +42,49 @@ class ApplicantController extends Controller
     public function store(Request $request, $id)
     {
         // dd($id);
+    // $app = Applicant::where('student_id','=',Input::get('student_id'));
+    // dd($app);
+
     $applicant = new Applicant();
     // $company = Company::find($id);
     // $applicant->student_id = auth()->user()->id;
     $student = Student::where('user_id', Auth::id())->first();
-    // dd($student->id);
+    // dd($student->student_id);
 //    foreach($student as $S){
 //     dd($S->student_id);
 //    }
-    
+    // if(!$student->id){
+    //     $applicant->student_id = $student->id;
+    //     $applicant->company_id = $id;
+    //     // Flash::success('Applicants saved successfully.');
+    //      $applicant->save();
+    // }
     $applicant->student_id = $student->id;
-    $applicant->company_id = $id;
-    // Flash::success('Applicants saved successfully.');
-     $applicant->save();
-    return Redirect()->route('Applicants.index');
+        $applicant->company_id = $id;
+        // Flash::success('Applicants saved successfully.');
+        
+        $stid = Applicant::all()->where('student_id',$applicant->student_id);
+        $count = 0 ;
+        foreach($stid as $row)
+        {
+            $try = $row->company_id;
+            if($try==$id)
+            {
+                $count = 1;
+            } 
+        }
+        if($count==1)
+        {
+            Flash::warning('You have Already Applied . . .');
+            return Redirect()->route('Applicants.index')    ;
+        } 
+        else
+        {
+            $applicant->save();
+            Flash::success('Applicants saved successfully.');
+        }
+    
+    return Redirect()->route('Applicants.index')    ;
     }
 
 
