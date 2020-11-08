@@ -45,7 +45,7 @@ class UniCoordinatorController extends Controller
         $user->last_name = $request->last_name;
         $user->sex = $request->sex;
         $user->phone = $request->phone;
-        $user->role = $request->role;
+        $user->role = 3;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
         // Hash::make($data['password']),
@@ -88,7 +88,7 @@ class UniCoordinatorController extends Controller
         //dd();
         $userid =  $uniCoordiantor->user_id;
         $unid= $uniCoordiantor->university_id;
-         $rolid= $uniCoordiantor->roles_id;
+        //  $rolid= $uniCoordiantor->roles_id;
         $user = User::find($userid);
 
        $university = University::find($unid);
@@ -111,7 +111,7 @@ class UniCoordinatorController extends Controller
         $user->last_name = $request->last_name;
         $user->sex = $request->sex;
         $user->phone = $request->phone;
-        $user->role = $request->role;
+        $user->role = 3;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
         $user->save();

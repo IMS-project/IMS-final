@@ -12,7 +12,7 @@ class Student extends Model
     protected $dates = ['deleted_at'];
 
     // protected $table= 'studentss';
-    protected $fillable=['user_id', 'university_id', 'department_id'];
+    protected $fillable=['student_id', 'university_id', 'department_id'];
 
     public function department(){
         return $this->belongsTo('App\Department');
@@ -23,5 +23,7 @@ class Student extends Model
     public function user(){
         return $this->belongsTo('App\User');
     }
-    
+    public function applicant(){
+        return $this->hasOne('App\Applicant');
+    }
 }

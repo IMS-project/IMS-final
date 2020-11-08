@@ -100,7 +100,7 @@
         </header>
 
         <!-- Left side column. contains the logo and sidebar -->
-        @include('layouts.sidebar')
+        @include('layouts.studside')
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             @yield('content')

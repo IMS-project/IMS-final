@@ -58,7 +58,7 @@
             </div>
             
 
-           <div class="form-group row">
+           {{-- <div class="form-group row">
               <lable for = "role" class = "col-sm-1 col-form-label">user type</lable>
                 <div class="col-sm-6">
                  <select name="role" type ="text" class="form-control" value="{{ old('role') }}">
@@ -67,7 +67,7 @@
                      @endforeach
                  </select> 
                </div>
-            </div>
+            </div> --}}
         
 
                 

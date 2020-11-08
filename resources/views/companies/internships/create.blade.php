@@ -13,7 +13,7 @@
     <div class="box box-primary">
       <div class="box-body">
 
-        <form method="post" action="{{ route('Internship.store')}}">
+        <form method="post" action="{{ route('companies.store')}}">
             {{csrf_field()}}
 
             <!-- company id-->

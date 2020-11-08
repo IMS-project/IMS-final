@@ -16,7 +16,7 @@ class InternshipController extends Controller
     public function index()
     {  $intern = Internship::all();
         return view('companies.internships.index')->with('posts',$intern);
-    }
+    }  
 
     /**
      * Show the form for creating a new resource.

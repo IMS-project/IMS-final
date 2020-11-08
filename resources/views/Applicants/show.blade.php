@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.studapp')
 
 @section('content')
     <section class="content-header">
@@ -10,9 +10,9 @@
         <div class="box box-primary">
             <div class="box-body">
                 <div class="row" style="padding-left: 20px">
-                    @include('companies.show_fields')
-                    <a href="{{ route('companies.index') }}" class="btn btn-success">apply here</a>
-                    <a href="{{ route('companies.index') }}" class="btn btn-primary">back</a>
+                    @include('Applicants.show_fields')
+                    <a href="{{ route('applicant',[$company->id]) }}" class="btn btn-success">apply here</a>
+                    <a href="{{ route('Applicants.index') }}" class="btn btn-primary">back</a>
                 </div>
                 
             </div>

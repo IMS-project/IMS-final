@@ -3,8 +3,8 @@
         <thead>
             <tr>
                 <th>Name of Company</th>
-                 <th>Address</th>
-                <th colspan="3">Action</th> 
+                {{-- <th>Address</th>
+                <th colspan="3">Action</th> --}}
                 
             </tr>
         </thead>
@@ -15,10 +15,10 @@
         
          <tr>
 
-                <td>{{ $company->name }}</td>
+                <td><a href="{{ route('companies.show', [$company->id]) }}">{{ $company->name }}</a></td>
                 
-                 <td>{{ $company->address }}</td>
-                 <td> 
+                {{-- <td>{{ $company->address }}</td> --}}
+                {{-- <td>
                     {!! Form::open(['route' => ['companies.destroy',$company->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>
                         <a href="{{ route('companies.show', [$company->id]) }}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>
@@ -26,7 +26,7 @@
                         {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
                     </div>
                     {!! Form::close() !!}
-              </td> 
+              </td> --}}
             </tr>
         @endforeach
         </tbody>
