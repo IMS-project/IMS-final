@@ -2,24 +2,22 @@
     <table class="table" id="companies-table">
         <thead>
             <tr>
-                <th>SN</th>
-                <th>Name of Company</th>
-                 <th>Address</th>
+                <th>applicants name</th>
+                 {{-- <th>Address</th>
                 <th colspan="3">Action</th> 
-                
+                 --}}
             </tr>
         </thead>
 
         <tbody>
             
-        @foreach($companies as $company)
+        @foreach($applicants as $app)
         
          <tr>
-            <td>{{ $company->id }}</td>
 
-                <td>{{ $company->name }}</td>
+                {{-- <td><a href="{{ route('applicantInfo.show', [$app->id]) }}">{{ $app->student_id }}</a></td> --}}
                 
-                 <td>{{ $company->address }}</td>
+                 {{-- <td>{{ $company->address }}</td>
                  <td> 
                     {!! Form::open(['route' => ['companies.destroy',$company->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>
@@ -28,7 +26,7 @@
                         {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!}
                     </div>
                     {!! Form::close() !!}
-              </td> 
+              </td>  --}}
             </tr>
         @endforeach
         </tbody>

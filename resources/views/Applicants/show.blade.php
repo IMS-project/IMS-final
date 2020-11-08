@@ -1,4 +1,4 @@
-@extends('layouts.studapp')
+@extends('application\layouts.studapp')
 
 @section('content')
     <section class="content-header">

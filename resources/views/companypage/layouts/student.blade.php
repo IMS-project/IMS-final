@@ -16,22 +16,21 @@
         </li> --}} -->
         <li>
         </li>
-        <li class="{{ Request::is('universities*') ? 'active' : '' }}">
-            <a href="{{ route('universities.index') }}"><i class="fa fa-graduation-cap"></i><span>universitys</span></a>
-        </li>
-        <li class="{{ Request::is('UniCoordinator*') ? 'active' : '' }}">
-        <a href="{{ route('UniCoordinator.index') }}"><i class="fa fa-edit"></i><span>Uni_coordinators</span></a>
-        </li>
+        <li class="{{ Request::is('Supervisor*') ? 'active' : '' }}">
+            <a href="{{ route('Supervisor.index') }}"><i class="fa fa-edit"></i><span>Supervisors</span></a>
+            </li>
         
         <li class="{{ Request::is('Advisor*') ? 'active' : '' }}">
         <a href="{{ route('Advisor.index') }}"><i class="fa fa-edit"></i><span>Advisors</span></a>
         </li>
 
-        
-        <li class="{{ Request::is('usersimport*') ? 'active' : '' }}">
-            <a href= "{{asset('import/import-excel')}}"><i class="fa fa-home"></i><span>students</span></a>
-            </li>
+        {{-- <li class="{{ Request::is('Student*') ? 'active' : '' }}">
+        <a href="{{ route('Student.index') }}"><i class="fa fa-edit"></i><span>Students</span></a>
+        </li>
 
+        <li class="{{ Request::is('usersimport*') ? 'active' : '' }}">
+        <a href= "{{asset('import/import-excel')}}"><i class="fa fa-home"></i><span>import</span></a>
+        </li>
 
         <li class="{{ Request::is('departments*') ? 'active' : '' }}">
         <a href= "{{route('departments.index')}}"><i class="fa fa-edit"></i><span>departments</span></a>
@@ -51,7 +50,7 @@
         <a href="{{ route('Supervisor.index') }}"><i class="fa fa-edit"></i><span>Supervisors</span></a>
         </li>
 
-        </ul>
+        </ul> --}}
 
 
 

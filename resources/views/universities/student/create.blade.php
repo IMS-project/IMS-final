@@ -70,7 +70,7 @@
             </div>
 
               <!--    ----role ---- -->
-            <div class="form-group row">
+            {{-- <div class="form-group row">
                 <lable for = "role" class = "col-sm-1 col-form-label"><h5>user type:</h5></lable>
                  <div class="col-sm-6">
                     <select name="role" type ="text" class="form-control" value="{{ old('role') }}">
@@ -79,7 +79,7 @@
                         @endforeach
                     </select> 
                 </div>
-            </div>
+            </div> --}}
 
                <!--    ----university ---- -->
             <div class="form-group row">
