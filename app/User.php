@@ -39,6 +39,9 @@ class User extends Authenticatable
     public function supervisor(){
         return $this->hasOne('App\Supervisor');
     }
+    public function student(){
+        return $this->hasOne('App\Student');
+    }
    
 }
 

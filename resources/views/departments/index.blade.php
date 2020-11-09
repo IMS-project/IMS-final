@@ -26,16 +26,16 @@
                     <th>Id:</th>
                     <th>Name Of Departments:</th> 
                     <th>Name Of Univesities:</th>
-                    <!-- <th>Univesity Address</th> -->
+                    <th>Univesity Address</th> 
                 </tr>
             </thead>
             <tbody>
-            @foreach($depar as $dep )
+            @foreach($departments as $dep )
             <tr> 
                 <td>{{ $dep->id}}</td>
                 <td>{{ $dep->department_name }}</td>
                 <td>{{ $dep->university->name }}</td>
-                <!-- <td>{{ $dep->university->address }}</td> -->
+               <td>{{ $dep->university->address }}</td> 
                 <td>
                     {!! Form::open(['route' => ['departments.destroy', $dep->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>
