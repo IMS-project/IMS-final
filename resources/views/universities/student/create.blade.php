@@ -5,7 +5,7 @@
     <h1>
   Students
     </h1>
-{{-- <a href="{{ route('')}}"></a><button class="btn btn-primary"> View List</button> --}}
+    
 </section>
 
    <div class="content">

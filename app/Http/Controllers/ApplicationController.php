@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Applicant;
+use App\Student;
+use App\User;
+use App\Department;
+use App\University;
 class ApplicationController extends Controller
 {
     /**
@@ -46,9 +50,22 @@ class ApplicationController extends Controller
      */
     public function show($id)
     {
-        //
+        $student = Student::find($id);
+        $userid =  $student->user_id;
+        $unid = $student->university_id;
+        $depid = $student->department_id;
+        
+         $department = Department::find( $depid);     
+         $user = User::find($userid);
+         $university = University::find($unid);
+         //dd($role);
+        return view('applicantInfo.show')->with('users', $user)
+        ->with('students',$student)
+        ->with('university',$university)
+        ->with('department', $department);
     }
 
+ 
     /**
      * Show the form for editing the specified resource.
      *
