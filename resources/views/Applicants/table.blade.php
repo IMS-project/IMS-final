@@ -2,10 +2,9 @@
     <table class="table" id="companies-table">
         <thead>
             <tr>
+                <th>SN</th>
                 <th>Name of Company</th>
-                 {{-- <th>Address</th>
-                <th colspan="3">Action</th> 
-                 --}}
+                 
             </tr>
         </thead>
 
@@ -14,6 +13,7 @@
         @foreach($companies as $company)
         
          <tr>
+             <td>{{$company->id}}</td>
 
                 <td><a href="{{ route('Applicants.show', [$company->id]) }}">{{ $company->name }}</a></td>
                 
