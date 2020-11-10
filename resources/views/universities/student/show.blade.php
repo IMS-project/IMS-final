@@ -1,8 +1,8 @@
 
-@extends('layouts.app')
+@extends('universityAdmin.app')
 
 @section('content')
-    <section class="content-header"> <h1> student details</h1></section>
+    <section class="content-header"> <h1><i>student details</i> </h1></section>
 
   <div class="content">
      <div class="box box-primary">
@@ -43,8 +43,8 @@
                 
 
                 <div class="form-group">
-                    {!! Form::label('year', 'Year:') !!}
-                    <p>{{ $students->year }}</p>
+                    {!! Form::label('class_year', 'class_Year:') !!}
+                    <p>{{ $students->class_year }}</p>
                 </div>
 
                 <div class="form-group">

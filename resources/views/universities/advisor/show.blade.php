@@ -1,5 +1,5 @@
 
-@extends('layouts.app')
+@extends('universityAdmin.app')
 
 @section('content')
     <section class="content-header"> <h1> Advisor </h1></section>

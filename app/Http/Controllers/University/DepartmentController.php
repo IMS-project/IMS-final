@@ -14,7 +14,8 @@ class DepartmentController extends Controller
     public function index()
     {
         $department = Department::all();
-        return view('departments.index')->with('depar',$department);
+        // dd($department);
+        return view('departments.index')->with('departments',$department);
     }
     public function create()
     { 

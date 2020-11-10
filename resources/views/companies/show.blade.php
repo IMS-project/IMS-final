@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('superAdmin.app')
 
 @section('content')
     <section class="content-header">
@@ -11,7 +11,7 @@
             <div class="box-body">
                 <div class="row" style="padding-left: 20px">
                     @include('companies.show_fields')
-                    <a href="{{ route('companies.index') }}" class="btn btn-success">apply here</a>
+                    {{-- <a href="{{ route('companies.index') }}" class="btn btn-success">apply here</a> --}}
                     <a href="{{ route('companies.index') }}" class="btn btn-primary">back</a>
                 </div>
                 

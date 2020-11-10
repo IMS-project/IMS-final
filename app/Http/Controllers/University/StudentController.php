@@ -44,7 +44,7 @@ class StudentController extends Controller
            $user->last_name = $request->last_name;
            $user->sex = $request->sex;
            $user->phone = $request->phone;
-           $user->role = $request->role;
+           $user->role = 6;
            $user->email = $request->email;
            $user->password = Hash::make($request->password);  // Hash::make($data['password']),
            $user->save();
