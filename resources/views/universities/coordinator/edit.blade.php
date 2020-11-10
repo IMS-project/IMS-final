@@ -12,7 +12,7 @@
     <div class="box box-primary">
       
 
-        <form method="post" action="{{ route('UniCoordinator.update', $coordinators->id)}}" enctype="multipart/form-data">
+        <form method="post" action="{{ route('UniCoordinator.update', $cor->id)}}" enctype="multipart/form-data">
             {{csrf_field()}}
             @method('PUT')
 
@@ -58,7 +58,7 @@
               </select> 
               </div>
              </div>
-                       <!-- user type or role -->
+                       <!-- user type or role
              <div class="form-group row">
                 <lable for = "role" class = "col-sm-1 col-form-label"><h5>user type:</h5></lable>
                  <div class="col-sm-6">
@@ -68,7 +68,7 @@
                         @endforeach
                     </select> 
                 </div>
-            </div>
+            </div> -->
  
 
             <div class="form-group row">

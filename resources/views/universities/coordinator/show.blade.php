@@ -8,23 +8,23 @@
 
             <div class="form-group">
                     {!! Form::label('first_name', 'First_Name:') !!}
-                    <p>{{ $user->first_name }}</p>
+                    <p>{{ $users->first_name }}</p>
                 </div>
                 <div class="form-group">
                     {!! Form::label('last_name', 'Last_Name:') !!}
-                    <p>{{ $user->last_name }}</p>
+                    <p>{{ $users->last_name }}</p>
                 </div>
                 <div class="form-group">
                     {!! Form::label('email', 'Email:') !!}
-                    <p>{{ $user->email }}</p>
+                    <p>{{ $users->email }}</p>
                 </div>
                 <div class="form-group">
                     {!! Form::label('phone', 'Phone:') !!}
-                    <p>{{ $user->phone }}</p>
+                    <p>{{ $users->phone }}</p>
                 </div>
                 <div class="form-group">
                     {!! Form::label('sex', 'sex:') !!}
-                    <p>{{ $user->sex }}</p>
+                    <p>{{ $users->sex }}</p>
                 </div>
                 <div class="form-group">
                     {!! Form::label('university', 'university:') !!}

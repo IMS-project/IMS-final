@@ -21,11 +21,11 @@ class UniCoordinatorController extends Controller
         //$role = Role::orderBy('name')->get();
         //$university = University::orderBy('created_at')->get();
     
-        $uniooordinator = UniCoordinator::all(); 
+        $coordinator = UniCoordinator::all(); 
         // $userid = $uniooordinator->user_id;
         // $unid = $uniooordinator->university_id;
 
-        return view('universities.coordinator.index')->with('cor', $uniooordinator );
+        return view('universities.coordinator.index')->with('cor', $coordinator );
     }
     /**
      * Show the form for creating a new resource.
@@ -45,34 +45,36 @@ class UniCoordinatorController extends Controller
         $user->last_name = $request->last_name;
         $user->sex = $request->sex;
         $user->phone = $request->phone;
-        $user->role = 3;
+        $user->role = $request->role;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
         // Hash::make($data['password']),
         $user->save();
+        
         $id = $user->id;
         $coordinator->user_id = $id;
         $coordinator->university_id = $request->university;
         $coordinator->save();
         Flash::success(' saved successfully.');
-        $uniooordinator = UniCoordinator::all(); 
-        return redirect()->route('UniCoordinator.index')->with('cor',$uniooordinator );
+        $coordinator = UniCoordinator::all(); 
+        return redirect()->route('UniCoordinator.index')->with('cor',$coordinator );
     }
 
     public function show($id)
     {
-        $un = UniCoordinator::find($id);
+        $coordinator= UniCoordinator::find($id);
         
         //dd($advisor);
-        $userid= $un->user_id;
-        $unid=  $un->university_id;
+        $userid= $coordinator->user_id;
+        $unid=  $coordinator->university_id;
 
          $user = User::find($userid);
          $university = University::find($unid);
       //  return view('universities.coordinator.show')->with('coordinators',$uniCoordinator);
 
          //dd($role);
-        return view('universities.coordinator.show')->with('user', $user)->with('coor',$un)->with('university',$university);
+        return view('universities.coordinator.show')->with('users', $user)
+        ->with('cor',$coordinator)->with('university',$university);
 
     }
 
@@ -84,20 +86,21 @@ class UniCoordinatorController extends Controller
      */
     public function edit($id)
     {
-        $uniCoordiantor = UniCoordinator::find($id);
+        $coordiantor = UniCoordinator::find($id);
         //dd();
-        $userid =  $uniCoordiantor->user_id;
-        $unid= $uniCoordiantor->university_id;
-        //  $rolid= $uniCoordiantor->roles_id;
-        $user = User::find($userid);
+        $userid =  $coordiantor->user_id;
+        $unid= $coordiantor->university_id;
+          $rolid= $coordiantor->roles_id;
 
+        $user = User::find($userid);
        $university = University::find($unid);
        $universitys = University::all();
         //  $roles = Role::find($rolid);
         //  $rolled = Role::all();
-        return view('universities.coordinator.edit')->with('coordinators',$uniCoordiantor)
+        return view('universities.coordinator.edit')->with('cor',$coordiantor)
                                                     ->with('users', $user)
-                                                    ->with('university',$university)->with('universitys',$universitys);
+                                                    ->with('university',$university)
+                                                    ->with('universitys',$universitys);
 
     }
     
@@ -119,7 +122,10 @@ class UniCoordinatorController extends Controller
         $coordinator->user_id = $id;
         $coordinator->university_id = $request->university;
         $coordinator->save();
-        return redirect('UniCordinator.index')->with('success,update done!');
+        Flash::success(' updated successfully');
+        $coordinator = UniCoordinator::all(); 
+
+        return view('universities.coordinator.index') ->with('cor', $coordinator);
 
     }
 
