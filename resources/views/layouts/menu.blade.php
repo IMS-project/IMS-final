@@ -28,8 +28,8 @@
         </li>
 
         
-        <li class="{{ Request::is('usersimport*') ? 'active' : '' }}">
-            <a href= "{{asset('import/import-excel')}}"><i class="fa fa-home"></i><span>students</span></a>
+        <li class="{{ Request::is('Student*') ? 'active' : '' }}">
+            <a href="{{ route('Student.index') }}"><i class="fa fa-edit"></i><span>Students</span></a>
             </li>
 
 

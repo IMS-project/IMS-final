@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Applicant;
-use App\Student;
-use App\User;
-use App\Department;
 use App\University;
-class ApplicationController extends Controller
+use App\Department;
+    use App\Advisor;
+    use App\Role;
+
+class SuperAdminController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +16,8 @@ class ApplicationController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $applicant =Applicant::all();
-        return view('companyAdmin.index')->with('applicants',$applicant);
+    { $university = University::all();
+        return view('superAdmin.index')->with('universities',$university);
     }
 
     /**
@@ -50,22 +49,9 @@ class ApplicationController extends Controller
      */
     public function show($id)
     {
-        $student = Student::find($id);
-        $userid =  $student->user_id;
-        $unid = $student->university_id;
-        $depid = $student->department_id;
-        
-         $department = Department::find( $depid);     
-         $user = User::find($userid);
-         $university = University::find($unid);
-         //dd($role);
-        return view('applicantInfo.show')->with('users', $user)
-        ->with('students',$student)
-        ->with('university',$university)
-        ->with('department', $department);
+        //
     }
 
- 
     /**
      * Show the form for editing the specified resource.
      *
