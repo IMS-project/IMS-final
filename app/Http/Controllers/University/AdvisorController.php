@@ -107,7 +107,7 @@ class AdvisorController extends Controller
         $user->last_name = $request->last_name;
         $user->sex = $request->sex;
         $user->phone = $request->phone;
-        $user->role = $request->role;
+        $user->role = 4;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
         $user->save();
@@ -117,7 +117,9 @@ class AdvisorController extends Controller
         $advisor->university_id = $request->university;
         $advisor->save();
         Flash::success(' updated successfully');
-        return redirect('Advisor.index');
+        $advisor = Advisor::all();
+       
+        return view('universities.advisor.index')->with('advisors', $advisor); 
 
     }
 

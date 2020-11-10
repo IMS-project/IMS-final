@@ -130,7 +130,7 @@
                 </div>
             </div>
             
-<!--    ----register ---- -->
+<!--    ----update---- -->
                 <div class="form-group row">
                   <div class="col-sm-6 pull-right">
                     <button class="btn btn-success" type="submit"> update</button>

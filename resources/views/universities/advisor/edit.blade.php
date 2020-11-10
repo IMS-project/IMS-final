@@ -44,20 +44,16 @@
             <lable for = "gender" class = "col-sm-1 col-form-label">gender</lable>
             <div class="col-sm-6">
                 <select id="" class=" form-control" name = 'sex'  required>
-                    <!-- <option value="Male" id="male" type="radio" name="sex">Male</option>
+                     <option value="Male" id="male" type="radio" name="sex">Male</option>
                     <option value="Female" id="female" type="radio" name="sex">Female</option> -->
                     @if ($users->sex=="Male")
                     <option value="male" selected>Male</option>
                     <option value="female">Female</option>
                     @elseif($users->sex=="Female")
-                    <option value="male">Male</option>
-                    <option value="female" selected>Female</option>
+                    <!-- <option value="male">Male</option>
+                    <option value="female" selected>Female</option> -->
                     @endif
               </select> </div> </div>
-
-
-
-
 
             <div class="form-group row">
                 <lable for = "phone" class = "col-sm-1 col-form-label">university</lable>

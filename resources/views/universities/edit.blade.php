@@ -5,7 +5,7 @@
         <h1>
             University
         </h1>
-   </section>
+</section>
 
 
    
