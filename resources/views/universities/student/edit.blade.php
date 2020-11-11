@@ -39,12 +39,12 @@
               </div>
             </div>
 
-            <div class="form-group row">
+            {{-- <div class="form-group row">
                 <lable for = "email" class = "col-sm-1 col-form-label"><h5>Email:</h5></lable>
                 <div class="col-sm-6">
                     <input type="email" name="email" class="form-control" value="{{$users->email}}" id="titleid" placeholder="email" required>
                </div>
-            </div>
+            </div> --}}
 
             <div class="form-group row">
                 <lable for = "phone" class = "col-sm-1 col-form-label"><h5>Phone:</h5></lable>

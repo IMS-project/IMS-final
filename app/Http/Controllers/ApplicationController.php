@@ -17,7 +17,7 @@ class ApplicationController extends Controller
      */
     public function index()
     {
-        $applicant =Applicant::all();
+        $applicant =Applicant::all()->where('status', 'pending');
         return view('companyAdmin.index')->with('applicants',$applicant);
     }
 
@@ -59,7 +59,7 @@ class ApplicationController extends Controller
          $user = User::find($userid);
          $university = University::find($unid);
          //dd($role);
-        return view('applicantInfo.show')->with('users', $user)
+        return view('companyAdmin.index')->with('users', $user)
         ->with('students',$student)
         ->with('university',$university)
         ->with('department', $department);
@@ -84,9 +84,31 @@ class ApplicationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function approve(Request $request, $id)
     {
-        //
+        // $application = Application::where('id', '=', e($id))->first();
+        $applicant = Applicant::where('id','=',e($id))->first();
+    
+    if($applicant)
+    {
+        $applicant->status = "approved";
+        $applicant->save();
+        return view('companyAdmin.index');
+        //return a view or whatever you want tto do after
+    }
+    }
+    public function reject(Request $request, $id)
+    {
+        // $application = Application::where('id', '=', e($id))->first();
+        $applicant = Applicant::where('id','=',e($id))->first();
+    
+    if($applicant)
+    {
+        $applicant->status = "rejected";
+        $applicant->save();
+        return view('companyAdmin.index');
+        //return a view or whatever you want tto do after
+    }
     }
 
     /**

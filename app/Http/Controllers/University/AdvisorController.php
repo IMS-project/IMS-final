@@ -107,10 +107,7 @@ class AdvisorController extends Controller
         
         $user->first_name = $request->first_name;
         $user->last_name = $request->last_name;
-        $user->sex = $request->sex;
         $user->phone = $request->phone;
-        $user->role = 4;
-        $user->email = $request->email;
         $user->password = Hash::make($request->password);
         $user->save();
 

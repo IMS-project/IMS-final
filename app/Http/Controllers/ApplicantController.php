@@ -127,11 +127,16 @@ class ApplicantController extends Controller
      * @param  \App\Applicant  $applicant
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Applicant $applicant)
+    public function update(Request $request, $id, $action)
     {
-        //
+        $applicant = Applicant::find($id);
+        if($action == 'approve'){
+            $applicant->status = 'approved';
+        } elseif($action == "reject") {
+            $applicant->status = 'rejected';
+        }
+        return view('companyAdmin.index');
     }
-
     /**
      * Remove the specified resource from storage.
      *

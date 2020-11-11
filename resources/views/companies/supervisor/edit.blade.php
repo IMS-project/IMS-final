@@ -76,7 +76,7 @@
                 <lable for = "phone" class = "col-sm-1 col-form-label"><h5>Company:</h5></lable>
                 <div class="col-sm-6">
 
-                   <select name="university" id="name" type ="text" class="form-control" value="{{ $company->name }}">
+                   <select name="company" id="name" type ="text" class="form-control" value="{{ $company->name }}">
                      @foreach ($companys as $c)
                      @if ($company->name==$c->name)
                      <option value="{{ $c->id }}" selected>{{$c->name}}</option>

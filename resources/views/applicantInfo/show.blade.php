@@ -1,4 +1,4 @@
-@extends('companypage\layouts.studapp')
+@extends('companyAdmin.app')
 @section('content')
     <section class="content-header">
         <h1>

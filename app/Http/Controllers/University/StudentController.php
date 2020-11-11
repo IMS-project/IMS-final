@@ -121,21 +121,12 @@ class StudentController extends Controller
         
         $user->first_name = $request->first_name;
         $user->last_name = $request->last_name;
-        $user->sex = $request->sex;
         $user->phone = $request->phone;
-        $user->role = 6;
-        $user->email = $request->email;
         $user->password = Hash::make($request->password);  // Hash::make($data['password']),
         $user->save();
-      
-        $id = $user->id;
-        $student->student_id = $request->student_id;
-        $student->user_id = $id;
-        $student->department_id = $request->department;
+
+
         $student->university_id = $request->university;
-        $student->semester_term = $request->semister;
-        $student->class_year = $request->year;
-        $student->grade = $request->grade;
         $student->save();
 
         Flash::success('updated successfully.');

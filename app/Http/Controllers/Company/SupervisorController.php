@@ -99,15 +99,11 @@ class SupervisorController extends Controller
         $user->last_name = $request->last_name;
         $user->sex = $request->sex;
         $user->phone = $request->phone;
-        $user->role = 5;
-        $user->email = $request->email;
         $user->password = Hash::make($request->password);
         $user->save();
 
         $id = $user->id;
         $supervisor->user_id = $id;
-        $x= $request->company;
-        dd($x);
         $supervisor->company_id = $request->company;
         $supervisor->save();
         Flash::success(' updated successfully');

@@ -151,11 +151,9 @@
                 {{-- <li class="{{ Request::is('universities*') ? 'active' : '' }}">
                     <a href="{{ route('universities.index') }}"><i class="fa fa-graduation-cap"></i><span>universitys</span></a>
                 </li> --}}
-                <li class="{{ Request::is('usersimport*') ? 'active' : '' }}">
-                    <a href= "{{asset('import/import-excel')}}"><i class="fa fa-home"></i><span>students</span></a>
+                <li class="{{ Request::is('Student*') ? 'active' : '' }}">
+                    <a href="{{ route('Student.index') }}"><i class="fa fa-edit"></i><span>Students</span></a>
                     </li>
-        
-        
                 <li class="{{ Request::is('departments*') ? 'active' : '' }}">
                 <a href= "{{route('departments.index')}}"><i class="fa fa-edit"></i><span>departments</span></a>
                 </li>
