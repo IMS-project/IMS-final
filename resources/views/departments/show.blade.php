@@ -2,7 +2,7 @@
 @extends('universityAdmin.app')
 
 @section('content')
-    <section class="content-header"> <h1>DEpartments</h1></section>
+    <section class="content-header"> <h1>Departments</h1></section>
 
   <div class="content">
      <div class="box box-primary">
@@ -11,7 +11,7 @@
 
                 <div class="form-group">
                     {!! Form::label('name', 'Name:') !!}
-                    <p>{{ $department->department_name }}</p>
+                    <p>{{ $departments->department_name }}</p>
                 </div>
 
                 <div class="form-group">

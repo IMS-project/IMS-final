@@ -3,16 +3,19 @@
 @section('content')
     <section class="content-header">
         <h1>
-            Company
+           companys information
         </h1>
-   </section>
-   <div class="content">
+</section>
+
+
    
+   <div class="content">
        @include('adminlte-templates::common.errors')
        <div class="box box-primary">
            <div class="box-body">
-               <div class="row">
-{!! Form::model($company, ['route' => ['companies.update', $company->id], 'method' => 'patch']) !!}
+
+           <div class="row">
+                   {!! Form::model($company, ['route' => ['companies.update', $company->id], 'method' => 'patch']) !!}
 
                         @include('companies.fields')
 
@@ -20,7 +23,5 @@
                </div>
            </div>
        </div>
-      
    </div>
-
 @endsection
