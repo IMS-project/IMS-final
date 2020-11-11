@@ -21,6 +21,7 @@
     Route::get('/reject/{id}', 'ApplicationController@reject')->name('reject');//for the reject function
     Route::resource('applicants','ApplicationController');
     Route::resource('superAdmin','SuperAdminController');
+    Route::resource('placements','placemnetController');
     Route::get('/home', 'HomeController@index')->middleware('verified');
     // Route::resource('Applicants', 'University\PlacementController');
     Route::resource('Applicants', 'ApplicantController');

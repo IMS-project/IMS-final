@@ -100,7 +100,49 @@
         </header>
 
         <!-- Left side column. contains the logo and sidebar -->
-        @include('layouts.sidebar')
+        <aside class="main-sidebar" id="sidebar-wrapper">
+
+            <!-- sidebar: style can be found in sidebar.less -->
+            <section class="sidebar">
+        
+                <!-- Sidebar user panel (optional) -->
+                <div class="user-panel">
+                    
+                    <div class="pull-left info">
+                        @if (Auth::guest())
+                        <p>guest</p>
+                
+                        @endif
+        
+                    </div>
+                </div>
+        
+                <!-- search form (Optional) -->
+                <form action="#" method="get" class="sidebar-form">
+                    <div class="input-group">
+                        <input type="text" name="q" class="form-control" placeholder="Search..."/>
+                  <span class="input-group-btn">
+                    <button type='submit' name='search' id='search-btn' class="btn btn-flat" ><i class="fa fa-search"></i>
+                    </button>
+                  </span>
+                    </div>
+                </form>
+                <!-- Sidebar Menu -->
+        
+                <ul class="sidebar-menu" data-widget="tree">
+                    <li class="{{ Request::is('companies*') ? 'active' : '' }}">
+                        <a href="{{ route('applicants.index') }}"><i class="fa fa-edit"></i><span>Applicants</span></a>
+                        </li>
+                        
+                        <li class="{{ Request::is('Supervisor*') ? 'active' : '' }}">
+                            <a href="{{ route('Supervisor.index') }}"><i class="fa fa-edit"></i><span>Supervisors</span></a>
+                            </li>
+                            
+                </ul>
+                <!-- /.sidebar-menu -->
+            </section>
+            <!-- /.sidebar -->
+        </aside>
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             @yield('content')

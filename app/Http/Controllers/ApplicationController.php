@@ -93,7 +93,8 @@ class ApplicationController extends Controller
     {
         $applicant->status = "approved";
         $applicant->save();
-        return view('companyAdmin.index');
+        $applicant =Applicant::all()->where('status', 'pending');
+        return view('companyAdmin.index')->with('applicants',$applicant);
         //return a view or whatever you want tto do after
     }
     }
@@ -106,7 +107,8 @@ class ApplicationController extends Controller
     {
         $applicant->status = "rejected";
         $applicant->save();
-        return view('companyAdmin.index');
+        $applicant =Applicant::all()->where('status', 'pending');
+        return view('companyAdmin.index')->with('applicants',$applicant);
         //return a view or whatever you want tto do after
     }
     }
