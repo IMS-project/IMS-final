@@ -11,8 +11,7 @@
             <div class="box-body">
                 <div class="row" style="padding-left: 20px">
                     @include('Applicants.show_fields')
-                    <a href="{{ route('applicant',[$company->id]) }}" class="btn btn-success">apply here</a>
-                    <a href="{{ route('Applicants.index') }}" class="btn btn-primary">back</a>
+                    
                 </div>
                 
             </div>

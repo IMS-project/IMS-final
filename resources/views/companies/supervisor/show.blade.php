@@ -1,5 +1,5 @@
 
-@extends('layouts.app')
+@extends('companyAdmin.app')
 
 @section('content')
     <section class="content-header"> <h1>Supervisors</h1></section>
@@ -11,11 +11,11 @@
 
             <div class="form-group">
                     {!! Form::label('first_name', 'First_Name:') !!}
-                    <p>{{ $user->first_name }}</p>
+                    <p>{{ $users->first_name }}</p>
                 </div>
                 <div class="form-group">
                     {!! Form::label('last_name', 'Last_Name:') !!}
-                    <p>{{ $user->last_name }}</p>
+                    <p>{{ $users->last_name }}</p>
                 </div>
 
                 <div class="form-group">

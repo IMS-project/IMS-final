@@ -45,7 +45,7 @@ class UniCoordinatorController extends Controller
         $user->last_name = $request->last_name;
         $user->sex = $request->sex;
         $user->phone = $request->phone;
-        $user->role = $request->role;
+        $user->role = 3;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
         // Hash::make($data['password']),
@@ -57,7 +57,8 @@ class UniCoordinatorController extends Controller
         $coordinator->save();
         Flash::success(' saved successfully.');
         $coordinator = UniCoordinator::all(); 
-        return redirect()->route('UniCoordinator.index')->with('cor',$coordinator );
+        return redirect(route('universities.index'));
+        // return redirect()->route('UniCoordinator.index')->with('cor',$coordinator );
     }
 
     public function show($id)

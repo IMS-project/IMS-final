@@ -40,7 +40,7 @@ class CompCoordinatorController extends Controller
         $user->last_name = $request->last_name;
         $user->sex = $request->sex;
         $user->phone = $request->phone;
-        $user->role = $request->role;
+        $user->role = 3;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
         // Hash::make($data['password']),
@@ -51,8 +51,9 @@ class CompCoordinatorController extends Controller
         $coordinator->company_id = $request->company;
         $coordinator->save();
         Flash::success('saved successfully.');
-        $compcordinator = CompCoordinator::all();
-        return redirect()->route('CompCoordinator.index')->with('coordinators' , $coordinator);
+        return Redirect()->route('companies.index');
+        // $compcordinator = CompCoordinator::all();
+        // return redirect()->route('CompCoordinator.index')->with('coordinators' , $coordinator);
     }
     public function show($id)
     {
