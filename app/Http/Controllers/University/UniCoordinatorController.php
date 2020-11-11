@@ -57,7 +57,8 @@ class UniCoordinatorController extends Controller
         $coordinator->save();
         Flash::success(' saved successfully.');
         $coordinator = UniCoordinator::all(); 
-        return redirect()->route('UniCoordinator.index')->with('cor',$coordinator );
+        return redirect(route('universities.index'));
+        // return redirect()->route('UniCoordinator.index')->with('cor',$coordinator );
     }
 
     public function show($id)

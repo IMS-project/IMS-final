@@ -45,8 +45,10 @@ namespace App\Http\Controllers\University;
             $university = $this->universityRepository->create($input);
 
             Flash::success('University saved successfully.');
+            $university = University::orderBy('created_at')->get();
+        return view('universities.coordinator.create')->with('universities',$university);
 
-            return redirect(route('universities.index'));
+            // return redirect(route('universities.index'));
         }
 
 

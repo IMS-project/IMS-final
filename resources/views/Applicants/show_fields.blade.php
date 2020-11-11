@@ -4,29 +4,30 @@
     <p>{{ $company->name }}</p>
 </div> --}}
 <div class="form-group">
-    {!! Form::label('name', 'name:') !!}
-    <p>{{ $company->name }}</p>
+    <div class="table-responsive">
+    <table class="table" id="companies-table">
+        <thead>
+            <tr>
+        <th>SN</th>
+        <th>company name</th>
+        {{-- <th>work_area</th> --}}
+        <th>offer_capacity</th>
+        <th>mini_grade</th>
+        <th>skills required</th>
+        <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <td>{{$company->id}}</td>
+            <td>{{ $company->name }}</td>
+            {{-- <td>{{ $company->work_area }}</td> --}}
+            <td>{{ $company->offer_capacity }}</td>
+            <td>{{ $company->mini_grade}}</td>
+            <td>{{ $company->other_skills }}</td>
+            <td><a href="{{ route('applicant',[$company->id]) }}" class="btn btn-success">apply here</a>
+                <a href="{{ route('Applicants.index') }}" class="btn btn-primary">back</a></td>
+        </tbody>
+    </table>
+    </div>
 </div>
 
-<!-- Updated At Field -->
-<div class="form-group">
-    {!! Form::label('address', 'address:') !!}
-    <p>{{ $company->address }}</p>
-</div>
-
-<div class="form-group">
-    {!! Form::label('work_area', 'work_area:') !!}
-    <p>{{ $company->work_area }}</p>
-</div>
-<div class="form-group">
-    {!! Form::label('offer_capacity', 'offer_capacity:') !!}
-    <p>{{ $company->offer_capacity }}</p>
-</div>
-<div class="form-group">
-    {!! Form::label('mini_grade', 'mini_grade:') !!}
-    <p>{{ $company->mini_grade}}</p>
-</div>
-<div class="form-group">
-    {!! Form::label('other_skills', 'other_skills:') !!}
-    <p>{{ $company->other_skills }}</p>
-</div>

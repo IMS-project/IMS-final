@@ -60,12 +60,13 @@ class ApplicantController extends Controller
     //      $applicant->save();
     // }
     $applicant->student_id = $student->id;
-        $applicant->company_id = $id;
+    $applicant->company_id = $id;
+    $applicant->status = "pending";
         // Flash::success('Applicants saved successfully.');
         
-        $stid = Applicant::all()->where('student_id',$applicant->student_id);
-        $count = 0 ;
-        foreach($stid as $row)
+    $stid = Applicant::all()->where('student_id',$applicant->student_id);
+    $count = 0 ;
+    foreach($stid as $row)
         {
             $try = $row->company_id;
             if($try==$id)
@@ -81,7 +82,7 @@ class ApplicantController extends Controller
         else
         {
             $applicant->save();
-            Flash::success('Applicants saved successfully.');
+            Flash::success('Application successful.');
         }
     
     return Redirect()->route('Applicants.index')    ;

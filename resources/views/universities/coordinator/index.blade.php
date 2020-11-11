@@ -1,4 +1,4 @@
-@extends('universityAdmin.app')
+@extends('superAdmin.app')
 
 @section('content')
 

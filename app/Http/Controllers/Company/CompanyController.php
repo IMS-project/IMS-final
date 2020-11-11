@@ -45,8 +45,11 @@ class CompanyController extends Controller
             $company->other_skills= request('other_skills');
             // $company->save();
              Flash::success('Companies saved successfully.');
+            //  $role =Role::orderBy('name')->get(); 
+             $company = Company::orderBy('created_at')->get();
+        return view('companies.coordinator.create')->with('companys',$company);
        
-        return Redirect()->route('companies.index');
+        // return Redirect()->route('companies.index');
         // return redirect('/index');
 
     }

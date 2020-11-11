@@ -44,10 +44,12 @@
                                     <div class='btn-group'>
                                         {{-- <a href="{{ route('applicants.show',$app ?? ''->id) }}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i>
                                         </i></a> --}}
-                                        <a href="{{ route('applicants.show',$app->id) }}" class='btn btn-default btn-xs'><i class="fa fa-check" aria-hidden="true"></i></a>
+                                        <a href="{{ route('Student.edit', $app ?? ''->id) }}" class="btn btn-success">Approve</a> 
+                                        <a href="{{ route('Student.edit', $app ?? ''->id) }}" class="btn btn-danger">reject</a>
+                                        {{-- <a href="{{ route('applicants.show',$app->id) }}" class='btn btn-default btn-xs'><i class="fa fa-check" aria-hidden="true"></i></a>
                                         
                                         <a href="{{ route('Student.edit', $app ?? ''->id) }}" class='btn btn-default btn-xs'><i class="fa fa-ban" aria-hidden="false"></i>
-                                        </i></a>
+                                        </i></a> --}}
                                         {{-- {!! Form::button('<i class="glyphicon glyphicon-trash"></i>', ['type' => 'submit', 'class' => 'btn btn-danger btn-xs', 'onclick' => "return confirm('Are you sure?')"]) !!} --}}
                                     </div>
                                     {!! Form::close() !!}

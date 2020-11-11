@@ -1,5 +1,5 @@
 
-@extends('layouts.app')
+@extends('companyAdmin.app')
 
 @section('content')
     <section class="content-header"> <h1>Supervisors</h1></section>

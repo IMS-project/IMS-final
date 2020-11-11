@@ -1,4 +1,4 @@
-@extends('universityAdmin.app')
+@extends('superAdmin.app')
 @section('content')
     <section class="content-header"> <h1> Coordinator</h1></section>
   <div class="content">

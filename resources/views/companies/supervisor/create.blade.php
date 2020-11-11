@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('companyAdmin.app')
 
 @section('content')
 <section class="content-header">
@@ -59,7 +59,7 @@
             </div>
             </div>
             
-            <div class="form-group row">
+            {{-- <div class="form-group row">
                 <lable for = "phone" class = "col-sm-1 col-form-label"><h5>User Type:</h5></lable>
                  <div class="col-sm-6">
                    <select name="role" type ="text" class="form-control" value="{{ old('role') }}">
@@ -68,7 +68,7 @@
                      @endforeach
                   </select> 
                 </div>
-            </div>
+            </div> --}}
         
             <div class="form-group row">
                <lable for = "phone" class = "col-sm-1 col-form-label"><h5>Company:</h5></lable>

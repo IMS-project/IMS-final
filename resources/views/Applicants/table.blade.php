@@ -4,6 +4,7 @@
             <tr>
                 <th>SN</th>
                 <th>Name of Company</th>
+              
                  
             </tr>
         </thead>
@@ -17,6 +18,14 @@
 
                 <td><a href="{{ route('Applicants.show', [$company->id]) }}">{{ $company->name }}</a></td>
                 
+                @endforeach
+                
+                
+                
+                
+                
+
+
                  {{-- <td>{{ $company->address }}</td>
                  <td> 
                     {!! Form::open(['route' => ['companies.destroy',$company->id], 'method' => 'delete']) !!}
@@ -28,7 +37,7 @@
                     {!! Form::close() !!}
               </td>  --}}
             </tr>
-        @endforeach
+        
         </tbody>
     </table>
 </div>

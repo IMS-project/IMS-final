@@ -137,6 +137,7 @@
                         <li class="{{ Request::is('Supervisor*') ? 'active' : '' }}">
                             <a href="{{ route('Supervisor.index') }}"><i class="fa fa-edit"></i><span>Supervisors</span></a>
                             </li>
+                            
                 </ul>
                 <!-- /.sidebar-menu -->
             </section>

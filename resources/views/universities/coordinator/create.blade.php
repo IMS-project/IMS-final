@@ -1,10 +1,10 @@
 
-@extends('universityAdmin.app')
+@extends('superAdmin.app')
 
 @section('content')
 <section class="content-header">
     <h1>
-       University Coordinators
+        Coordinator information
     </h1>
 {{-- <a href="{{ route('')}}"></a><button class="btn btn-primary"> View List</button> --}}
 </section>

@@ -52,8 +52,9 @@ class CompCoordinatorController extends Controller
         $coordinator->company_id = $request->company;
         $coordinator->save();
         Flash::success('saved successfully.');
-        $compcordinator = CompCoordinator::all();
-        return redirect()->route('CompCoordinator.index')->with('compcord', $compcordinator);
+        return Redirect()->route('companies.index');
+        // $compcordinator = CompCoordinator::all();
+        // return redirect()->route('CompCoordinator.index')->with('coordinators' , $coordinator);
     }
     public function show($id)
     {

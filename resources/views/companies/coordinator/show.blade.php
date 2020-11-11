@@ -1,5 +1,5 @@
 
-@extends('layouts.app')
+@extends('superAdmin.app')
 
 @section('content')
     <section class="content-header"> <h1> Coordinators</h1></section>

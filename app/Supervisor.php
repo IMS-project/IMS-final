@@ -11,7 +11,7 @@ class Supervisor extends Model
     const UPDATED_AT = 'updated_at';
     protected $dates = ['deleted_at'];
 
-    protected $table= 'supervisors';
+    // protected $table= 'supervisors';
     protected $fillable=['user_id', 'company_id'];
   
 

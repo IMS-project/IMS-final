@@ -1,10 +1,10 @@
 
-@extends('layouts.app')
+@extends('superAdmin.app')
 
 @section('content')
 <section class="content-header">
     <h1>
-     comp_coordinators
+     coordinator information
     </h1>
 {{-- <a href="{{ route('')}}"></a><button class="btn btn-primary">View List</button> --}}
 </section>
@@ -58,18 +58,6 @@
                 </select>
              </div>
             </div>
-            
-            <div class="form-group row">
-                <lable for = "phone" class = "col-sm-1 col-form-label"><h5>User Type:</h5></lable>
-              <div class="col-sm-6">
-                <select name="role" id="name" type ="text" class="form-control" value="{{ old('role') }}">
-                    @foreach ($roles as $role )
-                    <option value="{{ $role->id }}">{{$role->name}}</option>
-                    @endforeach
-                </select> 
-               </div>
-            </div>
-    
 
             <div class="form-group row">
                 <lable for = "phone" class = "col-sm-1 col-form-label"><h5>Company:</h5></lable>

@@ -16,7 +16,7 @@
     
 
     Auth::routes(['verify' => true]);
-     Route::get('/applicant/{id}', 'ApplicantController@store')->name('applicant');
+    Route::get('/applicant/{id}', 'ApplicantController@store')->name('applicant');//for the application function
     Route::resource('applicants','ApplicationController');
     Route::resource('superAdmin','SuperAdminController');
     Route::get('/home', 'HomeController@index')->middleware('verified');

@@ -23,10 +23,10 @@ class SupervisorController extends Controller
     }
     public function create()
     {
-        $role = Role::orderBy('name')->get();
+        // $role = Role::orderBy('name')->get();
         $company = Company::orderBy('created_at')->get();
-        return view('companies.supervisor.create')->with('roles', $role)
-                                                  ->with('companies', $company);
+        return view('companies.supervisor.create')->with('companies', $company);
+
     }
 
     public function store(Request $request, User $user)
@@ -38,7 +38,7 @@ class SupervisorController extends Controller
         $user->last_name = $request->last_name;
         $user->sex = $request->sex;
         $user->phone = $request->phone;
-        $user->role = 5;
+        $user->role =5;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
         $user->save();
@@ -77,7 +77,7 @@ class SupervisorController extends Controller
           //dd($supervisor)
           $userid = $supervisor->user_id;
           $comid = $supervisor->company_id;
-         $rolid = $supervisor->role_id;
+        //   $rolid = $supervisor->role_id;
 
           $user = User::find($userid);
           $company = Company::find($comid);
@@ -106,6 +106,8 @@ class SupervisorController extends Controller
 
         $id = $user->id;
         $supervisor->user_id = $id;
+        $x= $request->company;
+        dd($x);
         $supervisor->company_id = $request->company;
         $supervisor->save();
         Flash::success(' updated successfully');

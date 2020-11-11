@@ -162,9 +162,9 @@
                 <li class="{{ Request::is('companies*') ? 'active' : '' }}">
                     <a href="{{ route('companies.index') }}"><i class="fa fa-edit"></i><span>companys</span></a>
                     </li>
-                    <li class="{{ Request::is('UniCoordinator*') ? 'active' : '' }}">
+                    {{-- <li class="{{ Request::is('UniCoordinator*') ? 'active' : '' }}">
                         <a href="{{ route('UniCoordinator.index') }}"><i class="fa fa-edit"></i><span>Uni_coordinators</span></a>
-                        </li>
+                        </li> --}}
                         <li class="{{ Request::is('Advisor*') ? 'active' : '' }}">
                             <a href="{{ route('Advisor.index') }}"><i class="fa fa-edit"></i><span>Advisors</span></a>
                             </li>
