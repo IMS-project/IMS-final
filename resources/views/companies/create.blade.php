@@ -51,7 +51,7 @@
       
                 
             <div class="form-group row">
-              <lable for = "phone" class = "col-sm-1 col-form-label"><h5>required skils</h5></lable>
+              <lable for = "phone" class = "col-sm-1 col-form-label"><h5>other required skils</h5></lable>
               <div class="col-sm-6">
                   <input type="text" name="other_skills" class="form-control" id="skills" placeholder="other skills" required>
               </div>

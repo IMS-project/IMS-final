@@ -12,7 +12,7 @@
       @include('adminlte-templates::common.errors')
       <div class="box box-primary">
 
-       <form method="post" action="{{ route('departments.update', $department->id)}}" enctype="multipart/form-data">
+       <form method="post" action="{{ route('departments.update', $departments->id)}}" enctype="multipart/form-data">
             {{csrf_field()}}
             @method('PUT')
 
@@ -20,23 +20,32 @@
                <div class="form-group row">
                   <lable for = "name" class = "col-sm-1 col-form-label">Department Name:</lable>
                    <div class="col-sm-6">
-                    <input type="text" name="name" class="form-control" id="name" placeholder="name" required>
+                    <input type="text" name="department_name" class="form-control" id="name" placeholder="name" value="{{$departments->department_name}}" required>
                    </div>
                 </div>
                 <!-- University Id Field -->
-                <div class="form-group row">
-                  <lable for = "university_id" class = "col-sm-1 col-form-label">University Id:</lable>
-                   <div class="col-sm-6">
-                    <input type="text" name="name" class="form-control" id="name" placeholder="university-id" required>
-                   </div>
-                </div>
+          <div class="form-group row">
+          <lable for = "name" class = "col-sm-1 col-form-label"> Name of university:</lable>
+          <div class="col-sm-6">
+          <select name="university" id="name" type ="text" class="form-control" >
+                     @foreach ($universitys as $uni)
+                     @if ($university->name==$uni->name)
+                     <option value="{{ $uni->id }}" selected>{{$uni->name}}</option>s
+                     @else
+                     <option value="{{ $uni->id }}">{{$uni->name}}</option>
+                    @endif  
+                     @endforeach
+                 </select>  
+                 </div>
+          </div>
                 <!-- User Id Field -->
-                <div class="form-group row">
-                  <lable for = "user_id" class = "col-sm-1 col-form-label">User Id:</lable>
-                   <div class="col-sm-6">
-                    <input type="text" name="userid" class="form-control" id="name" placeholder="user-id" required>
+              <!-- <div class="form-group row">
+                 <lable for = "user_id" class = "col-sm-1 col-form-label">University address:</lable>
+                  <div class="col-sm-6">
+                 <input type="text" name="address" class="form-control" id="university-id " placeholder="address" 
+                                                                      value="{{$university->address}}" required>
                    </div>
-                </div>
+                </div> -->
 
                <div class="form-group row">
                     <div class="col-sm-6 pull-right">

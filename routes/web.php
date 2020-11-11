@@ -26,7 +26,7 @@
     Route::resource('UniCoordinator', 'University\UniCoordinatorController');
            Route::resource('Advisor', 'University\AdvisorController');
            Route::resource('Student', 'University\StudentController');
-      Route::resource('departments',  'University\DepartmentController');
+    //  Route::resource('departments',  'University\DepartmentController');
 
     Route::resource('companies', 'Company\CompanyController');
     Route::resource('CompCoordinator','Company\CompCoordinatorController');

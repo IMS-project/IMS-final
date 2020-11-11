@@ -31,27 +31,40 @@ class DepartmentController extends Controller
         $department->university_id = $request->university;
         $department->save();
         Flash::success('department saved successfully.');
-        return redirect(route('departments.index'))->with('dep', $department );
+        return redirect(route('departments.index'))->with('departments', $department );
 
     }
     public function show($id)
     {
-        $dept =Department::find($id);
+        $department =Department::find($id);
         //dd($advisor);
-        $userid= $dept->user_id;
-        $unid=  $dept->university_id;
+        $userid=  $department->user_id;
+        $unid=   $department->university_id;
 
          $user = User::find($userid);
          $university = University::find($unid);
-        return view('universities.coordinator.show')->with('user', $user)->with('depart',$dept)->with('university',$university);
+        return view('departments.show')->with('user', $user)
+                                       ->with('departments', $department)
+                                       ->with('university',$university);
         
-
-
     }
 
     public function edit($id)
     {
         //
+        $department =Department::find($id);
+        //dd($advisor);
+        $userid=  $department->user_id;
+        $unid=   $department->university_id;
+
+         $user = User::find($userid);
+         $university = University::find($unid);
+         $universitys = University::all();
+        return view('departments.edit')->with('user', $user)
+                                       ->with('departments', $department)
+                                       ->with('university',$university)
+                                       ->with('universitys',$universitys);
+
     }
 
     /**
@@ -64,6 +77,17 @@ class DepartmentController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $department =Department::find($id);
+      
+        // $userid=  $department->user_id;
+        // $unid=   $department->university_id;
+        // $user = User::find($userid);
+        $department->department_name = $request->department_name;
+        $department->university_id = $request->university;
+        $department->save();
+        Flash::success('department saved successfully.');
+        $department =Department::all();
+        return redirect(route('departments.index'))->with('departments', $department );
     }
 
     /**
@@ -75,5 +99,8 @@ class DepartmentController extends Controller
     public function destroy($id)
     {
         //
+        $department =Department::all();
+        $department->delete();
+        return redirect(route('Department.index'));
     }
 }
