@@ -35,7 +35,7 @@ class CompCoordinatorController extends Controller
     public function store(Request $request, User $user )
     {
     
-        $compcordinator = new CompCoordinator;
+        $compcordinator = new CompCoordinator();
 
         $user->first_name = $request->first_name;
         $user->last_name = $request->last_name;
@@ -48,13 +48,13 @@ class CompCoordinatorController extends Controller
         $user->save(); //then
 
         $id = $user->id;
-        $coordinator->user_id = $id;
-        $coordinator->company_id = $request->company;
-        $coordinator->save();
+        $compcordinator->user_id = $id;
+        $compcordinator->company_id = $request->company;
+        $compcordinator->save();
         Flash::success('saved successfully.');
-        return Redirect()->route('companies.index');
-        // $compcordinator = CompCoordinator::all();
-        // return redirect()->route('CompCoordinator.index')->with('coordinators' , $coordinator);
+        $companies =Company::all();
+        return view('companies.index')->with('companies',$companies);
+        
     }
     public function show($id)
     {
