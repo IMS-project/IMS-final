@@ -21,26 +21,27 @@ class CompCoordinatorController extends Controller
         //$roles =Role::orderBy('name')->get();
         //$company = Company::orderBy('created_at')->get();
         $compcordinator = CompCoordinator::all();
-        return view('companies.coordinator.index')->with('compcord',   $compcordinator);
+        return view('companies.coordinator.index')->with('compcord', $compcordinator);
     }
 
     public function create()
     {
       $role =Role::orderBy('name')->get(); 
        $company = Company::orderBy('created_at')->get();
-        return view('companies.coordinator.create')->with('roles',$role)->with('companys',$company);
+        return view('companies.coordinator.create')->with('roles',$role)
+                                                   ->with('companys',$company);
     }
        
     public function store(Request $request, User $user )
     {
     
-        $coordinator = new CompCoordinator;
+        $compcordinator = new CompCoordinator;
 
         $user->first_name = $request->first_name;
         $user->last_name = $request->last_name;
         $user->sex = $request->sex;
         $user->phone = $request->phone;
-        $user->role = $request->role;
+        $user->role = 3;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
         // Hash::make($data['password']),
@@ -52,20 +53,22 @@ class CompCoordinatorController extends Controller
         $coordinator->save();
         Flash::success('saved successfully.');
         $compcordinator = CompCoordinator::all();
-        return redirect()->route('CompCoordinator.index')->with('coordinators' , $coordinator);
+        return redirect()->route('CompCoordinator.index')->with('compcord', $compcordinator);
     }
     public function show($id)
     {
-        $com = CompCoordinator::find($id);
+        $compcordinator = CompCoordinator::find($id);
         //dd($advisor);
-        $userid= $com->user_id;
-        $unid=  $com->company_id;
+        $userid= $compcordinator->user_id;
+        $unid= $compcordinator->company_id;
 
          $user = User::find($userid);
          $company = Company::find($unid);
    
          //dd($role);
-        return view('companies.coordinator.show')->with('user', $user)->with('coordinator',$com)->with('company',$company);
+        return view('companies.coordinator.show')->with('user', $user)
+                                                 ->with('compcord', $compcordinator)
+                                                 ->with('company',$company);
     }
         public function edit($id)
             {
@@ -76,16 +79,15 @@ class CompCoordinatorController extends Controller
                 // $rolid= $compcoordiantor->role_id;
             $user = User::find($userid);
 
-            $company = Company::find($unid);
-            $companys = Company::all();
+        $company = Company::find($unid);
+        $companys = Company::all();
                 //  $roles = Role::find($rolid);
                 //  $rolled = Role::all();
-                return view('companies.coordinator.edit')->with('coordinators',$compcoordiantor)
-                                                            ->with('users', $user)
-                                                            ->with('company',  $company)
-                                                            ->with('companies ', $companys );
-                                                            
-                                                         
+     return view('companies.coordinator.edit')->with('compcord',$compcoordiantor)
+                                                        ->with('users', $user)
+                                                        ->with('company',  $company)
+                                                        ->with('companys ', $companys );
+                                                                                       
             }
 
     public function update(Request $request,$id)
@@ -97,7 +99,7 @@ class CompCoordinatorController extends Controller
         $user->last_name = $request->last_name;
         $user->sex = $request->sex;
         $user->phone = $request->phone;
-        $user->role = $request->role;
+        $user->role = 3;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
         $user->save();
@@ -105,13 +107,15 @@ class CompCoordinatorController extends Controller
         $coordinator->user_id = $id;
         $coordinator->company_id = $request->company ;
         $coordinator->save();
-        return redirect()->route('CompCoordinator.index')->with('success,update done!');
+        Flash::success(' updated successfully');
+        $compcordinator = CompCoordinator::all();
+        return view('companies.coordinator.index')->with('compcord', $compcoordiantor);
     }
-    public function destroy(UniCoordiantor $uniCoordiantor)
+    public function destroy($id)
     {
         //
-        $coordiantor = CompCoordinator::find($id);
-        $coordinator->delete();
+        $compcordinator = CompCoordinator::find($id);
+        $compcordinator->delete();
         return redirect(route('CompCoordinator.index'));
 
     }

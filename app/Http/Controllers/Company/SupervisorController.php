@@ -9,7 +9,7 @@ use Flash;
 
 use App\Role;
  use App\User;
- use App\Company;
+ use App\Company;                                                    
  use App\Supervisor;
 
 class SupervisorController extends Controller
@@ -18,15 +18,15 @@ class SupervisorController extends Controller
     public function index()
     {
         $supervisor = Supervisor::all();
-        return view('companies.supervisor.index')->with('supervisors', $supervisor);
+        return view('companies.supervisor.index')
+        ->with('supervisors', $supervisor);
     }
-
     public function create()
     {
         $role = Role::orderBy('name')->get();
         $company = Company::orderBy('created_at')->get();
-        return view('companies.supervisor.create')->with('roles', $role)->with('companies', $company);
-
+        return view('companies.supervisor.create')->with('roles', $role)
+                                                  ->with('companies', $company);
     }
 
     public function store(Request $request, User $user)
@@ -38,7 +38,7 @@ class SupervisorController extends Controller
         $user->last_name = $request->last_name;
         $user->sex = $request->sex;
         $user->phone = $request->phone;
-        $user->role = $request->role;
+        $user->role = 5;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
         $user->save();
@@ -65,8 +65,8 @@ class SupervisorController extends Controller
          $company = Company::find($comid);
         
          return view('companies.supervisor.show')->with('supervisors', $supervisor)
-         ->with('users', $user)
-         ->with('company', $company);
+                                                 ->with('users', $user)
+                                                  ->with('company', $company);
 
     }
 
@@ -77,17 +77,17 @@ class SupervisorController extends Controller
           //dd($supervisor)
           $userid = $supervisor->user_id;
           $comid = $supervisor->company_id;
-          $rolid = $supervisor->role_id;
+         $rolid = $supervisor->role_id;
 
           $user = User::find($userid);
           $company = Company::find($comid);
           $companys = Company::all();
           // $roles = Role::find($rolid);
           // $rolled = Role::all();
-          return view('companies.supervisor.edit')->with('users', $user)
-          ->with('supervisors', $supervisor)
-          ->with('company', $company)
-          ->with('companys', $companys);
+ return view('companies.supervisor.edit')->with('users', $user)
+                                         ->with('supervisors', $supervisor)
+                                         ->with('company', $company)
+                                       ->with('companys', $companys);
           
     }
     public function update(Request $request, $id)
@@ -99,17 +99,19 @@ class SupervisorController extends Controller
         $user->last_name = $request->last_name;
         $user->sex = $request->sex;
         $user->phone = $request->phone;
-        $user->role = $request->role;
+        $user->role = 5;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
         $user->save();
 
         $id = $user->id;
         $supervisor->user_id = $id;
-        $supervisor->compny_id = $request->company;
+        $supervisor->company_id = $request->company;
         $supervisor->save();
         Flash::success(' updated successfully');
-        return redirect()->route('Supervisor.index');
+        $supervisor = Supervisor::all();
+
+        return view('companies.supervisor.index')->with('supervisors', $supervisor);
     }
 
     public function destroy($id)

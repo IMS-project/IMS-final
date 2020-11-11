@@ -12,7 +12,7 @@
   <div class="box box-primary">
     
 
-      <form method="post" action="{{ route('CompCoordinator.update', $coordinators->id)}}" enctype="multipart/form-data">
+      <form method="post" action="{{ route('CompCoordinator.update', $compcord->id)}}" enctype="multipart/form-data">
           {{csrf_field()}}
           @method('PUT')
 
@@ -68,7 +68,7 @@
               <div class="col-sm-6">
 
                  <select id="name" type ="text" class="form-control" value="{{ $company->name }}">
-                   @foreach ($companies as $comp)
+                   @foreach ($companys as $comp)
                    @if ($company->name==$comp->name)
                    <option value="{{ $comp->id }}" selected>{{$comp->name}}</option>
                    @else

@@ -22,16 +22,16 @@ class AdvisorController extends Controller
        // $university = University::orderBy('created_at')->get();
 
         $advisor = Advisor::all();
-       
-        return view('universities.advisor.index')->with('advisors', $advisor);
+        return view('universities.advisor.index')
+        ->with('advisors', $advisor);
     }
-
     public function create()
     {
         //
         $role = Role::orderBy('name')->get();
         $university = University::orderBy('created_at')->get();
-        return view('universities.advisor.create')->with('roles',$role)->with('universities' ,$university);
+        return view('universities.advisor.create')->with('roles',$role)
+                                                  ->with('universities' ,$university);
 
     }
 
@@ -49,7 +49,7 @@ class AdvisorController extends Controller
         $user->last_name = $request->last_name;
         $user->sex = $request->sex;
         $user->phone = $request->phone;
-        $user->role = $request->role;
+        $user->role = 4;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);  // Hash::make($data['password']),
         $user->save();
@@ -73,7 +73,8 @@ class AdvisorController extends Controller
          $university = University::find($unid);
          //dd($role);
         return view('universities.advisor.show')->with('users', $user)
-        ->with('advisors',$advisor)->with('university',$university);
+                                                ->with('advisors',$advisor)
+                                                ->with('university',$university);
 
     }
 
@@ -91,10 +92,10 @@ class AdvisorController extends Controller
         // $roles = Role::find($rolid);
         // $rolled = Role::all();
         return view('universities.advisor.edit')->with('users', $user)
-                                                ->with('advisors',$advisor)
-                                                ->with('university',$university)
-                                                ->with('universitys',$universitys);
-                                                //->with('roles', $roles)->with('rolled', $rolled);
+                                            ->with('advisors',$advisor)
+                                            ->with('university',$university)
+                                             ->with('universitys',$universitys);
+                             //->with('roles', $roles)->with('rolled', $rolled);
 
 }
      
@@ -103,6 +104,7 @@ class AdvisorController extends Controller
         //
         $advisor = Advisor::find($id);
         $user = User::find($id);
+        
         $user->first_name = $request->first_name;
         $user->last_name = $request->last_name;
         $user->sex = $request->sex;

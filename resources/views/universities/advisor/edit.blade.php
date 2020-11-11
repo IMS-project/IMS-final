@@ -56,7 +56,7 @@
               </select> </div> </div>
 
             <div class="form-group row">
-                <lable for = "phone" class = "col-sm-1 col-form-label">university</lable>
+                <lable for = "university" class = "col-sm-1 col-form-label">university</lable>
                 <div class="col-sm-6">
 
                    <select name="university" id="name" type ="text" class="form-control" value="{{ $university->name }}">

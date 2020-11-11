@@ -28,7 +28,9 @@ class StudentController extends Controller
         $university = University::orderBy('created_at')->get();
         $dep = Department::all();
         // dd( $university);
-        return view('universities.student.create')->with('roles',$role)->with('universities' ,$university)->with('departments',$dep);
+        return view('universities.student.create')->with('roles',$role)
+                                                  ->with('universities' ,$university)
+                                                  ->with('departments',$dep);
         // return view('universities.student.create', compact('roles', 'universities', 'departments'));
 
     }
@@ -60,19 +62,20 @@ class StudentController extends Controller
            $student->save();
 
            Flash::success('saved successfully.');
-           $stu = Student::all();
-           return view('universities.student.index')->with('students', $stu);
+           $student = Student::all();
+           return view('universities.student.index')->with('students', $student);
 
     }
 
     public function show($id)
     {
+
         $student = Student::find($id);
         //dd($advisor);
+
         $userid = $student->user_id;
         $unid = $student->university_id;
         $depid = $student->department_id;
-        
          $department = Department::find( $depid);     
          $user = User::find($userid);
          $university = University::find($unid);
@@ -86,12 +89,60 @@ class StudentController extends Controller
  
     public function edit($id)
     {
-        
+         $student = Student::find($id);
+             //dd($advisor);
+         $userid = $student->user_id;
+         $unid = $student->university_id;
+         $depid = $student->department_id;
+         $rolid=$student->role_id;
+
+     $user = User::find($userid);
+
+      $university = University::find($unid);
+      $universitys = University::all();  
+    
+        $departments= Department::find($depid);
+        $department = Department::all();
+
+    return view('universities.student.edit')->with('users', $user)
+                                        ->with('students',$student)
+                                        ->with('university',$university)
+                                        ->with('universitys',$universitys)
+                                        ->with('department', $department)
+                                        ->with('departments', $departments);
     }
 
     public function update(Request $request, $id)
     {
         //
+        
+        $student = Student::find($id);
+        $user = User::find($id);
+        
+        $user->first_name = $request->first_name;
+        $user->last_name = $request->last_name;
+        $user->sex = $request->sex;
+        $user->phone = $request->phone;
+        $user->role = 6;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);  // Hash::make($data['password']),
+        $user->save();
+      
+        $id = $user->id;
+        $student->student_id = $request->student_id;
+        $student->user_id = $id;
+        $student->department_id = $request->department;
+        $student->university_id = $request->university;
+        $student->semester_term = $request->semister;
+        $student->class_year = $request->year;
+        $student->grade = $request->grade;
+        $student->save();
+
+        Flash::success('updated successfully.');
+        $student = Student::all();
+        return view('universities.student.index')->with('students', $student);
+
+
     }
 
     /**
@@ -103,5 +154,8 @@ class StudentController extends Controller
     public function destroy($id)
     {
         //
+        $student = Student::find($id);
+        $student->delete();
+        return redirect(route('Student.index'));
     }
 }

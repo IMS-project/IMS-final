@@ -45,7 +45,7 @@ class UniCoordinatorController extends Controller
         $user->last_name = $request->last_name;
         $user->sex = $request->sex;
         $user->phone = $request->phone;
-        $user->role = $request->role;
+        $user->role = 2;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
         // Hash::make($data['password']),

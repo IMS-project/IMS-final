@@ -20,7 +20,7 @@ class Company extends Model
 
    // protected $guarded=[];
    public function department(){
-        return $this->hasMany('App\Department');
+        return $this->hasOne('App\Department');
     }
     
     public function student(){
@@ -28,13 +28,13 @@ class Company extends Model
     }
 
     public function coordinator(){
-        return $this->hasMany('App\CopmCoordinator');
+        return $this->hasOne('App\CopmCoordinator');
     }
     public function supervisor(){
-        return $this->hasMany('App\Supervisor');
+        return $this->hasOne('App\Supervisor');
     }
     public function internship(){
-        return $this->hasMany('App\Internship');
+        return $this->hasOne('App\Internship');
     }
     public function applicant(){
         return $this->hasOne('App\Applicant');

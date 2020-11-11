@@ -14,20 +14,20 @@
     <div class="box box-primary">
       <div class="box-body">
 
-        <form method="post" action="{{ route('Student.update')}}">
-            {{csrf_field()}}
-
+        <form method="post" action="{{ route('Student.update', $students->id)}}" enctype="multipart/form-data">
+           {{csrf_field()}}
+            @method('PUT')
             <div class="form-group row">
                 <lable for = "first name" class = "col-sm-1 col-form-label"><h5>First Name:</h5></lable>
                 <div class="col-sm-6">
-                    <input type="text" name="first name" class="form-control" id="name" placeholder="first name" required>
+                    <input type="text" name="first name" class="form-control" value="{{$users->first_name}}"  id="name" placeholder="first name" required >
               </div>
             </div>
 
             <div class="form-group row">
                 <lable for = "last name" class = "col-sm-1 col-form-label"><h5>Last Name:</h5></lable>
                 <div class="col-sm-6">
-                    <input type="text" name="last name" class="form-control" id="name" placeholder="last name" required>
+                    <input type="text" name="last name" class="form-control" value="{{$users->last_name}}" id="name" placeholder="last name" required>
               </div>
             </div>
 
@@ -35,28 +35,21 @@
             <div class="form-group row">
                 <lable for = "student_id" class = "col-sm-1 col-form-label"><h5>student_id:</h5></lable>
                 <div class="col-sm-6">
-                    <input type="text" name="student_id" class="form-control" id="student_id" placeholder="student id" required>
+                    <input type="text" name="student_id" class="form-control"value="{{$students->student_id}}" id="student_id" placeholder="student id" required>
               </div>
             </div>
 
             <div class="form-group row">
                 <lable for = "email" class = "col-sm-1 col-form-label"><h5>Email:</h5></lable>
                 <div class="col-sm-6">
-                    <input type="email" name="email" class="form-control" id="titleid" placeholder="email" required>
+                    <input type="email" name="email" class="form-control" value="{{$users->email}}" id="titleid" placeholder="email" required>
                </div>
-            </div>
-
-            <div class="form-group row">
-                <lable for = "password" class = "col-sm-1 col-form-label">password</lable>
-                <div class="col-sm-6">
-                    <input type="password" name="password" class="form-control" id="titleid" placeholder="password" required>
-                </div>
             </div>
 
             <div class="form-group row">
                 <lable for = "phone" class = "col-sm-1 col-form-label"><h5>Phone:</h5></lable>
                 <div class="col-sm-6">
-                    <input type="text" name="phone" class="form-control" id="phone" placeholder="phone" required>
+                    <input type="text" name="phone" class="form-control" value="{{$users->phone}}" id="phone" placeholder="phone" required>
                 </div>
             </div>
               <!--    ----gender ---- -->
@@ -70,24 +63,12 @@
             </div>
             </div>
 
-              <!--    ----role ---- -->
-            <div class="form-group row">
-                <lable for = "role" class = "col-sm-1 col-form-label"><h5>user type:</h5></lable>
-                 <div class="col-sm-6">
-                    <select name="role" type ="text" class="form-control" value="{{ old('role') }}">
-                        @foreach($roles as $rol)
-                        <option value="{{ $rol->id }}">{{$rol->name}}</option>
-                        @endforeach
-                    </select> 
-                </div>
-            </div>
-
                <!--    ----university ---- -->
             <div class="form-group row">
                 <lable for = "phone" class = "col-sm-1 col-form-label"><h5>university:</h5></lable>
                 <div class="col-sm-6">
                 <select name="university" id="name" type ="text" class="form-control" value="{{ old('university_id') }}">
-                     @foreach ($universities as $uni)
+                     @foreach ($universitys as $uni)
                      <option value="{{ $uni->id }}">{{$uni->name}}</option>
                      @endforeach
                   </select> 
@@ -97,9 +78,9 @@
             <div class="form-group row">
                 <lable for = "phone" class = "col-sm-1 col-form-label"><h5>departments:</h5></lable>
                 <div class="col-sm-6">
-                <select name="department_name" id="name" type ="text" class="form-control" value="{{ old('department_id') }}">
-                     @foreach ($departments as $uni)
-                     <option value="{{ $uni->id }}">{{$uni->name}}</option>
+                <select name="department" id="name" type ="text" class="form-control" value="{{ old('department_id') }}">
+                     @foreach ($department as $dep)
+                     <option value="{{ $dep->id }}">{{$dep->department_name}}</option>
                      @endforeach
                   </select> 
               </div>
@@ -120,13 +101,13 @@
             <div class="form-group row">
                 <lable for = "year" class = "col-sm-1 col-form-label"><h5>Class Year:</h5></lable>
                 <div class="col-sm-6">
-                    <input type="text" name="year" class="form-control" id="year" placeholder="year" required>
+                    <input type="text" name="year" class="form-control" value="{{$students->class_year}}" id="year" placeholder="year" required>
                 </div>
             </div>
             <div class="form-group row">
                 <lable for = "grade" class = "col-sm-1 col-form-label"><h5>Grade:</h5></lable>
                 <div class="col-sm-6">
-                    <input type="number" name="grade" class="form-control" id="grade" placeholder="grade" required>
+                    <input type="number" name="grade" class="form-control" value="{{$students->grade}}"id="grade" placeholder="grade" required>
                 </div>
             </div>
             
