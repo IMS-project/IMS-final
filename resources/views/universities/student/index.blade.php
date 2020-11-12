@@ -26,7 +26,9 @@
                                 <tr>
                                     <th>SN</th>
                                     <th>Name</th>
-                                    <th>From Univesity </th>
+                                    <th>ID</th>
+                                    <th>Department</th>
+                                    <th>CGPA</th>
                                     <th colspan="3">Action</th>
                                 </tr>
                             </thead>
@@ -36,7 +38,9 @@
                             <tr>
                                 <td>{{ $stu->id}}</td>
                                 <td>{{ $stu->user->first_name }}</td>
-                                <td>{{ $stu->university->name }}</td>
+                                <td>{{ $stu->student_id}}</td>
+                                <td>{{ $stu->department->department_name}}</td>
+                                <td>{{ $stu->grade}}</td>
                                 <td>
                                     {!! Form::open(['route' => ['UniCoordinator.destroy', $stu->id], 'method' => 'delete']) !!}
                                     <div class='btn-group'>
