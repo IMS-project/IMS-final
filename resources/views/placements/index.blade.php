@@ -15,18 +15,14 @@
         <div class="clearfix"></div>
         <div class="box box-primary">
             <div class="box-body">
-                    {{-- @include('Applicants.table') --}}
                     <div class="table-responsive">
                         <table class="table" id="universities-table">
                             <thead>
                                 <h5 class="font-italic">
                                 <tr>
-
-                                    {{-- <th>Name</th> --}}
                                     <th>company</th>
                                     <th>status</th>
-                                    <th>action</th>
-                                    
+                                    <th>action</th> 
                                 </tr>
                                 </h5>
                             </thead>
