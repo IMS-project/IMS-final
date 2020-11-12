@@ -20,7 +20,7 @@ class CreateStudentsTable extends Migration
              $table->unsignedBigInteger('department_id');
              $table->unsignedBigInteger('university_id');
             $table->string('class_year');
-            $table->string('grade');
+            $table->float('grade');
             $table->string('semester_term');
             $table->timestamps();
             

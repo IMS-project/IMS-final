@@ -45,7 +45,7 @@
             <div class="form-group row">
                 <lable for = "phone" class = "col-sm-1 col-form-label"><h5>minimum grade</h5></lable>
                 <div class="col-sm-6">
-                    <input type="number" name="mini_grade" class="form-control" id="grade" placeholder="grade" required>
+                    <input type="float" name="mini_grade" class="form-control" id="grade" placeholder="grade" required>
                 </div>
             </div>
       

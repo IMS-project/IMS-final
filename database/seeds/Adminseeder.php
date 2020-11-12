@@ -15,8 +15,8 @@ class Adminseeder extends Seeder
         'last_name'=>'melaku',
         'sex'=>'male',
         'phone'=>'09090909',
-        'role'=>6,
-        'email'=>'sisaymelaku@gmail.com',
+        'role'=>1,
+        'email'=>'Admin@gmail.com',
         'password'=>bcrypt('123456')
     ]);
     }

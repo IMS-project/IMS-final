@@ -125,7 +125,7 @@
             <div class="form-group row">
                 <lable for = "grade" class = "col-sm-1 col-form-label"><h5>Grade:</h5></lable>
                 <div class="col-sm-6">
-                    <input type="number" name="grade" class="form-control" id="grade" placeholder="grade" required>
+                    <input type="float" name="grade" class="form-control" id="grade" placeholder="grade" required>
                 </div>
             </div>
             

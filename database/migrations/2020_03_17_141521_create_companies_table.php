@@ -19,7 +19,7 @@ class CreateCompaniesTable extends Migration
             $table->string('address');
             $table->string('work_area');
             $table->bigInteger('offer_capacity');
-            $table->string('mini_grade');
+            $table->float('mini_grade');
             $table->string('other_skills');
             $table->timestamps();
         });
