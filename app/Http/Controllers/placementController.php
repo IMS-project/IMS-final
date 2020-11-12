@@ -52,22 +52,14 @@ class placementController extends Controller
         
         // here to remove applicants
         $appid = $student->id;
-        while($appid){
-            Applicant::where('student_id',$appid)->delete();
-        }
-        
-        // while($occurence>0){
-        //     $file = Applicant::where('student_id',$appid)->first();
-        //     if($file) {
-        //         return $file->delete();
-        //         $occurence = $occurence-1;
-        //     } 
-        // } 
+          $dd =  Applicant::all()->where('student_id',$appid);
+          foreach ($dd as $d) {
+            $d->delete();
+          }
+          
 
         $student = Student::where('user_id', Auth::id())->first();
         $applicant =Applicant::all()->where('student_id',$student->id);
-        // $stid = Applicant::all()->where('student_id',$applicant->student_id);
-        //dd($applicant);
         return view('placements.index')->with('applicants',$applicant);
         
     }
