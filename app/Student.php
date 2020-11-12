@@ -29,4 +29,7 @@ class Student extends Model
     public function applicant(){
         return $this->hasOne('App\Applicant');
     }
+    public function placement(){
+        return $this->hasOne('App\placement');
+    }
 }

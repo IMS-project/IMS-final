@@ -17,11 +17,12 @@
 
     Auth::routes(['verify' => true]);
     Route::get('/applicant/{id}', 'ApplicantController@store')->name('applicant');//for the application function
-    Route::get('/accept/{id}', 'ApplicationController@approve')->name('accept');//for the approve function
+    Route::get('/approve/{id}', 'ApplicationController@approve')->name('approve');//for the approve function
     Route::get('/reject/{id}', 'ApplicationController@reject')->name('reject');//for the reject function
+    Route::get('/accept/{id}', 'placementController@store')->name('accept');//for the approve function
     Route::resource('applicants','ApplicationController');
     Route::resource('superAdmin','SuperAdminController');
-    Route::resource('placements','placemnetController');
+    Route::resource('placements','placementController');
     Route::get('/home', 'HomeController@index')->middleware('verified');
     // Route::resource('Applicants', 'University\PlacementController');
     Route::resource('Applicants', 'ApplicantController');

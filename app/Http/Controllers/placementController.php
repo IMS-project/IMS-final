@@ -5,9 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Applicant;
 use App\Student;
+use App\placement;
 use Flash;
 use Illuminate\Support\Facades\Auth;
-class placemnetController extends Controller
+class placementController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -40,9 +41,20 @@ class placemnetController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,$id)
     {
-        //
+        $placement = new placement();
+        $student = Student::where('user_id', Auth::id())->first();
+        $placement->student_id = $student->id;
+        $placement->company_id = $id;
+        $placement->save();
+        
+        $student = Student::where('user_id', Auth::id())->first();
+        $applicant =Applicant::all()->where('student_id',$student->id);
+        // $stid = Applicant::all()->where('student_id',$applicant->student_id);
+        //dd($applicant);
+        return view('placements.index')->with('applicants',$applicant);
+        
     }
 
     /**

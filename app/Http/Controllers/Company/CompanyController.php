@@ -26,29 +26,39 @@ class CompanyController extends Controller
     {
         
         $data= request()->validate([
-            "name"=>"required", 
+            "name"=>["required","unique:companies"], 
             "address"=>"required",
             "work_area"=>"required",
             "offer_capacity"=>"required",
             "mini_grade"=>"required",
             "other_skills"=>"required"
             ]);
-            
-          Company::create($data); // this is to save the data
 
-           $company= new Company();
-            $company->name= request('name');
-            $company->address= request('address');
-            $company->work_area= request('work_area');
-            $company->offer_capacity= request('offer_capacity');
-            $company->mini_grade =request('mini_grade');
-            $company->other_skills= request('other_skills');
-            // $company->save();
-             Flash::success('Companies saved successfully.');
-            //  $role =Role::orderBy('name')->get(); 
-             $company = Company::orderBy('created_at')->get();
-        return view('companies.coordinator.create')->with('companys',$company);
-       
+        //     $check = request('name');
+        //     $comid = Company::all()->where('name',$check);
+
+        //    if($comid){
+        //        return "already exists";
+        //    }
+        //    else{
+            Company::create($data); // this is to save the data
+            $company= new Company();
+             $company->name= request('name');
+             $company->address= request('address');
+             $company->work_area= request('work_area');
+             $company->offer_capacity= request('offer_capacity');
+             $company->mini_grade =request('mini_grade');
+             $company->other_skills= request('other_skills');
+             // $company->save();
+              Flash::success('Companies saved successfully.');
+             //  $role =Role::orderBy('name')->get(); 
+              $company = Company::orderBy('created_at')->get();
+         return view('companies.coordinator.create')->with('companys',$company);
+        
+
+           
+            
+          
         // return Redirect()->route('companies.index');
         // return redirect('/index');
 

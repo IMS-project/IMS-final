@@ -25,6 +25,7 @@
                                     {{-- <th>Name</th> --}}
                                     <th>company</th>
                                     <th>status</th>
+                                    <th>action</th>
                                     
                                 </tr>
                                 </h5>
@@ -35,6 +36,9 @@
                                    {{-- <td>{{$row->student->user->first_name}}</td>  --}}
                                    <td> {{$row->company->name}}</td>
                                     <td>{{$row->status}}</td>
+                                    @if($row->status=="approved")
+                                    <td><a href="{{ route('accept',[$row->company->id]) }}"" class="btn btn-success">accept</a></td>
+                                    @endif
                                 </tr>
                                 @endforeach
                             </tbody>

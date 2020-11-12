@@ -40,9 +40,14 @@ namespace App\Http\Controllers\University;
 
         public function store(CreateUniversityRequest $request)
         {
-            $input = $request->all();
+            $data= request()->validate([
+                "name"=>["required","unique:universities"], 
+                "address"=>"required",
+                ]);
+    
+            // $input = $request->all();
 
-            $university = $this->universityRepository->create($input);
+            $university = $this->universityRepository->create($data);
 
             Flash::success('University saved successfully.');
             $university = University::orderBy('created_at')->get();
