@@ -15,8 +15,9 @@
                 <div class="table-responsive">
                     <table class="table" id="companies-table">
                         <thead>
-                            <tr> <th>SN</th>
+                            <tr> 
                                 <th>name of student</th>
+                                <th>ID</th>
                                 <th>class_year</th>
                                 <th>CGPA</th>
                                 <th>department</th>
@@ -32,8 +33,8 @@
                         @foreach($applicants as $app)
                         
                          <tr>
-                            <td>{{$app->id}}</td>
-                                <td>{{$app->student->user->first_name}}</td>
+                                <td>{{$app->student->user->first_name}} {{$app->student->user->last_name}}</td>
+                                <td>{{$app->student->student_id}}</td>
                                 <td>{{$app->student->class_year}}</td>
                                 <td>{{$app->student->grade}}</td>
                                 <td>{{$app->student->department->department_name}}</td>
