@@ -158,7 +158,7 @@
                 <a href= "{{route('departments.index')}}"><i class="fa fa-edit"></i><span>departments</span></a>
                 </li>
                 <li class="{{ Request::is('companies*') ? 'active' : '' }}">
-                    <a href="{{ route('companies.index') }}"><i class="fa fa-edit"></i><span>companys</span></a>
+                    <a href="{{ route('company.index') }}"><i class="fa fa-edit"></i><span>companys</span></a>
                     </li>
                     {{-- <li class="{{ Request::is('UniCoordinator*') ? 'active' : '' }}">
                         <a href="{{ route('UniCoordinator.index') }}"><i class="fa fa-edit"></i><span>Uni_coordinators</span></a>
