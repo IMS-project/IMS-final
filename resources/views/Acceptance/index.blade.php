@@ -1,4 +1,4 @@
-@extends('Acceptance.app')
+@extends('studentpage.app')
 
 @section('content')
     <section class="content-header">
@@ -31,7 +31,7 @@
                              <tr>
                                  <td>{{$p->company->name}}</td>
                                  <td>{{$p->company->address}}</td>
-                                 
+                                 <td class="btn btn-success">accepted</td>
                                     {{-- <td><a href="{{ route('students.show', [$company->id]) }}">{{ $company->name }}</a></td> --}}
                                     {{-- <td> {{$row->status}}</td> --}}
                                     {{-- @endforeach --}}

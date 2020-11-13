@@ -158,7 +158,7 @@
                         <a href="{{ route('placements.index') }}"><i class="fa fa-edit"></i><span>Requests</span></a>
                         </li>
                         <li class="{{ Request::is('acceptance*') ? 'active' : '' }}">
-                            <a href="{{ route('acceptance.index') }}"><i class="fa fa-edit"></i><span>placement</span></a>
+                            <a href="{{ route('acceptance.index') }}"><i class="fa fa-user"></i><span>placement</span></a>
                             </li>
                             
                 {{-- <li class="{{ Request::is('UniCoordinator*') ? 'active' : '' }}">

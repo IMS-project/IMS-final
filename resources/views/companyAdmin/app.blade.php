@@ -131,11 +131,13 @@
         
                 <ul class="sidebar-menu" data-widget="tree">
                     <li class="{{ Request::is('companies*') ? 'active' : '' }}">
-                        <a href="{{ route('applicants.index') }}"><i class="fa fa-edit"></i><span>Applicants</span></a>
+                        <a href="{{ route('applicants.index') }}"><i class="fa fa-user-circle" aria-hidden="true"></i>
+                            <span>Applicants</span></a>
                         </li>
                         
                         <li class="{{ Request::is('Supervisor*') ? 'active' : '' }}">
-                            <a href="{{ route('Supervisor.index') }}"><i class="fa fa-edit"></i><span>Supervisors</span></a>
+                            <a href="{{ route('Supervisor.index') }}"><i class="fa fa-user" aria-hidden="true"></i>
+                                <span>Supervisors</span></a>
                             </li>
                             {{-- <li class="{{ Request::is('placed*') ? 'active' : '' }}">
                                 <a href="{{ route('Supervisor.index') }}"><i class="fa fa-edit"></i><span>placement</span></a>

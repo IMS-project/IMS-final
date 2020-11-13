@@ -149,10 +149,11 @@
                 <li>
                 </li>
                 <li class="{{ Request::is('universities*') ? 'active' : '' }}">
-                    <a href="{{ route('universities.index') }}"><i class="fa fa-graduation-cap"></i><span>universitys</span></a>
+                    <a href="{{ route('universities.index') }}"><i class="fa fa-university" aria-hidden="true"></i>
+                        <span>university</span></a>
                 </li>
                 <li class="{{ Request::is('companies*') ? 'active' : '' }}">
-                    <a href="{{ route('companies.index') }}"><i class="fa fa-edit"></i><span>companys</span></a>
+                    <a href="{{ route('companies.index') }}"><i class="fa fa-industry" aria-hidden="true"></i><span>company</span></a>
                     </li>
                 {{-- <li class="{{ Request::is('UniCoordinator*') ? 'active' : '' }}">
                 <a href="{{ route('UniCoordinator.index') }}"><i class="fa fa-edit"></i><span>Uni_coordinators</span></a>

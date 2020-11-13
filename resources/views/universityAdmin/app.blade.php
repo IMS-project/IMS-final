@@ -152,19 +152,24 @@
                     <a href="{{ route('universities.index') }}"><i class="fa fa-graduation-cap"></i><span>universitys</span></a>
                 </li> --}}
                 <li class="{{ Request::is('Student*') ? 'active' : '' }}">
-                    <a href="{{ route('Student.index') }}"><i class="fa fa-edit"></i><span>Students</span></a>
+                    <a href="{{ route('Student.index') }}"><i class="fa fa-user-circle" aria-hidden="true"></i>
+                        <span>Student</span></a>
                     </li>
                 <li class="{{ Request::is('departments*') ? 'active' : '' }}">
-                <a href= "{{route('departments.index')}}"><i class="fa fa-edit"></i><span>departments</span></a>
+                <a href= "{{route('departments.index')}}"><i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                </i><span>department</span></a>
                 </li>
                 <li class="{{ Request::is('companies*') ? 'active' : '' }}">
-                    <a href="{{ route('company.index') }}"><i class="fa fa-edit"></i><span>companys</span></a>
+                    <a href="{{ route('company.index') }}"><i class="fa fa-industry" aria-hidden="true"></i>
+
+                        <span>company</span></a>
                     </li>
                     {{-- <li class="{{ Request::is('UniCoordinator*') ? 'active' : '' }}">
                         <a href="{{ route('UniCoordinator.index') }}"><i class="fa fa-edit"></i><span>Uni_coordinators</span></a>
                         </li> --}}
                         <li class="{{ Request::is('Advisor*') ? 'active' : '' }}">
-                            <a href="{{ route('Advisor.index') }}"><i class="fa fa-edit"></i><span>Advisors</span></a>
+                            <a href="{{ route('Advisor.index') }}"><i class="fa fa-user" aria-hidden="true"></i>
+                                <span>Advisor</span></a>
                             </li>
                 {{-- <li class="{{ Request::is('UniCoordinator*') ? 'active' : '' }}">
                 <a href="{{ route('UniCoordinator.index') }}"><i class="fa fa-edit"></i><span>Uni_coordinators</span></a>
