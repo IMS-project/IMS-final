@@ -11,7 +11,7 @@ class placement extends Model
     protected $dates = ['deleted_at'];
 
     // protected $table= 'studentss';
-    protected $fillable=['student_id', 'company_id'];
+    protected $fillable=['student_id', 'company_id','status'];
 
     public function student(){
         return $this->belongsTo('App\Student');

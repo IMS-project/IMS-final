@@ -15,9 +15,13 @@ class ApplicationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
-        $applicant =Applicant::all()->where('status', 'pending');
+        $applicant = Applicant::all()->where('status', 'pending');
         return view('companyAdmin.index')->with('applicants',$applicant);
     }
 
@@ -111,6 +115,10 @@ class ApplicationController extends Controller
         return view('companyAdmin.index')->with('applicants',$applicant);
         //return a view or whatever you want tto do after
     }
+    }
+
+    public function placement(){
+        return view('companyAdmin.placement');
     }
 
     /**

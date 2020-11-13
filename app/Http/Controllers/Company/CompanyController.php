@@ -10,7 +10,11 @@ use App\Http\Controllers\Controller;
 use Flash;
 class CompanyController extends Controller
 {
-    //
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index(Request $request)
     {
        $companies =Company::all();

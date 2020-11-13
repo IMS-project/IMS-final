@@ -1,4 +1,4 @@
-@extends('Applicants.app')
+@extends('studentpage.app')
 @section('content')
     <section class="content-header">
         <h1 class="pull-left">placement infrormation</h1>

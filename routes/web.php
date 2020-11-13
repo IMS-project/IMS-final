@@ -20,12 +20,14 @@
     Route::get('/approve/{id}', 'ApplicationController@approve')->name('approve');//for the approve function
     Route::get('/reject/{id}', 'ApplicationController@reject')->name('reject');//for the reject function
     Route::get('/accept/{id}', 'placementController@store')->name('accept');//for the approve function
+//     Route::get('/placed', 'ApplicationController@placement')->name('placed');
     Route::resource('applicants','ApplicationController');
+    Route::resource('acceptance','AcceptanceController');
     Route::resource('superAdmin','SuperAdminController');
     Route::resource('placements','placementController');
     Route::get('/home', 'HomeController@index')->middleware('verified');
     // Route::resource('Applicants', 'University\PlacementController');
-    Route::resource('Applicants', 'ApplicantController');
+    Route::resource('students', 'ApplicantController');
     Route::resource('universities', 'University\UniversityController');
     Route::resource('UniCoordinator', 'University\UniCoordinatorController');
            Route::resource('Advisor', 'University\AdvisorController');

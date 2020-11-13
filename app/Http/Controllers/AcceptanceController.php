@@ -1,14 +1,17 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
 use App\Applicant;
+use Illuminate\Http\Request;
+use App\Company;
 use App\Student;
-use App\placement;
+use App\User;
+use App\Placement;
+use DB;
 use Flash;
 use Illuminate\Support\Facades\Auth;
-class placementController extends Controller
+
+class AcceptanceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -22,11 +25,13 @@ class placementController extends Controller
     public function index()
     {
         $student = Student::where('user_id', Auth::id())->first();
-        $applicant =Applicant::all()->where('student_id',$student->id);
+        $accept = Placement::all()->where('student_id',$student->id);
         // $stid = Applicant::all()->where('student_id',$applicant->student_id);
-        //dd($applicant);
-        return view('placements.index')->with('applicants',$applicant);
-        
+        // dd($accept);
+        return view('Acceptance.index')->with('applicants',$accept);
+        // $student = Student::where('user_id', Auth::id())->first();
+        // $accept = placement::all();
+        // return view('Acceptance.index')->with('placed',$accept);
     }
 
     /**
@@ -47,43 +52,31 @@ class placementController extends Controller
      */
     public function store(Request $request,$id)
     {
-        $placement = new placement();
+        $placement = new Placement();
+        
         $student = Student::where('user_id', Auth::id())->first();
         $placement->student_id = $student->id;
         $placement->company_id = $id;
-        $placement->status = "accepted";
-
-        $checkid = $student->id;
-        $compid = Placement::all()->where('company_id',$id);
-        $count=0;
-        foreach($compid as $row){
-            $try = $row->student_id;
-            if($try==$checkid){
-                $count=1;
-            }
+        $stid = Applicant::all()->where('student_id',$applicant->student_id);
+    $count = 0 ;
+    foreach($stid as $row)
+        {
+            $try = $row->company_id;
+            if($try==$id)
+            {
+                $count = 1;
+            } 
         }
         if($count==1)
         {
-            Flash::warning('You have Already getplaced . . .');
-            // return view('placements.index')    ;
+            Flash::warning('You have Already Applied . . .');
+            return view('studentpage.index')    ;
         } 
         else
         {
-            $placement->save();
-            Flash::success('placement successful.');
+            $applicant->save();
+            Flash::success('Application successful.');
         }
-        // here to remove applicants
-        $appid = $student->id;
-          $dd =  Applicant::all()->where('student_id',$appid);
-          foreach ($dd as $d) {
-            $d->delete();
-          }
-          
-
-        $student = Student::where('user_id', Auth::id())->first();
-        $applicant =Applicant::all()->where('student_id',$student->id);
-        return view('placements.index')->with('applicants',$applicant);
-        
     }
 
     /**

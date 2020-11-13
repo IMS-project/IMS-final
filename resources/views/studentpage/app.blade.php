@@ -130,17 +130,20 @@
                 <!-- Sidebar Menu -->
         
                 <ul class="sidebar-menu" data-widget="tree">
-                    <li class="{{ Request::is('companies*') ? 'active' : '' }}">
-                        <a href="{{ route('applicants.index') }}"><i class="fa fa-edit"></i><span>Applicants</span></a>
+                
+                <li class="{{ Request::is('students*') ? 'active' : '' }}">
+                    <a href="{{ route('students.index') }}"><i class="fa fa-edit"></i><span>companys</span></a>
+                    </li>
+                    <li class="{{ Request::is('placements*') ? 'active' : '' }}">
+                        <a href="{{ route('placements.index') }}"><i class="fa fa-edit"></i><span>Requests</span></a>
                         </li>
-                        
-                        <li class="{{ Request::is('Supervisor*') ? 'active' : '' }}">
-                            <a href="{{ route('Supervisor.index') }}"><i class="fa fa-edit"></i><span>Supervisors</span></a>
+                        <li class="{{ Request::is('acceptance*') ? 'active' : '' }}">
+                            <a href="{{ route('acceptance.index') }}"><i class="fa fa-edit"></i><span>placement</span></a>
                             </li>
-                            {{-- <li class="{{ Request::is('placed*') ? 'active' : '' }}">
-                                <a href="{{ route('Supervisor.index') }}"><i class="fa fa-edit"></i><span>placement</span></a>
-                                </li>
-                                 --}}
+                            
+                
+                </ul>
+    
                 </ul>
                 <!-- /.sidebar-menu -->
             </section>

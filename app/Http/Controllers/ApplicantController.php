@@ -16,11 +16,14 @@ class ApplicantController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
         $companies =Company::all();
-        return view('Applicants.index')->with('companies',$companies);
+        return view('studentpage.index')->with('companies',$companies);
     }
 
     /**
@@ -77,7 +80,7 @@ class ApplicantController extends Controller
         if($count==1)
         {
             Flash::warning('You have Already Applied . . .');
-            return Redirect()->route('Applicants.index')    ;
+            return Redirect()->route('students.index') ;
         } 
         else
         {
@@ -85,7 +88,9 @@ class ApplicantController extends Controller
             Flash::success('Application successful.');
         }
     
-    return Redirect()->route('Applicants.index')    ;
+        $companies =Company::all();
+        $applicant = Applicant::all()->where('status', 'pending');
+       return view('studentpage.index')->with('applicants',$applicant)->with('companies',$companies);
     }
 
 
@@ -98,15 +103,7 @@ class ApplicantController extends Controller
     public function show($id)
     {
         $company = Company::find($id);
-
-       // $university = $this->universityRepository->find($id);
-
-        if (empty($company)) {
-
-            return redirect(route('Applicants.show_fields'))->with('error', 'Company not found');
-        }
-
-        return view('Applicants.show')->with('company', $company);
+        return view('studentpage.show')->with('company', $company);
     }
 
     /**
