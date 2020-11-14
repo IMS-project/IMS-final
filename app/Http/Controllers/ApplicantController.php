@@ -24,7 +24,8 @@ class ApplicantController extends Controller
     public function index()
     {
         // dd(Auth::id());
-        $exist = Placement::all()->where('student_id', Auth::id());
+        $student = Student::all()->where('user_id',Auth::id())->first();
+        $exist = Placement::all()->where('student_id', $student->id);
         // dd($exist->isEmpty());
         $companies=[];
         if($exist->isEmpty()){

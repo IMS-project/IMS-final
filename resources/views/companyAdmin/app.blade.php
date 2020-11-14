@@ -139,10 +139,10 @@
                             <a href="{{ route('Supervisor.index') }}"><i class="fa fa-user" aria-hidden="true"></i>
                                 <span>Supervisors</span></a>
                             </li>
-                            {{-- <li class="{{ Request::is('internships*') ? 'active' : '' }}">
+                            <li class="{{ Request::is('internships*') ? 'active' : '' }}">
                                 <a href="{{ route('internships.index') }}"><i class="fa fa-edit"></i><span>placement</span></a>
                                 </li>
-                                 --}}
+                                
                 </ul>
                 <!-- /.sidebar-menu -->
             </section>

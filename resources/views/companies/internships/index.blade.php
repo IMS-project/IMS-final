@@ -20,20 +20,23 @@
                     <table class="table" id=" stusents-table">
                             <thead>
                                 <tr>
-                                    <th>Id</th>
+                                    
                                     <th>name of student</th>
                                     <th>university</th>
                                     <th>Department</th>
+                                    <th>contact</th>
                                     {{-- <th colspan="3">Action</th> --}}
                                 </tr>
                             </thead>
          <body>
                 @foreach($posts as $sup)
                 <tr>
-                    <td>{{ $sup->id}}</td>
-                    <td>{{$sup->student->user->first_name}} {{$app->student->user->last_name}}</td>
-                    <td>{{ $sup->university->name}}</td>
-                    <td>{{ $sup->department->department_name}}</td>
+                    {{-- <td>{{$sup->id}}</td> --}}
+                    
+                    <td>{{$sup->student->user->first_name}} {{$sup->student->user->last_name}}</td>
+    
+                    <td>{{ $sup->student->university->name}}</td>
+                    <td>{{ $sup->student->department->department_name}}</td>
                     {{-- <td>{{ $sup->work_area}}</td> --}}
                     {{-- <td>
                         {!! Form::open(['route' => ['Internship.destroy',  $sup->id], 'method' => 'delete']) !!}

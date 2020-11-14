@@ -50,7 +50,7 @@ class placementController extends Controller
         $placement = new placement();
         $student = Student::where('user_id', Auth::id())->first();
 
-        $placement->student_id = Auth::id();
+        $placement->student_id = $student->id;
         $placement->company_id = $id;
         $placement->status = "accepted";
 

@@ -14,12 +14,13 @@ use Flash;
 use App\Placement;
 use App\Student;
 class InternshipController extends Controller
-{
+{ 
     public function index()
     
     {  
         $student = Student::where('user_id', Auth::id())->first();
         $applicant =Placement::all()->where('student_id',$student->id);
+        //  dd($applicant->student->user);
         return view('companies.internships.index')->with('posts',$applicant);
 
         // $student = Student::where('user_id', Auth::id())->first();
