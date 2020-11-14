@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Applicant;
 use App\Student;
 use App\User;
 use App\Department;
 use App\University;
+use App\Placement;
 class ApplicationController extends Controller
 {
     /**
@@ -117,8 +119,10 @@ class ApplicationController extends Controller
     }
     }
 
-    public function placement(){
-        return view('companyAdmin.placement');
+    public function internships(){
+        $student = Student::where('user_id', Auth::id())->first();
+        $applicant =Placement::all()->where('student_id',$student->id);
+        return view('companies.internships.index')->with('posts',$applicant);
     }
 
     /**

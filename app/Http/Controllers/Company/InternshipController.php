@@ -4,18 +4,28 @@ namespace App\Http\Controllers\Company;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 use App\User; 
 use App\Internship;
 use App\Department;
 use App\Company;
 use Flash;
-
+use App\Placement;
+use App\Student;
 class InternshipController extends Controller
 {
     public function index()
-    {  $intern = Internship::all();
-        return view('companies.internships.index')->with('posts',$intern);
+    
+    {  
+        $student = Student::where('user_id', Auth::id())->first();
+        $applicant =Placement::all()->where('student_id',$student->id);
+        return view('companies.internships.index')->with('posts',$applicant);
+
+        // $student = Student::where('user_id', Auth::id())->first();
+        // $placement = Placement::all()->where('student_id',$student->id);
+        // // dd($placement);
+        // return view('companies.internships.index')->with('posts',$placement);
     }  
 
     /**

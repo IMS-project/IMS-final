@@ -24,8 +24,8 @@ class AcceptanceController extends Controller
     }
     public function index()
     {
-        $student = Student::where('user_id', Auth::id())->first();
-        $accept = Placement::all()->where('student_id',$student->id);
+        // $student = Student::where('user_id', Auth::id())->first();
+        $accept = Placement::all()->where('student_id',Auth::id());
         // $stid = Applicant::all()->where('student_id',$applicant->student_id);
         // dd($accept);
         return view('Acceptance.index')->with('applicants',$accept);

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Company;
 use App\Student;
 use App\User;
+use App\Placement;
 use DB;
 use Flash;
 use Illuminate\Support\Facades\Auth;
@@ -22,7 +23,19 @@ class ApplicantController extends Controller
     }
     public function index()
     {
-        $companies =Company::all();
+        // dd(Auth::id());
+        $exist = Placement::all()->where('student_id', Auth::id());
+        // dd($exist->isEmpty());
+        $companies=[];
+        if($exist->isEmpty()){
+            
+            $companies = Company::all();
+            //  $companies = Company::all()->where('id', '!=', $exist->first()->company_id);
+        }
+        else {
+            // $companies = Company::all();
+        }
+
         return view('studentpage.index')->with('companies',$companies);
     }
 

@@ -19,8 +19,8 @@
     Route::get('/applicant/{id}', 'ApplicantController@store')->name('applicant');//for the application function
     Route::get('/approve/{id}', 'ApplicationController@approve')->name('approve');//for the approve function
     Route::get('/reject/{id}', 'ApplicationController@reject')->name('reject');//for the reject function
-    Route::get('/accept/{id}', 'placementController@store')->name('accept');//for the approve function
-//     Route::get('/placed', 'ApplicationController@placement')->name('placed');
+    Route::get('/accept/{id}', 'placementController@store')->name('accept');//for the acceptance function
+    Route::get('/internships', 'ApplicationController@internships')->name('internships');
     Route::resource('applicants','ApplicationController');
     Route::resource('acceptance','AcceptanceController');
     Route::resource('superAdmin','SuperAdminController');

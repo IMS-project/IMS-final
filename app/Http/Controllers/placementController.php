@@ -49,11 +49,12 @@ class placementController extends Controller
     {
         $placement = new placement();
         $student = Student::where('user_id', Auth::id())->first();
-        $placement->student_id = $student->id;
+
+        $placement->student_id = Auth::id();
         $placement->company_id = $id;
         $placement->status = "accepted";
 
-        $checkid = $student->id;
+         $checkid = $student->id;
         $compid = Placement::all()->where('company_id',$id);
         $count=0;
         foreach($compid as $row){
