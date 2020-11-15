@@ -5,9 +5,10 @@
 <section class="content-header">
     <h1>
  Supervisors
-    </h1>
+    
     <a class="btn btn-primary pull-right" style=
-    "margin-top: -10px;margin-bottom: 5px" href="{{ route('Supervisor.create') }}"><i class="fa fa-plus-circle">Add NEW</i></a>
+    "margin-top: -6px;margin-bottom: 5px" href="{{ route('Supervisor.create') }}"><i class="fa fa-plus-circle">Add NEW</i></a>
+</h1>
 </section>
 
 <div class="content">

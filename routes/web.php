@@ -14,7 +14,7 @@
     //     return view('welcome');
     // });
     
-
+    Route::post('logout', 'Auth\LoginController@logout')->name('logout');
     Auth::routes(['verify' => true]);
     Route::get('/applicant/{id}', 'ApplicantController@store')->name('applicant');//for the application function
     Route::get('/approve/{id}', 'ApplicationController@approve')->name('approve');//for the approve function
