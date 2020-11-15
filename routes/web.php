@@ -30,8 +30,8 @@
     Route::resource('students', 'ApplicantController');
     Route::resource('universities', 'University\UniversityController');
     Route::resource('UniCoordinator', 'University\UniCoordinatorController');
-           Route::resource('Advisor', 'University\AdvisorController');
-           Route::resource('Student', 'University\StudentController');
+    Route::resource('Advisor', 'University\AdvisorController');
+    Route::resource('Student', 'University\StudentController');
     //  Route::resource('departments',  'University\DepartmentController');
 
     Route::resource('companies', 'Company\CompanyController');
@@ -44,5 +44,7 @@
   
     Route::get('import/import-excel','Imports\ImportController@index');
     Route::post('import/import-excel','Imports\ImportController@import');
+    Route::resource('studentadvisor','studentAdvisorController');
+    Route::resource('studentsupervisor','studentSupervisor');
 
 
