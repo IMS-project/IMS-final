@@ -25,9 +25,9 @@
                     <table class="table" id="universities-table">
                             <thead>
                                 <tr>
-                                    <th>Id</th>
-                                    <th>First Name</th>
-                                    <th>From Univesity </th>
+                                   
+                                    <th>full name</th>
+                                    <th>Department </th>
                                     <th colspan="3">Action</th>
                                 </tr>
                             </thead>
@@ -35,9 +35,10 @@
                         <tbody>
                             @foreach($advisors as $c )
                             <tr>
-                                <td>{{ $c->id}}</td>
-                                <td>{{ $c->user->first_name}}</td>
-                                <td>{{ $c->university->name}}</td>
+                                <td>{{ $c->user->first_name}}  {{$c->user->last_name}}</td>
+                                {{-- <td>{{ $c->id}}</td> --}}
+    
+                                <td>{{ $c->department->department_name}}</td>
                                 <td>
                                     {!! Form::open(['route' => ['Advisor.destroy', $c->id], 'method' => 'delete']) !!}
                                     <div class='btn-group'>

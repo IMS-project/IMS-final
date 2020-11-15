@@ -11,6 +11,10 @@ use App\University;
 use Flash;
 class DepartmentController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
         $department = Department::all();

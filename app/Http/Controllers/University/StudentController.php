@@ -5,6 +5,7 @@ namespace App\Http\Controllers\University;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 use App\Role;
 use App\User;
@@ -13,9 +14,15 @@ use App\Student;
 use App\Company;
 use App\Department;
 use Flash;
+use App\UniCoordinator;
+
 
 class StudentController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
         $student =Student::orderBy('created_at','desc')->paginate(3);
@@ -52,10 +59,12 @@ class StudentController extends Controller
            $user->save();
          
            $id = $user->id;
+           $unid = UniCoordinator::all()->first();
+        //    dd($unid->university_id);
            $student->student_id = $request->student_id;
            $student->user_id = $id;
            $student->department_id = $request->department;
-           $student->university_id = $request->university;
+           $student->university_id =$unid->university_id;
            $student->semester_term = $request->semister;
            $student->class_year = $request->year;
            $student->grade = $request->grade;

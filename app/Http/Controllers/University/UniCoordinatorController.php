@@ -16,6 +16,10 @@ use Flash;
 
 class UniCoordinatorController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
         //$role = Role::orderBy('name')->get();

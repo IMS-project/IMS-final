@@ -35,6 +35,8 @@ class ApplicantController extends Controller
         }
         else {
             // $companies = Company::all();
+            Flash::warning('You are not elligable to apply');
+            // return 
         }
 
         return view('studentpage.index')->with('companies',$companies);

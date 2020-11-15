@@ -21,6 +21,7 @@ namespace App\Http\Controllers\University;
 
         public function __construct(UniversityRepository $universityRepo)
         {
+            
             $this->middleware('auth');
             $this->universityRepository = $universityRepo;
         }

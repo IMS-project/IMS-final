@@ -82,7 +82,7 @@
             </div> --}}
 
                <!--    ----university ---- -->
-            <div class="form-group row">
+            {{-- <div class="form-group row">
                 <lable for = "phone" class = "col-sm-1 col-form-label"><h5>university:</h5></lable>
                 <div class="col-sm-6">
                 <select name="university" id="name" type ="text" class="form-control" value="{{ old('university_id') }}">
@@ -91,7 +91,7 @@
                      @endforeach
                   </select> 
               </div>
-            </div>
+            </div> --}}
 
             <div class="form-group row">
                 <lable for = "phone" class = "col-sm-1 col-form-label"><h5>departments:</h5></lable>

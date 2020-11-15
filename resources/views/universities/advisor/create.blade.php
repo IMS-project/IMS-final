@@ -72,11 +72,11 @@
             </div> -->
         
             <div class="form-group row">
-                <lable for = "phone" class = "col-sm-1 col-form-label">university</lable>
+                <lable for = "phone" class = "col-sm-1 col-form-label">Department</lable>
                 <div class="col-sm-6">
-                <select name="university" id="name" type ="text" class="form-control" value="{{ old('university_id') }}">
-                     @foreach ($universities as $uni)
-                     <option value="{{ $uni->id }}">{{$uni->name}}</option>
+                <select name="department" id="name" type ="text" class="form-control" value="{{ old('university_id') }}">
+                     @foreach ($departments as $uni)
+                     <option value="{{ $uni->id }}">{{$uni->department_name}}</option>
                      @endforeach
                   </select> 
               </div>

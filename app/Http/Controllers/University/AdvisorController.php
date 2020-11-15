@@ -9,13 +9,17 @@ use Illuminate\Support\Facades\Hash;
 use App\Role;
  use App\User;
 use App\University;
+use App\Department;
 use App\Advisor;
-
+use App\UniCoordinator;
 use Flash;
 
 class AdvisorController extends Controller
 {
-   
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
        // $role = Role::orderBy('name')->get();
@@ -29,9 +33,9 @@ class AdvisorController extends Controller
     {
         //
         $role = Role::orderBy('name')->get();
-        $university = University::orderBy('created_at')->get();
+        $department = Department::orderBy('created_at')->get();
         return view('universities.advisor.create')->with('roles',$role)
-                                                  ->with('universities' ,$university);
+                                                  ->with('departments' ,$department);
 
     }
 
@@ -55,8 +59,10 @@ class AdvisorController extends Controller
         $user->save();
         
         $id = $user->id;
+        $unid = UniCoordinator::all()->first();
         $advisor->user_id = $id;
-        $advisor->university_id = $request->university;
+        $advisor->university_id = $unid->university_id;
+        $advisor->department_id = $request->department;
         $advisor->save();
         Flash::success(' saved successfully.');
         $advisor = Advisor::all();

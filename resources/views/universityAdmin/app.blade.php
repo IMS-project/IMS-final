@@ -171,6 +171,10 @@
                             <a href="{{ route('Advisor.index') }}"><i class="fa fa-user" aria-hidden="true"></i>
                                 <span>Advisor</span></a>
                             </li>
+                            <li class="{{ Request::is('Advisor*') ? 'active' : '' }}">
+                                <a href="{{ route('Advisor.index') }}"><i class="fa fa-user" aria-hidden="true"></i>
+                                    <span>Assign Advisor</span></a>
+                                </li>
                 {{-- <li class="{{ Request::is('UniCoordinator*') ? 'active' : '' }}">
                 <a href="{{ route('UniCoordinator.index') }}"><i class="fa fa-edit"></i><span>Uni_coordinators</span></a>
                 </li>

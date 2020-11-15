@@ -3,11 +3,11 @@
 @section('content')
 
 <section class="content-header">
-    <h1>
-   Students
-    </h1>
+    
+        <a href="{{ url('/import/import-excel') }}" class="btn btn-success"><Import-Excel class="fas fa-file-import">Import-Excel</i></a>
+  
     <a class="btn btn-primary pull-right" style=
-    "margin-top: -10px;margin-bottom: 5px" href="{{ route('Student.create') }}"><i class="fa fa-plus-circle">Add NEW</i></a>
+    "margin-top: -2px;margin-bottom: 5px" href="{{ route('Student.create') }}"><i class="fa fa-plus-circle">Add NEW</i></a>
 </section>
 
 <div class="content">

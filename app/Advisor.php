@@ -23,5 +23,9 @@ class Advisor extends Model
     public function university(){    
         return $this->belongsTo('App\University');
     }
+    public function department(){    
+        return $this->belongsTo('App\Department');
+    }
+
 
 }

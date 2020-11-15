@@ -19,5 +19,8 @@ class Department extends Model
    public function students(){
         return $this->hasOne('App\Student');
    }
+   public function advisor(){
+    return $this->hasOne('App\Advisor');
+}
 
 }
