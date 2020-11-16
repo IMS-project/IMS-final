@@ -2,7 +2,7 @@
 @extends('universityAdmin.app')
 
 @section('content')
-    <section class="content-header"> <h1><i>student details</i> </h1></section>
+    <section class="content-header"> <h1>student details </h1></section>
 
   <div class="content">
      <div class="box box-primary">
@@ -62,7 +62,7 @@
                 </div>
                 
                 
-                    <a href="{{ route('Student.index') }}" class="btn btn-default">Back</a>
+                    <a href="{{ route('Student.index') }}" class="btn btn-primary">Back</a>
                 </div>
                 
             </div>

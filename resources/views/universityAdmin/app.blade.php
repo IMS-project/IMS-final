@@ -152,14 +152,14 @@
                     <a href="{{ route('universities.index') }}"><i class="fa fa-graduation-cap"></i><span>universitys</span></a>
                 </li> --}}
                 <li class="{{ Request::is('Student*') ? 'active' : '' }}">
-                    <a href="{{ route('Student.index') }}"><i class="fa fa-user-circle" aria-hidden="true"></i>
+                    <a href="{{ route('Student.index') }}"><i class="fa fa-users" aria-hidden="true"></i>
                         <span>Student</span></a>
                     </li>
                 <li class="{{ Request::is('departments*') ? 'active' : '' }}">
                 <a href= "{{route('departments.index')}}"><i class="fa fa-graduation-cap" aria-hidden="true"></i>
                 </i><span>department</span></a>
                 </li>
-                <li class="{{ Request::is('companies*') ? 'active' : '' }}">
+                <li class="{{ Request::is('company*') ? 'active' : '' }}">
                     <a href="{{ route('company.index') }}"><i class="fa fa-industry" aria-hidden="true"></i>
 
                         <span>company</span></a>
@@ -171,8 +171,8 @@
                             <a href="{{ route('Advisor.index') }}"><i class="fa fa-user" aria-hidden="true"></i>
                                 <span>Advisor</span></a>
                             </li>
-                            <li class="{{ Request::is('Advisor*') ? 'active' : '' }}">
-                                <a href="{{ route('Advisor.index') }}"><i class="fa fa-user" aria-hidden="true"></i>
+                            <li class="{{ Request::is('Assignadvisor*') ? 'active' : '' }}">
+                                <a href="{{ route('Assignadvisor.index') }}"><i class="fa fa-user-circle" aria-hidden="true"></i>
                                     <span>Assign Advisor</span></a>
                                 </li>
                 {{-- <li class="{{ Request::is('UniCoordinator*') ? 'active' : '' }}">

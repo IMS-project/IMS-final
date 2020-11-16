@@ -152,7 +152,7 @@
                     <a href="{{ route('universities.index') }}"><i class="fa fa-graduation-cap"></i><span>universitys</span></a>
                 </li> --}}
                 <li class="{{ Request::is('Studentadvisor*') ? 'active' : '' }}">
-                    <a href="{{ route('studentadvisor.index') }}"><i class="fa fa-user-circle" aria-hidden="true"></i>
+                    <a href="{{ route('studentadvisor.index') }}"><i class="fa fa-users" aria-hidden="true"></i>
                         <span>Student</span></a>
                     </li>
                     <li class="{{ Request::is('Student*') ? 'active' : '' }}">

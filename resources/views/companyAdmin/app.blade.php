@@ -83,7 +83,7 @@
                                         <a href="#" class="btn btn-default btn-flat">Profile</a>
                                     </div>
                                     <div class="pull-right">
-                                        <a href="{{ url('/logout') }}" class="btn btn-default btn-flat"
+                                        <a href="{{ url('/logout') }}" class="btn btn-primary btn-flat"
                                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                             Sign out
                                         </a>
@@ -130,17 +130,17 @@
                 <!-- Sidebar Menu -->
         
                 <ul class="sidebar-menu" data-widget="tree">
-                    <li class="{{ Request::is('companies*') ? 'active' : '' }}">
-                        <a href="{{ route('applicants.index') }}"><i class="fa fa-user-circle" aria-hidden="true"></i>
+                    <li class="{{ Request::is('applicants*') ? 'active' : '' }}">
+                        <a href="{{ route('applicants.index') }}"><i class="fa fa-users" aria-hidden="true"></i>
                             <span>Applicants</span></a>
                         </li>
                         
                         <li class="{{ Request::is('Supervisor*') ? 'active' : '' }}">
                             <a href="{{ route('Supervisor.index') }}"><i class="fa fa-user" aria-hidden="true"></i>
-                                <span>Supervisors</span></a>
+                                <span>Supervisor</span></a>
                             </li>
                             <li class="{{ Request::is('internships*') ? 'active' : '' }}">
-                                <a href="{{ route('internships.index') }}"><i class="fa fa-edit"></i><span>placement</span></a>
+                                <a href="{{ route('internships.index') }}"><i class="fa fa-user-circle"></i><span>placement</span></a>
                                 </li>
                                 
                 </ul>

@@ -124,6 +124,10 @@ class ApplicationController extends Controller
         $applicant =Placement::all()->where('student_id',$student->id);
         return view('companies.internships.index')->with('posts',$applicant);
     }
+    public function list($id){
+        $student = Student::find($id);
+        return view('universities.student.list')->with('students',$student);
+    }
 
     /**
      * Remove the specified resource from storage.
