@@ -25,7 +25,7 @@ class AssignadvisorController extends Controller
                                     ->groupBy(['university_id','department_id'])
                                     ->first();
         $placed = Placement::select('company_id')->groupBy('company_id')->get()->toArray() ;
-        dd($students);
+        // dd($students);
         return view('Assignadvisor.index')->with('placemnets',$placed);
     }
 
