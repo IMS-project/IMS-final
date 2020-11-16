@@ -29,7 +29,7 @@
                             {{-- @foreach ($applicants as $row) --}}
                              <tr>
                                  <td>{{$company->id}}</td>
-                                    <td><a href="{{ route('students.show', [$company->id]) }}">{{ $company->name }}</a></td>
+                                    <td><a href="{{ route('offer_company.show', [$company->id]) }}">{{ $company->name }}</a></td>
                                     {{-- <td> {{$row->status}}</td> --}}
                                     {{-- @endforeach --}}
                                     @endforeach

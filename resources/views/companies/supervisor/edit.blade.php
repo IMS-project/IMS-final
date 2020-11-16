@@ -44,16 +44,7 @@
             <lable for = "gender" class = "col-sm-1 col-form-label"><h5>Gender:</h5></lable>
             <div class="col-sm-6">
 
-                <!-- <select id="" class=" form-control" name = 'sex'  required>
-                    @if ($users->sex=="Male")
-                    <option value="male" selected>Male</option>
-                    <option value="female">Female</option>
-                    @elseif($users->sex=="Female")
-                    <option value="male">Male</option>
-                    <option value="female" selected>Female</option>
-                    @endif
-              </select>  -->
-
+                
               <select id="" class=" form-control" name = 'sex'  required>
                      <option value="Male" id="male" type="radio" name="sex">Male</option>
                     <option value="Female" id="female" type="radio" name="sex">Female</option> -->
@@ -69,24 +60,6 @@
 
             </div> 
         </div>
-
-
-
-            <div class="form-group row">
-                <lable for = "phone" class = "col-sm-1 col-form-label"><h5>Company:</h5></lable>
-                <div class="col-sm-6">
-
-                   <select name="company" id="name" type ="text" class="form-control" value="{{ $company->name }}">
-                     @foreach ($companys as $c)
-                     @if ($company->name==$c->name)
-                     <option value="{{ $c->id }}" selected>{{$c->name}}</option>
-                     @else
-                     <option value="{{ $c->id }}">{{$c->name}}</option>
-                    @endif  
-                     @endforeach
-                 </select>  
-                 </div> 
-                 </div>
 
                     <div class="form-group row">
                     <div class="col-sm-6 pull-right">

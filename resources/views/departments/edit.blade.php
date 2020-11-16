@@ -11,6 +11,7 @@
    <div class="content">
       @include('adminlte-templates::common.errors')
       <div class="box box-primary">
+        <div class="row" style="padding: 25px">
 
        <form method="post" action="{{ route('departments.update', $departments->id)}}" enctype="multipart/form-data">
             {{csrf_field()}}
@@ -18,34 +19,15 @@
 
                 <!-- Department Name Field -->
                <div class="form-group row">
-                  <lable for = "name" class = "col-sm-1 col-form-label">Department Name:</lable>
+                  <lable for = "name" class = "col-sm-1 col-form-label">Department:</lable>
                    <div class="col-sm-6">
                     <input type="text" name="department_name" class="form-control" id="name" placeholder="name" value="{{$departments->department_name}}" required>
                    </div>
                 </div>
                 <!-- University Id Field -->
-          <div class="form-group row">
-          <lable for = "name" class = "col-sm-1 col-form-label"> Name of university:</lable>
-          <div class="col-sm-6">
-          <select name="university" id="name" type ="text" class="form-control" >
-                     @foreach ($universitys as $uni)
-                     @if ($university->name==$uni->name)
-                     <option value="{{ $uni->id }}" selected>{{$uni->name}}</option>s
-                     @else
-                     <option value="{{ $uni->id }}">{{$uni->name}}</option>
-                    @endif  
-                     @endforeach
-                 </select>  
-                 </div>
-          </div>
-                <!-- User Id Field -->
-              <!-- <div class="form-group row">
-                 <lable for = "user_id" class = "col-sm-1 col-form-label">University address:</lable>
-                  <div class="col-sm-6">
-                 <input type="text" name="address" class="form-control" id="university-id " placeholder="address" 
-                                                                      value="{{$university->address}}" required>
-                   </div>
-                </div> -->
+          
+          
+               
 
                <div class="form-group row">
                     <div class="col-sm-6 pull-right">
@@ -55,8 +37,8 @@
                  </div>
 
          </form>
-     <div class="col-sm-2"></div>
-  </div>
-</div>
+      </div></div>
+      </div>
+      
 @endsection()
 

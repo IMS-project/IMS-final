@@ -22,7 +22,9 @@
                             <th>offer_capacity</th>
                             <th>mini_grade</th>
                             <th>skills required</th>
+                            <th>Number of Applicants</th>
                             <th>Action</th>
+                            
                                 </tr>
                             </thead>
                             <tbody>
@@ -32,8 +34,9 @@
                                 <td>{{ $company->offer_capacity }}</td>
                                 <td>{{ $company->mini_grade}}</td>
                                 <td>{{ $company->other_skills }}</td>
+                                <td>{{$applicants}}</td>
                                 <td><a href="{{ route('applicant',[$company->id]) }}" class="btn btn-success">apply here</a>
-                                    <a href="{{ route('students.index') }}" class="btn btn-primary">back</a></td>
+                                    <a href="{{ route('offer_company.index') }}" class="btn btn-primary">back</a></td>
                             </tbody>
                         </table>
                         </div>

@@ -31,13 +31,16 @@ class Company extends Model
         return $this->hasOne('App\CopmCoordinator');
     }
     public function supervisor(){
+        return $this->hasMany('App\Supervisor');
+    }
+    public function advisor(){
         return $this->hasOne('App\Supervisor');
     }
     public function internship(){
         return $this->hasOne('App\Internship');
     }
     public function applicant(){
-        return $this->hasOne('App\Applicant');
+        return $this->hasMany('App\Applicant');
     }
     public function placement(){
         return $this->hasOne('App\placement');

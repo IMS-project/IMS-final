@@ -22,7 +22,7 @@
                    </div>
                 </div>
 
-                <div class="form-group row">
+                {{-- <div class="form-group row">
                <lable for = "university" class = "col-sm-1 col-form-label"><h5>University:</h5></lable>
                  <div class="col-sm-6">
                   <select name="university" id="name" type ="text" class="form-control" value="{{ old('university_id') }}">
@@ -30,7 +30,7 @@
                      <option value="{{ $uni->id }}">{{ $uni->name }}</option>
                      @endforeach
                    </select> 
-              </div>
+              </div> --}}
             </div>
                 <!-- User Id Field -->
 

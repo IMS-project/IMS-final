@@ -59,28 +59,7 @@
             </div>
             </div>
             
-            {{-- <div class="form-group row">
-                <lable for = "phone" class = "col-sm-1 col-form-label"><h5>User Type:</h5></lable>
-                 <div class="col-sm-6">
-                   <select name="role" type ="text" class="form-control" value="{{ old('role') }}">
-                      @foreach($roles as $rol)
-                        <option value="{{ $rol->id }}">{{$rol->name}}</option>
-                     @endforeach
-                  </select> 
-                </div>
-            </div> --}}
-        
-            <div class="form-group row">
-               <lable for = "phone" class = "col-sm-1 col-form-label"><h5>Company:</h5></lable>
-                 <div class="col-sm-6">
-                  <select name="company" id="name" type ="text" class="form-control" value="{{ old('company_id') }}">
-                     @foreach ($companies as $co)
-                     <option value="{{ $co->id }}">{{$co->name}}</option>
-                     @endforeach
-                   </select> 
-              </div>
-            </div>
-
+            
                 <div class="form-group row">
                   <div class="col-sm-6 pull-right">
                     <button class="btn btn-success" type="submit"> Register</button>

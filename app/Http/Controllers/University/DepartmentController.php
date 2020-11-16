@@ -9,6 +9,7 @@ use App\User;
 use App\Department;
 use App\University;
 use Flash;
+use App\UniCoordinator;
 class DepartmentController extends Controller
 {
     public function __construct()
@@ -30,9 +31,10 @@ class DepartmentController extends Controller
     {
         
         $department = new Department;
+        $unid = UniCoordinator::all()->first();
 
         $department->department_name = $request->name;
-        $department->university_id = $request->university;
+        $department->university_id = $unid->university_id;
         $department->save();
         Flash::success('department saved successfully.');
         return redirect(route('departments.index'))->with('departments', $department );
@@ -40,17 +42,15 @@ class DepartmentController extends Controller
     }
     public function show($id)
     {
-        $department =Department::find($id);
+        $department = Department::find($id);
         //dd($advisor);
-        $userid=  $department->user_id;
-        $unid=   $department->university_id;
+        // $userid=  $department->user_id;
+        // $unid=   $department->university_id;
 
-         $user = User::find($userid);
-         $university = University::find($unid);
-        return view('departments.show')->with('user', $user)
-                                       ->with('departments', $department)
-                                       ->with('university',$university);
-        
+        //  $user = User::find($userid);
+        //  $university = University::find($unid);
+        return view('departments.show')->with('departments', $department);
+                                       
     }
 
     public function edit($id)
@@ -63,11 +63,10 @@ class DepartmentController extends Controller
 
          $user = User::find($userid);
          $university = University::find($unid);
-         $universitys = University::all();
+        //  $universitys = University::all();
         return view('departments.edit')->with('user', $user)
-                                       ->with('departments', $department)
-                                       ->with('university',$university)
-                                       ->with('universitys',$universitys);
+                                       ->with('departments', $department);
+                                       
 
     }
 
@@ -80,14 +79,14 @@ class DepartmentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $unid = UniCoordinator::all()->first();
         $department =Department::find($id);
       
         // $userid=  $department->user_id;
         // $unid=   $department->university_id;
         // $user = User::find($userid);
         $department->department_name = $request->department_name;
-        $department->university_id = $request->university;
+        $department->university_id = $unid->university_id;
         $department->save();
         Flash::success('department saved successfully.');
         $department =Department::all();
@@ -103,8 +102,8 @@ class DepartmentController extends Controller
     public function destroy($id)
     {
         //
-        $department =Department::all();
+        $department =Department::find($id);
         $department->delete();
-        return redirect(route('Department.index'));
+        return redirect(route('departments.index'));
     }
 }

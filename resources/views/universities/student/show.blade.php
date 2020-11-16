@@ -7,66 +7,52 @@
   <div class="content">
      <div class="box box-primary">
          <div class="box-body">
+            <table class="table" id="companies-table">
+                <thead>
+                    <tr>
+                        <th>Full name</th>
+                        <th>ID</th>
+                        <th>Email</th>
+                        <th>phone</th>
+                        <th>sex</th>
+                        <th>CGPA</th>
+                        <th>Department</th>
+
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>{{ $users->first_name }} {{ $users->last_name }}</td>
+                        <td>{{ $students->student_id }}</td>
+                        <td>{{ $users->email }}</td>
+                        <td>{{ $users->phone }}</td>
+                        <td>{{ $users->sex }}</td>
+                        <td>{{ $students->grade }}</td>
+                        <td>{{ $department->department_name }}</td>
+                        <td></td>
+
+                    </tr>
+                </tbody>
+            </table>
+               
             <div class="row" style="padding-left: 20px">
 
-            <div class="form-group">
-                    {!! Form::label('first_name', 'First_Name:') !!}
-                    <p>{{ $users->first_name }}</p>
-                </div>
-                <div class="form-group">
-                    {!! Form::label('last_name', 'Last_Name:') !!}
-                    <p>{{ $users->last_name }}</p>
-                </div>
-
-                <div class="form-group">
-                    {!! Form::label('email', 'Email:') !!}
-                    <p>{{ $users->email }}</p>
-                </div>
-
-                <div class="form-group">
-                    {!! Form::label('phone', 'Phone:') !!}
-                    <p>{{ $users->phone }}</p>
-                </div>
-                <div class="form-group">
-                    {!! Form::label('sex', 'sex:') !!}
-                    <p>{{ $users->sex }}</p>
-                </div>
-                <div class="form-group">
-                    {!! Form::label('grade', 'Grade:') !!}
-                    <p>{{ $students->grade }}</p>
-                </div>
-
-                <div class="form-group">
-                    {!! Form::label('student_id', 'Student_ID:') !!}
-                    <p>{{ $students->student_id }}</p>
-                </div>
                 
 
-                <div class="form-group">
-                    {!! Form::label('class_year', 'class_Year:') !!}
-                    <p>{{ $students->class_year }}</p>
-                </div>
-
-                <div class="form-group">
-                    {!! Form::label('semester_term', 'Semester_term:') !!}
-                    <p>{{ $students->semester_term }}</p>
-                </div>
-
-                <div class="form-group">
-                    {!! Form::label('university', 'university:') !!}
-                    <p>{{ $university->name }}</p>
-                </div>
-                <div class="form-group">
-                    {!! Form::label('department', 'department:') !!}
-                    <p>{{ $department->department_name }}</p>
-                </div>
+                
+            
                 
                 
-                    <a href="{{ route('Student.index') }}" class="btn btn-primary">Back</a>
+                    
                 </div>
                 
             </div>
+
         </div>
+        
+        <a href="{{ route('Student.index') }}"  class="btn btn-primary pull-left" style=
+        "margin-top: 0px;margin-bottom: 5px">Back</a>
     </div>
 
 

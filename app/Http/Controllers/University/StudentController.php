@@ -76,11 +76,7 @@ class StudentController extends Controller
 
     }
 
-    public function list($id){
-        $students = Student::find($id);
-        // dd($students->student_id);
-        return view('universities.student.list')->with('students',$students);
-    }
+    
     public function show($id)
     {
 

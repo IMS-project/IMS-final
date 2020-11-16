@@ -8,6 +8,7 @@ use App\Imports\UsersImport;
 use App\User;
 use App\Role;
 use DB;
+use App\Student;
 use Illuminate\Support\Facades\Hash;
 // use Excel;
 use Maatwebsite\Excel\Facades\Excel;
@@ -17,6 +18,8 @@ class ImportController extends Controller
     public function index()
     {
         $users = User::orderBy('created_at', 'DESC')->get();
+        $students = Student::all();
+
         return view('import/import-excel', ['roles' => Role::pluck('name', 'id')
         ])->withusers($users);
     }
