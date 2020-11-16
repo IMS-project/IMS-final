@@ -42,7 +42,7 @@
                                 <td>{{ $stu->department->department_name}}</td>
                                 <td>{{ $stu->grade}}</td>
                                 <td>
-                                    {!! Form::open(['route' => ['UniCoordinator.destroy', $stu->id], 'method' => 'delete']) !!}
+                                    {!! Form::open(['route' => ['Student.destroy', $stu->id], 'method' => 'delete']) !!}
                                     <div class='btn-group'>
                                         <a href="{{ route('Student.show',$stu->id) }}" class='btn btn-primary btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>
                                         <a href="{{ route('Student.edit', $stu->id) }}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-edit"></i></a>

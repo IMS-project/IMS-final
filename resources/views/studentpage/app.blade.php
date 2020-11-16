@@ -131,11 +131,11 @@
         
                 <ul class="sidebar-menu" data-widget="tree">
                 
-                <li class="{{ Request::is('students*') ? 'active' : '' }}">
-                    <a href="{{ route('students.index') }}"><i class="fa fa-industry" aria-hidden="true"></i><span>companys</span></a>
+                <li class="{{ Request::is('offer_company*') ? 'active' : '' }}">
+                    <a href="{{ route('offer_company.index') }}"><i class="fa fa-industry" aria-hidden="true"></i><span>companys</span></a>
                     </li>
-                    <li class="{{ Request::is('placements*') ? 'active' : '' }}">
-                        <a href="{{ route('placements.index') }}"><i class="fa fa-question-circle" aria-hidden="true"></i>
+                    <li class="{{ Request::is('Requests*') ? 'active' : '' }}">
+                        <a href="{{ route('Requests.index') }}"><i class="fa fa-question-circle" aria-hidden="true"></i>
                             <span>Requests</span></a>
                         </li>
                         <li class="{{ Request::is('acceptance*') ? 'active' : '' }}">

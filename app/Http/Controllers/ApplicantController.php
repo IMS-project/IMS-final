@@ -24,6 +24,14 @@ class ApplicantController extends Controller
     public function index()
     {
         // dd(Auth::id());
+        // to show no of applicans to the student at specific company
+        $app = Applicant::all();
+        $comp= Company::all();
+        $count=0;
+        // if($app->company_id == $comp->company_id){
+        //     $count =1;
+        // }
+        // dd($comp);
         $student = Student::all()->where('user_id',Auth::id())->first();
         $exist = Placement::all()->where('student_id', $student->id);
         // dd($exist->isEmpty());
@@ -119,7 +127,10 @@ class ApplicantController extends Controller
     public function show($id)
     {
         $company = Company::find($id);
-        return view('studentpage.show')->with('company', $company);
+        $student = Company::find($id)->applicant()->count();
+        // dd($student);
+
+        return view('studentpage.show')->with('company', $company)->with('applicants',$student);
     }
 
     /**

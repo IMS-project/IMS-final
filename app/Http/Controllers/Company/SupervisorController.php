@@ -11,6 +11,7 @@ use App\Role;
  use App\User;
  use App\Company;                                                    
  use App\Supervisor;
+ use App\CompCoordinator;
 
 class SupervisorController extends Controller
 {
@@ -24,8 +25,8 @@ class SupervisorController extends Controller
     public function create()
     {
         // $role = Role::orderBy('name')->get();
-        $company = Company::orderBy('created_at')->get();
-        return view('companies.supervisor.create')->with('companies', $company);
+        // $company = Company::orderBy('created_at')->get();
+        return view('companies.supervisor.create');
 
     }
 
@@ -33,6 +34,7 @@ class SupervisorController extends Controller
     {
         //
         $supervisor = new Supervisor;
+        $comid = CompCoordinator::all()->first();
 
         $user->first_name = $request->first_name;
         $user->last_name = $request->last_name;
@@ -45,7 +47,7 @@ class SupervisorController extends Controller
 
         $id = $user->id;
         $supervisor->user_id = $id;
-        $supervisor->company_id = $request->company;
+        $supervisor->company_id = $comid->company_id;
         $supervisor->save();
         Flash::success(' saved successfully');
         $supervisor = Supervisor::all(); 
@@ -81,18 +83,20 @@ class SupervisorController extends Controller
 
           $user = User::find($userid);
           $company = Company::find($comid);
-          $companys = Company::all();
+        //   $companys = Company::all();
           // $roles = Role::find($rolid);
           // $rolled = Role::all();
  return view('companies.supervisor.edit')->with('users', $user)
                                          ->with('supervisors', $supervisor)
-                                         ->with('company', $company)
-                                       ->with('companys', $companys);
+                                         ->with('company', $company);
+                                      
           
     }
     public function update(Request $request, $id)
     {
-        //
+        
+        $comid = CompCoordinator::all()->first();
+
         $supervisor = Supervisor::find($id);
         $user = User::find($id);
         $user->first_name = $request->first_name;
@@ -104,7 +108,7 @@ class SupervisorController extends Controller
 
         $id = $user->id;
         $supervisor->user_id = $id;
-        $supervisor->company_id = $request->company;
+        $supervisor->company_id = $comid->company_id;
         $supervisor->save();
         Flash::success(' updated successfully');
         $supervisor = Supervisor::all();

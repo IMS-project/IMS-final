@@ -35,7 +35,7 @@ namespace App\Http\Controllers\University;
       
         public function create()
         {   $role =Role::orderBy('name')->get(); 
-            $university = University::orderBy('created_at')->get();
+            $university = University::orderBy('created_at','asc')->get();
             return view('universities.create')->with('roles',$role)->with('universities',$university);
         }
 

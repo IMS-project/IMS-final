@@ -16,7 +16,7 @@
 
                 <div class="form-group">
                     {!! Form::label('university', ' university:') !!}
-                    <p>{{ $university->name }}</p>
+                    <p>{{ $departments->university->name }}</p>
                 </div>
                 
                     <a href="{{ route('departments.index') }}" class="btn btn-default">Back</a>

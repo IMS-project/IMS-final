@@ -25,11 +25,12 @@
     Route::resource('applicants','ApplicationController');
     Route::resource('acceptance','AcceptanceController');
     Route::resource('superAdmin','SuperAdminController');
-    Route::resource('placements','placementController');
+    Route::resource('Requests','placementController');
+//     Route::resource('students','placementController');
     Route::resource('Assignadvisor','AssignadvisorController');
     Route::get('/home', 'HomeController@index')->middleware('verified');
     // Route::resource('Applicants', 'University\PlacementController');
-    Route::resource('students', 'ApplicantController');
+    Route::resource('offer_company', 'ApplicantController');
     Route::resource('universities', 'University\UniversityController');
     Route::resource('UniCoordinator', 'University\UniCoordinatorController');
     Route::resource('Advisor', 'University\AdvisorController');
