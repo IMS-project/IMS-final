@@ -1,8 +1,4 @@
 <!-- Created At Field -->
-{{-- <div class="form-group">
-    {!! Form::label('name', 'name:') !!}
-    <p>{{ $company->name }}</p>
-</div> --}}
 <div class="form-group">
     {!! Form::label('name', 'name:') !!}
     <p>{{ $company->name }}</p>

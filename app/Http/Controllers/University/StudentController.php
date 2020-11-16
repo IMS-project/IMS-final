@@ -59,7 +59,7 @@ class StudentController extends Controller
            $user->save();
          
            $id = $user->id;
-           $unid = UniCoordinator::all()->first();
+           $unid = UniCoordinator::where('user_id',Auth::id())->first();
         //    dd($unid->university_id);
            $student->student_id = $request->student_id;
            $student->user_id = $id;

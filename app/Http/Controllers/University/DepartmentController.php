@@ -10,6 +10,7 @@ use App\Department;
 use App\University;
 use Flash;
 use App\UniCoordinator;
+use Illuminate\Support\Facades\Hash;
 class DepartmentController extends Controller
 {
     public function __construct()
@@ -31,8 +32,8 @@ class DepartmentController extends Controller
     {
         
         $department = new Department;
-        $unid = UniCoordinator::all()->first();
-
+        $unid = UniCoordinator::where('user_id',Auth::id())->first();
+        // $student = Student::where('user_id', Auth::id())->first();
         $department->department_name = $request->name;
         $department->university_id = $unid->university_id;
         $department->save();

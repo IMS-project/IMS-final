@@ -7,12 +7,13 @@
   <div class="content">
      <div class="box box-primary">
          <div class="box-body">
+
             <table class="table" id="companies-table">
                 <thead>
                     <tr>
                         <th>Full name</th>
                         <th>ID</th>
-                        <th>Email</th>
+                        <th>Email</th> 
                         <th>phone</th>
                         <th>sex</th>
                         <th>CGPA</th>
@@ -30,7 +31,6 @@
                         <td>{{ $users->sex }}</td>
                         <td>{{ $students->grade }}</td>
                         <td>{{ $department->department_name }}</td>
-                        <td></td>
 
                     </tr>
                 </tbody>
@@ -38,13 +38,7 @@
                
             <div class="row" style="padding-left: 20px">
 
-                
-
-                
-            
-                
-                
-                    
+                 
                 </div>
                 
             </div>

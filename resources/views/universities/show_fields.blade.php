@@ -1,5 +1,5 @@
 
-<div class="form-group">
+<!-- <div class="form-group">
     {!! Form::label('name', 'name:') !!}
     <p>{{ $university->name }}</p>
 </div>
@@ -7,8 +7,23 @@
 <div class="form-group">
     {!! Form::label('address', 'address:') !!}
     <p>{{ $university->address }}</p>
-</div>
+</div> -->
+     <table>
+      <thead>
+       <tr>
+        <th>Name</th>
+        <th>Address</th>
+      </tr>
+     </thead>
+     <tbody>
+     <tr>
+     <td>{{ $university->name }}</td>
+     <td>{{ $university->address }}</td>
+     </tr>
+     </tbody>
+    </table>
 
+<!-- 
     <hr>
        <h4 class="text-primary text-center">List of departments</h4>
        <div class="row">
@@ -19,9 +34,10 @@
        <div class="form-control">
            <p>{{$r->department_name}}</p></div>
        @endforeach
-       </div>
-       </div>
 
+       </div>
+       </div>
+       
        <hr>
        <h4 class="text-primary text-center">List of advisors</h4>
        <div class="row">
@@ -37,4 +53,4 @@
        @endforeach
        </div>
        </div>
-       
+        -->
