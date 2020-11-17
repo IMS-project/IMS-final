@@ -11,6 +11,7 @@ use App\University;
 use Flash;
 use App\UniCoordinator;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 class DepartmentController extends Controller
 {
     public function __construct()

@@ -100,45 +100,49 @@ class StudentController extends Controller
     public function edit($id)
     {
          $student = Student::find($id);
-             //dd($advisor);
+            //  dd($advisor);
          $userid = $student->user_id;
          $unid = $student->university_id;
          $depid = $student->department_id;
-         $rolid=$student->role_id;
 
-     $user = User::find($userid);
-
-      $university = University::find($unid);
-      $universitys = University::all();  
+        $user = User::find($userid);
+        $university = University::find($unid);
+        // $universitys = University::all();  
     
-        $departments= Department::find($depid);
-        $department = Department::all();
+        $departments= Department::where('id', $depid )->get();
+        //     $department = Department::all();
+        // dd( $departments);
 
     return view('universities.student.edit')->with('users', $user)
                                         ->with('students',$student)
-                                        ->with('university',$university)
-                                        ->with('universitys',$universitys)
-                                        ->with('department', $department)
                                         ->with('departments', $departments);
     }
 
     public function update(Request $request, $id)
     {
-        //
+        
         
         $student = Student::find($id);
-        $user = User::find($id);
-        
+        $user = User::where('id', $student->user_id)->first();
         $user->first_name = $request->first_name;
         $user->last_name = $request->last_name;
+        $user->sex = $request->sex;
         $user->phone = $request->phone;
+        $user->role = 6;
+        $user->email = $request->email;
         $user->password = Hash::make($request->password);  // Hash::make($data['password']),
         $user->save();
 
-
-        $student->university_id = $request->university;
+        $id = $user->id;
+        $unid = UniCoordinator::where('user_id',Auth::id())->first();
+        $student->student_id = $request->student_id;
+        $student->user_id = $id;
+        $student->department_id = $request->department;
+        $student->university_id =$unid->university_id;
+        $student->semester_term = $request->semister;
+        $student->class_year = $request->year;
+        $student->grade = $request->grade;
         $student->save();
-
         Flash::success('updated successfully.');
         $student = Student::all();
         return view('universities.student.index')->with('students', $student);

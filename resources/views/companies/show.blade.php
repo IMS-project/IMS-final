@@ -23,9 +23,9 @@
          <tbody>
             <tr>
                 <td>{{ $company->name }}</td>
-                <td>{{ $company->address }}</td>
+                <td>{{ $company->address}}</td>
                 <td>{{ $company->work_area }}</td>
-                <td>{{ $company->offer_capacity</td>
+                <td>{{ $company->offer_capacity}}</td>
                 <td>{{ $company->mini_grade}}</td>
                 <td>{{ $company->other_skills }}</td>
             </tr>

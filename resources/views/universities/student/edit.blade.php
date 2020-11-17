@@ -39,12 +39,11 @@
               </div>
             </div>
 
-            {{-- <div class="form-group row">
-                <lable for = "email" class = "col-sm-1 col-form-label"><h5>Email:</h5></lable>
+        <lable for = "email" class = "col-sm-1 col-form-label"><h5>Email:</h5></lable>
                 <div class="col-sm-6">
                     <input type="email" name="email" class="form-control" value="{{$users->email}}" id="titleid" placeholder="email" required>
                </div>
-            </div> --}}
+            </div> 
 
             <div class="form-group row">
                 <lable for = "phone" class = "col-sm-1 col-form-label"><h5>Phone:</h5></lable>
@@ -63,30 +62,16 @@
             </div>
             </div>
 
-               <!--    ----university ---- -->
-            <div class="form-group row">
-                <lable for = "phone" class = "col-sm-1 col-form-label"><h5>university:</h5></lable>
-                <div class="col-sm-6">
-                <select name="university" id="name" type ="text" class="form-control" value="{{ old('university_id') }}">
-                     @foreach ($universitys as $uni)
-                     <option value="{{ $uni->id }}">{{$uni->name}}</option>
-                     @endforeach
-                  </select> 
-              </div>
-            </div>
-
             <div class="form-group row">
                 <lable for = "phone" class = "col-sm-1 col-form-label"><h5>departments:</h5></lable>
                 <div class="col-sm-6">
-                <select name="department" id="name" type ="text" class="form-control" value="{{ old('department_id') }}">
-                     @foreach ($department as $dep)
+                <select name="department" id="department" type ="text" class="form-control" value="{{ old('department_id') }}">
+                     @foreach ($departments as $dep)
                      <option value="{{ $dep->id }}">{{$dep->department_name}}</option>
                      @endforeach
                   </select> 
               </div>
             </div>
-
-
                <!--    ----semister ---- -->
             <div class="form-group row">
             <lable for = "semister" class = "col-sm-1 col-form-label"><h5>semister-term:</h5></lable>
