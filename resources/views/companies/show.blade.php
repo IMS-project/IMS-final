@@ -12,6 +12,7 @@
                 <div class="row" style="padding-left: 20px">
                     @include('companies.show_fields')
                     {{-- <a href="{{ route('companies.index') }}" class="btn btn-success">apply here</a> --}}
+                </div></div></div>
                     <a href="{{ route('companies.index') }}" class="btn btn-primary">back</a>
                 </div>
                 

@@ -8,23 +8,27 @@
      <div class="box box-primary">
          <div class="box-body">
             <div class="row" style="padding-left: 20px">
+                <table class="table" id="companies-table">
+                    <thead>
+                        <tr>
+                            <th>university</th>
+                            <th>Department name</th>
+                        </tr>
+                    </thead>
+                <tbody>
+                    <tr>
+                        <td>{{ $departments->university->name }}</td>
+                        <td>{{ $departments->department_name }}</td>
+                    </tr>
 
-                <div class="form-group">
-                    {!! Form::label('name', 'Name:') !!}
-                    <p>{{ $departments->department_name }}</p>
-                </div>
-
-                <div class="form-group">
-                    {!! Form::label('university', ' university:') !!}
-                    <p>{{ $departments->university->name }}</p>
-                </div>
-                
-                    <a href="{{ route('departments.index') }}" class="btn btn-default">Back</a>
+                </tbody>
+                </table>
+            </div></div>
+     </div>      
+                    <a href="{{ route('departments.index') }}" class="btn btn-primary">Back</a>
                 </div>
                 
             </div>
         </div>
     </div>
-
-
 @endsection

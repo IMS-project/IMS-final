@@ -12,8 +12,9 @@
             <div class="row" style="padding-left: 20px">
 
                 @include('universities.show_fields')
-                
-                <a href="{{ route('universities.index') }}" class="btn btn-default">Back</a>
+            </div></div>
+     </div>
+                <a href="{{ route('universities.index') }}" class="btn btn-primary">Back</a>
              </div>
             </div>
         </div>

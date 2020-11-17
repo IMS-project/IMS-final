@@ -74,13 +74,14 @@ class AdvisorController extends Controller
     {   $advisor = Advisor::find($id);
         //dd($advisor);
         $userid = $advisor->user_id;
-        $unid = $advisor->university_id;
+        $depid = $advisor->department_id;
+        
          $user = User::find($userid);
-         $university = University::find($unid);
+         $department= Department::find($depid);
          //dd($role);
         return view('universities.advisor.show')->with('users', $user)
                                                 ->with('advisors',$advisor)
-                                                ->with('university',$university);
+                                                ->with('departments',$department);
 
     }
 

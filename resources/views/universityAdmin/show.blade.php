@@ -10,40 +10,34 @@
         <div class="box box-primary">
             <div class="box-body">
                 <div class="row" style="padding-left: 20px">
-                    {{-- @include('companies.show_fields') --}}
-                    {{-- <a href="{{ route('companies.index') }}" class="btn btn-success">apply here</a> --}}
-                    <!-- Created At Field -->
-{{-- <div class="form-group">
-    {!! Form::label('name', 'name:') !!}
-    <p>{{ $company->name }}</p>
-</div> --}}
-<div class="form-group">
-    {!! Form::label('name', 'name:') !!}
-    <p>{{ $company->name }}</p>
-</div>
+                    <table class="table" id="companies-table">
+                        <thead>
+                            <tr>
+                                <th>NAme</th>
+                                <th>Address</th>
+                                <th>work_area</th>
+                                <th>offer_capacity</th>
+                                <th>CGPA</th>
+                                <th>other_skills</th>
 
-<!-- Updated At Field -->
-<div class="form-group">
-    {!! Form::label('address', 'address:') !!}
-    <p>{{ $company->address }}</p>
-</div>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>{{ $company->name }}</td>
+                                <td>{{ $company->address }}</td>
+                                <td>{{ $company->work_area }}</td>
+                                <td>{{ $company->offer_capacity }}</td>
+                                <td>{{ $company->mini_grade}}</td>
+                                <td>{{ $company->other_skills }}</td>
+                                
+                        
+                            </tr>
 
-<div class="form-group">
-    {!! Form::label('work_area', 'work_area:') !!}
-    <p>{{ $company->work_area }}</p>
-</div>
-<div class="form-group">
-    {!! Form::label('offer_capacity', 'offer_capacity:') !!}
-    <p>{{ $company->offer_capacity }}</p>
-</div>
-<div class="form-group">
-    {!! Form::label('mini_grade', 'mini_grade:') !!}
-    <p>{{ $company->mini_grade}}</p>
-</div>
-<div class="form-group">
-    {!! Form::label('other_skills', 'other_skills:') !!}
-    <p>{{ $company->other_skills }}</p>
-</div>
+                        </tbody>
+                 </table>
+                     
+                </div></div></div>
                     <a href="{{ route('company.index') }}" class="btn btn-primary">back</a>
                 </div>
                 
