@@ -33,7 +33,8 @@
     </table>
   
                     {{-- <a href="{{ route('companies.index') }}" class="btn btn-success">apply here</a> --}}
-                        <a href="{{ route('companies.index') }}" class="btn btn-primary">back</a>
+                </div></div></div>
+                    <a href="{{ route('companies.index') }}" class="btn btn-primary">back</a>
                 </div>
                 
             </div>

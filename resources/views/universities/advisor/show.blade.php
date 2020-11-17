@@ -8,39 +8,34 @@
      <div class="box box-primary">
          <div class="box-body">
             <div class="row" style="padding-left: 20px">
+                <table class="table" id="companies-table">
+                    <thead>
+                        <tr>
 
-            <div class="form-group">
-                    {!! Form::label('first_name', 'First_Name:') !!}
-                    <p>{{ $users->first_name }}</p>
-                </div>
-                <div class="form-group">
-                    {!! Form::label('last_name', 'Last_Name:') !!}
-                    <p>{{ $users->last_name }}</p>
-                </div>
+                            <th>Full NAme</th>
+                            <th>Email</th>
+                            <th>phone</th>
+                            <th>sex</th>
+                            <th>Department</th>
+                        </tr>
+                    </thead>
+                <tbody>
+                    <tr>
+                        <td>{{$users->first_name }}  {{ $users->last_name }}</td>
+                        <td>{{$users->email }}</td>
+                        <td>{{$users->phone }}</td>
+                        <td>{{$users->sex }}</td>
+                        <td>{{$advisors->department->department_name }}</td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+                </table>
 
-                <div class="form-group">
-                    {!! Form::label('email', 'Email:') !!}
-                    <p>{{ $users->email }}</p>
-                </div>
-
-                <div class="form-group">
-                    {!! Form::label('phone', 'Phone:') !!}
-                    <p>{{ $users->phone }}</p>
-                </div>
-                <div class="form-group">
-                    {!! Form::label('sex', 'sex:') !!}
-                    <p>{{ $users->sex }}</p>
-                </div>
-                <div class="form-group">
-                    {!! Form::label('university', 'university:') !!}
-                    <p>{{ $university->name }}</p>
-                </div>
+            </div></div></div>
+            
+                    <a href="{{ route('Advisor.index') }}" class="btn btn-primary">Back</a>
                 
-                    <a href="{{ route('Advisor.index') }}" class="btn btn-default">Back</a>
-                </div>
-                
-            </div>
-        </div>
     </div>
 
 

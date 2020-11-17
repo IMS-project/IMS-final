@@ -1,56 +1,50 @@
+<table class="table" id="companies-table">
+    <thead>
+        <tr>
+            <th>name</th>
+            <th>address</th>
+            <th></th>
+        </tr>
+    </thead>
+<tbody>
 
-<!-- <div class="form-group">
-    {!! Form::label('name', 'name:') !!}
-    <p>{{ $university->name }}</p>
-</div>
+    <tr>
+        <td>{{ $university->name }}</td>
+        <td>{{ $university->address }}</td>
+        <td></td>
+    </tr>
+    
+</tbody>
 
-<div class="form-group">
-    {!! Form::label('address', 'address:') !!}
-    <p>{{ $university->address }}</p>
-</div> -->
-     <table>
-      <thead>
-       <tr>
-        <th>Name</th>
-        <th>Address</th>
-      </tr>
-     </thead>
-     <tbody>
-     <tr>
-     <td>{{ $university->name }}</td>
-     <td>{{ $university->address }}</td>
-     </tr>
-     </tbody>
-    </table>
+</table>
+<table class="table" id="companies-table">
+    <thead>
 
-<!-- 
-    <hr>
-       <h4 class="text-primary text-center">List of departments</h4>
+        <tr>
+            <th>list of  deparments</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+     @foreach($university->department as $r)
+     <td>{{$r->department_name}}</td>
+           
+       @endforeach     
+        </tr>
+    </tbody>
+</table>
+       
        <div class="row">
        <div class="col-sm-4"></div>
        <div class="col-sm-4">
+       </div>
+       </div>
 
-       @foreach($university->department as $r)
-       <div class="form-control">
-           <p>{{$r->department_name}}</p></div>
-       @endforeach
-
+       <div class="row">
+       <div class="col-sm-4"></div>
+       <div class="col-sm-4">  
        </div>
        </div>
        
-       <hr>
-       <h4 class="text-primary text-center">List of advisors</h4>
-       <div class="row">
-       <div class="col-sm-4"></div>
-       <div class="col-sm-4">
 
-       @foreach($university->advisor as $r)
-       <ul>
-           <p>{{$r->advisor_name}}</p>
-          <div><p>{{$r->advisor_email}}</p></div>
-          <di><p>{{$r->advisor_phone}}</p></div> 
-       </ul>
-       @endforeach
-       </div>
-       </div>
-        -->
+       

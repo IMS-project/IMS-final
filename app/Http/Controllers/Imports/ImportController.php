@@ -30,35 +30,38 @@ class ImportController extends Controller
             'import_file' => 'required',
         ]);
 
-        $data = Excel::import(new UsersImport, request()->file('import_file'));
+
+         Excel::import(new UsersImport, request()->file('import_file'));
+         return redirect()->route('Student.index')->with('success', 'data imported succesfully');
         // return back();
         // // $path = $request->file('import_file')->getRealpath();
         // // $data = Excel::load($path)->get();
-         $role = Role::all()->where('id',6);
+        //  $role = Role::all()->where('id',6);
         // // $insert_data = array();
-        if ($data){
-            $password = Hash::make(str_random(8));
-            $role_id = $request->get('id');
-            foreach ($data as $row) {
-                $insert_data[] = array(
-                    'name' => $row['name'],
-                    'sex' => $row['sex'],
-                    'phone' => $row['phone'],
-                    'role'=>$role->id,
-                    'email' => $row['email'],
-                    'password' => $password,
+        // if ($data){
+        //     $password = Hash::make(str_random(8));
+        //     $role_id = $request->get('id');
+        //     foreach ($data as $row) {
+        //         $insert_data[] = array(
+        //             'first_name' => $row['first_name'],
+        //             'last_name' => $row['last_name'],
+        //             'sex' => $row['sex'],
+        //             'phone' => $row['phone'],
+        //             'role'=>6,
+        //             'email' => $row['email'],
+        //             'password' => $password,
                     
-                );
-                //   
+        //         );
+        //         //   
 
-            }
-            // echo $insert_data;
-            if (!empty($insert_data)) {
-                echo "inset data is not emptyd";
-                DB::table('users')->insert($insert_data);
-                return back()->with('success', 'data imported succesfully');
-            }
-        }
+        //     }
+        //     // echo $insert_data;
+        //     if (!empty($insert_data)) {
+        //         echo "inset data is not emptyd";
+        //         DB::table('users')->insert($insert_data);
+        //         return back()->with('success', 'data imported succesfully');
+        //     }
+        // }
     // public function import(Request $request)
     // {   
     //     //get file

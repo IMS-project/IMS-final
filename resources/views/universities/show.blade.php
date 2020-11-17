@@ -7,24 +7,10 @@
          <div class="box-body">
             <div class="row" style="padding-left: 20px">
 
-    <table class= "table" id="universitie-table" >
-          <thead>
-             <tr>
-                <th>Name</th>
-                <th>Address</th>
-            </tr>
-        </thead>
-
-         <tbody>
-            <tr>
-                <td>{{ $university->name }}</td>
-                <td>{{ $university->address }}</td>
-            </tr>
-         </tbody>
-    </table>
-  
-    <a href="{{ route('universities.index') }}" class="btn btn-success">Back</a>
-    
+                @include('universities.show_fields')
+            </div></div>
+     </div>
+                <a href="{{ route('universities.index') }}" class="btn btn-primary">Back</a>
              </div>
             </div>
         </div>

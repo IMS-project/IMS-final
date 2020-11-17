@@ -36,9 +36,7 @@
                 </tbody>
             </table>
                
-            <div class="row" style="padding-left: 20px">
-
-                 
+            <div class="row" style="padding-left: 20px">         
                 </div>
                 
             </div>

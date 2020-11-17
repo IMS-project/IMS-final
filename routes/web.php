@@ -26,6 +26,7 @@
     Route::resource('acceptance','AcceptanceController');
     Route::resource('superAdmin','SuperAdminController');
     Route::resource('Requests','placementController');
+    Route::resource('Advisorplacement','AdvisorplacementController');
 //     Route::resource('students','placementController');
     Route::resource('Assignadvisor','AssignadvisorController');
     Route::get('/home', 'HomeController@index')->middleware('verified');
