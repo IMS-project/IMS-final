@@ -91,7 +91,6 @@ class AdvisorController extends Controller
         //dd($advisor);
         $userid = $advisor->user_id;
          $unid=$advisor->university_id;
-          $rolid=$advisor->role_id;
         
         $user = User::find($userid);
         $university = University::find($unid);
@@ -110,8 +109,7 @@ class AdvisorController extends Controller
     {
         //
         $advisor = Advisor::find($id);
-        $user = User::find($id);
-        
+        $user = User::where('id', $advisor->user_id)->first();
         $user->first_name = $request->first_name;
         $user->last_name = $request->last_name;
         $user->phone = $request->phone;

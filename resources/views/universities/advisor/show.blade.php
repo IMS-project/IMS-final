@@ -34,7 +34,7 @@
 
             </div></div></div>
             
-                    <a href="{{ route('Advisor.index') }}" class="btn btn-primary">Back</a>
+                    <a href="{{ route('Advisor.index') }}" class="btn btn-success">Back</a>
                 
     </div>
 

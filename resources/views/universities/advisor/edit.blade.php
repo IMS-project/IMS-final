@@ -44,8 +44,9 @@
             <lable for = "gender" class = "col-sm-1 col-form-label">gender</lable>
             <div class="col-sm-6">
                 <select id="" class=" form-control" name = 'sex'  required>
-                     <option value="Male" id="male" type="radio" name="sex">Male</option>
-                    <option value="Female" id="female" type="radio" name="sex">Female</option> -->
+                     <!-- <option value="Male" id="male" type="radio" name="sex">Male</option>
+                    <option value="Female" id="female" type="radio" name="sex">Female</option> --> -->
+                    
                     @if ($users->sex=="Male")
                     <option value="male" selected>Male</option>
                     <option value="female">Female</option>
