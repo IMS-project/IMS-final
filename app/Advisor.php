@@ -29,6 +29,8 @@ class Advisor extends Model
     public function company(){ 
         return $this->belongsTo('App\Company');
     }   
-
+    public function assign(){
+        return $this->hasOne('App\Assign');
+    }
 
 }

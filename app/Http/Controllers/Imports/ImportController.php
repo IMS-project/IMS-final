@@ -14,7 +14,12 @@ use Illuminate\Support\Facades\Hash;
 use Maatwebsite\Excel\Facades\Excel;
 
 class ImportController extends Controller
-{
+{ 
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         $users = User::orderBy('created_at', 'DESC')->get();

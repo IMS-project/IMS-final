@@ -3,15 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Applicant;
-use App\Student;
-use App\placement;
-use App\Advisor;
+use App\Assign;
 use Flash;
-use DB;
-use App\UniCoordinator;
-use Illuminate\Support\Facades\Auth;
-class AssignadvisorController extends Controller
+class AssignController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -25,11 +19,8 @@ class AssignadvisorController extends Controller
     }
 
     public function index()
-    { 
-
-        $unicor = UniCoordinator::where('user_id', Auth::id())->first();
-        $advisors = Advisor::where('university_id', $unicor->university_id)->get();
-        return view('Assignadvisor.index')->with('advisors',$advisors);
+    {
+       
     }
 
     /**
@@ -39,7 +30,7 @@ class AssignadvisorController extends Controller
      */
     public function create()
     {
-        
+       
     }
 
     /**
@@ -48,9 +39,37 @@ class AssignadvisorController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,$id,$id2)
     {
-       
+        $assign = new Assign();
+        $assign->advisor_id =$id2;
+        $assign->company_id =$id;
+
+        $stid = Assign::all()->where('company_id',$assign->company_id);
+        $count = 0 ;
+    foreach($stid as $row)
+        {
+            $try = $row->company_id;
+            if($try==$id)
+            {
+                $count = 1;
+            } 
+        }
+        if($count==1)
+        {
+            Flash::warning('You have Already Applied . . .');
+            return view('Assignadvisor.index') ;
+        } 
+        else
+        {
+            $assign->save();
+            Flash::success('Application successful.');
+        }
+    
+        
+
+        return view('Assignadvisor.index');
+
     }
 
     /**
@@ -60,14 +79,8 @@ class AssignadvisorController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    { 
-        $advisor =Advisor::find($id);
-        $addp = $advisor->department_id;
-        $adui = $advisor->university_id;
-        $placement = Placement::all();
-        $student = Student::where('university_id',$adui)->where('department_id',$addp)->get();
-
-        return view('Assignadvisor.view')->with('students',$student)->with('placement',$placement)->with('id',$id);
+    {
+      
     }
 
     /**
@@ -90,7 +103,7 @@ class AssignadvisorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
+       
     }
 
     /**
@@ -101,6 +114,6 @@ class AssignadvisorController extends Controller
      */
     public function destroy($id)
     {
-        
+       
     }
 }

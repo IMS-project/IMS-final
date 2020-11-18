@@ -33,7 +33,7 @@
                 </tbody>
                 </table>
             </div></div></div>
-                    <a href="{{ route('Supervisor.index') }}" class="btn btn-success">Back</a>
+                    <a href="{{ route('Supervisor.index') }}" class="btn btn-primary">Back</a>
                 </div>
                 
             </div>

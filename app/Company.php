@@ -45,5 +45,8 @@ class Company extends Model
     public function placement(){
         return $this->hasOne('App\placement');
     }
+    public function assign(){
+        return $this->hasOne('App\Assign');
+    }
 
 }

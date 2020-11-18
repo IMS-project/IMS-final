@@ -85,7 +85,7 @@
 
                 <div class="form-group row">
                   <div class="col-sm-6 pull-right">
-                    <button class="btn btn-success" type="submit"> Register</button>
+                    <button class="btn btn-success" type="submit" id="submitBtn"> Register</button>
                     <a href="{{ route('UniCoordinator.index') }}" class="btn btn-default">Cancel</a>
                  </div>
                </div>
@@ -95,4 +95,16 @@
     <div class="col-sm-2"></div>
 </div>
 </div>
+<script>
+    const grade = document.getElementById('grade');
+    const submitBtn = document.getElementById('submitBtn');
+    grade.addEventListener('change', () => {
+        if(grade.value > 4){
+            submitBtn.classList.add('disabled');
+        }
+        else {
+            submitBtn.classList.remove('disabled');
+        }
+    })
+</script>
 @endsection()

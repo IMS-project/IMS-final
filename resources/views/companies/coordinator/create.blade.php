@@ -35,12 +35,12 @@
                     <input type="email" name="email" class="form-control" id="titleid" placeholder="email" required>
                </div>
             </div>
-            <!-- <div class="form-group row">
+             <div class="form-group row">
                 <lable for = "password" class = "col-sm-1 col-form-label"><h5>Password:</h5></lable>
                 <div class="col-sm-6">
                     <input type="password" name="password" class="form-control" id="titleid" placeholder="password" required>
                </div>
-            </div> -->
+            </div> 
             <div class="form-group row">
                 <lable for = "phone" class = "col-sm-1 col-form-label"><h5>Phone:</h5></lable>
                 <div class="col-sm-6">

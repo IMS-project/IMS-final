@@ -23,14 +23,14 @@
             <div class="form-group row">
                 <lable for = "phone" class = "col-sm-1 col-form-label"><h5>company address</h5></lable>
                 <div class="col-sm-6">
-                    <input type="text" name="address" class="form-control" id="grade" placeholder="address" required>
+                    <input type="text" name="address" class="form-control"  placeholder="address" required>
                 </div>
             </div>
 
             <div class="form-group row">
               <lable for = "phone" class = "col-sm-1 col-form-label"><h5>work area</h5></lable>
               <div class="col-sm-6">
-                  <input type="text" name="work_area" class="form-control" id="grade" placeholder="work area" required>
+                  <input type="text" name="work_area" class="form-control" placeholder="work area" required>
               </div>
           </div>
     
@@ -45,7 +45,8 @@
             <div class="form-group row">
                 <lable for = "phone" class = "col-sm-1 col-form-label"><h5>minimum grade</h5></lable>
                 <div class="col-sm-6">
-                    <input type="float" name="mini_grade" class="form-control" id="grade" placeholder="grade" required>
+                    <input type="float" name="mini_grade" class="form-control" value="2" id="grade">
+                    
                 </div>
             </div>
       
@@ -61,7 +62,7 @@
 
             <div class="form-group row">
               <div class="col-sm-6 pull-right">
-                <button class="btn btn-success" type="submit"> Register</button>
+                <button class="btn btn-success disabled" type="submit" id="submitBtn"> Register</button>
                 <a href="{{ route('companies.index') }}" class="btn btn-default">Cancel</a>
             </div>
             </div>
@@ -72,4 +73,17 @@
     <div class="col-sm-2"></div>
 </div>
 </div>
+<script>
+    const grade = document.getElementById('grade');
+    const submitBtn = document.getElementById('submitBtn');
+    grade.addEventListener('keyup', () => {
+        console.log(grade.value);
+        if(+grade.value > 4){
+            submitBtn.classList.add('disabled');
+        }
+        else {
+            submitBtn.classList.remove('disabled');
+        }
+    })
+</script>
 @endsection()

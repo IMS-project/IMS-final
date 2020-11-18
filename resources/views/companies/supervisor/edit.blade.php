@@ -11,7 +11,8 @@
    <div class="content">
        @include('adminlte-templates::common.errors')
     <div class="box box-primary">
-      
+        <div class="row" style="padding: 25px">
+
         <form method="post" action="{{ route('Supervisor.update', $supervisors->id)}}" enctype="multipart/form-data">
             {{csrf_field()}}
             @method('PUT')
@@ -68,7 +69,7 @@
                     </div>
                     </div>
         </form>
-    
+        </div>
     <div class="col-sm-2"></div>
 </div>
 </div>

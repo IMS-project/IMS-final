@@ -38,8 +38,8 @@
                     <input type="text" name="student_id" class="form-control"value="{{$students->student_id}}" id="student_id" placeholder="student id" required>
               </div>
             </div>
-
-        <lable for = "email" class = "col-sm-1 col-form-label"><h5>Email:</h5></lable>
+            <div class="form-group row">
+             <lable for = "email" class = "col-sm-1 col-form-label"><h5>Email:</h5></lable>
                 <div class="col-sm-6">
                     <input type="email" name="email" class="form-control" value="{{$users->email}}" id="titleid" placeholder="email" required>
                </div>

@@ -5,7 +5,6 @@
             <tr>
         <th>SN</th>
         <th>company name</th>
-        {{-- <th>work_area</th> --}}
         <th>offer_capacity</th>
         <th>mini_grade</th>
         <th>skills required</th>

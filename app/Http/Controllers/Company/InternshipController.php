@@ -16,6 +16,11 @@ use App\Student;
 use App\CompCoordinator;
 class InternshipController extends Controller
 { 
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     
     {  
@@ -23,11 +28,6 @@ class InternshipController extends Controller
         $applicant =Placement::all()->where('company_id',$compcor->company_id);
         //  dd($applicant->student->user);
         return view('companies.internships.index')->with('posts',$applicant);
-
-        // $student = Student::where('user_id', Auth::id())->first();
-        // $placement = Placement::all()->where('student_id',$student->id);
-        // // dd($placement);
-        // return view('companies.internships.index')->with('posts',$placement);
     }  
 
     /**
