@@ -64,8 +64,11 @@ class AssignadvisorController extends Controller
         $advisor =Advisor::find($id);
         $addp = $advisor->department_id;
         $adui = $advisor->university_id;
-        $placement = Placement::all();
-        $student = Student::where('university_id',$adui)->where('department_id',$addp)->get();
+        
+        $student = Student::where('university_id',$adui)->where('department_id',$addp)->first();
+        // dd($student);
+        $placement = Placement::all()->where('student_id',$student->id)->count();
+         dd($placement);
 
         return view('Assignadvisor.view')->with('students',$student)->with('placement',$placement)->with('id',$id);
     }

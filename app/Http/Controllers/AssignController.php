@@ -45,7 +45,7 @@ class AssignController extends Controller
         $assign->advisor_id =$id2;
         $assign->company_id =$id;
 
-        $stid = Assign::all()->where('company_id',$assign->company_id);
+        $stid = Assign::all()->where('advisor_id',$id2);
         $count = 0 ;
     foreach($stid as $row)
         {
@@ -57,8 +57,8 @@ class AssignController extends Controller
         }
         if($count==1)
         {
-            Flash::warning('You have Already Applied . . .');
-            return view('Assignadvisor.index') ;
+            Flash::warning('You have Already assigned . . .');
+            // return view('Assignadvisor.index') ;
         } 
         else
         {
@@ -68,7 +68,7 @@ class AssignController extends Controller
     
         
 
-        return view('Assignadvisor.index');
+        return back()->with('Application successful');
 
     }
 
