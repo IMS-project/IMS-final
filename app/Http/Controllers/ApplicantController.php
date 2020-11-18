@@ -105,8 +105,10 @@ class ApplicantController extends Controller
     {
         $company = Company::find($id);
         $student = Company::find($id)->applicant()->count();
+        $placement =Company::find($id)->placement()->count();
+       
 
-        return view('studentpage.show')->with('company', $company)->with('applicants',$student);
+        return view('studentpage.show')->with('company', $company)->with('applicants',$student)->with('placed',$placement);
     }
 
     /**

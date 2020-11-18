@@ -2,7 +2,7 @@
 
 @section('content')
     <section class="content-header">
-        <h1 class="pull-left">Companies</h1>
+        <h4 class="pull-left">Companies</h4>
         
         <h1 class="pull-right">
            <a class="btn btn-primary pull-right" style=

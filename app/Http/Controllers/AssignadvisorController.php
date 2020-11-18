@@ -7,6 +7,7 @@ use App\Applicant;
 use App\Student;
 use App\placement;
 use App\Advisor;
+use App\Company;
 use Flash;
 use DB;
 use App\UniCoordinator;
@@ -64,13 +65,34 @@ class AssignadvisorController extends Controller
         $advisor =Advisor::find($id);
         $addp = $advisor->department_id;
         $adui = $advisor->university_id;
+        $company = Company::all();
+        //dd($company[0]);
+        $student = Student::where('university_id',$adui)->where('department_id',$addp)->get();
+        $count = 0;
+        $countArray=[];
         
-        $student = Student::where('university_id',$adui)->where('department_id',$addp)->first();
-        // dd($student);
-        $placement = Placement::all()->where('student_id',$student->id)->count();
-         dd($placement);
+            foreach($company as $comp)
+            {
+                foreach($student as $row)
+                {
+                $compid = $comp->id;
+                $place = Placement::all()->where('student_id',$row->id)
+                                        ->where('company_id',$comp->id)->count();
+                $count = $count + $place;
+                } 
+                $countArray[$comp->id]=$count;
+                $count=0;
+            }
+        //  dd($countArray);
+        //  dd($student);
+        //  $placement = Placement::find('company_id')->student()->groupBy('company_id');
+         $placement = Placement::all();//->where('student_id',$student->id)->groupBy('company_id')->get();
+        // dd($placement);
 
-        return view('Assignadvisor.view')->with('students',$student)->with('placement',$placement)->with('id',$id);
+        return view('Assignadvisor.view')->with('placementcount',$countArray)
+                    ->with('id',$id)
+                    ->with('placement',$placement)
+                    ->with('company',$company);
     }
 
     /**

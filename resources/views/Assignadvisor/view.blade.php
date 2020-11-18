@@ -17,26 +17,20 @@
                 <table class="table" id="companies-table">
                     <thead>
                         <tr>
-                            <th>SN</th> 
                             <th>Number of students</th>
                             <th>Company</th>
                             <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($students as $stu)
-                        <tr>
-                            <td>{{$stu->id}} </td>
-                            <td>6 </td>
-                            
+                        @foreach($company as $co)
+                        <tr>  
+                            <td>{{ $placementcount[$co->id]}} </td> 
+                                   
+                            <td>{{$co->name}}</td> 
+                            <td><a href="{{ route('assign',[$co->id,$id] )}}" class="btn btn-success">Assign</a> 
                                   
-                        @foreach ($placement as $row)
-                            @if($row->student_id==$stu->id)
-                            <td>{{$row->company->name}}</td> 
-                            <td><a href="{{ route('assign',[$row->company_id,$id] )}}" class="btn btn-success">Assign</a> 
-                            @endif
-                        @endforeach       
-                    </tr>
+                        </tr>
                         @endforeach
 
                     </tbody>                 

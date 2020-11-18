@@ -9,7 +9,10 @@ use App\Student;
 use App\User;
 use App\Department;
 use App\University;
-use App\Placement;
+use App\placement;
+use App\Company;
+use App\CompCoordinator;
+use Flash;
 class ApplicationController extends Controller
 {
     /**
@@ -94,16 +97,35 @@ class ApplicationController extends Controller
     {
         // $application = Application::where('id', '=', e($id))->first();
         $applicant = Applicant::where('id','=',e($id))->first();
+        $user = CompCoordinator::where('user_id',Auth::id())->first();
+        
+        $numcount = placement::all()
+        ->where('company_id',$user->company_id)
+        ->count();
+        $complimit = Company::all()->where('id',$user->company_id);
+        foreach($complimit as $limit)
+        {
+            $companyLimit = $limit->offer_capacity;
+        } 
+        if($numcount<$companyLimit)
+        {
+            if($applicant)
+            {
+
+                $applicant->status = "approved";
+                $applicant->save();
+                $applicant =Applicant::all()->where('status', 'pending');
+                return view('companyAdmin.index')->with('applicants',$applicant);
+                //return a view or whatever you want tto do after
+            }
+        }
+        else{
+            Flash::warning('You have Reached Your Maximum Limit');
+        }
     
-    if($applicant)
-    {
-        $applicant->status = "approved";
-        $applicant->save();
-        $applicant =Applicant::all()->where('status', 'pending');
-        return view('companyAdmin.index')->with('applicants',$applicant);
-        //return a view or whatever you want tto do after
     }
-    }
+
+
     public function reject(Request $request, $id)
     {
         // $application = Application::where('id', '=', e($id))->first();

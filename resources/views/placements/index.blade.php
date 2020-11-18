@@ -1,7 +1,7 @@
 @extends('studentpage.app')
 @section('content')
     <section class="content-header">
-        <h1 class="pull-left">placement infrormation</h1>
+        <h4 class="pull-left">request status</h4>
         {{-- <h1 class="pull-right">
            <a class="btn btn-primary pull-right" style=
            "margin-top: -10px;margin-bottom: 5px" href="{{ route('companies.create') }}"><i class="fa fa-plus-circle">Add New</i></a>

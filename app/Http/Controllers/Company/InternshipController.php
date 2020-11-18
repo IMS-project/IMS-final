@@ -23,8 +23,9 @@ class InternshipController extends Controller
 
     public function index()
     
-    {  
-        $compcor = CompCoordinator::all()->first();
+    {  $student = Student::where('user_id', Auth::id())->first();
+
+        $compcor = CompCoordinator::where('user_id',Auth::id())->first();
         $applicant =Placement::all()->where('company_id',$compcor->company_id);
         //  dd($applicant->student->user);
         return view('companies.internships.index')->with('posts',$applicant);
