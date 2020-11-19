@@ -95,7 +95,6 @@ class CompanyController extends Controller
     {
          $company->name = $request->name;
         $company->address = $request->address;
-        $company->work_area = $request->work_area;
         $company->offer_capacity = $request->offer_capacity;
         $company->save();
         //$company->update($id); //notice

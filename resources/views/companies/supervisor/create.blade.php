@@ -58,7 +58,16 @@
                 </select>
             </div>
             </div>
-            
+            <div class="form-group row">
+                <lable for = "phone" class = "col-sm-1 col-form-label">Department</lable>
+                <div class="col-sm-6">
+                <select name="department" id="name" type ="text" class="form-control" value="{{ old('university_id') }}">
+                     @foreach ($departments as $dep)
+                     <option value="{{ $dep->id }}">{{$dep->department_name}}</option>
+                     @endforeach
+                  </select> 
+              </div>
+            </div>
             
                 <div class="form-group row">
                   <div class="col-sm-6 pull-right">

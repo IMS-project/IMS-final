@@ -12,7 +12,7 @@ use App\Role;
  use App\Company;                                                    
  use App\Supervisor;
  use App\CompCoordinator;
-
+use App\Companydepartment;
 class SupervisorController extends Controller
 {
   
@@ -31,13 +31,15 @@ class SupervisorController extends Controller
     {
         // $role = Role::orderBy('name')->get();
         // $company = Company::orderBy('created_at')->get();
-        return view('companies.supervisor.create');
+        // $department = Department::orderBy('created_at')->get();
+        $department =Companydepartment::orderBy('created_at')->get();
+        return view('companies.supervisor.create')->with('departments',$department);
 
     }
 
     public function store(Request $request, User $user)
     {
-        //
+        
         $supervisor = new Supervisor;
         $comid = CompCoordinator::all()->first();
 
@@ -53,6 +55,7 @@ class SupervisorController extends Controller
         $id = $user->id;
         $supervisor->user_id = $id;
         $supervisor->company_id = $comid->company_id;
+        $supervisor->department_id = $request->department;
         $supervisor->save();
         Flash::success(' saved successfully');
         $supervisor = Supervisor::all(); 

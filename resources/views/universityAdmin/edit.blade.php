@@ -41,13 +41,7 @@
                             </div>
 
 
-                        <div class="form-group row">
-                            <lable for = "workarea" class = "col-sm-1 col-form-label"><h5>work area</h5></lable>
-                            <div class="col-sm-6">
-                                <input type="text" name="work_area" class="form-control" id="student_id" placeholder="work area" 
-                                value="{{$company->work_area}}" required>
-                            </div>
-                        </div>
+                        
                 
                         <!--    ---- student id ---- -->
                         <div class="form-group row">
