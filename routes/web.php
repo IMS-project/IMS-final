@@ -30,6 +30,7 @@
     Route::resource('Advisorplacement','AdvisorplacementController');
 //     Route::resource('students','placementController');
     Route::resource('Assignadvisor','AssignadvisorController');
+    Route::resource('Assignsuper','AssignsupervisorController');
     Route::get('/home', 'HomeController@index')->middleware('verified');
     // Route::resource('Applicants', 'University\PlacementController');
     Route::resource('offer_company', 'ApplicantController');

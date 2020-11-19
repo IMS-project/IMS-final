@@ -130,22 +130,31 @@
                 <!-- Sidebar Menu -->
         
                 <ul class="sidebar-menu" data-widget="tree">
-                    <li class="{{ Request::is('applicants*') ? 'active' : '' }}">
-                        <a href="{{ route('applicants.index') }}"><i class="fa fa-users" aria-hidden="true"></i>
-                            <span>Applicants</span></a>
-                        </li>
-                        
-                        <li class="{{ Request::is('Supervisor*') ? 'active' : '' }}">
-                            <a href="{{ route('Supervisor.index') }}"><i class="fa fa-user" aria-hidden="true"></i>
-                                <span>Supervisor</span></a>
+                <li>
+                </li>
+                <li class="{{ Request::is('Student*') ? 'active' : '' }}">
+                    <a href="{{ route('Student.index') }}"><i class="fa fa-users" aria-hidden="true"></i>
+                        <span>Student</span></a>
+                    </li>
+                <li class="{{ Request::is('departments*') ? 'active' : '' }}">
+                <a href= "{{route('departments.index')}}"><i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                </i><span>department</span></a>
+                </li>
+                <li class="{{ Request::is('companies*') ? 'active' : '' }}">
+                    <a href="{{ route('company.index') }}"><i class="fa fa-industry" aria-hidden="true"></i>
+
+                        <span>company</span></a>
+                    </li>
+                        <li class="{{ Request::is('Advisor*') ? 'active' : '' }}">
+                            <a href="{{ route('Advisor.index') }}"><i class="fa fa-user" aria-hidden="true"></i>
+                                <span>Advisor</span></a>
                             </li>
-                            <li class="{{ Request::is('internships*') ? 'active' : '' }}">
-                                <a href="{{ route('internships.index') }}"><i class="fa fa-user-circle"></i><span>placement</span></a>
+                            <li class="{{ Request::is('Advisor*') ? 'active' : '' }}">
+                                <a href="{{ route('Advisor.index') }}"><i class="fa fa-user-circle" aria-hidden="true"></i>
+                                    <span>Assign Advisor</span></a>
                                 </li>
-                            <li class="{{ Request::is('Assignsuper*') ? 'active' : '' }}">
-                                 <a href="{{ route('Assignsuper.index') }}"><i class="fa fa-user-circle"></i><span>Assignsupervisor</span></a>
-                                </li>
-                                
+                
+                </ul>
                 </ul>
                 <!-- /.sidebar-menu -->
             </section>
