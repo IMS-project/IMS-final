@@ -16,28 +16,39 @@
                         <table class="table" id="companies-table">
                             <thead>
                                 <tr>
-                            <th>SN</th>
-                            <th>company name</th>
-                            {{-- <th>work_area</th> --}}
-                            <th>offer_capacity</th>
+    
+                            <th>name</th>
+                            <th>capacity</th>
                             <th>mini_grade</th>
-                            <th>skills required</th>
+                            {{-- <th>skills required</th> --}}
                             <th>placed</th>
                             <th>pending</th>
+                            <th>department</th>
                             <th>Action</th>
                             
                                 </tr>
                             </thead>
                             <tbody>
-                                <td>{{$company->id}}</td>
+                               
                                 <td>{{ $company->name }}</td>
-                                {{-- <td>{{ $company->work_area }}</td> --}}
                                 <td>{{ $company->offer_capacity }}</td>
                                 <td>{{ $company->mini_grade}}</td>
-                                <td>{{ $company->other_skills }}</td>
+                                {{-- <td>{{ $company->other_skills }}</td> --}}
                                 <td>{{ $placed }}</td>
                                 <td>{{$applicants}}</td>
-                                <td><a href="{{ route('applicant',[$company->id]) }}" class="btn btn-success">apply here</a>
+                                <td>
+                                    <select class="form-control" id="department_id">
+            
+                                        @foreach ($departments as $dep)
+                                        <option value="{{$dep->id }}">{{ $dep->department_name}}</option>
+                                        
+                                        @endforeach
+                                        </select>
+                                </td>
+                                
+                                
+                                
+                                <td><a href="{{ route('applicant',[$company->id,$dep->id]) }}" class="btn btn-success">apply here</a>
                                     <a href="{{ route('offer_company.index') }}" class="btn btn-primary">back</a></td>
                             </tbody>
                         </table>

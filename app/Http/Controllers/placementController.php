@@ -7,6 +7,7 @@ use App\Applicant;
 use App\Student;
 use App\placement;
 use Flash;
+use App\Companydepartment;
 use Illuminate\Support\Facades\Auth;
 class placementController extends Controller
 {
@@ -21,6 +22,8 @@ class placementController extends Controller
     }
     public function index()
     {
+        $department =Companydepartment::all()->first();
+        //  dd($department->id);
         $student = Student::where('user_id', Auth::id())->first();
         $applicant =Applicant::all()->where('student_id',$student->id);
         // $stid = Applicant::all()->where('student_id',$applicant->student_id);
@@ -45,13 +48,13 @@ class placementController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request,$id)
+    public function store(Request $request,$id,$id2)
     {
         $placement = new placement();
         $student = Student::where('user_id', Auth::id())->first();
-
         $placement->student_id = $student->id;
         $placement->company_id = $id;
+        $placement->department_id = $id2;
         $placement->status = "accepted";
 
          $checkid = $student->id;

@@ -11,23 +11,27 @@
         <div class="clearfix"></div>
         <div class="box box-primary">
             <div class="box-body">
+                <form method="post" action="{{ route('Assignsuper.store') }}" enctype="multipart/form-data">
+
+                    @csrf
                 <table class="table" id="companies-table">
                     <thead>
                         <tr>
-                            <th>Full name</th>
+                            {{-- <th>Full name</th> --}}
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($supervisor as $super)
+                        @foreach($placements as $super)
                         <tr>
                         
-                            <td><a href="{{ route('Assignsuper.show', [$super->id]) }}">{{$super->user->first_name}} {{$super->user->last_name}}</td>
-
+                        <td><input type="checkbox" name="selected_values[]" value="{{$super->id}}"> {{$super->student->user->first_name}} </td>
+                        
                         </tr>
                         @endforeach
                     </tbody>
                    
                 </table>
+                <button type="submit" name="button" >Assign</button>
                                         
             </div>
         </div>

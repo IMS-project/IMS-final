@@ -16,10 +16,10 @@
     
     Route::post('logout', 'Auth\LoginController@logout')->name('logout');
     Auth::routes(['verify' => true]);
-    Route::get('/applicant/{id}', 'ApplicantController@store')->name('applicant');//for the application function
+    Route::get('/applicant/{id}/{id2}', 'ApplicantController@store')->name('applicant');//for the application function
     Route::get('/approve/{id}', 'ApplicationController@approve')->name('approve');//for the approve function
     Route::get('/reject/{id}', 'ApplicationController@reject')->name('reject');//for the reject function
-    Route::get('/accept/{id}', 'placementController@store')->name('accept');//for the acceptance function
+    Route::get('/accept/{id}/{id2}', 'placementController@store')->name('accept');//for the acceptance function
     Route::get('/list/{id}', 'ApplicationController@list')->name('list');
     Route::get('/assign/{id}/{id2}', 'AssignController@store')->name('assign');//for the application function
     Route::resource('/internships', 'Company\InternshipController');
@@ -46,6 +46,7 @@
          Route::resource('Supervisor','Company\SupervisorController');
 
     Route::resource('departments',  'University\DepartmentController');
+    Route::resource('companydepartments',  'Company\companydepartmentcontoller');
     Route::resource('Internship',  'Company\InternshipController');
   
     Route::get('import/import-excel','Imports\ImportController@index');

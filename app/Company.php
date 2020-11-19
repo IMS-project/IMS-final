@@ -16,7 +16,7 @@ class Company extends Model
     
     protected $dates = ['deleted_at'];
 
-    protected $fillable=["name", "address","work_area","offer_capacity","mini_grade","other_skills"];
+    protected $fillable=["name", "address","offer_capacity","mini_grade","other_skills"];
 
    // protected $guarded=[];
    public function department(){

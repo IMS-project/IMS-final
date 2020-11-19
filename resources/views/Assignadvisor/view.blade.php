@@ -28,7 +28,7 @@
                             <td>{{ $placementcount[$co->id]}} </td> 
                                    
                             <td>{{$co->name}}</td> 
-                            <td><a href="{{ route('assign',[$co->id,$id] )}}" class="btn btn-success">Assign</a> 
+                            <td><a href="{{ route('assign',[$co->id,$id] )}}" class="btn btn-success"><i class="fa fa-plus-circle"></i>Assign</a> 
                                   
                         </tr>
                         @endforeach

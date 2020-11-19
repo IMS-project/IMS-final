@@ -9,6 +9,7 @@ use App\User;
 use App\Placement;
 use DB;
 use Flash;
+use App\Companydepartment;
 use Illuminate\Support\Facades\Auth;
 class ApplicantController extends Controller
 {
@@ -59,13 +60,14 @@ class ApplicantController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $id)
+    public function store(Request $request, $id,$id2)
     {
         $applicant = new Applicant();
         $student = Student::where('user_id', Auth::id())->first();
 
         $applicant->student_id = $student->id;
         $applicant->company_id = $id;
+        $applicant->department_id = $id2;
         $applicant->status = "pending";
         
         $stid = Applicant::all()->where('student_id',$applicant->student_id);
@@ -102,13 +104,19 @@ class ApplicantController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
+    { 
+        $departments = Companydepartment::all();
+        // dd($departments);
         $company = Company::find($id);
         $student = Company::find($id)->applicant()->count();
         $placement =Company::find($id)->placement()->count();
        
 
-        return view('studentpage.show')->with('company', $company)->with('applicants',$student)->with('placed',$placement);
+        return view('studentpage.show')->with('company', $company)
+                                        ->with('applicants',$student)
+                                        ->with('placed',$placement)
+                                        ->with('departments',$departments);
+                                        // ->with('id',$id);
     }
 
     /**

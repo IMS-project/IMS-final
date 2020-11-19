@@ -17,7 +17,6 @@ class CreateCompaniesTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('address');
-            $table->string('work_area');
             $table->bigInteger('offer_capacity');
             $table->float('mini_grade');
             $table->string('other_skills');

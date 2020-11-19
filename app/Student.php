@@ -32,4 +32,7 @@ class Student extends Model
     public function placement(){
         return $this->hasOne('App\placement');
     }
+    public function supervisor(){
+        return $this->belongsTo('App\Supervisor');
+    }
 }

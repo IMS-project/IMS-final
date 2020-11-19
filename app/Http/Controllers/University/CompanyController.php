@@ -32,7 +32,6 @@ class CompanyController extends Controller
         $data= request()->validate([
             "name"=>["required","unique:companies"], 
             "address"=>"required",
-            "work_area"=>"required",
             "offer_capacity"=>"required",
             "mini_grade"=>"required",
             "other_skills"=>"required"
@@ -49,7 +48,6 @@ class CompanyController extends Controller
             $company= new Company();
              $company->name= request('name');
              $company->address= request('address');
-             $company->work_area= request('work_area');
              $company->offer_capacity= request('offer_capacity');
              $company->mini_grade =request('mini_grade');
              $company->other_skills= request('other_skills');

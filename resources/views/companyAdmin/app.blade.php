@@ -134,15 +134,17 @@
                         <a href="{{ route('applicants.index') }}"><i class="fa fa-users" aria-hidden="true"></i>
                             <span>Applicants</span></a>
                         </li>
-                        
+                        <li class="{{ Request::is('companydepartments*') ? 'active' : '' }}">
+                            <a href="{{ route('companydepartments.index') }}"><i class="fa fa-user-circle"></i><span>Departments</span></a>
+                            </li>
                         <li class="{{ Request::is('Supervisor*') ? 'active' : '' }}">
                             <a href="{{ route('Supervisor.index') }}"><i class="fa fa-user" aria-hidden="true"></i>
                                 <span>Supervisor</span></a>
                             </li>
-                            <li class="{{ Request::is('internships*') ? 'active' : '' }}">
+                        <li class="{{ Request::is('internships*') ? 'active' : '' }}">
                                 <a href="{{ route('internships.index') }}"><i class="fa fa-user-circle"></i><span>placement</span></a>
                                 </li>
-                            <li class="{{ Request::is('Assignsuper*') ? 'active' : '' }}">
+                        <li class="{{ Request::is('Assignsuper*') ? 'active' : '' }}">
                                  <a href="{{ route('Assignsuper.index') }}"><i class="fa fa-user-circle"></i><span>Assignsupervisor</span></a>
                                 </li>
                                 

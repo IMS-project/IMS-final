@@ -29,11 +29,11 @@
                             <tbody>
                                 @foreach ($applicants as $row)
                                 <tr>
-                                   {{-- <td>{{$row->student->user->first_name}}</td>  --}}
+    
                                    <td> {{$row->company->name}}</td>
                                     <td>{{$row->status}}</td>
                                     @if($row->status=="approved")
-                                    <td><a href="{{ route('accept',[$row->company->id]) }}"" class="btn btn-success">accept</a></td>
+                                    <td><a href="{{ route('accept',[$row->company->id,$row->department_id]) }}" class="btn btn-success">accept</a></td>
                                     @endif
                                 </tr>
                                 @endforeach

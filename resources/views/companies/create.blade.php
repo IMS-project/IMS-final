@@ -26,13 +26,6 @@
                     <input type="text" name="address" class="form-control"  placeholder="address" required>
                 </div>
             </div>
-
-            <div class="form-group row">
-              <lable for = "phone" class = "col-sm-1 col-form-label"><h5>work area</h5></lable>
-              <div class="col-sm-6">
-                  <input type="text" name="work_area" class="form-control" placeholder="work area" required>
-              </div>
-          </div>
     
             <div class="form-group row">
                 <lable for = "student_id" class = "col-sm-1 col-form-label"><h5>offer capacity:</h5></lable>

@@ -17,11 +17,13 @@ class CreateApplicantsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('student_id');
             $table->unsignedBigInteger('company_id');
+            $table->unsignedBigInteger('department_id');
             $table->string('status');
             $table->timestamps();
             
             $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
             $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
+            $table->foreign('department_id')->references('id')->on('companydepartments')->onDelete('cascade');
         });
     }
 

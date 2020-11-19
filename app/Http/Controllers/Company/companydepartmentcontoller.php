@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Company;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Assignsupervisor;
-use App\placement;
+use App\Companydepartment;
 use App\Company;
-use App\Supervisor;
 use App\CompCoordinator;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Flash;
-class AssignsupervisorController extends Controller
+class companydepartmentcontoller extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,13 +19,9 @@ class AssignsupervisorController extends Controller
      */
     public function index()
     {
-        $comp =CompCoordinator::where('user_id',Auth::id())->first();
-        $super = Supervisor::where('company_id',$comp->company_id)->get();
-        $placement =placement::all();
-        // $company =Company::where('id',$placement->company_id);
-        // $stcmid = placement::where('company_id',$super->company_id)->get();
-        // dd($stcmid);
-        return view('Assignsupervisor.index')->with('supervisor',$super)->with('placements',$placement);
+        $department = Companydepartment::all();
+        // dd($department);
+        return view('companydepartments.index')->with('departments',$department);
     }
 
     /**
@@ -35,7 +31,7 @@ class AssignsupervisorController extends Controller
      */
     public function create()
     {
-        //
+        return view('companydepartments.create');
     }
 
     /**
@@ -44,14 +40,15 @@ class AssignsupervisorController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request,$id)
+    public function store(Request $request)
     {
-        $input = $request->all();
-        $input->supervisor_id =$id;
-        $input['student_id']= $request->input('selected_values');
-        Assignsupervisor::create($input);
-        return back('assigned successfully');
-
+        $department = new Companydepartment();
+        $compcor = CompCoordinator::where('user_id',Auth::id())->first();
+        $department->department_name = $request->name;
+        $department->company_id = $compcor->company_id;
+        $department->save();
+        Flash::success('department saved successfully.');
+        return redirect(route('companydepartments.index'))->with('departments', $department );
     }
 
     /**
@@ -62,10 +59,7 @@ class AssignsupervisorController extends Controller
      */
     public function show($id)
     {
-         $super = Supervisor::find($id);
-         $placement =placement::where('company_id',$super->company_id)->get();
-         return view('Assignsupervisor.show')->with('placements',$placement)->with('id',$id);
-
+        //
     }
 
     /**

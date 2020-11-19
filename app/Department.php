@@ -17,10 +17,10 @@ class Department extends Model
     }
 
    public function students(){
-        return $this->hasOne('App\Student');
+        return $this->hasMany('App\Student');
    }
    public function advisor(){
-    return $this->hasOne('App\Advisor');
+    return $this->hasMany('App\Advisor');
 }
 
 }

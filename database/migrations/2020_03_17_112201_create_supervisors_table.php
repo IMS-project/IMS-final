@@ -17,10 +17,12 @@ class CreateSupervisorsTable extends Migration
             $table->bigIncrements('id');
              $table->unsignedBigInteger('user_id');
              $table->unsignedBigInteger('company_id');
+             $table->unsignedBigInteger('department_id');
             $table->timestamps();
             
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
+            $table->foreign('department_id')->references('id')->on('companydepartments')->onDelete('cascade');
 
         });
     }
