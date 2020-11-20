@@ -22,6 +22,9 @@ class Company extends Model
    public function department(){
         return $this->hasOne('App\Department');
     }
+    public function duration(){
+        return $this->hasOne('App\Duration');
+    }
     
     public function student(){
         return $this->hasOne('App\Student');

@@ -24,6 +24,7 @@
                             <th>Placed</th>
                             <th>Pending</th>
                             <th>Department</th>
+                            <th>Duration</th>
                             <th>Action</th>
                             
                                 </tr>
@@ -46,9 +47,17 @@
                                         </select>
                                 </td>
                                 
+                                <td>
+                                     <select class="form-control" id="department_id">
+            
+                                        @foreach ($durations as $dup)
+                                        <option value="{{$dup->id }}">{{ $dup->name}}</option>
+                                        
+                                        @endforeach
+                                        </select>
+                                </td>
                                 
-                                
-                                <td><a href="{{ route('applicant',[$company->id,$dep->id]) }}" class="btn btn-success">Apply here</a>
+                                <td><a href="{{ route('applicant',[$company->id,$dep->id,$dup->id]) }}" class="btn btn-success">Apply here</a>
                                     <a href="{{ route('offer_company.index') }}" class="btn btn-primary">Back</a></td>
                             </tbody>
                         </table>

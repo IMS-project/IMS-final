@@ -7,6 +7,7 @@ use App\Company;
 use App\Student;
 use App\User;
 use App\Placement;
+use App\Duration;
 use DB;
 use Flash;
 use App\Companydepartment;
@@ -60,7 +61,7 @@ class ApplicantController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, $id,$id2)
+    public function store($id,$id2,$id3)
     {
         $applicant = new Applicant();
         $student = Student::where('user_id', Auth::id())->first();
@@ -68,6 +69,7 @@ class ApplicantController extends Controller
         $applicant->student_id = $student->id;
         $applicant->company_id = $id;
         $applicant->department_id = $id2;
+        $applicant->duration_id = $id3;
         $applicant->status = "pending";
         
         $stid = Applicant::all()->where('student_id',$applicant->student_id);
@@ -106,6 +108,7 @@ class ApplicantController extends Controller
     public function show($id)
     { 
         $departments = Companydepartment::all();
+        $duration = Duration::all();
         // dd($departments);
         $company = Company::find($id);
         $student = Company::find($id)->applicant()->count();
@@ -115,8 +118,8 @@ class ApplicantController extends Controller
         return view('studentpage.show')->with('company', $company)
                                         ->with('applicants',$student)
                                         ->with('placed',$placement)
-                                        ->with('departments',$departments);
-                                        // ->with('id',$id);
+                                        ->with('departments',$departments)
+                                        ->with('durations',$duration);
     }
 
     /**
