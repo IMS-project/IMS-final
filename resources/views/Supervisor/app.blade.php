@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>ims</title>
+    <title>Ims</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 
     <!-- Bootstrap 3.3.7 
@@ -132,22 +132,14 @@
                 <ul class="sidebar-menu" data-widget="tree">
                     <li class="{{ Request::is('studentsupervisor*') ? 'active' : '' }}">
                         <a href="{{ route('studentsupervisor.index') }}"><i class="fa fa-users" aria-hidden="true"></i>
-                            <span>student</span></a>
+                            <span>Student</span></a>
                         </li>
                         <li class="{{ Request::is('companies*') ? 'active' : '' }}">
                             <a href="{{ route('applicants.index') }}"><i class="fa fa-file" aria-hidden="true"></i>
 
                                 <span>Report</span></a>
                             </li>
-{{--                         
-                        <li class="{{ Request::is('Supervisor*') ? 'active' : '' }}">
-                            <a href="{{ route('Supervisor.index') }}"><i class="fa fa-user" aria-hidden="true"></i>
-                                <span>Supervisors</span></a>
-                            </li>
-                            <li class="{{ Request::is('internships*') ? 'active' : '' }}">
-                                <a href="{{ route('internships.index') }}"><i class="fa fa-edit"></i><span>placement</span></a>
-                                </li> --}}
-                                
+
                 </ul>
                 <!-- /.sidebar-menu -->
             </section>

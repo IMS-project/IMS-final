@@ -1,8 +1,8 @@
-<table class="table" id="companies-table">
+<table class="table table-bordered" id="companies-table">
     <thead>
         <tr>
-            <th>name</th>
-            <th>address</th>
+            <th>Name</th>
+            <th>Address</th>
             <th></th>
         </tr>
     </thead>
@@ -17,11 +17,11 @@
 </tbody>
 
 </table>
-<table class="table" id="companies-table">
+<table class="table table-bordered" id="companies-table">
     <thead>
 
         <tr>
-            <th>list of  deparments</th>
+            <th>List of  deparments</th>
         </tr>
     </thead>
     <tbody>

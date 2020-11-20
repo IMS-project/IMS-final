@@ -132,20 +132,20 @@
                 <ul class="sidebar-menu" data-widget="tree">
                 
                 <li class="{{ Request::is('offer_company*') ? 'active' : '' }}">
-                    <a href="{{ route('offer_company.index') }}"><i class="fa fa-industry" aria-hidden="true"></i><span>companys</span></a>
+                    <a href="{{ route('offer_company.index') }}"><i class="fa fa-industry" aria-hidden="true"></i><span>Company</span></a>
                     </li>
                     <li class="{{ Request::is('Requests*') ? 'active' : '' }}">
                         <a href="{{ route('Requests.index') }}"><i class="fa fa-question-circle" aria-hidden="true"></i>
-                            <span>Requests</span></a>
+                            <span>Request</span></a>
                         </li>
                         <li class="{{ Request::is('acceptance*') ? 'active' : '' }}">
-                            <a href="{{ route('acceptance.index') }}"><i class="fa fa-user"></i><span>placement</span></a>
+                            <a href="{{ route('acceptance.index') }}"><i class="fa fa-user"></i><span>Placement</span></a>
                             </li>
                             <li class="{{ Request::is('advisor*') ? 'active' : '' }}">
                                 <a href="{{ route('acceptance.index') }}"><i class="fa fa-user"></i><span>Advisor</span></a>
                                 </li>
                                 <li class="{{ Request::is('supervisor*') ? 'active' : '' }}">
-                                    <a href="{{ route('acceptance.index') }}"><i class="fa fa-user"></i><span>supervisor</span></a>
+                                    <a href="{{ route('acceptance.index') }}"><i class="fa fa-user"></i><span>Supervisor</span></a>
                                     </li>
                             
                 

@@ -1,5 +1,5 @@
 <div class="table-responsive">
-    <table class="table" id="companies-table">
+    <table class="table table-bordered" id="companies-table">
         <thead>
             <tr>
                 <th>SN</th>

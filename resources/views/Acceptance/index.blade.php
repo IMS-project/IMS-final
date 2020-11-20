@@ -2,7 +2,7 @@
 
 @section('content')
     <section class="content-header">
-        <h4 class="pull-left">placement information</h4>
+        <h4 class="pull-left">Placement information</h4>
     </section>
     <div class="content">
         <div class="clearfix"></div>
@@ -14,13 +14,13 @@
             <div class="box-body">
                     {{-- @include('Applicants.table') --}}
                     <div class="table-responsive">
-                        <table class="table" id="companies-table">
+                        <table class="table table-bordered" id="companies-table">
                             <thead>
                                 <tr>
                                     
-                                    <th>Name of Company</th>
+                                    <th>Company Name</th>
                                     <th>Adress</th>    
-                                    <th>status</th>   
+                                    <th>Status</th>   
                                 </tr>
                             </thead>
                     

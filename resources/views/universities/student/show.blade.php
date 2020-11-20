@@ -7,15 +7,15 @@
   <div class="content">
      <div class="box box-primary">
          <div class="box-body">
-
-            <table class="table" id="companies-table">
+            <div class="table-responsive">
+            <table class="table table-bordered" id="companies-table">
                 <thead>
                     <tr>
                         <th>Full name</th>
                         <th>ID</th>
                         <th>Email</th> 
-                        <th>phone</th>
-                        <th>sex</th>
+                        <th>Phone</th>
+                        <th>Sex</th>
                         <th>CGPA</th>
                         <th>Department</th>
 
@@ -35,7 +35,7 @@
                     </tr>
                 </tbody>
             </table>
-               
+            </div>
             <div class="row" style="padding-left: 20px">         
                 </div>
                 

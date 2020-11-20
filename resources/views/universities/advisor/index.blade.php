@@ -22,11 +22,11 @@
             <div class="box-body">
 
                 <section class="container-fluid">
-                    <table class="table" id="universities-table">
+                    <table class="table table-bordered" id="universities-table">
                             <thead>
                                 <tr>
                                    
-                                    <th>full name</th>
+                                    <th>Full name</th>
                                     <th>Department </th>
                                     <th colspan="3">Action</th>
                                 </tr>

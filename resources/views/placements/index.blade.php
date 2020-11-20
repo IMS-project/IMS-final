@@ -1,7 +1,7 @@
 @extends('studentpage.app')
 @section('content')
     <section class="content-header">
-        <h4 class="pull-left">request status</h4>
+        <h4 class="pull-left">Request status</h4>
         {{-- <h1 class="pull-right">
            <a class="btn btn-primary pull-right" style=
            "margin-top: -10px;margin-bottom: 5px" href="{{ route('companies.create') }}"><i class="fa fa-plus-circle">Add New</i></a>
@@ -16,13 +16,13 @@
         <div class="box box-primary">
             <div class="box-body">
                     <div class="table-responsive">
-                        <table class="table" id="universities-table">
+                        <table class="table table-bordered" id="universities-table">
                             <thead>
-                                <h5 class="font-italic">
+                                
                                 <tr>
-                                    <th>company</th>
-                                    <th>status</th>
-                                    <th>action</th> 
+                                    <th>Company</th>
+                                    <th>Status</th>
+                                    <th>Action</th> 
                                 </tr>
                                 </h5>
                             </thead>

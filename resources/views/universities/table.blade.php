@@ -1,7 +1,7 @@
 <div class="table-responsive">
-    <table class="table" id="universities-table">
+    <table class="table table-bordered" id="universities-table">
         <thead>
-            <h5 class="font-italic">
+            
             <tr>
                 <th>SN</th>
                 <th>Name</th>

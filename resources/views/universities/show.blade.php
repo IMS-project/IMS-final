@@ -1,7 +1,7 @@
 @extends('SuperAdmin.app')
 
 @section('content')
-    <section class="content-header"> <h1>  University </h1></section>
+    <section class="content-header"> <h4>  University information </h4></section>
  <div class="content">
      <div class="box box-primary">
          <div class="box-body">

@@ -21,7 +21,8 @@
         <div class="box-body">
 
                 <section class="container-fluid">
-                    <table class="table" id="students-table">
+                    <div class="table-responsive">
+                    <table class="table table-bordered" id="students-table">
                             <thead>
                                 <tr>
                                     
@@ -53,7 +54,8 @@
                             </tr>
                         @endforeach
                         </tbody>
-                    </table>  
+                    </table>
+                    </div>  
                  </section> 
                 </div> 
              </div> 

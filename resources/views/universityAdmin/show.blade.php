@@ -2,23 +2,22 @@
 
 @section('content')
     <section class="content-header">
-        <h1>
-            Company
-        </h1>
+        <h4>
+            Company Information
+        </h4>
     </section>
     <div class="content">
         <div class="box box-primary">
             <div class="box-body">
                 <div class="row" style="padding-left: 20px">
-                    <table class="table" id="companies-table">
+                    <table class="table table-bordered" id="companies-table">
                         <thead>
                             <tr>
                                 <th>NAme</th>
                                 <th>Address</th>
-                                <th>work_area</th>
-                                <th>offer_capacity</th>
+                                <th>Offer_capacity</th>
                                 <th>CGPA</th>
-                                <th>other_skills</th>
+                                <th>Other_skills</th>
 
                             </tr>
                         </thead>
@@ -26,7 +25,6 @@
                             <tr>
                                 <td>{{ $company->name }}</td>
                                 <td>{{ $company->address }}</td>
-                                <td>{{ $company->work_area }}</td>
                                 <td>{{ $company->offer_capacity }}</td>
                                 <td>{{ $company->mini_grade}}</td>
                                 <td>{{ $company->other_skills }}</td>
@@ -38,7 +36,7 @@
                  </table>
                      
                 </div></div></div>
-                    <a href="{{ route('company.index') }}" class="btn btn-primary">back</a>
+                    <a href="{{ route('company.index') }}" class="btn btn-primary">Back</a>
                 </div>
                 
             </div>

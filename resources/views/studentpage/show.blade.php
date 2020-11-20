@@ -2,9 +2,9 @@
 
 @section('content')
     <section class="content-header">
-        <h1>
+        <h4>
             Company
-        </h1>
+        </h4>
     </section>
     <div class="content">
         <div class="box box-primary">
@@ -13,17 +13,17 @@
                     {{-- @include('Applicants.show_fields') --}}
                     <div class="form-group">
                         <div class="table-responsive">
-                        <table class="table" id="companies-table">
+                        <table class="table table-bordered" id="companies-table">
                             <thead>
                                 <tr>
     
-                            <th>name</th>
-                            <th>capacity</th>
-                            <th>mini_grade</th>
+                            <th>Name</th>
+                            <th>Capacity</th>
+                            <th>Mini_grade</th>
                             {{-- <th>skills required</th> --}}
-                            <th>placed</th>
-                            <th>pending</th>
-                            <th>department</th>
+                            <th>Placed</th>
+                            <th>Pending</th>
+                            <th>Department</th>
                             <th>Action</th>
                             
                                 </tr>
@@ -48,8 +48,8 @@
                                 
                                 
                                 
-                                <td><a href="{{ route('applicant',[$company->id,$dep->id]) }}" class="btn btn-success">apply here</a>
-                                    <a href="{{ route('offer_company.index') }}" class="btn btn-primary">back</a></td>
+                                <td><a href="{{ route('applicant',[$company->id,$dep->id]) }}" class="btn btn-success">Apply here</a>
+                                    <a href="{{ route('offer_company.index') }}" class="btn btn-primary">Back</a></td>
                             </tbody>
                         </table>
                         </div>

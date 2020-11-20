@@ -1,14 +1,14 @@
 @extends('superAdmin.app')
 
 @section('content')
-    <section class="content-header"> <h1>Company </h1></section>
+    <section class="content-header"> <h4>Company information </h4></section>
     <div class="content">
         <div class="box box-primary">
             <div class="box-body">
                 <div class="row" style="padding-left: 20px">
 
 
-     <table class= "table" id="companies-table" >
+     <table class= "table table-bordered" id="companies-table" >
           <thead>
              <tr>
                 <th>Name</th>
@@ -34,7 +34,7 @@
   
                     {{-- <a href="{{ route('companies.index') }}" class="btn btn-success">apply here</a> --}}
                 </div></div></div>
-                    <a href="{{ route('companies.index') }}" class="btn btn-primary">back</a>
+                    <a href="{{ route('companies.index') }}" class="btn btn-primary">Back</a>
                 </div>
                 
             </div>

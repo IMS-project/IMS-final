@@ -14,11 +14,11 @@
             <div class="box-body">
                     {{-- @include('Applicants.table') --}}
                     <div class="table-responsive">
-                        <table class="table" id="companies-table">
+                        <table class="table table-bordered" id="companies-table">
                             <thead>
                                 <tr>
                                     <th>SN</th>
-                                    <th>Name of Company</th>   
+                                    <th>Company Name</th>   
                                     <th>status</th>   
                                 </tr>
                             </thead>

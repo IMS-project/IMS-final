@@ -8,7 +8,7 @@
      <div class="box box-primary">
          <div class="box-body">
             <div class="row" style="padding-left: 20px">
-                <table class="table" id="companies-table">
+                <table class="table table-bordered" id="companies-table">
                     <thead>
                         <tr>
                             <th>university</th>

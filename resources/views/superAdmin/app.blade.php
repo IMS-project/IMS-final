@@ -136,11 +136,14 @@
                 </li>
                 <li class="{{ Request::is('universities*') ? 'active' : '' }}">
                     <a href="{{ route('universities.index') }}"><i class="fa fa-university" aria-hidden="true"></i>
-                        <span>university</span></a>
+                        <span>University</span></a>
                 </li>
                 <li class="{{ Request::is('companies*') ? 'active' : '' }}">
-                    <a href="{{ route('companies.index') }}"><i class="fa fa-industry" aria-hidden="true"></i><span>company</span></a>
+                    <a href="{{ route('companies.index') }}"><i class="fa fa-industry" aria-hidden="true"></i><span>Company</span></a>
                     </li>
+                    <li class="{{ Request::is('companies*') ? 'active' : '' }}">
+                        <a href="{{ route('companies.index') }}"><i class="fa fa-industry" aria-hidden="true"></i><span>User Acount</span></a>
+                        </li>
                 
                 </ul>
         

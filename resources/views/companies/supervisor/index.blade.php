@@ -21,12 +21,12 @@
                 <div class="box-body">
 
             <section class="container-fluid">
-                <table class="table" id=" Supervisors-table">
+                <div class="table-responsive">
+                <table class="table table-bordered" id=" Supervisors-table">
                         <thead>
                             <tr>
-                                <th>Id</th>
-                                <th>First Name</th>
-                                <th>From Company</th>
+                                <th>ID</th>
+                                <th>Full Name</th>
                                 <th colspan="3">Action</th>
                             </tr>
                         </thead>
@@ -34,8 +34,7 @@
             @foreach($supervisors as $sup)
             <tr>
                 <td>{{ $sup->id}}</td>
-                <td>{{ $sup->user->first_name}}</td>
-                <td>{{ $sup->company->name}}</td>
+                <td>{{ $sup->user->first_name}} {{ $sup->user->last_name}}</td>
                 <td>
                     {!! Form::open(['route' => ['Supervisor.destroy',  $sup->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>
@@ -49,6 +48,7 @@
         @endforeach
     </tbody>
                 </table>  
+                </div>
                 </section> 
                 </div> 
              </div> 

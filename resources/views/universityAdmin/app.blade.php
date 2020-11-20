@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>ims</title>
+    <title>Ims</title>
     <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 
     <!-- Bootstrap 3.3.7 
@@ -140,12 +140,12 @@
                     </li>
                 <li class="{{ Request::is('departments*') ? 'active' : '' }}">
                 <a href= "{{route('departments.index')}}"><i class="fa fa-graduation-cap" aria-hidden="true"></i>
-                </i><span>department</span></a>
+                </i><span>Department</span></a>
                 </li>
                 <li class="{{ Request::is('company*') ? 'active' : '' }}">
                     <a href="{{ route('company.index') }}"><i class="fa fa-industry" aria-hidden="true"></i>
 
-                        <span>company</span></a>
+                        <span>Company</span></a>
                     </li>
                         <li class="{{ Request::is('Advisor*') ? 'active' : '' }}">
                             <a href="{{ route('Advisor.index') }}"><i class="fa fa-user" aria-hidden="true"></i>

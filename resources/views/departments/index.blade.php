@@ -20,7 +20,8 @@
    <div class="box-body">
 
    <section class="container-fluid">
-      <table class="table" id="departments-table">
+    <div class="table-responsive">
+      <table class="table table-bordered" id="departments-table">
             <thead>
                 <tr>
                     <th>SN</th>
@@ -50,5 +51,6 @@
       </div>
    </section>  
   </div>
+</div>
 </div>
 @endsection

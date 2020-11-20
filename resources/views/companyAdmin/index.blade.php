@@ -13,17 +13,19 @@
         <div class="box box-primary">
             <div class="box-body">
                 <div class="table-responsive">
-                    <table class="table" id="companies-table">
+                    <table class="table table-bordered" id="companies-table">
                         <thead>
                             <tr> 
-                                <th>name of student</th>
+                                <th> Full Name</th>
                                 <th>ID</th>
-                                <th>class_year</th>
+                                <th>Year</th>
                                 <th>CGPA</th>
-                                <th>department</th>
-                                 <th>university</th>
+                                <th>Department</th>
+                                 <th>University</th>
                                  {{-- <th>company</th> --}}
-                                <th colspan="3">Action</th> 
+                                <th colspan="3">Action</th>
+                                <th><a class="btn btn-primary pull-right" style=
+                                    "margin-top: -7px;margin-bottom: 5px" href=""><i class="fa fa-plus-circle">Automatic</i></a></th> 
                                 
                             </tr>
                         </thead>
@@ -45,8 +47,8 @@
                                     <div class='btn-group'>
                                         {{-- <a href="{{ route('applicants.show',$app ?? ''->id) }}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i>
                                         </i></a> --}}
-                                        <a href="{{ route('approve',[$app->id]) }}"" class="btn btn-success">Approve</a>
-                                        <a href="{{ route('reject',[$app->id]) }}" class="btn btn-danger">reject</a> 
+                                        <a href="{{ route('approve',[$app->student_id,$app->department_id]) }}"" class="btn btn-success">Approve</a>
+                                        <a href="{{ route('reject',[$app->id]) }}" class="btn btn-danger">Reject</a> 
                                         
                                     </div>
                                 </td>

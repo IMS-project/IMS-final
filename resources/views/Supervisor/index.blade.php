@@ -2,7 +2,7 @@
 
 @section('content')
     <section class="content-header">
-        <h1 class="pull-left">welcome to supervisor page</h1>
+        <h4 class="pull-left">Supervisor page</h4>
         
         {{-- <h1 class="pull-right">
            <a class="btn btn-primary pull-right" style=

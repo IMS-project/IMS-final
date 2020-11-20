@@ -2,7 +2,7 @@
 
 @section('content')
     <section class="content-header">
-        <h1 class="pull-left">students placed</h1>
+        <h1 class="pull-left">Students placed</h1>
         {{-- <h1 class="pull-right">
             <a class="btn btn-primary pull-right" style=
             "margin-top: -10px;margin-bottom: 5px" href="{{ route('Internship.create') }}"><i class="fa fa-plus-circle">Add New</i></a>
@@ -17,14 +17,15 @@
         <div class="box box-primary">
             <div class="box-body">
                 <section class="container-fluid">
-                    <table class="table" id=" stusents-table">
+                    <div class="table-responsive">
+                    <table class="table table-bordered" id=" stusents-table">
                             <thead>
                                 <tr>
                                     
-                                    <th>name of student</th>
-                                    <th>university</th>
+                                    <th>Full Name</th>
+                                    <th>University</th>
                                     <th>Department</th>
-                                    <th>contact</th>
+                                    <th>Contact</th>
                                     {{-- <th colspan="3">Action</th> --}}
                                 </tr>
                             </thead>
@@ -49,8 +50,9 @@
                     </td> --}}
                 </tr>
             @endforeach
-        </body>
-                    </table>  
+            </body>
+                    </table>
+                    </div>  
                     </section> 
             </div>
         </div>

@@ -19,11 +19,11 @@
             <div class="box-body">
                     {{-- @include('companies.table') --}}
                     <div class="table-responsive">
-                        <table class="table" id="companies-table">
+                        <table class="table table-bordered" id="companies-table">
                             <thead>
                                 <tr>
                                     <th>SN</th>
-                                    <th>Name of Company</th>
+                                    <th>Company Name</th>
                                      <th>Address</th>
                                     <th colspan="3">Action</th> 
                                     
