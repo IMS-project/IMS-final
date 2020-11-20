@@ -3,7 +3,7 @@
 @section('content')
    
 <section class="content-header">
-        <h4 class="pull-left">Departments</h4>
+        <h4 class="pull-left">Department list</h4>
         <h1 class="pull-right">
            <a class="btn btn-primary pull-right" style="margin-top: -10px;margin-bottom: 5px" href="{{ route('companydepartments.create') }}"><i class="fa fa-plus-circle">Add New</i></a>
         </h1>

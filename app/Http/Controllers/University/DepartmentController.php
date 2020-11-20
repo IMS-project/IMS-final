@@ -57,7 +57,7 @@ class DepartmentController extends Controller
 
     public function edit($id)
     {
-        //
+        
         $department =Department::find($id);
         //dd($advisor);
         $userid=  $department->user_id;

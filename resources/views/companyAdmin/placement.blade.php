@@ -2,7 +2,7 @@
 
 @section('content')
     <section class="content-header">
-        <h1 class="pull-left">Internship offer companies</h1>
+        <h1 class="pull-left">Placement information</h1>
     </section>
     <div class="content">
         <div class="clearfix"></div>
@@ -14,7 +14,7 @@
             <div class="box-body">
                     {{-- @include('Applicants.table') --}}
                     <div class="table-responsive">
-                        <table class="table" id="companies-table">
+                        <table class="table table-bordered" id="companies-table">
                             <thead>
                                 <tr>
                                     

@@ -2,14 +2,14 @@
 @extends('companyAdmin.app')
 
 @section('content')
-    <section class="content-header"> <h1>Supervisors</h1></section>
+    <section class="content-header"> <h4>Supervisor information</h4></section>
 
   <div class="content">
      <div class="box box-primary">
          <div class="box-body">
             <div class="row" style="padding-left: 20px">
 
-                <table class="table" id="companies-table">
+                <table class="table table-bordered" id="companies-table">
                     <thead>
                         <tr>
 

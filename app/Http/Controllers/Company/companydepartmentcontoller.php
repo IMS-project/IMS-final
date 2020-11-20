@@ -59,7 +59,9 @@ class companydepartmentcontoller extends Controller
      */
     public function show($id)
     {
-        //
+       $department =Companydepartment::find($id);
+       return view('companydepartments.show')->with('departments',$department);
+
     }
 
     /**
@@ -70,7 +72,9 @@ class companydepartmentcontoller extends Controller
      */
     public function edit($id)
     {
-        //
+        $department =Companydepartment::find($id);
+        return view('companydepartments.edit')->with('departments',$department);
+
     }
 
     /**
@@ -82,7 +86,16 @@ class companydepartmentcontoller extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $compcor = CompCoordinator::where('user_id', Auth::id())->first();
+        $depcompid =$compcor->company_id;
+        $department =Companydepartment::find($id);
+        $department->company_id =$depcompid;
+        $department->department_name = $request->department_name;
+        $department->save();
+        Flash::success('department saved successfully.');
+        $department = Companydepartment::all();
+        // dd($department);
+        return view('companydepartments.index')->with('departments',$department);
     }
 
     /**
@@ -93,6 +106,8 @@ class companydepartmentcontoller extends Controller
      */
     public function destroy($id)
     {
-        //
+        $department =Companydepartment::find($id);
+        $department->delete();
+        return redirect(route('companydepartments.index'));
     }
 }

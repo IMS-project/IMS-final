@@ -3,12 +3,12 @@
 @section('content')
 
 <section class="content-header">
-    <h1>
- Supervisors
+    <h4>
+ Supervisor list
     
     <a class="btn btn-primary pull-right" style=
     "margin-top: -6px;margin-bottom: 5px" href="{{ route('Supervisor.create') }}"><i class="fa fa-plus-circle">Add NEW</i></a>
-</h1>
+</h4>
 </section>
 
 <div class="content">
