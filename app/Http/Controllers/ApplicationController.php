@@ -93,9 +93,10 @@ class ApplicationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function approve(Request $request, $id,$id2)
+    public function approve($id,$id2,$id3)
     {
         // $application = Application::where('id', '=', e($id))->first();
+        $placement = new placement();
         $applicant = Applicant::where('id','=',e($id))->first();
         $user = CompCoordinator::where('user_id',Auth::id())->first();
         
@@ -112,52 +113,56 @@ class ApplicationController extends Controller
             if($applicant)
             {
 
-                $applicant->status = "approved";
-                $applicant->save();
+               // $applicant->status = "approved";
+                //$applicant->save();
                 // $applicant =Applicant::all()->where('status', 'pending');
                 // return view('companyAdmin.index')->with('applicants',$applicant);
                 //return a view or whatever you want tto do after
-            }
+                    $placement->student_id = $id;
+                    $placement->company_id = $user->company_id;
+                    $placement->department_id = $id2;
+                    $placement->duration_id = $id3;
+                    $placement->status = "accepted";
+
+                    $checkid = $id;
+                    $compid = Placement::all()->where('company_id',$user->company_id);
+                    $count=0;
+                    foreach($compid as $row){
+                        $try = $row->student_id;
+                        if($try==$checkid){
+                            $count=1;
+                        }
+                    }
+                    if($count==1)
+                    {
+                        Flash::warning('You have Already getplaced . . .');
+                        // return view('placements.index')    ;
+                    } 
+                    else
+                    {
+                        $placement->save();
+                        Flash::success('placement successful.');
+                    }
+                    // here to remove applicants
+                    $appid = $id;
+                    $dd =  Applicant::all()->where('student_id',$appid);
+                    foreach ($dd as $d) {
+                        $d->delete();
+                    }  
+                        }
         }
         else{
+            // $applicant =Applicant::all()->where('status', 'pending');
+            // $applicant->status ="rejected";
             Flash::warning('You have Reached Your Maximum Limit');
         }
 
 
 //placement table should be updated here
 
-        $placement = new placement();
+        
         // $student = Student::where('user_id', Auth::id())->first();
-        $placement->student_id = $id;
-        $placement->company_id = $user->company_id;
-        $placement->department_id = $id2;
-        $placement->status = "accepted";
-
-        $checkid = $id;
-        $compid = Placement::all()->where('company_id',$user->company_id);
-        $count=0;
-        foreach($compid as $row){
-            $try = $row->student_id;
-            if($try==$checkid){
-                $count=1;
-            }
-        }
-        if($count==1)
-        {
-            Flash::warning('You have Already getplaced . . .');
-            // return view('placements.index')    ;
-        } 
-        else
-        {
-            $placement->save();
-            Flash::success('placement successful.');
-        }
-        // here to remove applicants
-        $appid = $id;
-        $dd =  Applicant::all()->where('student_id',$appid);
-        foreach ($dd as $d) {
-            $d->delete();
-        }
+        
         
 
 //         $student = Student::where('user_id', Auth::id())->first();

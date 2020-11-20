@@ -32,7 +32,7 @@
                <div class="form-group row">
                     <div class="col-sm-6 pull-right">
                         <button class="btn btn-success" type="submit"> update</button>
-                        <a href="{{ route('departments.index') }}" class="btn btn-default">Cancel</a>
+                        <a href="{{ route('companydepartments.index') }}" class="btn btn-default">Cancel</a>
                     </div>
                  </div>
 

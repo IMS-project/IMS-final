@@ -47,7 +47,7 @@
                                     <div class='btn-group'>
                                         {{-- <a href="{{ route('applicants.show',$app ?? ''->id) }}" class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i>
                                         </i></a> --}}
-                                        <a href="{{ route('approve',[$app->student_id,$app->department_id]) }}"" class="btn btn-success">Approve</a>
+                                        <a href="{{ route('approve',[$app->student_id,$app->department_id,$app->duration_id]) }}"" class="btn btn-success">Approve</a>
                                         <a href="{{ route('reject',[$app->id]) }}" class="btn btn-danger">Reject</a> 
                                         
                                     </div>
