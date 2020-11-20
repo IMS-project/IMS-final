@@ -56,8 +56,22 @@
                                         @endforeach
                                         </select>
                                 </td>
-                                
+                                {{-- @if ($limits<4)
                                 <td><a href="{{ route('applicant',[$company->id,$dep->id,$duration->id]) }}" class="btn btn-success">Apply</a>
+                                    
+                                @endif
+                                     --}}
+                                <td>
+                                    <div class="btn-group">                                     
+                                        @if($limits <4)
+                                        <a href="{{ URL::route('applicant', [$company->id,$dep->id,$duration->id]) }}" type="submit" class="btn btn-success btn-sm" data-toggle="tooltip" rel="tooltip" data-placement="top" title="Confirmar votante">Apply</a>
+                                
+                                        @else
+                                            <a type="submit" class="btn btn-success btn-sm" data-toggle="tooltip" rel="tooltip" data-placement="top" disabled="disabled" title="Reached maximum number of application">Apply</a>
+                                
+                                        @endif
+                                    </div>
+                                </td>
                                     
                             </tbody>
                         </table>

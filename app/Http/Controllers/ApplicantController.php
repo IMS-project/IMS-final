@@ -28,6 +28,8 @@ class ApplicantController extends Controller
         $app = Applicant::all();
         $comp= Company::all();
         $count=0;
+        
+        // dd($limit);
         $student = Student::all()->where('user_id',Auth::id())->first();
         $exist = Placement::all()->where('student_id', $student->id);
         $companies=[];
@@ -107,6 +109,9 @@ class ApplicantController extends Controller
      */
     public function show($id)
     { 
+
+        $applicant = Student::where('user_id',Auth::id())->first();
+        $limit = Applicant::where('student_id',$applicant->id)->get()->count();
         $departments = Companydepartment::all();
         $duration = Duration::all();
         // dd($departments->company_id);
@@ -119,7 +124,8 @@ class ApplicantController extends Controller
                                         ->with('applicants',$student)
                                         ->with('placed',$placement)
                                         ->with('departments',$departments)
-                                        ->with('durations',$duration);
+                                        ->with('durations',$duration)
+                                        ->with('limits',$limit);
     }
 
     /**

@@ -59,6 +59,9 @@ class ApplicationController extends Controller
      */
     public function show($id)
     {
+        $applicant = Student::where('user_id',Auth::id())->first();
+        $appcount =Applicant::where('student_id',$applicant->id)->get()->count();
+        // dd($appcount);
         $student = Student::find($id);
         $userid =  $student->user_id;
         $unid = $student->university_id;
@@ -71,7 +74,8 @@ class ApplicationController extends Controller
         return view('companyAdmin.index')->with('users', $user)
         ->with('students',$student)
         ->with('university',$university)
-        ->with('department', $department);
+        ->with('department', $department)
+        ->with('counts', $appcount);;
     }
 
  
