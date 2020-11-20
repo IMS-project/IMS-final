@@ -48,17 +48,17 @@
                                 </td>
                                 
                                 <td>
-                                     <select class="form-control" id="department_id">
+                                     <select class="form-control" id="duration_id">
             
-                                        @foreach ($durations as $dup)
-                                        <option value="{{$dup->id }}">{{ $dup->name}}</option>
+                                        @foreach ($durations as $duration)
+                                        <option value="{{$duration->id }}">{{$duration->name}}</option>
                                         
                                         @endforeach
                                         </select>
                                 </td>
                                 
-                                <td><a href="{{ route('applicant',[$company->id,$dep->id,$dup->id]) }}" class="btn btn-success">Apply here</a>
-                                    <a href="{{ route('offer_company.index') }}" class="btn btn-primary">Back</a></td>
+                                <td><a href="{{ route('applicant',[$company->id,$dep->id,$duration->id]) }}" class="btn btn-success">Apply</a>
+                                    
                             </tbody>
                         </table>
                         </div>
@@ -68,5 +68,7 @@
                 
             </div>
         </div>
+            <a href="{{ route('offer_company.index') }}" class="btn btn-primary">Back</a></td>
+        
     </div>
 @endsection

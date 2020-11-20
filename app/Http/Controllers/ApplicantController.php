@@ -109,7 +109,7 @@ class ApplicantController extends Controller
     { 
         $departments = Companydepartment::all();
         $duration = Duration::all();
-        // dd($departments);
+        // dd($departments->company_id);
         $company = Company::find($id);
         $student = Company::find($id)->applicant()->count();
         $placement =Company::find($id)->placement()->count();
