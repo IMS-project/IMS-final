@@ -22,4 +22,7 @@ class placement extends Model
     public function department(){
         return $this->belongsTo('App\department');
     }
+    public function duration(){
+        return $this->belongsTo('App\Duration');
+    }
 }

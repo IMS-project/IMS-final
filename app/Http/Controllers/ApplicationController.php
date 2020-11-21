@@ -99,8 +99,8 @@ class ApplicationController extends Controller
      */
     public function approve($id,$id2,$id3)
     {
-        // $application = Application::where('id', '=', e($id))->first();
-        $placement = new placement();
+        
+        
         $applicant = Applicant::where('id','=',e($id))->first();
         $user = CompCoordinator::where('user_id',Auth::id())->first();
         
@@ -115,13 +115,7 @@ class ApplicationController extends Controller
         if($numcount<$companyLimit)
         {
             if($applicant)
-            {
-
-               // $applicant->status = "approved";
-                //$applicant->save();
-                // $applicant =Applicant::all()->where('status', 'pending');
-                // return view('companyAdmin.index')->with('applicants',$applicant);
-                //return a view or whatever you want tto do after
+            {       $placement = new placement();
                     $placement->student_id = $id;
                     $placement->company_id = $user->company_id;
                     $placement->department_id = $id2;
@@ -156,22 +150,10 @@ class ApplicationController extends Controller
                         }
         }
         else{
-            // $applicant =Applicant::all()->where('status', 'pending');
-            // $applicant->status ="rejected";
+            
             Flash::warning('You have Reached Your Maximum Limit');
         }
-
-
-//placement table should be updated here
-
-        
-        // $student = Student::where('user_id', Auth::id())->first();
-        
-        
-
-//         $student = Student::where('user_id', Auth::id())->first();
-//         $applicant =Applicant::all()->where('student_id',$student->id);
-// return view('placements.index')->with('applicants',$applicant);     
+    
                    
             $applicant =Applicant::all()->where('status', 'pending');
             return view('companyAdmin.index')->with('applicants',$applicant);

@@ -13,6 +13,6 @@ class Duration extends Model
     }
 
    public function students(){
-        return $this->hasMany('App\Student');
+        return $this->hasOne('App\Student');
    }
 }

@@ -38,7 +38,7 @@
                                 <td>{{ $placed }}</td>
                                 <td>{{$applicants}}</td>
                                 <td>
-                                    <select class="form-control" id="department_id">
+                                    <select class="form-control" id="department_id" name="department_id">
             
                                         @foreach ($departments as $dep)
                                         <option value="{{$dep->id }}">{{ $dep->department_name}}</option>
@@ -48,7 +48,7 @@
                                 </td>
                                 
                                 <td>
-                                     <select class="form-control" id="duration_id">
+                                     <select class="form-control" id="duration_id" name="duration_id">
             
                                         @foreach ($durations as $duration)
                                         <option value="{{$duration->id }}">{{$duration->name}}</option>
@@ -56,15 +56,11 @@
                                         @endforeach
                                         </select>
                                 </td>
-                                {{-- @if ($limits<4)
-                                <td><a href="{{ route('applicant',[$company->id,$dep->id,$duration->id]) }}" class="btn btn-success">Apply</a>
-                                    
-                                @endif
-                                     --}}
+                                
                                 <td>
                                     <div class="btn-group">                                     
-                                        @if($limits <4)
-                                        <a href="{{ URL::route('applicant', [$company->id,$dep->id,$duration->id]) }}" type="submit" class="btn btn-success btn-sm" data-toggle="tooltip" rel="tooltip" data-placement="top" title="Confirmar votante">Apply</a>
+                                        @if($limits < 4)
+                                        <a href="{{route('applicant', [$company->id,$dep->id,$duration->id]) }}" type="submit" class="btn btn-success btn-sm" data-toggle="tooltip" rel="tooltip" data-placement="top" title="Confirm terms">Apply</a>
                                 
                                         @else
                                             <a type="submit" class="btn btn-success btn-sm" data-toggle="tooltip" rel="tooltip" data-placement="top" disabled="disabled" title="Reached maximum number of application">Apply</a>
