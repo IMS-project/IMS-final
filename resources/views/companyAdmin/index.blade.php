@@ -31,9 +31,9 @@
                         </thead>
                 
                         <tbody>
-                            
+                            {{-- {{dd($applicants)}} --}}
                         @foreach($applicants as $app)
-                        
+                    </form>
                          <tr>
                                 <td>{{$app->student->user->first_name}} {{$app->student->user->last_name}}</td>
                                 <td>{{$app->student->student_id}}</td>
@@ -43,7 +43,7 @@
                                 <td>{{$app->student->university->name}}</td>
                                 <td>
                                     <div class='btn-group'>
-                                        <a href="{{route('approve',[$app->student_id, $app->department_id, $app->duration_id]) }}"" class="btn btn-success">Approve</a>
+                                        <a href="{{route('approve',[$app->student_id, $app->department_id, $app->duration_id]) }}" class="btn btn-success">Approve</a>
                                         <a href="{{ route('reject',[$app->id]) }}" class="btn btn-danger">Reject</a> 
                                         
                                     </div>

@@ -38,7 +38,10 @@
                                 <td>{{ $placed }}</td>
                                 <td>{{$applicants}}</td>
                                 <td>
-                                    <select class="form-control" id="department_id" name="department_id">
+                                    <form method="GET" action="{{ route('applicant')}}">
+                                        {{csrf_field()}}
+                                    <input type="hidden" name="company" value="{{$company->id}}">
+                                    <select class="form-control" id="department_id" name="departments">
             
                                         @foreach ($departments as $dep)
                                         <option value="{{$dep->id }}">{{ $dep->department_name}}</option>
@@ -48,7 +51,7 @@
                                 </td>
                                 
                                 <td>
-                                     <select class="form-control" id="duration_id" name="duration_id">
+                                     <select class="form-control" id="duration_id" name="durations">
             
                                         @foreach ($durations as $duration)
                                         <option value="{{$duration->id }}">{{$duration->name}}</option>
@@ -56,19 +59,21 @@
                                         @endforeach
                                         </select>
                                 </td>
-                                
+                            
                                 <td>
                                     <div class="btn-group">                                     
                                         @if($limits < 4)
-                                        <a href="{{route('applicant', [$company->id,$dep->id,$duration->id]) }}" type="submit" class="btn btn-success btn-sm" data-toggle="tooltip" rel="tooltip" data-placement="top" title="Confirm terms">Apply</a>
+                                       
+
+                                        <button type="submit" class="btn btn-success btn-sm" data-toggle="tooltip" rel="tooltip" data-placement="top" title="Confirm terms">Apply</button>
                                 
                                         @else
-                                            <a type="submit" class="btn btn-success btn-sm" data-toggle="tooltip" rel="tooltip" data-placement="top" disabled="disabled" title="Reached maximum number of application">Apply</a>
+                                            <button type="submit" class="btn btn-success btn-sm" data-toggle="tooltip" rel="tooltip" data-placement="top" disabled="disabled" title="Reached maximum number of application">Apply</button>
                                 
                                         @endif
                                     </div>
                                 </td>
-                                    
+                            </form>
                             </tbody>
                         </table>
                         </div>

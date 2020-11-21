@@ -16,7 +16,7 @@
     
     Route::post('logout', 'Auth\LoginController@logout')->name('logout');
     Auth::routes(['verify' => true]);
-    Route::get('/applicant/{id}/{id2}/{id3}', 'ApplicantController@store')->name('applicant');//for the application function
+    Route::get('/applicant', 'ApplicantController@store')->name('applicant');//for the application function
     Route::get('/approve/{id}/{id2}/{id3}', 'ApplicationController@approve')->name('approve');//for the approve function
     Route::get('/reject/{id}', 'ApplicationController@reject')->name('reject');//for the reject function
     // Route::get('/accept/{id}/{id2}', 'placementController@store')->name('accept');//for the acceptance function

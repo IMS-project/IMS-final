@@ -100,18 +100,21 @@ class ApplicationController extends Controller
     public function approve($id,$id2,$id3)
     {
         
-        
-        $applicant = Applicant::where('id','=',e($id))->first();
+        // dd($id,$id2,$id3);
+        $applicant = Applicant::where('student_id', $id)->first();
         $user = CompCoordinator::where('user_id',Auth::id())->first();
         
         $numcount = placement::all()
         ->where('company_id',$user->company_id)
         ->count();
-        $complimit = Company::all()->where('id',$user->company_id);
-        foreach($complimit as $limit)
-        {
-            $companyLimit = $limit->offer_capacity;
-        } 
+        $complimit = Company::where('id', $user->company_id)->first();
+        
+        // foreach($complimit as $limit)
+        // {
+        //     $companyLimit = $limit->offer_capacity;
+        // } 
+
+        $companyLimit = $complimit->offer_capacity;
         if($numcount<$companyLimit)
         {
             if($applicant)
@@ -123,15 +126,15 @@ class ApplicationController extends Controller
                     $placement->status = "accepted";
 
                     $checkid = $id;
-                    $compid = Placement::all()->where('company_id',$user->company_id);
+                    $compid = Placement::where('company_id',$user->company_id)->get();
                     $count=0;
                     foreach($compid as $row){
                         $try = $row->student_id;
                         if($try==$checkid){
-                            $count=1;
+                            $count++;
                         }
                     }
-                    if($count==1)
+                    if($count>1)
                     {
                         Flash::warning('You have Already getplaced . . .');
                         // return view('placements.index')    ;
@@ -143,11 +146,11 @@ class ApplicationController extends Controller
                     }
                     // here to remove applicants
                     $appid = $id;
-                    $dd =  Applicant::all()->where('student_id',$appid);
+                    $dd =  Applicant::where('student_id',$appid)->get();
                     foreach ($dd as $d) {
                         $d->delete();
                     }  
-                        }
+            }
         }
         else{
             

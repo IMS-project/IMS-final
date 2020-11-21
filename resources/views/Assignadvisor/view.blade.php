@@ -16,22 +16,28 @@
                      
                 <table class="table" id="companies-table">
                     <thead>
-                        <tr>
-                            <th>Number of students</th>
-                            <th>Company</th>
-                            <th>Action</th>
+                        <tr>Name</th>
+                            
+                            
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($company as $co)
-                        <tr>  
-                            <td>{{ $placementcount[$co->id]}} </td> 
-                                   
-                            <td>{{$co->name}}</td> 
-                            <td><a href="{{ route('assign',[$co->id,$id] )}}" class="btn btn-success"><i class="fa fa-plus-circle"></i>Assign</a> 
+                        {{-- @foreach($company as $co) --}}
+                        @foreach ($students as $row)
+                        <tr> 
+
+
+                        <td>{!! Form::checkbox('row[]',$row->id,null) !!}</td>
+                        
+                        
+                            {{-- <td>{{ $placementcount[$co->id]}} </td>  --}}
+                            <td>{{$row->user->first_name}}</td>
+                            {{-- <td>{{$co->name}}</td>  --}}
+                            <td><a href="{{ route('assign',[$row->id,$id] )}}" class="btn btn-success"><i class="fa fa-plus-circle"></i>Assign</a> 
                                   
                         </tr>
-                        @endforeach
+                        @endforeach  
+                        {{-- @endforeach --}}
 
                     </tbody>                 
                 </table>                                

@@ -92,6 +92,7 @@ class AssignadvisorController extends Controller
         return view('Assignadvisor.view')->with('placementcount',$countArray)
                     ->with('id',$id)
                     ->with('placement',$placement)
+                    ->with('students',$student)
                     ->with('company',$company);
     }
 

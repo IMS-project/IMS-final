@@ -63,15 +63,15 @@ class ApplicantController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store($id,$id2,$id3)
+    public function store(Request $request)
     {
         $applicant = new Applicant();
         $student = Student::where('user_id', Auth::id())->first();
 
         $applicant->student_id = $student->id;
-        $applicant->company_id = $id;
-        $applicant->department_id = $id2;
-        $applicant->duration_id = $id3;
+        $applicant->company_id = $request->company;
+        $applicant->department_id = $request->departments;
+        $applicant->duration_id = $request->durations;
         $applicant->status = "pending";
         
         $stid = Applicant::all()->where('student_id',$applicant->student_id);

@@ -18,10 +18,12 @@ class CreateAssignsTable extends Migration
             $table->unsignedBigInteger('advisor_id');
             $table->unsignedBigInteger('company_id');
             $table->unsignedBigInteger('department_id');
+            $table->unsignedBigInteger('duration_id');
             $table->timestamps();
             $table->foreign('advisor_id')->references('id')->on('advisors')->onDelete('cascade');
             $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
             $table->foreign('department_id')->references('id')->on('companydepartments')->onDelete('cascade');
+            $table->foreign('duration_id')->references('id')->on('durations')->onDelete('cascade');
         });
     }
 
