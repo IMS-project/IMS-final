@@ -9,10 +9,8 @@ class Assign extends Model
     public function advisor(){
         return $this->belongsTo('App\Advisor');
     }
-    public function company(){
-        return $this->belongsTo('App\Company');
+    public function placement(){
+        return $this->belongsTo('App\placement');
     }
-    public function duration(){
-        return $this->belongsTo('App\Duration');
-    }
+   
 }

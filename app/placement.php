@@ -25,4 +25,7 @@ class placement extends Model
     public function duration(){
         return $this->belongsTo('App\Duration');
     }
+    public function assign(){
+        return $this->hasOne('App\Assign');
+    }
 }

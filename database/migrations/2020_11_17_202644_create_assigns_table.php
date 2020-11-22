@@ -16,14 +16,11 @@ class CreateAssignsTable extends Migration
         Schema::create('assigns', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('advisor_id');
-            $table->unsignedBigInteger('company_id');
-            $table->unsignedBigInteger('department_id');
-            $table->unsignedBigInteger('duration_id');
+            $table->unsignedBigInteger('placement_id');
+            
             $table->timestamps();
-            $table->foreign('advisor_id')->references('id')->on('advisors')->onDelete('cascade');
-            $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
-            $table->foreign('department_id')->references('id')->on('companydepartments')->onDelete('cascade');
-            $table->foreign('duration_id')->references('id')->on('durations')->onDelete('cascade');
+            $table->foreign('placement_id')->references('id')->on('placements')->onDelete('cascade');
+           
         });
     }
 

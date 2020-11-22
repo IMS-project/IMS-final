@@ -39,36 +39,43 @@ class AssignController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request,$id,$id2)
+    public function store(Request $request)
     {
-        $assign = new Assign();
-        $assign->advisor_id =$id2;
-        $assign->company_id =$id;
 
-        $stid = Assign::all()->where('advisor_id',$id2);
-        $count = 0 ;
-    foreach($stid as $row)
-        {
-            $try = $row->company_id;
-            if($try==$id)
-            {
-                $count = 1;
-            } 
+     
+    //  dd($stid);
+    $count=0;
+       
+        foreach($request->student as $s){
+        $stid = Assign::all()->where('placement_id',$s)->first();
+      
+        if($stid){
+        $count =1;
         }
-        if($count==1)
-        {
-            Flash::warning('You have Already assigned . . .');
-            // return view('Assignadvisor.index') ;
-        } 
         else
         {
-            $assign->save();
-            Flash::success('Application successful.');
-        }
+                $assign = new Assign();
+                $assign->advisor_id =$request->advisor;
+                $assign->placement_id = $s;
+                $assign->save();
+               
     
-        
+            }
+            
+        }
+ if($count==1){
 
-        return back()->with('Application successful');
+   
+    Flash::warning('You have Already assigned . . .');
+    return back();
+    
+ }
+ else{
+    Flash::success('You have assigned. . .');
+    return back();
+ }
+       
+        
 
     }
 

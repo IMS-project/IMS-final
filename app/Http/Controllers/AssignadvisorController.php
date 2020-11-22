@@ -68,8 +68,10 @@ class AssignadvisorController extends Controller
         $company = Company::all();
         //dd($company[0]);
         $student = Student::where('university_id',$adui)->where('department_id',$addp)->get();
+        
         $count = 0;
         $countArray=[];
+
         
             foreach($company as $comp)
             {
@@ -94,6 +96,7 @@ class AssignadvisorController extends Controller
                     ->with('placement',$placement)
                     ->with('students',$student)
                     ->with('company',$company);
+                    
     }
 
     /**

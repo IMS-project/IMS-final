@@ -22,32 +22,39 @@
                         </tr>
                     </thead>
                     <tbody>
-                        {{-- @foreach($company as $co) --}}
-                        @foreach ($students as $row)
-                        <tr> 
-
-
-                        <td>{!! Form::checkbox('row[]',$row->id,null) !!}</td>
-                        
-                        
-                            {{-- <td>{{ $placementcount[$co->id]}} </td>  --}}
-                            <td>{{$row->user->first_name}}</td>
-                            {{-- <td>{{$co->name}}</td>  --}}
-                            <td><a href="{{ route('assign',[$row->id,$id] )}}" class="btn btn-success"><i class="fa fa-plus-circle"></i>Assign</a> 
-                                  
+                        <tr>
+                            
+                        <form method="GET" action="{{ route('assign')}}">
+                            <input type="hidden" name="advisor" value="{{$id}}">
+                            @foreach($students as $student)
+                            <tr>
+@if ($student->placement)
+    
+<td>
+    <input type="checkbox"  name="student[]"  value="{{$student->placement->id}}" >{{$student->user->first_name}}
+    </td>
+@endif
                         </tr>
-                        @endforeach  
-                        {{-- @endforeach --}}
+                            @endforeach 
+                             
+                            <button class="btn btn-success pull-right" type="submit"><i class="fa fa-plus-circle" aria-hidden="true"></i>
+                                Assign</button> 
+                        </tr>
+                        
+                            
+                            </form>
 
                     </tbody>                 
                 </table>                                
              </div>
          </div>
+             
+             <section class="content-header">
+                <a class="btn btn-primary pull-left"  href="{{ route('Assignadvisor.index') }}">Back</a>
+            </section>
+         </div>
          <div class="text-center">
-            <section class="content-header">
-            <a class="btn btn-primary pull-left" style=
-            "margin-top: -2px;margin-bottom: 5px" href="{{ route('Assignadvisor.index') }}">Back</a>
-        </section>
+            
          </div>
      </div>
  @endsection

@@ -21,7 +21,7 @@
     Route::get('/reject/{id}', 'ApplicationController@reject')->name('reject');//for the reject function
     // Route::get('/accept/{id}/{id2}', 'placementController@store')->name('accept');//for the acceptance function
     Route::get('/list/{id}', 'ApplicationController@list')->name('list');
-    Route::get('/assign/{id}/{id2}', 'AssignController@store')->name('assign');//for the application function
+    Route::get('/assign', 'AssignController@store')->name('assign');//for the application function
     Route::resource('/internships', 'Company\InternshipController');
     Route::resource('applicants','ApplicationController');
     Route::resource('acceptance','AcceptanceController');
