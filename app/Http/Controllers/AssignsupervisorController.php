@@ -44,12 +44,19 @@ class AssignsupervisorController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request,$id)
-    {
-        $input = $request->all();
-        $input->supervisor_id =$id;
-        $input['student_id']= $request->input('selected_values');
-        Assignsupervisor::create($input);
+    public function store(Request $request){
+            
+        dd($request->student);
+        foreach($request->student as $stud){
+            $assignsuper = new Assignsupervisor();
+            dd($stud);
+            $assignsuper->supervisor_id = $request->supervisor;
+            $assignsuper->placement_id = $request->student;
+            $assignsuper->save();
+        
+
+        }
+        
         return back('assigned successfully');
 
     }

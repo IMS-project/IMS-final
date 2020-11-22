@@ -28,12 +28,12 @@
                             <input type="hidden" name="advisor" value="{{$id}}">
                             @foreach($students as $student)
                             <tr>
-@if ($student->placement)
-    
-<td>
-    <input type="checkbox"  name="student[]"  value="{{$student->placement->id}}" >{{$student->user->first_name}}
-    </td>
-@endif
+                            @if ($student->placement)
+                                
+                            <td>
+                                <input type="checkbox"  name="student[]"  value="{{$student->placement->id}}" >{{$student->user->first_name}}
+                                </td>
+                            @endif
                         </tr>
                             @endforeach 
                              

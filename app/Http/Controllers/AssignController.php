@@ -41,12 +41,11 @@ class AssignController extends Controller
      */
     public function store(Request $request)
     {
-
-     
-    //  dd($stid);
     $count=0;
        
         foreach($request->student as $s){
+
+            
         $stid = Assign::all()->where('placement_id',$s)->first();
       
         if($stid){

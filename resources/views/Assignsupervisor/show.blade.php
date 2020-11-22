@@ -11,27 +11,35 @@
         <div class="clearfix"></div>
         <div class="box box-primary">
             <div class="box-body">
-                <form method="post" action="{{ route('Assignsuper.store') }}" enctype="multipart/form-data">
-
-                    @csrf
-                <table class="table" id="companies-table">
+            <table class="table" id="companies-table">
                     <thead>
-                        <tr>
-                            {{-- <th>Full name</th> --}}
-                        </tr>
+                        <tr>Name</th>
+                            </tr>
                     </thead>
                     <tbody>
-                        @foreach($placements as $super)
                         <tr>
-                        
-                        <td><input type="checkbox" name="selected_values[]" value="{{$super->id}}"> {{$super->student->user->first_name}} </td>
-                        
+                            
+                        <form method="GET" action="{{ route('assignsuper')}}">
+                            <input type="hidden" name="supervisor" value="{{$id}}">
+                            @foreach($placements as $super)
+                            <tr>     
+                            <td>
+                                <input type="checkbox"  name="student[]"  value="{{$super->id}}" >{{$super->student->user->first_name}}
+                                </td>
+                            
                         </tr>
-                        @endforeach
-                    </tbody>
-                   
-                </table>
-                <button type="submit" name="button" >Assign</button>
+                            @endforeach 
+                             
+                            <button class="btn btn-success pull-right" type="submit"><i class="fa fa-plus-circle" aria-hidden="true"></i>
+                                Assign</button> 
+                        </tr>
+                        
+                            
+                            </form>
+
+                    </tbody>                 
+                </table>          
+            </div></div></div>
                                         
             </div>
         </div>

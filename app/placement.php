@@ -28,4 +28,7 @@ class placement extends Model
     public function assign(){
         return $this->hasOne('App\Assign');
     }
+    public function assignsupervisor(){
+        return $this->hasOne('App\Assignsupervisor');
+    }
 }

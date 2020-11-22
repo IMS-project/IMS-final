@@ -27,4 +27,7 @@ class Supervisor extends Model
     public function department(){    
         return $this->belongsTo('App\Companydepartment');
     }
+    public function assign(){    
+        return $this->belongsTo('App\Assignsupervisor');
+    }
 }

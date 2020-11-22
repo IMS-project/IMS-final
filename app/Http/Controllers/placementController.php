@@ -7,6 +7,7 @@ use App\Applicant;
 use App\Student;
 use App\placement;
 use Flash;
+use App\Assignsupervisor;
 use App\Companydepartment;
 use Illuminate\Support\Facades\Auth;
 class placementController extends Controller
@@ -48,45 +49,42 @@ class placementController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request,$id,$id2)
+    public function store(Request $request)
     {
-        $placement = new placement();
-        $student = Student::where('user_id', Auth::id())->first();
-        $placement->student_id = $student->id;
-        $placement->company_id = $id;
-        $placement->department_id = $id2;
-        $placement->status = "accepted";
-
-         $checkid = $student->id;
-        $compid = Placement::all()->where('company_id',$id);
+        // dd($request->student);
         $count=0;
-        foreach($compid as $row){
-            $try = $row->student_id;
-            if($try==$checkid){
-                $count=1;
+        foreach($request->student as $stud){
+        $stid = Assignsupervisor::all()->where('placement_id',$stud)->first();
+        if($stid){
+            $count =1;
             }
-        }
-        if($count==1)
-        {
-            Flash::warning('You have Already getplaced . . .');
-            // return view('placements.index')    ;
-        } 
-        else
-        {
-            $placement->save();
-            Flash::success('placement successful.');
-        }
-        // here to remove applicants
-        $appid = $student->id;
-          $dd =  Applicant::all()->where('student_id',$appid);
-          foreach ($dd as $d) {
-            $d->delete();
-          }
-          
+            else{
 
-        $student = Student::where('user_id', Auth::id())->first();
-        $applicant =Applicant::all()->where('student_id',$student->id);
-        return view('placements.index')->with('applicants',$applicant);
+                
+                    $assignsuper = new Assignsupervisor();
+                    // dd($stud);
+                    $assignsuper->supervisor_id = $request->supervisor;
+                    $assignsuper->placement_id = $stud;
+                    $assignsuper->save();
+                    // Flash::success('Assigned succesfully');
+            }
+        
+        
+
+        }
+        if($count==1){
+
+   
+            Flash::warning('You have Already assigned . . .');
+            return back();
+            
+         }
+         else{
+            Flash::success('You have assigned successfully. . .');
+            return back();
+         }
+               
+        
         
     }
 
