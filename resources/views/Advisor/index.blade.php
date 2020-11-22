@@ -18,6 +18,9 @@
         <div class="box box-primary">
             <div class="box-body">
                     {{-- @include('universities.table') --}}
+                    @foreach ($students as $st)
+                        {{$stu->user->first_name}}
+                    @endforeach
             </div>
         </div>
         <div class="text-center">

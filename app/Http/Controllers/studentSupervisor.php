@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Student;
+use Illuminate\Support\Facades\Auth;
 class studentSupervisor extends Controller
 {
     /**
@@ -13,7 +14,8 @@ class studentSupervisor extends Controller
      */
     public function index()
     {
-        return view('Supervisor.index');
+        $student = Student::where('user_id',Auth::id())->first();
+       return view('StudentSupervisor.index')->with('students',$student);
     }
 
     /**

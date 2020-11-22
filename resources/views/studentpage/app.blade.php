@@ -141,11 +141,11 @@
                         <li class="{{ Request::is('acceptance*') ? 'active' : '' }}">
                             <a href="{{ route('acceptance.index') }}"><i class="fa fa-user"></i><span>Placement</span></a>
                             </li>
-                            <li class="{{ Request::is('advisor*') ? 'active' : '' }}">
-                                <a href="{{ route('acceptance.index') }}"><i class="fa fa-user"></i><span>Advisor</span></a>
+                            <li class="{{ Request::is('studentAdvisor*') ? 'active' : '' }}">
+                                <a href="{{ route('studentadvisor.index') }}"><i class="fa fa-user"></i><span>Advisor</span></a>
                                 </li>
-                                <li class="{{ Request::is('supervisor*') ? 'active' : '' }}">
-                                    <a href="{{ route('acceptance.index') }}"><i class="fa fa-user"></i><span>Supervisor</span></a>
+                                <li class="{{ Request::is('studentsupervisor*') ? 'active' : '' }}">
+                                    <a href="{{ route('studentsupervisor.index') }}"><i class="fa fa-user"></i><span>Supervisor</span></a>
                                     </li>
                             
                 

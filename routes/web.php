@@ -26,6 +26,8 @@
     Route::resource('/internships', 'Company\InternshipController');
     Route::resource('applicants','ApplicationController');
     Route::resource('acceptance','AcceptanceController');
+    Route::resource('studentadvisor','studentAdvisorController');
+    Route::resource('studentsupervisor','studentSupervisor');
     Route::resource('superAdmin','SuperAdminController');
     Route::resource('Requests','placementController');
     Route::resource('Advisorplacement','AdvisorplacementController');

@@ -54,11 +54,12 @@ class placementController extends Controller
         // dd($request->student);
         $count=0;
         foreach($request->student as $stud){
-        $stid = Assignsupervisor::all()->where('placement_id',$stud)->first();
-        if($stid){
-            $count =1;
-            }
-            else{
+
+            $stid = Assignsupervisor::all()->where('placement_id',$stud)->first();
+            if($stid){
+                $count =1;
+                }
+                else{
 
                 
                     $assignsuper = new Assignsupervisor();

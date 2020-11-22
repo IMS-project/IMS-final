@@ -39,7 +39,10 @@
 
                     </tbody>                 
                 </table>          
-            </div></div></div>
+            </div></div>
+            <section class="content-header">
+                <a class="btn btn-primary pull-left"  href="{{ route('Assignsuper.index') }}">Back</a>
+            </section></div>
                                         
             </div>
         </div>
