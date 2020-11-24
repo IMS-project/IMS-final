@@ -13,6 +13,9 @@ class CompanyController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('admin');
+        $this->middleware('prevent-back-history');
+        
     }
 
     public function index(Request $request)

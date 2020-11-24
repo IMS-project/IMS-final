@@ -17,6 +17,12 @@ class companydepartmentcontoller extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->middleware('company');
+        $this->middleware('prevent-back-history');
+    }
     public function index()
     {
         $department = Companydepartment::all();

@@ -18,6 +18,9 @@ class SuperAdminController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('admin');
+        $this->middleware('prevent-back-history');
+        //$this->middleware('admin', ['only' => ['index']]);
     }
     public function index()
     { $university = University::all();

@@ -23,6 +23,8 @@ namespace App\Http\Controllers\University;
         {
             
             $this->middleware('auth');
+            $this->middleware('admin');
+            $this->middleware('prevent-back-history');
             $this->universityRepository = $universityRepo;
         }
 

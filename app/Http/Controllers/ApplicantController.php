@@ -22,6 +22,8 @@ class ApplicantController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $this->middleware('student');
+        $this->middleware('prevent-back-history');
     }
     public function index()
     {

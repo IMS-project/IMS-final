@@ -23,7 +23,7 @@
             <div class="form-group row">
                 <lable for = "phone" class = "col-sm-1 col-form-label"><h5>company address</h5></lable>
                 <div class="col-sm-6">
-                    <input type="text" name="address" class="form-control" id="grade" placeholder="address" required>
+                    <input type="text" name="address" class="form-control" id="address" placeholder="address" required>
                 </div>
             </div>
 
@@ -56,7 +56,7 @@
 
             <div class="form-group row">
               <div class="col-sm-6 pull-right">
-                <button class="btn btn-success" type="submit"> Register</button>
+                <button class="btn btn-success" type="submit" id="submitBtn"> Register</button>
                 <a href="{{ route('company.index') }}" class="btn btn-default">Cancel</a>
             </div>
             </div>
@@ -67,4 +67,17 @@
     <div class="col-sm-2"></div>
 </div>
 </div>
+<script>
+    const grade = document.getElementById('grade');
+    const submitBtn = document.getElementById('submitBtn');
+    grade.addEventListener('keyup', () => {
+        console.log(grade.value);
+        if(+grade.value > 4){
+            submitBtn.classList.add('disabled');
+        }
+        else {
+            submitBtn.classList.remove('disabled');
+        }
+    })
+</script>
 @endsection()

@@ -39,6 +39,12 @@
     </div>
 
     <!-- /.login-logo -->
+    <?php echo
+        header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+        header("Cache-Control: post-check=0, pre-check=0", false);
+        header("Pragma: no-cache");
+        header('Content-Type: text/html');?>
+
     <div class="login-box-body">
         <p class="login-box-msg">Sign in to start your session</p>
 
@@ -106,5 +112,26 @@
         });
     });
 </script>
+
+<script>
+    window.onload = function () {
+        if (typeof history.pushState === "function") {
+            history.pushState("jibberish", null, null);
+            window.onpopstate = function () {
+                history.pushState('newjibberish', null, null);
+            };
+        } else {
+            var ignoreHashChange = true;
+            window.onhashchange = function () {
+                if (!ignoreHashChange) {
+                    ignoreHashChange = true;
+                    window.location.hash = Math.random();
+                } else {
+                    ignoreHashChange = false;   
+                }
+            };
+        }
+    }
+ </script>
 </body>
 </html>
