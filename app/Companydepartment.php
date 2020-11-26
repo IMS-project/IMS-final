@@ -20,4 +20,13 @@ class Companydepartment extends Model
    public function supervisor(){
     return $this->hasMany('App\Supervisor');
 }
+    public function applicant(){
+        return $this->hasMany('App\Applicant');
+    }
+    public function placement(){
+        return $this->hasOne('App\placement');
+    }
+    public function assign(){
+        return $this->hasOne('App\Assign');
+    }
 }

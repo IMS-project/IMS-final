@@ -34,7 +34,8 @@
 
     
     Route::get('/home', 'HomeController@index')->middleware('verified');
-    
+    Route::get('/admin', 'Admincontroller@index');
+    Route::get('/student', 'Viewcontroller@index');
     Route::resource('offer_company', 'ApplicantController');
     Route::resource('universities', 'University\UniversityController');
     Route::resource('UniCoordinator', 'University\UniCoordinatorController');

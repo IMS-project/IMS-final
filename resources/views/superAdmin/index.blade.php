@@ -2,8 +2,10 @@
 
 @section('content')
     <section class="content-header">
-        <h1 class="pull-left">Registration area</h1>
-        
+        <section class="content-header">
+            <h4 class="pull-left"><i class="fa fa-calendar" aria-hidden="true"></i> upcomming events</h1>
+           
+        </section>
         {{-- <h1 class="pull-right">
            <a class="btn btn-primary pull-right" style=
            "margin-top: -10px;margin-bottom: 5px" href="{{ route('universities.create') }}"><i class="fa fa-plus-circle">Add New</i></a>

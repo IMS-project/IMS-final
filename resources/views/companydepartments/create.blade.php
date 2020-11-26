@@ -22,11 +22,35 @@
                    </div>
                 </div>
             </div>
+
+            <div class="form-group row">
+              <lable for = "student_id" class = "col-sm-1 col-form-label"><h5>offer capacity:</h5></lable>
+              <div class="col-sm-6">
+                  <input type="number" name="offer_capacity" class="form-control" id="student_id" placeholder="offer capacity" required>
+            </div>
+          </div>
+          
+
+          <div class="form-group row">
+              <lable for = "phone" class = "col-sm-1 col-form-label"><h5>minimum grade</h5></lable>
+              <div class="col-sm-6">
+                  <input type="float" name="mini_grade" class="form-control" value="2" id="grade">
+                  
+              </div>
+          </div>
+    
+              
+          <div class="form-group row">
+            <lable for = "phone" class = "col-sm-1 col-form-label"><h5>other required skils</h5></lable>
+            <div class="col-sm-6">
+                <input type="text" name="other_skills" class="form-control" id="skills" placeholder="other skills" required>
+            </div>
+        </div>
                 <!-- User Id Field -->
 
                 <div class="form-group row">
                   <div class="col-sm-6 pull-right">
-                    <button class="btn btn-success" type="submit"> Save</button>
+                    <button class="btn btn-success" type="submit" id="submitBtn"> Save</button>
                     <a href="{{ route('companydepartments.index') }}" class="btn btn-default">Cancel</a>
                   </div>
                 </div>
@@ -36,4 +60,17 @@
         </div>
         <div class="col-sm-2"></div>
      </div>
+     <script>
+      const grade = document.getElementById('grade');
+      const submitBtn = document.getElementById('submitBtn');
+      grade.addEventListener('keyup', () => {
+          console.log(grade.value);
+          if(+grade.value > 4){
+              submitBtn.classList.add('disabled');
+          }
+          else {
+              submitBtn.classList.remove('disabled');
+          }
+      })
+  </script>
 @endsection

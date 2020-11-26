@@ -119,7 +119,6 @@ class UniCoordinatorController extends Controller
         $user = User::find($id);
         $user->first_name = $request->first_name;
         $user->last_name = $request->last_name;
-        $user->sex = $request->sex;
         $user->phone = $request->phone;
         $user->role = 3;
         $user->email = $request->email;

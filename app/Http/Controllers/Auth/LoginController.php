@@ -57,7 +57,7 @@ class LoginController extends Controller
                 return $this->redirectTo;
                 break;
             case 3:
-                $this->redirectTo = '/applicants';
+                $this->redirectTo = '/admin';
                 return $this->redirectTo;
                 break;
             case 5:
@@ -65,7 +65,7 @@ class LoginController extends Controller
                 return $this->redirectTo;
                 break;
             case 6:
-                $this->redirectTo = '/offer_company';
+                $this->redirectTo = '/student';
                 return $this->redirectTo;
                 break;
             case 1:

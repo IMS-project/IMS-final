@@ -141,9 +141,13 @@
                 <li class="{{ Request::is('companies*') ? 'active' : '' }}">
                     <a href="{{ route('companies.index') }}"><i class="fa fa-industry" aria-hidden="true"></i><span>Company</span></a>
                     </li>
-                    <li class="{{ Request::is('companies*') ? 'active' : '' }}">
-                        <a href="{{ route('companies.index') }}"><i class="fa fa-industry" aria-hidden="true"></i><span>User Acount</span></a>
+                    <li class="{{ Request::is('UniCoordinator*') ? 'active' : '' }}">
+                        <a href="{{ route('UniCoordinator.index') }}"><i class="fa fa-users" aria-hidden="true"></i><span>university user</span></a>
                         </li>
+                        <li class="{{ Request::is('CompCoordinator*') ? 'active' : '' }}">
+                            <a href="{{ route('CompCoordinator.index') }}"><i class="fa fa-user" aria-hidden="true"></i><span>company usert</span></a>
+                            </li>
+                            
                 
                 </ul>
         

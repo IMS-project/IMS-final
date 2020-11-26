@@ -86,16 +86,16 @@ class CompCoordinatorController extends Controller
                 $userid = $compcoordiantor->user_id;
                 $unid = $compcoordiantor->company_id;
                 // $rolid= $compcoordiantor->role_id;
-            $user = User::find($userid);
+             $user = User::find($userid);
 
-        $company = Company::find($unid);
-        $companys = Company::all();
+            $company = Company::find($unid);
+            $companys = Company::all();
                 //  $roles = Role::find($rolid);
                 //  $rolled = Role::all();
      return view('companies.coordinator.edit')->with('compcord',$compcoordiantor)
                                                         ->with('users', $user)
-                                                        ->with('company',  $company)
-                                                        ->with('companys ', $companys );
+                                                        ->with('company',  $company);
+                                                        
                                                                                        
             }
 

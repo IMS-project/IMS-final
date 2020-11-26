@@ -52,6 +52,9 @@ class companydepartmentcontoller extends Controller
         $compcor = CompCoordinator::where('user_id',Auth::id())->first();
         $department->department_name = $request->name;
         $department->company_id = $compcor->company_id;
+        $department->offer_capacity= request('offer_capacity');
+        $department->mini_grade =request('mini_grade');
+        $department->other_skills= request('other_skills');
         $department->save();
         Flash::success('department saved successfully.');
         return redirect(route('companydepartments.index'))->with('departments', $department );
@@ -79,8 +82,7 @@ class companydepartmentcontoller extends Controller
     public function edit($id)
     {
         $department =Companydepartment::find($id);
-        return view('companydepartments.edit')->with('departments',$department);
-
+        return view('companydepartments.edit')->with('departments',$departdepartment);
     }
 
     /**
@@ -97,6 +99,9 @@ class companydepartmentcontoller extends Controller
         $department =Companydepartment::find($id);
         $department->company_id =$depcompid;
         $department->department_name = $request->department_name;
+        $department->offer_capacity= request('offer_capacity');
+        $department->mini_grade =request('mini_grade');
+        $department->other_skills= request('other_skills');
         $department->save();
         Flash::success('department saved successfully.');
         $department = Companydepartment::all();

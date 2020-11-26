@@ -9,34 +9,40 @@
          <div class="box-body">
             <div class="row" style="padding-left: 20px">
 
-                <div class="form-group">
-                    {!! Form::label('first_name', 'First_Name:') !!}
-                    <p>{{ $user->first_name }}</p>
-                </div>
-                <div class="form-group">
-                    {!! Form::label('last_name', 'Last_Name:') !!}
-                    <p>{{ $user->last_name }}</p>
-                </div>
 
-                <div class="form-group">
-                    {!! Form::label('email', 'Email:') !!}
-                    <p>{{ $user->email }}</p>
-                </div>
 
-                <div class="form-group">
-                    {!! Form::label('phone', 'Phone:') !!}
-                    <p>{{ $user->phone }}</p>
-                </div>
-                <div class="form-group">
-                    {!! Form::label('sex', 'sex:') !!}
-                    <p>{{ $user->sex }}</p>
-                </div>
-                <div class="form-group">
-                    {!! Form::label('company', ' company:') !!}
-                    <p>{{ $company->name }}</p>
-                </div>
-                
-                    <a href="{{ route('CompCoordinator.index') }}" class="btn btn-default">Back</a>
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="companies-table">
+                        <thead>
+                            <tr>
+                                <th>Full name</th>
+                               
+                                <th>Email</th> 
+                                <th>Phone</th>
+                                                                              
+                                <th>company</th>
+        
+                            </tr>
+                        </thead>
+        
+                        <tbody>
+                            <tr>
+                                <td>{{ $user->first_name }} {{ $user->last_name }}</td>
+                                
+                                <td>{{ $user->email }}</td>
+                                <td>{{ $user->phone }}</td>
+                              
+                               
+                                {{-- <td>{{ $cor->$department->department_name }}</td> --}}
+                                <td>{{ $company->name }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    </div>
+
+            </div>
+         </div></div>
+                    <a href="{{ route('CompCoordinator.index') }}" class="btn btn-primary">Back</a>
                 </div>
                 
             </div>

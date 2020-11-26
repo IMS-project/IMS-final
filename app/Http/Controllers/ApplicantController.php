@@ -81,7 +81,7 @@ class ApplicantController extends Controller
     foreach($stid as $row)
         {
             $try = $row->company_id;
-            if($try==$id)
+            if($try==$request->company)
             {
                 $count = 1;
             } 

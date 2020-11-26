@@ -68,31 +68,6 @@
                 </select>
             </div>
             </div>
-
-              <!--    ----role ---- -->
-            {{-- <div class="form-group row">
-                <lable for = "role" class = "col-sm-1 col-form-label"><h5>user type:</h5></lable>
-                 <div class="col-sm-6">
-                    <select name="role" type ="text" class="form-control" value="{{ old('role') }}">
-                        @foreach($roles as $rol)
-                        <option value="{{ $rol->id }}">{{$rol->name}}</option>
-                        @endforeach
-                    </select> 
-                </div>
-            </div> --}}
-
-               <!--    ----university ---- -->
-            {{-- <div class="form-group row">
-                <lable for = "phone" class = "col-sm-1 col-form-label"><h5>university:</h5></lable>
-                <div class="col-sm-6">
-                <select name="university" id="name" type ="text" class="form-control" value="{{ old('university_id') }}">
-                     @foreach ($universities as $uni)
-                     <option value="{{ $uni->id }}">{{$uni->name}}</option>
-                     @endforeach
-                  </select> 
-              </div>
-            </div> --}}
-
             <div class="form-group row">
                 <lable for = "phone" class = "col-sm-1 col-form-label"><h5>departments:</h5></lable>
                 <div class="col-sm-6">

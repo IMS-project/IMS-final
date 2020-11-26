@@ -15,39 +15,45 @@ class isAdmin
      * @param  \Closure  $next
      * @return mixed
      */
-    protected $redirectTo;
+    // protected $redirectTo;
     public function handle($request, Closure $next)
     {
         if(Auth::user()->role == 1){
             return $next($request);
         }
         else {
-            
             switch(Auth::user()->role){
                 case 2:
-                    return redirect()->route('home');
-                
-                    break;
+                // $this->redirectTo = '/home';
+                // return $this->redirectTo;
+                //     break;
+                return view('home');
                 case 4:
-                    return redirect()->route('studentadvisor');
-                        
+                    //     $this->redirectTo = '/studentadvisor';
+                    // return $this->redirectTo;
+                    return view('studentAdvisor.index');
                     break;
                 case 3:
-                    return redirect()->route('applicants');
+                    return view('Admin.index');
                     break;
                 case 5:
-                    return redirect()->route('studentsupervisor');
+                    //     $this->redirectTo = '/studentsupervisor';
+                    // return $this->redirectTo;
+                    return view('studentSupervisor.index');
                     break;
                 case 6:
-                    return redirect()->route('offer_company');
-                    
+                    // $this->redirectTo = '/student';
+                    // return $this->redirectTo;
+                    return view('StudentsHome.index');
                     break;
-                // case 1:
-                //     return redirect()->route('superAdmin');
-            
-                //     break;
+                case 1:
+                    // $this->redirectTo = '/superAdmin';
+                    // return $this->redirectTo;
+                    return view('superAdmin.index');
+                    break;
                 default:
-                return redirect()->route('login');
+                    $this->redirectTo = '/login';
+                    return $this->redirectTo;
             }
              
         }

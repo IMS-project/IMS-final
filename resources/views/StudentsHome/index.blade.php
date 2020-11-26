@@ -1,4 +1,4 @@
-@extends('universityAdmin.app')
+@extends('studentpage.app')
 
 @section('content')
     <section class="content-header">
@@ -13,10 +13,7 @@
         <div class="clearfix"></div>
         <div class="box box-primary">
             <div class="box-body">
-                <table class="table table-bordered">
-                    <td><h4>students industrial internship</h4> </td>
-                                    </table>
-                                   
+               <h4>students industrial internship</h4> 
 
             </div>
         </div>

@@ -41,7 +41,7 @@
 
                             <div class='btn-group'>
                             <a href="{{ route('CompCoordinator.show',$comp->id) }}"
-                                class='btn btn-default btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>
+                                class='btn btn-primary btn-xs'><i class="glyphicon glyphicon-eye-open"></i></a>
 
                             <a href="{{ route('CompCoordinator.edit',$comp->id) }}" 
                                 class='btn btn-default btn-xs'><i class="glyphicon glyphicon-edit"></i></a>

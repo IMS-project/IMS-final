@@ -12,6 +12,7 @@ use App\University;
 use App\placement;
 use App\Company;
 use App\CompCoordinator;
+use App\Companydepartment;
 use Flash;
 class ApplicationController extends Controller
 {
@@ -116,48 +117,46 @@ class ApplicationController extends Controller
         //     $companyLimit = $limit->offer_capacity;
         // } 
 
-        $companyLimit = $complimit->offer_capacity;
-        if($numcount<$companyLimit)
-        {
-            if($applicant)
-            {       $placement = new placement();
+        // $companyLimit = $complimit->offer_capacity;
+        // if($numcount<$companyLimit)
+        // {
+        //     // if($applicant)
+
+                  $placement = new placement();
                     $placement->student_id = $id;
                     $placement->company_id = $user->company_id;
                     $placement->department_id = $id2;
                     $placement->duration_id = $id3;
                     $placement->status = "accepted";
 
-                    $checkid = $id;
-                    $compid = Placement::where('company_id',$user->company_id)->get();
-                    $count=0;
-                    foreach($compid as $row){
-                        $try = $row->student_id;
-                        if($try==$checkid){
-                            $count++;
-                        }
-                    }
-                    if($count>1)
-                    {
-                        Flash::warning('You have Already getplaced . . .');
-                        // return view('placements.index')    ;
-                    } 
-                    else
-                    {
-                        $placement->save();
-                        Flash::success('placement successful.');
-                    }
+                    // $checkid = $id;
+                    // $compid = Placement::where('company_id',$user->company_id)->get();
+                    // $count=0;
+                    // foreach($compid as $row){
+                    //     $try = $row->student_id;
+                    //     if($try==$checkid){
+                    //         $count++;
+                    //     }
+                    // }
+                    // if($count>1)
+                    // {
+                    //     Flash::warning('You have Already getplaced . . .');
+                    //     // return view('placements.index')    ;
+                    // } 
+                    // else
+                    // {
+                    //     $placement->save();
+                    //     Flash::success('placement successful.');
+                    // }
                     // here to remove applicants
                     $appid = $id;
                     $dd =  Applicant::where('student_id',$appid)->get();
                     foreach ($dd as $d) {
                         $d->delete();
                     }  
-            }
-        }
-        else{
             
-            Flash::warning('You have Reached Your Maximum Limit');
-        }
+        
+        
     
                    
             $applicant =Applicant::all()->where('status', 'pending');
@@ -167,6 +166,16 @@ class ApplicationController extends Controller
     
     }
 
+    public function Automatic(){
+
+     $user = CompCoordinator::where('user_id',Auth::id())->first();
+     $department =Companydepartment::where('company_id',$user->company_id);
+     foreach($department as $dpt){
+         $applicant = Applicant::where('company_id',$user->company_id)->where('department_id',$dpt->id);
+     }
+
+        
+    }
 
     public function reject(Request $request, $id)
     {
