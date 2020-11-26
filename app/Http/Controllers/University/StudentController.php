@@ -45,7 +45,18 @@ class StudentController extends Controller
     }
 
     public function store(Request $request)
-    {
+    {   
+        $data= request()->validate([
+            'first_name' =>'required|regex:/^[\pL\s\-]+$/u',
+            'last_name' => 'required|regex:/^[\pL\s\-]+$/u',
+            'sex' => 'required',
+            'phone' => 'required|min:10|numeric',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|min:6',
+            
+            ]);
+
+           User::create($data);
            $student = new Student;
            $user = new User;
            $university = new University;

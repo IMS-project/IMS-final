@@ -26,8 +26,6 @@ class CompCoordinatorController extends Controller
     //
     public function index()
     {
-        //$roles =Role::orderBy('name')->get();
-        //$company = Company::orderBy('created_at')->get();
         $compcordinator = CompCoordinator::all();
         return view('companies.coordinator.index')->with('compcord', $compcordinator);
     }
@@ -42,6 +40,19 @@ class CompCoordinatorController extends Controller
        
     public function store(Request $request, User $user )
     {
+
+        $data= request()->validate([
+            'first_name' =>'required|regex:/^[\pL\s\-]+$/u',
+            'last_name' => 'required|regex:/^[\pL\s\-]+$/u',
+            'sex' => 'required',
+            'phone' => 'required|min:10|numeric',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|min:6',
+            
+            ]);
+
+
+        // User::create($data);
     
         $compcordinator = new CompCoordinator();
 
@@ -94,6 +105,7 @@ class CompCoordinatorController extends Controller
                 //  $rolled = Role::all();
      return view('companies.coordinator.edit')->with('compcord',$compcoordiantor)
                                                         ->with('users', $user)
+                                                        ->with('companys',  $companys)
                                                         ->with('company',  $company);
                                                         
                                                                                        
@@ -112,17 +124,13 @@ class CompCoordinatorController extends Controller
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
         $user->save();
-        $id = $user->id;
-        $coordinator->user_id = $id;
-        $coordinator->company_id = $request->company ;
-        $coordinator->save();
         Flash::success(' updated successfully');
-        $compcordinator = CompCoordinator::all();
-        return view('companies.coordinator.index')->with('compcord', $compcoordiantor);
+        $companies =Company::all();
+        return view('companies.index')->with('companies',$companies);
     }
     public function destroy($id)
     {
-        //
+       
         $compcordinator = CompCoordinator::find($id);
         $compcordinator->delete();
         return redirect(route('CompCoordinator.index'));

@@ -45,7 +45,19 @@ class UniCoordinatorController extends Controller
     }
 
       public function store(Request $request, User $user )
-    {
+    {      
+        $data= request()->validate([
+            'first_name' =>'required|regex:/^[\pL\s\-]+$/u',
+            'last_name' => 'required|regex:/^[\pL\s\-]+$/u',
+            'sex' => 'required',
+            'phone' => 'required|min:10|numeric',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|min:6',
+            
+            ]);
+
+
+        User::create($data);
         $coordinator = new UniCoordinator;
         $user->first_name = $request->first_name;
         $user->last_name = $request->last_name;
@@ -116,7 +128,8 @@ class UniCoordinatorController extends Controller
         // $this->validate($request,['name'=>'required',
         // 'address'=>'required']);
         $coordinator = UniCoordinator::find($id);
-        $user = User::find($id);
+        $user = User::where('id', $coordinator->user_id)->first();
+        // $user = User::find($id);
         $user->first_name = $request->first_name;
         $user->last_name = $request->last_name;
         $user->phone = $request->phone;
@@ -129,9 +142,8 @@ class UniCoordinatorController extends Controller
         $coordinator->university_id = $request->university;
         $coordinator->save();
         Flash::success(' updated successfully');
-        $coordinator = UniCoordinator::all(); 
-
-        return view('universities.coordinator.index') ->with('cor', $coordinator);
+        $universities = University::all();
+        return view('universities.index')->with('universities', $universities);
 
     }
 

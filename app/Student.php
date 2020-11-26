@@ -12,7 +12,7 @@ class Student extends Model
     protected $dates = ['deleted_at'];
 
     // protected $table= 'studentss';
-    protected $fillable=['student_id', 'university_id', 'department_id','class_year','grade','semester_term'];
+    protected $fillable=['student_id', 'university_id', 'department_id','class_year','grade','semester_term','email','phone'];
 
     public function department(){
         return $this->belongsTo('App\Department');

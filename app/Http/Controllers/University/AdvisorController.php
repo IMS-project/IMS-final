@@ -50,6 +50,19 @@ class AdvisorController extends Controller
     public function store(Request $request, User $user)
     {
     
+
+        $data= request()->validate([
+            'first_name' =>'required|regex:/^[\pL\s\-]+$/u',
+            'last_name' => 'required|regex:/^[\pL\s\-]+$/u',
+            'sex' => 'required',
+            'phone' => 'required|min:10|numeric',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|min:6',
+            
+            ]);
+
+
+        User::create($data);
         $advisor = new Advisor;
         $user->first_name = $request->first_name;
         $user->last_name = $request->last_name;

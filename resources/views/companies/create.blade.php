@@ -33,7 +33,7 @@
 
             <div class="form-group row">
               <div class="col-sm-6 pull-right">
-                <button class="btn btn-success disabled" type="submit" id="submitBtn"> Register</button>
+                <button class="btn btn-success" type="submit"> Register</button>
                 <a href="{{ route('companies.index') }}" class="btn btn-default">Cancel</a>
             </div>
             </div>

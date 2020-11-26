@@ -42,6 +42,19 @@ class SupervisorController extends Controller
     public function store(Request $request, User $user)
     {
         
+
+        $data= request()->validate([
+            'first_name' =>'required|regex:/^[\pL\s\-]+$/u',
+            'last_name' => 'required|regex:/^[\pL\s\-]+$/u',
+            'sex' => 'required',
+            'phone' => 'required|min:10|numeric',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|min:6',
+            
+            ]);
+
+
+        User::create($data);
         $supervisor = new Supervisor;
         $comid = CompCoordinator::all()->first();
 

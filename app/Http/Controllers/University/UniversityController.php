@@ -5,32 +5,32 @@ namespace App\Http\Controllers\University;
     use App\Http\Requests\CreateUniversityRequest;
     use App\Http\Requests\UpdateUniversityRequest;
     use App\Repositories\UniversityRepository;
-    use App\Http\Controllers\AppBaseController;
+    use App\Http\Controllers\Controller;
     use Illuminate\Http\Request;
     use Flash;
     use Response;
-    use App\University;
+    use App\University ;
     use App\Department;
     use App\Advisor;
     use App\Role;
 
-    class UniversityController extends AppBaseController
+    class UniversityController extends Controller
     {
         /** @var  UniversityRepository */
-        private $universityRepository;
+        // private $universityRepository;
 
-        public function __construct(UniversityRepository $universityRepo)
+        public function __construct()
         {
             
             $this->middleware('auth');
             $this->middleware('admin');
             $this->middleware('prevent-back-history');
-            $this->universityRepository = $universityRepo;
+            
         }
 
         public function index(Request $request)
         {
-            $universities = $this->universityRepository->all();
+            $universities = University::all();
 
             return view('universities.index')->with('universities', $universities);
         }
@@ -50,7 +50,7 @@ namespace App\Http\Controllers\University;
     
             // $input = $request->all();
 
-            $university = $this->universityRepository->create($data);
+            University::create($data);
 
             Flash::success('University saved successfully.');
             $university = University::orderBy('created_at')->get();
@@ -94,8 +94,8 @@ namespace App\Http\Controllers\University;
     
         public function destroy($id)
         {
-            $university = $this->universityRepository->find($id);
-            $this->universityRepository->delete($id);
+            $university =University::find($id);
+            $university->delete();
             //Flash::success('University deleted successfully.');
             return redirect(route('universities.index'));
         }

@@ -11,7 +11,7 @@
   @include('adminlte-templates::common.errors')
   <div class="box box-primary">
     
-
+    <div class="row" style="padding: 25px">
       <form method="post" action="{{ route('CompCoordinator.update', $compcord->id)}}" enctype="multipart/form-data">
           {{csrf_field()}}
           @method('PUT')
@@ -22,16 +22,11 @@
                     <input type="text" name="first name" class="form-control" value="{{$users->first_name}}" id="name" placeholder="first_name" required>
             </div></div>
 
-            <div class="form-group row">
-                <lable for = "last name" class = "col-sm-1 col-form-label"><h5>Last Name:</h5></lable>
-                <div class="col-sm-6">
-                    <input type="text" name="last name" class="form-control" value="{{$users->last_name}}" id="name" placeholder="last_name" required>
-            </div></div>
 
           <div class="form-group row">
               <lable for = "name" class = "col-sm-1 col-form-label"><h5>Last Name:</h5></lable>
               <div class="col-sm-6">
-                  <input type="text" name="name" class="form-control" value="{{$users->name}}" id="name" placeholder="user name" required>
+                  <input type="text" name="last name" class="form-control" value="{{$users->last_name}}" id="name" placeholder="user name" required>
           </div></div>
 
 
@@ -48,7 +43,7 @@
           </div></div>
 
          
-
+{{-- 
           <div class="form-group row">
               <lable for = "phone" class = "col-sm-1 col-form-label"><h5>Company:</h5></lable>
               <div class="col-sm-6">
@@ -61,7 +56,7 @@
                    @endforeach
                </select>  
                </div> 
-               </div>
+               </div> --}}
 
                   <div class="form-group row">
                   <div class="col-sm-6 pull-right">
@@ -70,7 +65,7 @@
                   </div>
                   </div>
       </form>
-  
+    </div>
   <div class="col-sm-2"></div>
 </div>
 </div>
