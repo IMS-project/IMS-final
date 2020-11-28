@@ -15,7 +15,8 @@ class HomeController extends Controller
     {
         $this->middleware('auth');
         $this->middleware('university');
-        $this->middleware('prevent-back-history');
+        $this->middleware('verified');
+        // $this->middleware('prevent-back-history');
     }
 
     /**

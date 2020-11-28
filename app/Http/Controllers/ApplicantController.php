@@ -115,9 +115,9 @@ class ApplicantController extends Controller
         $applicant = Student::where('user_id',Auth::id())->first();
         $appdpt = Applicant::where('student_id',$applicant->id)->get();
         $limit = Applicant::where('student_id',$applicant->id)->get()->count();
-        $departments = Companydepartment::where('id',$appdpt->department);
+        $departments = Companydepartment::all();
         $duration = Duration::all();
-       dd($appdpt);
+    //    dd($appdpt);
         $company = Company::find($id);
         $student = Company::find($id)->applicant()->count();
         $placement =Company::find($id)->placement()->count();

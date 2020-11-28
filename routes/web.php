@@ -9,6 +9,8 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+   Route::view('/','auth.login');
+
     Route::group(['middleware' => 'prevent-back-history'], function(){
     
     Route::post('logout', 'Auth\LoginController@logout')->name('logout');
@@ -33,7 +35,7 @@
     Route::resource('Assignsuper','AssignsupervisorController');
 
     
-    Route::get('/home', 'HomeController@index')->middleware('verified');
+    Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/admin', 'Admincontroller@index');
     Route::get('/student', 'Viewcontroller@index');
     Route::resource('offer_company', 'ApplicantController');
