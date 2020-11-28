@@ -15,7 +15,7 @@ class Viewcontroller extends Controller
     {
         $this->middleware('auth');
         $this->middleware('student');
-        $this->middleware('prevent-back-history');
+        // $this->middleware('prevent-back-history');
     }
     public function index()
     {

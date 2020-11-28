@@ -20,7 +20,7 @@ class CompCoordinatorController extends Controller
     {
         $this->middleware('auth');
         $this->middleware('admin');
-        $this->middleware('prevent-back-history');
+        // $this->middleware('prevent-back-history');
     }
 
     //
@@ -45,7 +45,7 @@ class CompCoordinatorController extends Controller
             'first_name' =>'required|regex:/^[\pL\s\-]+$/u',
             'last_name' => 'required|regex:/^[\pL\s\-]+$/u',
             'sex' => 'required',
-            'phone' => 'required|min:10|numeric',
+            'phone' => 'required|regex:/(0)[0-9]/|not_regex:/[a-z]/|digits:10',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:6',
             
@@ -115,10 +115,10 @@ class CompCoordinatorController extends Controller
     {
         //
         $coordiantor = CompCoordinator::find($id);
-        $user = User::find($id);
+        $user = User::where('id',$coordiantor->user_id)->first();
         $user->first_name = $request->first_name;
         $user->last_name = $request->last_name;
-        $user->sex = $request->sex;
+        // $user->sex = $request->sex;
         $user->phone = $request->phone;
         $user->role = 3;
         $user->email = $request->email;

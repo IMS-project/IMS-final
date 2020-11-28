@@ -20,7 +20,7 @@ class SupervisorController extends Controller
     {
         $this->middleware('auth');
         $this->middleware('company');
-        $this->middleware('prevent-back-history');
+        // $this->middleware('prevent-back-history');
     }
 
     public function index()
@@ -47,14 +47,14 @@ class SupervisorController extends Controller
             'first_name' =>'required|regex:/^[\pL\s\-]+$/u',
             'last_name' => 'required|regex:/^[\pL\s\-]+$/u',
             'sex' => 'required',
-            'phone' => 'required|min:10|numeric',
+            'phone' => 'required|regex:/(0)[0-9]/|not_regex:/[a-z]/|digits:10',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:6',
             
             ]);
 
 
-        User::create($data);
+        // User::create($data);
         $supervisor = new Supervisor;
         $comid = CompCoordinator::all()->first();
 

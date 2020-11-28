@@ -122,7 +122,7 @@
     const grade = document.getElementById('grade');
     const submitBtn = document.getElementById('submitBtn');
     grade.addEventListener('input', (event) => {
-        if(grade.value > 4){
+        if(grade.value >4){
             grade.value = null;
             submitBtn.classList.add('disabled');
         }

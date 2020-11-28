@@ -41,7 +41,7 @@ namespace App\Http\Controllers\University;
             return view('universities.create')->with('roles',$role)->with('universities',$university);
         }
 
-        public function store(CreateUniversityRequest $request)
+        public function store(Request $request)
         {
             $data= request()->validate([
                 "name"=>["required","unique:universities"], 
@@ -74,9 +74,9 @@ namespace App\Http\Controllers\University;
             return view('universities.edit')->with('university', $university);
         }
 
-        public function update($id, UpdateUniversityRequest $request)
+        public function update($id, Request $request)
         {
-            $university = $this->universityRepository->find($id);
+            $university = University::find($id);
 
             if (empty($university)) {
                 Flash::error('University not found');
@@ -84,7 +84,9 @@ namespace App\Http\Controllers\University;
                 return redirect(route('universities.index'));
             }
 
-            $university = $this->universityRepository->update($request->all(), $id);
+            $university->name= $request->name;
+            $university->address= $request->address;
+            $university->save();
 
             Flash::success('University updated successfully.');
 

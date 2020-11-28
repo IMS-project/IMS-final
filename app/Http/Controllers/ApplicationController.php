@@ -25,7 +25,7 @@ class ApplicationController extends Controller
     {
         $this->middleware('auth');
         $this->middleware('company');
-        $this->middleware('prevent-back-history');
+        // $this->middleware('prevent-back-history');
     }
     public function index()
     {

@@ -44,13 +44,13 @@
                         
                 
                         <!--    ---- student id ---- -->
-                        <div class="form-group row">
+                        {{-- <div class="form-group row">
                             <lable for = "student_id" class = "col-sm-1 col-form-label"><h5>offer capacity:</h5></lable>
                             <div class="col-sm-6">
                         <input type="number" name="offer_capacity" class="form-control" id="student_id" 
                                             placeholder="offer capacity" value="{{$company->offer_capacity}}" required>
                             </div>
-                        </div>
+                        </div> --}}
                 <!-- 
           <div class="form-group row">
               <lable for = "grade" class = "col-sm-1 col-form-label"><h5>minimum grade</h5></lable>

@@ -23,7 +23,7 @@ class ApplicantController extends Controller
     {
         $this->middleware('auth');
         $this->middleware('student');
-        $this->middleware('prevent-back-history');
+        // $this->middleware('prevent-back-history');
     }
     public function index()
     {
@@ -113,10 +113,11 @@ class ApplicantController extends Controller
     { 
 
         $applicant = Student::where('user_id',Auth::id())->first();
+        $appdpt = Applicant::where('student_id',$applicant->id)->get();
         $limit = Applicant::where('student_id',$applicant->id)->get()->count();
-        $departments = Companydepartment::all();
+        $departments = Companydepartment::where('id',$appdpt->department);
         $duration = Duration::all();
-        // dd($departments->company_id);
+       dd($appdpt);
         $company = Company::find($id);
         $student = Company::find($id)->applicant()->count();
         $placement =Company::find($id)->placement()->count();

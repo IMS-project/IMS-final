@@ -23,7 +23,7 @@ class StudentController extends Controller
     {
         $this->middleware('auth');
         $this->middleware('university');
-        $this->middleware('prevent-back-history');
+        // $this->middleware('prevent-back-history');
     }
     public function index()
     {
@@ -50,13 +50,13 @@ class StudentController extends Controller
             'first_name' =>'required|regex:/^[\pL\s\-]+$/u',
             'last_name' => 'required|regex:/^[\pL\s\-]+$/u',
             'sex' => 'required',
-            'phone' => 'required|min:10|numeric',
+            'phone' => 'required|regex:/(0)[0-9]/|not_regex:/[a-z]/|digits:10',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:6',
             
             ]);
 
-           User::create($data);
+        //    User::create($data);
            $student = new Student;
            $user = new User;
            $university = new University;
@@ -68,6 +68,7 @@ class StudentController extends Controller
            $user->phone = $request->phone;
            $user->role = 6;
            $user->email = $request->email;
+        //    $user->password = Hash::make($request->password);
            $user->password = Hash::make($request->password);  // Hash::make($data['password']),
            $user->save();
          

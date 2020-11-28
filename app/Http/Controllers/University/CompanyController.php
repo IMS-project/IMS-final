@@ -34,9 +34,9 @@ class CompanyController extends Controller
         $data= request()->validate([
             "name"=>["required","unique:companies"], 
             "address"=>"required",
-            "offer_capacity"=>"required",
-            "mini_grade"=>"required",
-            "other_skills"=>"required"
+            // "offer_capacity"=>"required",
+            // "mini_grade"=>"required",
+            // "other_skills"=>"required"
             ]);
 
         //     $check = request('name');
@@ -50,9 +50,9 @@ class CompanyController extends Controller
             $company= new Company();
              $company->name= request('name');
              $company->address= request('address');
-             $company->offer_capacity= request('offer_capacity');
-             $company->mini_grade =request('mini_grade');
-             $company->other_skills= request('other_skills');
+            //  $company->offer_capacity= request('offer_capacity');
+            //  $company->mini_grade =request('mini_grade');
+            //  $company->other_skills= request('other_skills');
              // $company->save();
               Flash::success('Companies saved successfully.');
              //  $role =Role::orderBy('name')->get(); 
@@ -97,7 +97,7 @@ class CompanyController extends Controller
     {
          $company->name = $request->name;
         $company->address = $request->address;
-        $company->offer_capacity = $request->offer_capacity;
+        // $company->offer_capacity = $request->offer_capacity;
         $company->save();
         //$company->update($id); //notice
         Flash::success('saved successfully');
