@@ -3,9 +3,9 @@
 @section('content')
 
 <section class="content-header">
-    <h1>
-     coordinators
-    </h1>
+    <h4>
+     university user
+    </h4>
     <a class="btn btn-primary pull-right" style=
     "margin-top: -10px;margin-bottom: 5px" href="{{ route('UniCoordinator.create') }}"><i class="fa fa-plus-circle">Add NEW</i></a>
 </section>

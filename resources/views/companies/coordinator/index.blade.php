@@ -3,7 +3,7 @@
 @section('content')
 
 <section class="content-header">
-    <h1> comp_coordinators </h1>
+    <h4> company user </h4>
         <a class="btn btn-primary pull-right" style=
     "margin-top: -10px;margin-bottom: 5px" href="{{ route('CompCoordinator.create') }}"><i class="fa fa-plus-circle">Add NEW</i></a>
 </section>
