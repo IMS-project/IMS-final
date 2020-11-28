@@ -11,6 +11,7 @@
         @include('adminlte-templates::common.errors')
          <div class="box box-primary">
             <div class="box-body">
+              <div class="row" style="padding: 25px">
 
         <form method="post" action="{{ route('companydepartments.store')}}">
               {{csrf_field()}}
@@ -56,6 +57,7 @@
                 </div>
 
               </form>
+            </div>
             </div>
         </div>
         <div class="col-sm-2"></div>

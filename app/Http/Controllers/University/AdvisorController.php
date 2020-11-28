@@ -62,7 +62,7 @@ class AdvisorController extends Controller
             ]);
 
 
-        User::create($data);
+        // User::create($data);
         $advisor = new Advisor;
         $user->first_name = $request->first_name;
         $user->last_name = $request->last_name;
