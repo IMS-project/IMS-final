@@ -21,7 +21,7 @@
         <div class="box-body">
 
                 <section class="container-fluid">
-                    <table class="table" id="universities-table">
+                    <table class="table table-bordered table-striped" id="universities-table">
                             <thead>
                                 <tr>
                                     <th>Id</th>

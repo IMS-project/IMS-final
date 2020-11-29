@@ -22,7 +22,7 @@
 
                 <section class="container-fluid">
                     <div class="table-responsive">
-                    <table class="table table-bordered" id="students-table">
+                    <table class="table table-bordered table-striped" id="students-table">
                             <thead>
                                 <tr>
                                     

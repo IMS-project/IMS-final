@@ -14,8 +14,8 @@
                     <div class="form-group">
                         <div class="table-responsive">
                         <table class="table table-bordered table-striped" id="companies-table">
-                            <thead>
-                               
+                         
+                                <thead class="thead-light">  
                                 <tr>
     
                             <th>Name</th>

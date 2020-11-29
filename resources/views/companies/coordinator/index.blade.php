@@ -19,7 +19,7 @@
        <div class="box-body">
 
         <section class="container-fluid">
-        <table class="table" id="companies-table">
+        <table class="table table-bordered table-striped" id="companies-table">
                 <thead>
                     <tr>
                         <th>Id</th>

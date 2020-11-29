@@ -8,7 +8,7 @@
      <div class="box box-primary">
          <div class="box-body">
             <div class="table-responsive">
-            <table class="table table-bordered" id="companies-table">
+            <table class="table table-bordered table-striped" id="companies-table">
                 <thead>
                     <tr>
                         <th>Full name</th>

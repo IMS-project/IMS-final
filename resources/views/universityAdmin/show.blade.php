@@ -10,7 +10,7 @@
         <div class="box box-primary">
             <div class="box-body">
                 <div class="row" style="padding-left: 20px">
-                    <table class="table table-bordered" id="companies-table">
+                    <table class="table table-bordered table-striped" id="companies-table">
                         <thead>
                             <tr>
                                 <th>NAme</th>

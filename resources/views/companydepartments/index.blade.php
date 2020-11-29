@@ -21,7 +21,7 @@
 
    <section class="container-fluid">
     <div class="table-responsive">
-      <table class="table table-bordered" id="departments-table">
+      <table class="table table-bordered table-striped" id="departments-table">
             <thead>
                 <tr>
                     <th>SN</th>

@@ -19,7 +19,7 @@
             <div class="box-body">
                     {{-- @include('companies.table') --}}
                     <div class="table-responsive">
-                        <table class="table table-bordered" id="companies-table">
+                        <table class="table table-bordered table-striped" id="companies-table">
                             <thead>
                                 <tr>
                                     <th>SN</th>
