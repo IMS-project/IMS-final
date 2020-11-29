@@ -6,7 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\Mail;
+use App\Mail\WelcomeMail;
 use App\Role;
 use App\User;
 use App\University;
@@ -83,6 +84,13 @@ class StudentController extends Controller
            $student->class_year = $request->year;
            $student->grade = $request->grade;
            $student->save();
+
+        // To send an welcome mail to user with password and username attached
+            $details = [
+                'username' => $request->email,
+                'password' => $request->password,
+            ];
+           Mail::to($request->email)->send(new WelcomeMail($details));
 
            Flash::success('saved successfully.');
            $student = Student::all();

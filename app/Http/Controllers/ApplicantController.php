@@ -117,11 +117,11 @@ class ApplicantController extends Controller
         $limit = Applicant::where('student_id',$applicant->id)->get()->count();
         $departments = Companydepartment::all();
         $duration = Duration::all();
-    //    dd($appdpt);
         $company = Company::find($id);
         $department =  Companydepartment::where('company_id',$id)->get();
-        // dd($company);
+        $count =  Companydepartment::where('company_id',$id)->get();  
         $student = Company::find($id)->applicant()->count();
+        
         $placement =Company::find($id)->placement()->count();
        
 

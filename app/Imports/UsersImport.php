@@ -1,16 +1,18 @@
 <?php
 
 namespace App\Imports;
-
+use Str;
 use App\User;
 use App\Student;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Maatwebsite\Excel\Concerns\ToCollection;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use App\Imports\UserImports;
 use App\UniCoordinator;
 use App\Department;
+use App\Mail\WelcomeMail;
 use DB;
 use Illuminate\Support\Facades\Hash;
 class UsersImport implements ToCollection, WithHeadingRow
@@ -29,6 +31,7 @@ class UsersImport implements ToCollection, WithHeadingRow
     foreach($collection as $row){
         $un= UniCoordinator::where('user_id', Auth::id())->first();
         $dep = Department::where('department_name',$row['dep'])->first();
+        $pass = Str_random(8);
         $user=User::create([
             'first_name'=>$row['first_name'],
             'last_name'=>$row['last_name'],  
@@ -36,7 +39,7 @@ class UsersImport implements ToCollection, WithHeadingRow
              'role'=>6,
             'email'=>$row['email'],
             'sex'=>$row['sex'],
-            'password'=>Hash::make('password'),
+            'password'=>Hash::make($pass),
         ]);
         $user->student()->create([
             'user_id'=>$user->id,
@@ -47,6 +50,12 @@ class UsersImport implements ToCollection, WithHeadingRow
             'semester_term'=>$row['semester'],
             'grade'=>$row['gpa'],
         ]);
+        // To send an welcome mail to user with password and username attached
+        $details = [
+            'username' => $row['first_name'],
+            'password' => $pass,
+        ];
+       Mail::to($row['email'])->send(new WelcomeMail($details));
     }
         // return new User([
             
