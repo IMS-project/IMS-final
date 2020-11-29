@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Company;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 use Flash;
 
 use App\Role;
@@ -25,16 +26,15 @@ class SupervisorController extends Controller
 
     public function index()
     {
-        $supervisor = Supervisor::all();
-        return view('companies.supervisor.index')
-        ->with('supervisors', $supervisor);
+            $user = CompCoordinator::where('user_id',Auth::id())->first(); 
+            $supervisor = Supervisor::where('company_id',$user->company_id)->get();
+            return view('companies.supervisor.index')
+            ->with('supervisors', $supervisor);
     }
     public function create()
     {
-        // $role = Role::orderBy('name')->get();
-        // $company = Company::orderBy('created_at')->get();
-        // $department = Department::orderBy('created_at')->get();
-        $department =Companydepartment::orderBy('created_at')->get();
+        $user = CompCoordinator::where('user_id',Auth::id())->first();
+        $department =Companydepartment::where('company_id',$user->company_id)->orderBy('created_at')->get();
         return view('companies.supervisor.create')->with('departments',$department);
 
     }

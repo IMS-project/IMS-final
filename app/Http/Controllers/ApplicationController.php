@@ -29,6 +29,7 @@ class ApplicationController extends Controller
     }
     public function index()
     {
+        
         $applicant = Applicant::all()->where('status', 'pending');
         return view('companyAdmin.index')->with('applicants',$applicant);
     }
@@ -169,9 +170,10 @@ class ApplicationController extends Controller
     public function Automatic(){
 
      $user = CompCoordinator::where('user_id',Auth::id())->first();
-     $department =Companydepartment::where('company_id',$user->company_id);
+     $department =Companydepartment::where('company_id',$user->company_id)->get();
+     $applicants = Applicant::where('company_id',$user->company_id)->where('status','pending')->get();
      foreach($department as $dpt){
-         $applicant = Applicant::where('company_id',$user->company_id)->where('department_id',$dpt->id);
+        $applicant = Applicant::where('company_id',$user->company_id)->where('department_id',$dpt->id);
      }
 
         

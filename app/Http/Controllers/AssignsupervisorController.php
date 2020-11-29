@@ -21,10 +21,7 @@ class AssignsupervisorController extends Controller
     {
         $comp =CompCoordinator::where('user_id',Auth::id())->first();
         $super = Supervisor::where('company_id',$comp->company_id)->get();
-        $placement =placement::all();
-        // $company =Company::where('id',$placement->company_id);
-        // $stcmid = placement::where('company_id',$super->company_id)->get();
-        // dd($stcmid);
+        $placement = placement::all();
         return view('Assignsupervisor.index')->with('supervisor',$super)->with('placements',$placement);
     }
 
@@ -46,10 +43,10 @@ class AssignsupervisorController extends Controller
      */
     public function store(Request $request){
             
-        dd($request->student);
+        // dd($request->student);
         foreach($request->student as $stud){
             $assignsuper = new Assignsupervisor();
-            dd($stud);
+            // dd($stud);
             $assignsuper->supervisor_id = $request->supervisor;
             $assignsuper->placement_id = $request->student;
             $assignsuper->save();

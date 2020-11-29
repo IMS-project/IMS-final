@@ -24,14 +24,11 @@ class UsersImport implements ToCollection, WithHeadingRow
     */
     public function collection(Collection $collection)
     {
-        //
-        // $this->attributes['password'] = Hash::make($value);
-    // dd($collection);
     
     foreach($collection as $row){
         $un= UniCoordinator::where('user_id', Auth::id())->first();
         $dep = Department::where('department_name',$row['dep'])->first();
-        $pass = Str_random(8);
+        $password = str_random(6);
         $user=User::create([
             'first_name'=>$row['first_name'],
             'last_name'=>$row['last_name'],  
@@ -39,7 +36,7 @@ class UsersImport implements ToCollection, WithHeadingRow
              'role'=>6,
             'email'=>$row['email'],
             'sex'=>$row['sex'],
-            'password'=>Hash::make($pass),
+            'password'=>Hash::make($password),
         ]);
         $user->student()->create([
             'user_id'=>$user->id,
@@ -50,25 +47,15 @@ class UsersImport implements ToCollection, WithHeadingRow
             'semester_term'=>$row['semester'],
             'grade'=>$row['gpa'],
         ]);
+
         // To send an welcome mail to user with password and username attached
         $details = [
             'username' => $row['first_name'],
-            'password' => $pass,
+            'password' => $password,
         ];
        Mail::to($row['email'])->send(new WelcomeMail($details));
     }
-        // return new User([
-            
-            
-            
-        //     // 'password'=>@$collection[6],
-
-        // ]);
-        // $user->roles()->attach($data['role']);
-        // return $user;
-    }
-        // $student = new Student([
-            
-        // ]);
+        
+}
 
     }
