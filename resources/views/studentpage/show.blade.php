@@ -13,16 +13,12 @@
                     {{-- @include('Applicants.show_fields') --}}
                     <div class="form-group">
                         <div class="table-responsive">
-                        <table class="table table-bordered" id="companies-table">
+                        <table class="table table-dark" id="companies-table">
                             <thead>
+                               
                                 <tr>
     
                             <th>Name</th>
-                            <th>Capacity</th>
-                            <th>Mini_grade</th>
-                            {{-- <th>skills required</th> --}}
-                            <th>Placed</th>
-                            <th>Pending</th>
                             <th>Department</th>
                             <th>Duration</th>
                             <th>Action</th>
@@ -32,18 +28,14 @@
                             <tbody>
                                
                                 <td>{{ $company->name }}</td>
-                                <td>{{ $company->offer_capacity }}</td>
-                                <td>{{ $company->mini_grade}}</td>
-                                {{-- <td>{{ $company->other_skills }}</td> --}}
-                                <td>{{ $placed }}</td>
-                                <td>{{$applicants}}</td>
+                                
                                 <td>
                                     <form method="GET" action="{{ route('applicant')}}">
                                         {{csrf_field()}}
                                     <input type="hidden" name="company" value="{{$company->id}}">
                                     <select class="form-control" id="department_id" name="departments">
             
-                                        @foreach ($departments as $dep)
+                                        @foreach ($department as $dep)
                                         <option value="{{$dep->id }}">{{ $dep->department_name}}</option>
                                         
                                         @endforeach
@@ -75,6 +67,35 @@
                                 </td>
                             </form>
                             </tbody>
+                        </table>
+                        <table class="table table-striped"" id="companies-table">
+                            <thead class="thead-light">
+                                
+                                <caption><h4><b>List of departments</h4></caption>
+                                <tr>
+                                    <th>Department</th>
+                                    <th>Capacity</th>
+                                    <th>Mini_grade</th>
+                                    <th>Placed</th>
+                                    <th>Pending</th>
+                                    <th>Duration</th>
+                                    
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                
+                                @foreach ($department as $depart)  
+                                <tr>
+                                    <td>{{$depart->department_name}}</td>
+                                    <td>{{ $depart->offer_capacity }}</td>
+                                    <td>{{ $depart->mini_grade}}</td>
+                                
+                                </tr>
+                                @endforeach
+                            
+                            </tbody>
+
                         </table>
                         </div>
                     </div>

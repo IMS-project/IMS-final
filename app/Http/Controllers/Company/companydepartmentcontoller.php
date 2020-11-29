@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Companydepartment;
 use App\Company;
+use App\Duration;
 use App\CompCoordinator;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
@@ -25,7 +26,8 @@ class companydepartmentcontoller extends Controller
     }
     public function index()
     {
-        $department = Companydepartment::all();
+        $comid =CompCoordinator::where('user_id',Auth::id())->first();
+        $department = Companydepartment::where('company_id',$comid->company_id)->get();
         // dd($department);
         return view('companydepartments.index')->with('departments',$department);
     }
@@ -36,8 +38,10 @@ class companydepartmentcontoller extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        return view('companydepartments.create');
+    {   
+        $duration = Duration::all();
+
+        return view('companydepartments.create')->with('durations',$duration);
     }
 
     /**
@@ -55,6 +59,7 @@ class companydepartmentcontoller extends Controller
         $department->offer_capacity= request('offer_capacity');
         $department->mini_grade =request('mini_grade');
         $department->other_skills= request('other_skills');
+        $department->duration_id = request('durations');
         $department->save();
         Flash::success('department saved successfully.');
         return redirect(route('companydepartments.index'))->with('departments', $department );

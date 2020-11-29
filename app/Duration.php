@@ -15,4 +15,7 @@ class Duration extends Model
    public function students(){
         return $this->hasOne('App\Student');
    }
+   public function department(){
+    return $this->hasOne('App\Companydepartment');
+}
 }

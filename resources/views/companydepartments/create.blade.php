@@ -47,6 +47,16 @@
                 <input type="text" name="other_skills" class="form-control" id="skills" placeholder="other skills" required>
             </div>
         </div>
+        <div class="form-group row">
+          <lable for = "phone" class = "col-sm-1 col-form-label"><h5>durations:</h5></lable>
+          <div class="col-sm-6">
+          <select name="durations" id="name" type ="text" class="form-control" value="{{ old('duration_id') }}">
+               @foreach ($durations as $du) 
+               <option value="{{ $du->id }}">{{$du->name}}</option>
+               @endforeach
+            </select> 
+        </div>
+      </div>
                 <!-- User Id Field -->
 
                 <div class="form-group row">

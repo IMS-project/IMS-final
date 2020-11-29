@@ -20,8 +20,12 @@ class CreateCompanydepartmentsTable extends Migration
             $table->float('mini_grade');
             $table->string('other_skills');
             $table->unsignedBigInteger('company_id');
+            $table->unsignedBigInteger('duration_id');
             $table->timestamps();
             $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
+            $table->foreign('duration_id')->references('id')->on('durations')->onDelete('cascade');
+            
+            
         });
     }
 

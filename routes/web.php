@@ -9,7 +9,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-   Route::view('/','auth.login');
+   Route::view('/','auth/login');
 
     Route::group(['middleware' => 'prevent-back-history'], function(){
     

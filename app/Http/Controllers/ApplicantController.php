@@ -119,6 +119,8 @@ class ApplicantController extends Controller
         $duration = Duration::all();
     //    dd($appdpt);
         $company = Company::find($id);
+        $department =  Companydepartment::where('company_id',$id)->get();
+        // dd($company);
         $student = Company::find($id)->applicant()->count();
         $placement =Company::find($id)->placement()->count();
        
@@ -127,6 +129,7 @@ class ApplicantController extends Controller
                                         ->with('applicants',$student)
                                         ->with('placed',$placement)
                                         ->with('departments',$departments)
+                                        ->with('department',$department)
                                         ->with('durations',$duration)
                                         ->with('limits',$limit);
     }

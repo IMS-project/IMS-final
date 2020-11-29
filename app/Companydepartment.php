@@ -13,6 +13,10 @@ class Companydepartment extends Model
     {
         return $this->belongsTo('App\Company');
     }
+    public function duration()
+    {
+        return $this->belongsTo('App\Duration');
+    }
 
    public function students(){
         return $this->hasMany('App\Student');
