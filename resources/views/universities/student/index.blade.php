@@ -4,7 +4,8 @@
 
 <section class="content-header">
     
-        <a href="{{ url('/import/import-excel') }}" class="btn btn-success"><Import-Excel class="fas fa-file-import">Import-Excel</i></a>
+        <a href="{{ url('/import/import-excel') }}" class="btn btn-success"><i class="fa fa-file-excel-o" aria-hidden="true"></i>
+            Import-Excel</a>
   
     <a class="btn btn-primary pull-right" style=
     "margin-top: -2px;margin-bottom: 5px" href="{{ route('Student.create') }}"><i class="fa fa-plus-circle">Add NEW</i></a>
@@ -55,6 +56,7 @@
                         @endforeach
                         </tbody>
                     </table>
+                    {{$students->links() }}
                     </div>  
                  </section> 
                 </div> 

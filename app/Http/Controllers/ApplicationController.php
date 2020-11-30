@@ -31,9 +31,8 @@ class ApplicationController extends Controller
     {
         $user = CompCoordinator::where('user_id',Auth::id())->first();
         $applicants = Applicant::where('company_id',$user->company_id)->where('status','pending')->get();
-        $sorted = $applicants->sortByDesc('$applicants->student->grade')->values();
-        // dd($sorted);
-        // $applicant = Applicant::all()->where('status', 'pending');
+
+        
         return view('companyAdmin.index')->with('applicants',$applicants);
     }
 
@@ -44,7 +43,7 @@ class ApplicationController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -55,7 +54,7 @@ class ApplicationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       
     }
 
     /**
@@ -94,7 +93,7 @@ class ApplicationController extends Controller
      */
     public function edit($id)
     {
-        //
+        
     }
 
     /**
@@ -115,11 +114,6 @@ class ApplicationController extends Controller
         ->where('company_id',$user->company_id)
         ->count();
         $complimit = Companydepartment::where('id', $applicant->department_id)->first();
-        // dd($numcount);
-        // foreach($complimit as $limit)
-        // {
-        //     $companyLimit = $limit->offer_capacity;
-        // } 
 
         $companyLimit = $complimit->offer_capacity;
         if($numcount<$companyLimit)
@@ -157,12 +151,7 @@ class ApplicationController extends Controller
                     $dd =  Applicant::where('student_id',$appid)->get();
                     foreach ($dd as $d) {
                         $d->delete();
-                    }  
-            
-        
-        
-    
-                   
+                    }           
             $applicant =Applicant::all()->where('status', 'pending');
             return view('companyAdmin.index')->with('applicants',$applicant);
       }
@@ -172,15 +161,70 @@ class ApplicationController extends Controller
 
     public function Automatic(){
 
-     $user = CompCoordinator::where('user_id',Auth::id())->first();
-     $department =Companydepartment::where('company_id',$user->company_id)->get();
-     $applicants = Applicant::where('company_id',$user->company_id)->where('status','pending')->get();
-     foreach($department as $dpt){
-        $applicant = Applicant::where('company_id',$user->company_id)->where('department_id',$dpt->id);
-     }
+        $user = CompCoordinator::where('user_id',Auth::id())->first();
+        $applicants = Applicant::where('company_id',$user->company_id)->where('status','pending')->get();
 
+        $sorted = $applicants->sortBy(function($query){
+            return $query->student->grade;
+        })
+        ->all();
         
-     return view('Automatic.index');
+
+        $department =Companydepartment::where('company_id',$user->company_id)->get();
+        $successful=false;
+     foreach($sorted as $applicant){
+        $numcount = placement::all()->where('company_id',$user->company_id)->where('department_id',$applicant->department_id)->count();
+        $complimit = Companydepartment::where('id', $applicant->department_id)->first();
+
+        $companyLimit = $complimit->offer_capacity;
+        if($numcount<$companyLimit)
+        {
+            if($applicant)
+
+                  $placement = new placement();
+                    $placement->student_id = $applicant->student_id;
+                    $placement->company_id = $user->company_id;
+                    $placement->department_id = $applicant->department_id;
+                    $placement->duration_id = $applicant->duration_id;
+                    $placement->status = "accepted";
+
+                    $checkid = $applicant->student_id;
+                    $compid = Placement::where('company_id',$user->company_id)->where('department_id',$applicant->department_id)->get();
+                    $count=0;
+                    foreach($compid as $row){
+                        $try = $row->student_id;
+                        if($try==$checkid){
+                            $count++;
+                        }
+                    }
+                    if($count>1)
+                    {
+                        Flash::warning('You have Already getplaced . . .');
+                        // return view('placements.index')    ;
+                    } 
+                    else
+                    {
+                        $placement->save();
+                        $successful= true;
+                    }
+                    // here to remove applicants
+                    $appid = $applicant->student_id;
+                    $dd =  Applicant::where('student_id',$appid)->get();
+                    foreach ($dd as $d) {
+                        $d->delete();
+                    }           
+      }
+           
+        
+     }
+     if( $successful){
+        Flash::success('placement successful.');
+     }
+     
+     $applicant =Applicant::all()->where('status', 'pending');
+     return view('companyAdmin.index')->with('applicants',$applicant);
+    //  return view('Automatic.index');
+     
     }
 
     public function reject(Request $request, $id)

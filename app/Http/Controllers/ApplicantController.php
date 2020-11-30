@@ -80,8 +80,8 @@ class ApplicantController extends Controller
         $count = 0 ;
     foreach($stid as $row)
         {
-            $try = $row->company_id;
-            if($try==$request->company)
+            $try = $row->department_id;
+            if($try==$request->departments)
             {
                 $count = 1;
             } 

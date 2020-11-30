@@ -28,7 +28,7 @@ class StudentController extends Controller
     }
     public function index()
     {
-        $student =Student::orderBy('created_at','desc')->paginate(3);
+        $student =Student::orderBy('created_at','desc')->paginate(10);
         return view('universities.student.index')->with('students', $student);
     }
 

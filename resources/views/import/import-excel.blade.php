@@ -21,7 +21,8 @@
 
                 @csrf
                 <input type="file" name="import_file" class="form-group" />
-                <button class="btn btn-success pull-right">upload files</button>
+                <button class="btn btn-success pull-right"><i class="fa fa-upload" aria-hidden="true"></i>
+                    upload files</button>
             </form>
             {{-- @include('universities.student.index') --}}
         </div>
