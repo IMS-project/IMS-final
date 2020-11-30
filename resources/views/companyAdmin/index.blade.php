@@ -25,7 +25,7 @@
                                  {{-- <th>company</th> --}}
                                 <th colspan="3">Action</th>
                                 <th><a class="btn btn-primary pull-right" style=
-                                    "margin-top: -7px;margin-bottom: 5px" href=""><i class="fa fa-plus-circle">Automatic</i></a></th> 
+                                    "margin-top: -7px;margin-bottom: 5px" href="{{ route('automatic')}}"><i class="fa fa-plus-circle">Automatic</i></a></th> 
                                 
                             </tr>
                         </thead>

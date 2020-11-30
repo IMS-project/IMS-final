@@ -18,6 +18,7 @@
     Route::get('/applicant', 'ApplicantController@store')->name('applicant');//for the application function
     Route::get('/approve/{id}/{id2}/{id3}', 'ApplicationController@approve')->name('approve');//for the approve function
     Route::get('/reject/{id}', 'ApplicationController@reject')->name('reject');//for the reject function
+    Route::get('/automatic', 'ApplicationController@automatic')->name('automatic');//for the approve function
     
     Route::get('/list/{id}', 'ApplicationController@list')->name('list');
     Route::get('/assign', 'AssignController@store')->name('assign');//for the application function

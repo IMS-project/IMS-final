@@ -29,9 +29,12 @@ class ApplicationController extends Controller
     }
     public function index()
     {
-        
-        $applicant = Applicant::all()->where('status', 'pending');
-        return view('companyAdmin.index')->with('applicants',$applicant);
+        $user = CompCoordinator::where('user_id',Auth::id())->first();
+        $applicants = Applicant::where('company_id',$user->company_id)->where('status','pending')->get();
+        $sorted = $applicants->sortByDesc('$applicants->student->grade')->values();
+        // dd($sorted);
+        // $applicant = Applicant::all()->where('status', 'pending');
+        return view('companyAdmin.index')->with('applicants',$applicants);
     }
 
     /**
@@ -177,6 +180,7 @@ class ApplicationController extends Controller
      }
 
         
+     return view('Automatic.index');
     }
 
     public function reject(Request $request, $id)
