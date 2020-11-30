@@ -164,17 +164,19 @@ class ApplicationController extends Controller
         $user = CompCoordinator::where('user_id',Auth::id())->first();
         $applicants = Applicant::where('company_id',$user->company_id)->where('status','pending')->get();
 
-        $sorted = $applicants->sortBy(function($query){
+        $sorted = $applicants->sortByDesc(function($query){
             return $query->student->grade;
         })
         ->all();
-        
+        // the next step is to reveres the array
+        // dd($sorted);
 
         $department =Companydepartment::where('company_id',$user->company_id)->get();
         $successful=false;
+
      foreach($sorted as $applicant){
         $numcount = placement::all()->where('company_id',$user->company_id)->where('department_id',$applicant->department_id)->count();
-        $complimit = Companydepartment::where('id', $applicant->department_id)->first();
+        $complimit = Companydepartment::where('company_id',$user->company_id)->where('id', $applicant->department_id)->first();
 
         $companyLimit = $complimit->offer_capacity;
         if($numcount<$companyLimit)

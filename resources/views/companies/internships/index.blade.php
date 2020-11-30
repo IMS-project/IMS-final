@@ -25,7 +25,8 @@
                                     <th>Full Name</th>
                                     <th>University</th>
                                     <th>Department</th>
-                                    <th>Contact</th>
+                                    <th>Company</th>
+                                    <th>comp-department</th>
                                     {{-- <th colspan="3">Action</th> --}}
                                 </tr>
                             </thead>
@@ -38,6 +39,8 @@
     
                     <td>{{ $sup->student->university->name}}</td>
                     <td>{{ $sup->student->department->department_name}}</td>
+                    <td>{{ $sup->company->name}}</td>
+                    {{-- <td>{{ $sup->department->department_name}}</td> --}}
                     {{-- <td>{{ $sup->work_area}}</td> --}}
                     {{-- <td>
                         {!! Form::open(['route' => ['Internship.destroy',  $sup->id], 'method' => 'delete']) !!}
