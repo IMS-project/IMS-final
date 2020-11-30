@@ -1,38 +1,29 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="UTF-8">
-    <title>Industial Internship</title>
-    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Industrial | Internship</title>
+        <!-- Tell the browser to be responsive to screen width -->
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+        <link rel="stylesheet" href="{{asset('bower_components/bootstrap/dist/css/bootstrap.min.css')}}">
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="{{asset('bower_components/font-awesome/css/font-awesome.min.css')}}">
+        <!-- Ionicons -->
+        <link rel="stylesheet" href="{{asset('bower_components/Ionicons/css/ionicons.min.css')}}">
+        <!-- Theme style -->
+        <link rel="stylesheet" href="{{asset('dist/css/AdminLTE.min.css')}}">
+        <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
+              page. However, you can choose any other skin. Make sure you
+              apply the skin class to the body tag so the changes take effect. -->
+        <link rel="stylesheet" href="{{asset('dist/css/skins/skin-blue.min.css')}}">
+      
+        
+        <!-- Google Font -->
+        <link rel="stylesheet"
+              href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+      </head>
 
-    <!-- Bootstrap 3.3.7 
-    <script src="{{ asset('js/app.js') }}" defer></script>
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<!---
-<link rel="stylesheet" href="fontawesome/css/fontawesome.min.css">
-
-<link rel="stylesheet" href="fontawesome/css/fontawesome.css">
-<link rel="stylesheet" href="fontawesome/css/all.css">-->
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.4.3/css/AdminLTE.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.4.3/css/skins/_all-skins.min.css">
-
-    <!-- iCheck -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/iCheck/1.0.2/skins/square/_all.css">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/css/select2.min.css">
-
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/css/bootstrap-datetimepicker.min.css">
-    <link rel="stylesheet" href="{{asset('new/fontawesome-free/css/all.min.css')}}">
-    @yield('css')
-</head>
 
 <body class="skin-blue sidebar-mini">
 @if (!Auth::guest())
@@ -141,13 +132,23 @@
                 <li class="{{ Request::is('companies*') ? 'active' : '' }}">
                     <a href="{{ route('companies.index') }}"><i class="fa fa-industry" aria-hidden="true"></i><span>Company</span></a>
                     </li>
-                    <li class="{{ Request::is('UniCoordinator*') ? 'active' : '' }}">
-                        <a href="{{ route('UniCoordinator.index') }}"><i class="fa fa-users" aria-hidden="true"></i><span>university user</span></a>
-                        </li>
-                        <li class="{{ Request::is('CompCoordinator*') ? 'active' : '' }}">
-                            <a href="{{ route('CompCoordinator.index') }}"><i class="fa fa-user" aria-hidden="true"></i><span>company usert</span></a>
-                            </li>
-                            
+        
+                         
+                            <li class="treeview">
+                                <a href="#"><i class="fa fa-link"></i> <span>User Account</span>
+                                  <span class="pull-right-container">
+                                      <i class="fa fa-angle-left pull-right"></i>
+                                    </span>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li class="{{ Request::is('UniCoordinator*') ? 'active' : '' }}">
+                                        <a href="{{ route('UniCoordinator.index') }}"><span>university user</span></a>
+                                        </li>
+                                        <li class="{{ Request::is('CompCoordinator*') ? 'active' : '' }}">
+                                            <a href="{{ route('CompCoordinator.index') }}"><span>company usert</span></a>
+                                            </li>
+                                </ul>
+                              </li>
                 
                 </ul>
         
@@ -217,18 +218,10 @@
     </div>
     @endif
 
-    <!-- jQuery 3.1.1 -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
-    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
-    <!-- AdminLTE App -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/admin-lte/2.4.3/js/adminlte.min.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/iCheck/1.0.2/icheck.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/select2.min.js"></script>
-
-    @stack('scripts')
+    <script src="{{asset('bower_components/jquery/dist/jquery.min.js')}}"></script>
+<!-- Bootstrap 3.3.7 -->
+<script src="{{asset('bower_components/bootstrap/dist/js/bootstrap.min.js')}}"></script>
+<!-- AdminLTE App -->
+<script src="{{asset('dist/js/adminlte.min.js')}}"></script>
 </body>
 </html>
