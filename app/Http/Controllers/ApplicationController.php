@@ -151,7 +151,7 @@ class ApplicationController extends Controller
                     $dd =  Applicant::where('student_id',$appid)->get();
                     foreach ($dd as $d) {
                         $d->delete();
-                    }           
+                        }           
             $applicant =Applicant::all()->where('status', 'pending');
             return view('companyAdmin.index')->with('applicants',$applicant);
       }
@@ -168,66 +168,56 @@ class ApplicationController extends Controller
             return $query->student->grade;
         })
         ->all();
-        // the next step is to reveres the array
-        // dd($sorted);
 
         $department =Companydepartment::where('company_id',$user->company_id)->get();
+
         $successful=false;
+        $try =true;
 
      foreach($sorted as $applicant){
         $numcount = placement::all()->where('company_id',$user->company_id)->where('department_id',$applicant->department_id)->count();
+
         $complimit = Companydepartment::where('company_id',$user->company_id)->where('id', $applicant->department_id)->first();
 
         $companyLimit = $complimit->offer_capacity;
+        $compid = Placement::where('student_id',$applicant->student_id)->count();
         if($numcount<$companyLimit)
         {
             if($applicant)
 
-                  $placement = new placement();
-                    $placement->student_id = $applicant->student_id;
-                    $placement->company_id = $user->company_id;
-                    $placement->department_id = $applicant->department_id;
-                    $placement->duration_id = $applicant->duration_id;
-                    $placement->status = "accepted";
-
-                    $checkid = $applicant->student_id;
-                    $compid = Placement::where('company_id',$user->company_id)->where('department_id',$applicant->department_id)->get();
-                    $count=0;
-                    foreach($compid as $row){
-                        $try = $row->student_id;
-                        if($try==$checkid){
-                            $count++;
-                        }
-                    }
-                    if($count>1)
-                    {
-                        Flash::warning('You have Already getplaced . . .');
-                        // return view('placements.index')    ;
-                    } 
-                    else
-                    {
-                        $placement->save();
-                        $successful= true;
-                    }
-                    // here to remove applicants
-                    $appid = $applicant->student_id;
-                    $dd =  Applicant::where('student_id',$appid)->get();
-                    foreach ($dd as $d) {
-                        $d->delete();
-                    }           
-      }
-           
+            if($compid>0)
+            {
+                $try=false;
+            } 
+            else
+            {
+                $placement = new placement();
+                $placement->student_id = $applicant->student_id;
+                $placement->company_id = $user->company_id;
+                $placement->department_id = $applicant->department_id;
+                $placement->duration_id = $applicant->duration_id;
+                $placement->status = "accepted";
+                $placement->save();
+                $successful= true;
+            }
         
+        // here to remove applicants
+        $appid = $applicant->student_id;
+        $dd =  Applicant::where('student_id',$appid)->get();
+        foreach ($dd as $d) {
+            $d->delete();
+      } }
+ }
+     if($try){
+        Flash::warning('You have Already getplaced . . .');
      }
-     if( $successful){
+     elseif( $successful){
         Flash::success('placement successful.');
      }
      
      $applicant =Applicant::all()->where('status', 'pending');
      return view('companyAdmin.index')->with('applicants',$applicant);
-    //  return view('Automatic.index');
-     
-    }
+     }
 
     public function reject(Request $request, $id)
     {

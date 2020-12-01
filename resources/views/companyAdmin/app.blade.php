@@ -74,7 +74,7 @@
                                     </div>
                                     <div class="pull-right">
                                         <a href="{{ url('/logout') }}" class="btn btn-primary btn-flat"
-                                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa fa-sign-out" aria-hidden="true"></i>
                                             Sign out
                                         </a>
                                         <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
@@ -125,14 +125,14 @@
                             <span>Applicants</span></a>
                         </li>
                         <li class="{{ Request::is('companydepartments*') ? 'active' : '' }}">
-                            <a href="{{ route('companydepartments.index') }}"><i class="fa fa-user-circle"></i><span>Departments</span></a>
+                            <a href="{{ route('companydepartments.index') }}"><i class="fa fa-industry"></i><span>Departments</span></a>
                             </li>
                         <li class="{{ Request::is('Supervisor*') ? 'active' : '' }}">
                             <a href="{{ route('Supervisor.index') }}"><i class="fa fa-user" aria-hidden="true"></i>
                                 <span>Supervisor</span></a>
                             </li>
                         <li class="{{ Request::is('internships*') ? 'active' : '' }}">
-                                <a href="{{ route('internships.index') }}"><i class="fa fa-user-circle"></i><span>placement</span></a>
+                                <a href="{{ route('internships.index') }}"><i class="fa fa-users"></i><span>placement</span></a>
                                 </li>
                         <li class="{{ Request::is('Assignsuper*') ? 'active' : '' }}">
                                  <a href="{{ route('Assignsuper.index') }}"><i class="fa fa-user-circle"></i><span>Assignsupervisor</span></a>
