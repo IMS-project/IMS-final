@@ -19,7 +19,7 @@ class placement extends Model
     public function company(){
         return $this->belongsTo('App\Company');
     }
-    public function companydepartment(){
+    public function departments(){
         return $this->belongsTo('App\Companydepartment');
     }
     public function department(){

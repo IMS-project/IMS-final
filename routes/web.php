@@ -39,6 +39,10 @@
     Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/admin', 'Admincontroller@index');
     Route::get('/student', 'Viewcontroller@index');
+    Route::get('/advisor', 'AdvisorController@view')->name('advisor');
+    Route::get('/show', 'AdvisorController@index')->name('show');
+    Route::get('/showlist', 'SupervisorController@index')->name('showlist');
+    Route::get('/supervisor', 'SupervisorController@view')->name('supervisor');
     Route::resource('offer_company', 'ApplicantController');
     Route::resource('universities', 'University\UniversityController');
     Route::resource('UniCoordinator', 'University\UniCoordinatorController');

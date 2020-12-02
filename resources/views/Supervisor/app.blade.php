@@ -75,7 +75,7 @@
                                     </div>
                                     <div class="pull-right">
                                         <a href="{{ url('/logout') }}" class="btn btn-default btn-flat"
-                                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa fa-sign-out" aria-hidden="true"></i>
                                             Sign out
                                         </a>
                                         <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
@@ -121,8 +121,8 @@
                 <!-- Sidebar Menu -->
         
                 <ul class="sidebar-menu" data-widget="tree">
-                    <li class="{{ Request::is('studentsupervisor*') ? 'active' : '' }}">
-                        <a href="{{ route('studentsupervisor.index') }}"><i class="fa fa-users" aria-hidden="true"></i>
+                    <li class="{{ Request::is('showlist*') ? 'active' : '' }}">
+                        <a href="{{ route('showlist') }}"><i class="fa fa-users" aria-hidden="true"></i>
                             <span>Student</span></a>
                         </li>
                         <li class="{{ Request::is('companies*') ? 'active' : '' }}">

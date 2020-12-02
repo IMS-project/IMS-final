@@ -53,7 +53,7 @@ class LoginController extends Controller
             return $this->redirectTo;
                 break;
             case 4:
-                    $this->redirectTo = '/studentadvisor';
+                    $this->redirectTo = '/advisor';
                 return $this->redirectTo;
                 break;
             case 3:
@@ -61,7 +61,7 @@ class LoginController extends Controller
                 return $this->redirectTo;
                 break;
             case 5:
-                    $this->redirectTo = '/studentsupervisor';
+                    $this->redirectTo = '/supervisor';
                 return $this->redirectTo;
                 break;
             case 6:

@@ -65,6 +65,8 @@ class Kernel extends HttpKernel
         'student' => \App\Http\Middleware\isStudent::class,
         'university' => \App\Http\Middleware\isUniversityAdmin::class,
         'company' => \App\Http\Middleware\isCompanyAdmin::class,
+        'advisor' => \App\Http\Middleware\isAdvisor::class,
+        'supervisor' => \App\Http\Middleware\isSupervisor::class,
         'prevent-back-history' => \App\Http\Middleware\Backhistory::class
         
     ];

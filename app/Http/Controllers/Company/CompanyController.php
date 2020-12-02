@@ -14,7 +14,7 @@ class CompanyController extends Controller
     {
         $this->middleware('auth');
         $this->middleware('admin');
-        $this->middleware('prevent-back-history');
+        // $this->middleware('prevent-back-history');
         
     }
 

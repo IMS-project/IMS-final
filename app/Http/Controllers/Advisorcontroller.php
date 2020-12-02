@@ -3,14 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Assignsupervisor;
-use App\placement;
-use App\Company;
-use App\Supervisor;
-use App\CompCoordinator;
 use Illuminate\Support\Facades\Auth;
-use Flash;
-class AssignsupervisorController extends Controller
+use App\Assign;
+use App\Student;
+use App\Advisor;
+class Advisorcontroller extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,16 +17,15 @@ class AssignsupervisorController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('company');
+        $this->middleware('advisor');
         // $this->middleware('prevent-back-history');
-        
     }
     public function index()
-    {
-        $comp =CompCoordinator::where('user_id',Auth::id())->first();
-        $super = Supervisor::where('company_id',$comp->company_id)->get();
-        $placement = placement::all();
-        return view('Assignsupervisor.index')->with('supervisor',$super)->with('placements',$placement);
+    {   
+       $user = Advisor::where('user_id',Auth::id())->first();
+        $student = Assign::where('advisor_id',$user->id)->get();
+        // dd( $student);
+        return view('Advisor.index')->with('students',$student);
     }
 
     /**
@@ -37,6 +33,9 @@ class AssignsupervisorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function view(){
+        return view('Advisor.view');
+    }
     public function create()
     {
         //
@@ -48,21 +47,9 @@ class AssignsupervisorController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request){
-            
-        // dd($request->student);
-        foreach($request->student as $stud){
-            $assignsuper = new Assignsupervisor();
-            // dd($stud);
-            $assignsuper->supervisor_id = $request->supervisor;
-            $assignsuper->placement_id = $request->student;
-            $assignsuper->save();
-        
-
-        }
-        
-        return back('assigned successfully');
-
+    public function store(Request $request)
+    {
+        //
     }
 
     /**
@@ -73,10 +60,7 @@ class AssignsupervisorController extends Controller
      */
     public function show($id)
     {
-         $super = Supervisor::find($id);
-         $placement =placement::where('company_id',$super->company_id)->get();
-         return view('Assignsupervisor.show')->with('placements',$placement)->with('id',$id);
-
+        //
     }
 
     /**
