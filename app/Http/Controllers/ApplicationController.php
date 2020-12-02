@@ -5,15 +5,17 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Applicant;
+use App\CompCoordinator;
+use App\Companydepartment;
+use App\placement;
+use Flash;
 use App\Student;
 use App\User;
 use App\Department;
 use App\University;
-use App\placement;
+
 use App\Company;
-use App\CompCoordinator;
-use App\Companydepartment;
-use Flash;
+
 class ApplicationController extends Controller
 {
     /**
@@ -183,7 +185,7 @@ class ApplicationController extends Controller
         $compid = Placement::where('student_id',$applicant->student_id)->count();
         if($numcount<$companyLimit)
         {
-            if($applicant)
+            
 
             if($compid>0)
             {

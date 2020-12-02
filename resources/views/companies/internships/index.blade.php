@@ -18,22 +18,22 @@
             <div class="box-body">
                 <section class="container-fluid">
                     <div class="table-responsive">
-                    <table class="table table-bordered" id=" stusents-table">
+                    <table class="table table-bordered table-striped" id=" stusents-table">
                             <thead>
                                 <tr>
-                                    
+                                    <th>SN</th>
                                     <th>Full Name</th>
                                     <th>University</th>
                                     <th>Department</th>
                                     <th>Company</th>
-                                    <th>comp-department</th>
+                                    {{-- <th>comp-department</th> --}}
                                     {{-- <th colspan="3">Action</th> --}}
                                 </tr>
                             </thead>
          <body>
                 @foreach($posts as $sup)
                 <tr>
-                    {{-- <td>{{$sup->id}}</td> --}}
+                    <td>{{$sup->id}}</td>
                     
                     <td>{{$sup->student->user->first_name}} {{$sup->student->user->last_name}}</td>
     
