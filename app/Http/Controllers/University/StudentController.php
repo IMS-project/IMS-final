@@ -93,7 +93,7 @@ class StudentController extends Controller
            Mail::to($request->email)->send(new WelcomeMail($details));
 
            Flash::success('saved successfully.');
-           $student = Student::all();
+           $student =Student::orderBy('created_at','desc')->paginate(8);
            return view('universities.student.index')->with('students', $student);
 
     }

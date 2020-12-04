@@ -33,8 +33,7 @@ class ApplicationController extends Controller
     {
         $user = CompCoordinator::where('user_id',Auth::id())->first();
         $applicants = Applicant::where('company_id',$user->company_id)->where('status','pending')->get();
-
-        
+  
         return view('companyAdmin.index')->with('applicants',$applicants);
     }
 
@@ -115,7 +114,7 @@ class ApplicationController extends Controller
         $numcount = placement::all()
         ->where('company_id',$user->company_id)
         ->count();
-        $complimit = Companydepartment::where('id', $applicant->department_id)->first();
+        $complimit = Companydepartment::where('id', $applicant->companydepartment_id)->first();
 
         $companyLimit = $complimit->offer_capacity;
         if($numcount<$companyLimit)
@@ -125,7 +124,7 @@ class ApplicationController extends Controller
                   $placement = new placement();
                     $placement->student_id = $id;
                     $placement->company_id = $user->company_id;
-                    $placement->department_id = $id2;
+                    $placement->companydepartment_id = $id2;
                     $placement->duration_id = $id3;
                     $placement->status = "accepted";
 
@@ -177,26 +176,26 @@ class ApplicationController extends Controller
         $try =true;
 
      foreach($sorted as $applicant){
-        $numcount = placement::all()->where('company_id',$user->company_id)->where('department_id',$applicant->department_id)->count();
+        $numcount = placement::all()->where('company_id',$user->company_id)->where('companydepartment_id',$applicant->companydepartment_id)->count();
 
-        $complimit = Companydepartment::where('company_id',$user->company_id)->where('id', $applicant->department_id)->first();
+        $complimit = Companydepartment::where('company_id',$user->company_id)->where('id', $applicant->companydepartment_id)->first();
 
         $companyLimit = $complimit->offer_capacity;
         $compid = Placement::where('student_id',$applicant->student_id)->count();
         if($numcount<$companyLimit)
         {
-            
+           
 
             if($compid>0)
             {
-                $try=false;
+               $try= false;
             } 
             else
             {
                 $placement = new placement();
                 $placement->student_id = $applicant->student_id;
                 $placement->company_id = $user->company_id;
-                $placement->department_id = $applicant->department_id;
+                $placement->companydepartment_id = $applicant->companydepartment_id;
                 $placement->duration_id = $applicant->duration_id;
                 $placement->status = "accepted";
                 $placement->save();
@@ -208,12 +207,13 @@ class ApplicationController extends Controller
         $dd =  Applicant::where('student_id',$appid)->get();
         foreach ($dd as $d) {
             $d->delete();
-      } }
+      }
+      
+    }
+     
+     
  }
-     if($try){
-        Flash::warning('You have Already getplaced . . .');
-     }
-     elseif( $successful){
+    if( $successful){
         Flash::success('placement successful.');
      }
      

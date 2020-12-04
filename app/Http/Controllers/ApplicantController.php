@@ -69,39 +69,53 @@ class ApplicantController extends Controller
     {
         $applicant = new Applicant();
         $student = Student::where('user_id', Auth::id())->first();
+        $department = Companydepartment::where('company_id', $request->company)->where('id',$request->departments)->first();
+
+        $appcount = Applicant::where('company_id',$request->company)->where('companydepartment_id',$request->departments)->get()->count();
+        // dd($appcount<$department->offer_capacity-4);
+       
+        if($appcount<$department->offer_capacity+50){
 
         $applicant->student_id = $student->id;
         $applicant->company_id = $request->company;
-        $applicant->department_id = $request->departments;
+        $applicant->companydepartment_id = $request->departments;
         $applicant->duration_id = $request->durations;
         $applicant->status = "pending";
         
         $stid = Applicant::all()->where('student_id',$applicant->student_id);
         $count = 0 ;
-    foreach($stid as $row)
-        {
-            $try = $row->department_id;
-            if($try==$request->departments)
-            {
-                $count = 1;
-            } 
-        }
-        if($count==1)
-        {
-            Flash::warning('You have Already Applied . . .');
-            return Redirect()->route('offer_company.index') ;
-        } 
-        else
-        {
-            $applicant->save();
-            Flash::success('Application successful.');
-        }
-    
+                foreach($stid as $row)
+                    {
+                        $try = $row->companydepartment_id;
+                        if($try==$request->departments)
+                        {
+                            $count = 1;
+                        } 
+                    }
+                    if($count==1)
+                    {
+                        Flash::warning('You have Already Applied . . .');
+                        return Redirect()->route('offer_company.index') ;
+                    } 
+                    else
+                    {
+                        $applicant->save();
+                        Flash::success('Application successful.');
+                    }
+                
+                    $companies =Company::all();
+                    $applicant = Applicant::all()->where('status', 'pending');
+                return view('studentpage.index')->with('applicants',$applicant)->with('companies',$companies);
+}
+    else
+    {
+        // dd($appcount<$department->offer_capacity-4);
+        Flash::warning('Already reached maximum limit');
         $companies =Company::all();
         $applicant = Applicant::all()->where('status', 'pending');
        return view('studentpage.index')->with('applicants',$applicant)->with('companies',$companies);
     }
-
+}
 
     /**
      * Display the specified resource.
@@ -119,11 +133,12 @@ class ApplicantController extends Controller
         $duration = Duration::all();
         $company = Company::find($id);
         $department =  Companydepartment::where('company_id',$id)->get();
+        // dd($department);
         $count =  Companydepartment::where('company_id',$id)->get();  
         $student = Company::find($id)->applicant()->count();
         
         $placement =Company::find($id)->placement()->count();
-       
+        //  $depcount = Applicant::where('company_id',$id)->where('department_id',)->get()->count();
 
         return view('studentpage.show')->with('company', $company)
                                         ->with('applicants',$student)

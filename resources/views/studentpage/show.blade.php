@@ -33,7 +33,7 @@
                                 <form method="GET" action="{{ route('applicant')}}">
                                     {{csrf_field()}}
                                 <input type="hidden" name="company" value="{{$company->id}}">
-                                <select class="form-control" id="department_id" name="departments">
+                                <select class="form-control" id="companydepartment_id" name="departments">
         
                                     @foreach ($department as $dep)
                                     <option value="{{$dep->id }}">{{ $dep->department_name}}</option>
@@ -90,6 +90,7 @@
                                     <td>{{ $depart->offer_capacity }}</td>
                                     <td>{{ $depart->mini_grade}}</td>
                                     <td>{{ $depart->duration->name}}</td>
+                                {{-- <td>{{($depart->department->status)}}</td> --}}
                                 
                                 </tr>
                                 @endforeach

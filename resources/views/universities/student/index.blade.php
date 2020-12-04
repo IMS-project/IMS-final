@@ -8,7 +8,7 @@
             Import-Excel</a>
   
     <a class="btn btn-primary pull-right" style=
-    "margin-top: -2px;margin-bottom: 5px" href="{{ route('Student.create') }}"><i class="fa fa-plus-circle">Add NEW</i></a>
+    "margin-top: -2px;margin-bottom: 5px" href="{{ route('Student.create') }}"><i class="fa fa-plus"></i>Add New</a></a>
 </section>
 
 <div class="content">
@@ -56,7 +56,7 @@
                         @endforeach
                         </tbody>
                     </table>
-                    {{$students->links() }}
+                    {{$students->links()}}
                     </div>  
                  </section> 
                 </div> 

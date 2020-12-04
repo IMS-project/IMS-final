@@ -66,13 +66,10 @@ class AssignadvisorController extends Controller
         $addp = $advisor->department_id;
         $adui = $advisor->university_id;
         $company = Company::all();
-        //dd($company[0]);
         $student = Student::where('university_id',$adui)->where('department_id',$addp)->get();
         
         $count = 0;
         $countArray=[];
-
-        
             foreach($company as $comp)
             {
                 foreach($student as $row)
@@ -85,12 +82,7 @@ class AssignadvisorController extends Controller
                 $countArray[$comp->id]=$count;
                 $count=0;
             }
-        //  dd($countArray);
-        //  dd($student);
-        //  $placement = Placement::find('company_id')->student()->groupBy('company_id');
-         $placement = Placement::all();//->where('student_id',$student->id)->groupBy('company_id')->get();
-        // dd($placement);
-
+         $placement = Placement::all();
         return view('Assignadvisor.view')->with('placementcount',$countArray)
                     ->with('id',$id)
                     ->with('placement',$placement)

@@ -12,7 +12,7 @@ class Supervisor extends Model
     protected $dates = ['deleted_at'];
 
     // protected $table= 'supervisors';
-    protected $fillable=['user_id', 'company_id','department_id'];
+    protected $fillable=['user_id', 'company_id','companydepartment_id'];
   
 
     public function user(){

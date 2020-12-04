@@ -16,8 +16,9 @@
                      
                 <table class="table" id="companies-table">
                     <thead>
-                        <tr>Name</th>
-                            
+                        <tr>Full Name</th>
+                        <tr>Company</th>
+                        <tr>Department</th>
                             
                         </tr>
                     </thead>
@@ -31,8 +32,11 @@
                             @if ($student->placement)
                                 
                             <td>
-                                <input type="checkbox"  name="student[]"  value="{{$student->placement->id}}" >{{$student->user->first_name}}
+                                <input type="checkbox"  name="student[]"  value="{{$student->placement->id}}" >
+                                 {{$student->user->first_name}} {{$student->user->last_name}}
                                 </td>
+                            <td>{{$student->placement->company->name}}</td>
+                            
                             @endif
                         </tr>
                             @endforeach 
@@ -40,23 +44,20 @@
                             <button class="btn btn-success pull-right" type="submit"><i class="fa fa-plus-circle" aria-hidden="true"></i>
                                 Assign</button> 
                         </tr>
-                        
-                            
-                            </form>
-
-                    </tbody>                 
-                </table>                                
-             </div>
+                    </tbody>
+                </table>
+            </div>
          </div>
+     </div>
              
-             <section class="content-header">
-                <a class="btn btn-primary pull-left"  href="{{ route('Assignadvisor.index') }}">Back</a>
-            </section>
-         </div>
+        <section class="content-header">
+        <a class="btn btn-primary pull-left"  href="{{ route('Assignadvisor.index') }}">Back</a>
+        </section>
+    </div>
          <div class="text-center">
             
          </div>
-     </div>
+ </div>
  @endsection
  
  
