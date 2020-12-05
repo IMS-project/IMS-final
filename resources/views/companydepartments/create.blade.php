@@ -13,8 +13,8 @@
             <div class="box-body">
               <div class="row" style="padding: 25px">
 
-        <form method="post" action="{{ route('companydepartments.store')}}">
-              {{csrf_field()}}
+        <form method="post" action="{{ route('companydepartments.store')}}" class="form-horizontal form-bordered">
+          <input type="hidden" name="_token" value="{{ csrf_token() }}" >
                     <!-- Department Name Field -->
               <div class="form-group row">
                   <lable for = "name" class = "col-sm-1 col-form-label">Department Name:</lable>

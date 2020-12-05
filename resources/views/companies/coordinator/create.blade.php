@@ -3,9 +3,9 @@
 
 @section('content')
 <section class="content-header">
-    <h1>
-     coordinator information
-    </h1>
+    <h4>
+     company user
+    </h4>
 {{-- <a href="{{ route('')}}"></a><button class="btn btn-primary">View List</button> --}}
 </section>
 
@@ -13,8 +13,8 @@
  @include('adminlte-templates::common.errors')
     <div class="box box-primary">
         <div class="box-body">
-        <form method="post" action="{{ route('CompCoordinator.store')}}">
-            {{csrf_field()}}
+        <form method="post" action="{{ route('CompCoordinator.store')}}" class="form-horizontal form-bordered">
+            <input type="hidden" name="_token" value="{{ csrf_token() }}" >
             <div class="form-group row">
                 <lable for = "first name" class = "col-sm-1 col-form-label"><h5>First Name:</h5></lable>
                 <div class="col-sm-6">

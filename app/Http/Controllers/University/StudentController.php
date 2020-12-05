@@ -166,7 +166,7 @@ class StudentController extends Controller
         $student->grade = $request->grade;
         $student->save();
         Flash::success('updated successfully.');
-        $student = Student::all();
+        $student =Student::orderBy('created_at','desc')->paginate(8);
         return view('universities.student.index')->with('students', $student);
 
 

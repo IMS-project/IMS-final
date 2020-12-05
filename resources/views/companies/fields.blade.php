@@ -1,4 +1,6 @@
+@extends('superAdmin.app')
 @section('content')
+
    <div class="content">
     @include('adminlte-templates::common.errors')
   <div class="box box-primary">

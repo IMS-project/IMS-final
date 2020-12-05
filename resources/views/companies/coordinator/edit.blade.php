@@ -2,9 +2,9 @@
 
 @section('content')
   <section class="content-header">
-      <h1>
-  Coodinators
-      </h1>
+      <h4>
+  company user
+      </h4>
   {{-- <a href="{{ route('')}}"></a><button class="btn btn-primary"> View List</button> --}}
   </section>
   <div class="content">
@@ -12,7 +12,7 @@
   <div class="box box-primary">
     
     <div class="row" style="padding: 25px">
-      <form method="post" action="{{ route('CompCoordinator.update', $compcord->id)}}" enctype="multipart/form-data">
+      <form method="post" action="{{ route('CompCoordinator.update', $compcord->id)}}" enctype="multipart/form-data" class="form-horizontal form-bordered>
           {{csrf_field()}}
           @method('PUT')
 
