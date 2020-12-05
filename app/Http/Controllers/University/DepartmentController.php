@@ -32,8 +32,7 @@ class DepartmentController extends Controller
        return view('departments.create')->with('university',$university); 
     }
     public function store(Request $request)
-    {
-        
+    { 
         $department = new Department;
         $unid = UniCoordinator::where('user_id',Auth::id())->first();
         // $student = Student::where('user_id', Auth::id())->first();

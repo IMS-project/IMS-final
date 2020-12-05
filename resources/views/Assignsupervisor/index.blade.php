@@ -2,7 +2,8 @@
 
 @section('content')
     <section class="content-header">
-        <h1 class="pull-left">supervisors at the department</h1>
+        
+        <h1 class="pull-left"></h1>
     </section>
     <div class="content">
         <div class="clearfix"></div>
