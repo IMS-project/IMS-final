@@ -3,7 +3,7 @@
 @section('content')
     <section class="content-header">
         
-        <h4 class="pull-left">Advisor list</h4>
+        <h4 class="pull-left">Supervisor List</h4>
     </section>
     <div class="content">
         <div class="clearfix"></div>
@@ -15,7 +15,8 @@
                 <table class="table" id="companies-table">
                     <thead>
                         <tr>
-                            <th>Full name</th>
+                           
+                            <th>Full name</th>  
                         </tr>
                     </thead>
                     <tbody>

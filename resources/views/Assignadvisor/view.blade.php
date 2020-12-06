@@ -49,7 +49,7 @@
                 </table>
             </div>
          </div>
-     </div>
+     
              
         <section class="content-header">
         <a class="btn btn-primary pull-left"  href="{{ route('Assignadvisor.index') }}">Back</a>
@@ -58,7 +58,7 @@
          <div class="text-center">
             
          </div>
- </div>
+ 
  @endsection
  
  

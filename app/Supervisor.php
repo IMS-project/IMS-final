@@ -30,4 +30,7 @@ class Supervisor extends Model
     public function assign(){    
         return $this->belongsTo('App\Assignsupervisor');
     }
+    public function attendance(){
+        return $this->hasOne('App\Attendance');
+    }
 }

@@ -1,5 +1,4 @@
 @extends('superAdmin.app')
-
 @section('content')
     <section class="content-header">
         <h4 class="pull-left">University list</h4>

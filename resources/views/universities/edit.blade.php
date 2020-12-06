@@ -3,7 +3,7 @@
 @section('content')
     <section class="content-header">
         <h1>
-            University
+          Edit-university
         </h1>
 </section>
 

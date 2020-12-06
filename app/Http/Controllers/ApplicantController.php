@@ -109,7 +109,6 @@ class ApplicantController extends Controller
 }
     else
     {
-        // dd($appcount<$department->offer_capacity-4);
         Flash::warning('Already reached maximum limit');
         $companies =Company::all();
         $applicant = Applicant::all()->where('status', 'pending');
@@ -138,8 +137,8 @@ class ApplicantController extends Controller
         $cp = [];
         foreach($placements as $depart){
             
-            $c[$depart->id]=$depart->applicant()->count();
-            $cp[$depart->id] =$depart->placement()->count();
+            $c[$depart->id]= $depart->applicant()->count();
+            $cp[$depart->id]= $depart->placement()->count();
         }
         
         $placement =Company::find($id)->placement()->count();

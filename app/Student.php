@@ -35,4 +35,8 @@ class Student extends Model
     public function supervisor(){
         return $this->belongsTo('App\Supervisor');
     }
+
+    public function attendance(){
+        return $this->hasOne('App\Attendance');
+    }
 }

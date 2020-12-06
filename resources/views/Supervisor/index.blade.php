@@ -18,13 +18,16 @@
         <div class="box box-primary">
             <div class="box-body">
                 <div class="table-responsive">
-                    <table class="table table-bordered" id="companies-table">
+                    <table class="table table-bordered table-striped" id="companies-table">
                         <thead>
                             <tr>
+                                <caption><b>Students List</caption>
                                 <th>SN</th>
                                 <th>Full Name</th>   
                                 <th>company</th>   
-                                <th>department</th>   
+                                {{-- <th>department</th> --}}
+                                <th>Attendnce</th>  
+                                <th>Contact</th> 
                             </tr>
                         </thead>
                 
@@ -37,7 +40,13 @@
                          <td>{{$st->placement->company->name}}</td>
                          {{-- <td>{{$st->placement->department->department_name}}</td> --}}
         
+                         <td>
+                            <div class='btn-group'>
+                                <a href="" class="btn btn-success">Present</a>
+                                <a href="" class="btn btn-danger">Absent</a> 
                                 
+                            </div>
+                        </td>
                                 @endforeach
                                 
                             </tr>
