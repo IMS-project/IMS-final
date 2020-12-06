@@ -71,14 +71,12 @@
                                 
                                 <caption><h4>List of departments</h4></caption>
                                       <tr class="table-active">
-                                  
-
                                     <th>Department</th>
                                     <th>Capacity</th>
                                     <th>Mini_grade</th>   
                                     <th>Duration</th>
-                                    <th>Placed</th>
                                     <th>Pending</th>
+                                    <th>Placed</th>
                                     <th></th>
                                 </tr>
                             </thead>
@@ -90,10 +88,13 @@
                                     <td>{{ $depart->offer_capacity }}</td>
                                     <td>{{ $depart->mini_grade}}</td>
                                     <td>{{ $depart->duration->name}}</td>
-                                {{-- <td>{{($depart->department->status)}}</td> --}}
-                                
-                                </tr>
+                                    
+                                         <td>{{$applicants[$depart->id]}}</td>
+                                         <td>{{$placements[$depart->id]}}</td>     
                                 @endforeach
+                                  
+                                </tr>
+                               
                             
                             </tbody>
 

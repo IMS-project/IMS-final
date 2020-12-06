@@ -133,19 +133,23 @@ class ApplicantController extends Controller
         $duration = Duration::all();
         $company = Company::find($id);
         $department =  Companydepartment::where('company_id',$id)->get();
-        // dd($department);
-        $count =  Companydepartment::where('company_id',$id)->get();  
-        $student = Company::find($id)->applicant()->count();
+        $placements = Companydepartment::where('company_id',$id)->get();
+        $c =[];
+        $cp = [];
+        foreach($placements as $depart){
+            
+            $c[$depart->id]=$depart->applicant()->count();
+            $cp[$depart->id] =$depart->placement()->count();
+        }
         
         $placement =Company::find($id)->placement()->count();
-        //  $depcount = Applicant::where('company_id',$id)->where('department_id',)->get()->count();
-
         return view('studentpage.show')->with('company', $company)
-                                        ->with('applicants',$student)
+                                        ->with('applicants',$c)
                                         ->with('placed',$placement)
                                         ->with('departments',$departments)
                                         ->with('department',$department)
                                         ->with('durations',$duration)
+                                        ->with('placements',$cp)
                                         ->with('limits',$limit);
     }
 
