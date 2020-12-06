@@ -3,7 +3,7 @@
 @section('content')
     <section class="content-header">
         
-        <h1 class="pull-left"></h1>
+        <h4 class="pull-left">Advisor list</h4>
     </section>
     <div class="content">
         <div class="clearfix"></div>

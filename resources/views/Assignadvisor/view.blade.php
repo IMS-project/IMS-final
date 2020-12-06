@@ -14,11 +14,11 @@
          <div class="box box-primary">
              <div class="box-body">
                      
-                <table class="table" id="companies-table">
+                <table class="table table-bordered table-striped" id="companies-table">
                     <thead>
-                        <tr>Full Name</th>
-                        <tr>Company</th>
-                        <tr>Department</th>
+                        <th>Full Name</th>
+                        <th>Company</th>
+                        <th>Department</th>
                             
                         </tr>
                     </thead>
@@ -33,15 +33,16 @@
                                 
                             <td>
                                 <input type="checkbox"  name="student[]"  value="{{$student->placement->id}}" >
-                                 {{$student->user->first_name}} {{$student->user->last_name}}
+                                  {{$student->user->first_name}} {{$student->user->last_name}}
                                 </td>
                             <td>{{$student->placement->company->name}}</td>
+                            {{-- <td>{{$student->placement->department->department_name}}</td> --}}
                             
                             @endif
                         </tr>
                             @endforeach 
                              
-                            <button class="btn btn-success pull-right" type="submit"><i class="fa fa-plus-circle" aria-hidden="true"></i>
+                            <button class="btn btn-success pull-right" type="submit"><i class="fa fa-plus" aria-hidden="true"></i>
                                 Assign</button> 
                         </tr>
                     </tbody>

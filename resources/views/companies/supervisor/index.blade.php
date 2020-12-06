@@ -7,7 +7,7 @@
  Supervisor list
     
     <a class="btn btn-primary pull-right" style=
-    "margin-top: -6px;margin-bottom: 5px" href="{{ route('Supervisor.create') }}"><i class="fa fa-plus-circle">Add NEW</i></a>
+    "margin-top: -6px;margin-bottom: 5px" href="{{ route('Supervisor.create') }}"><i class="fa fa-plus">Add New</i></a>
 </h4>
 </section>
 

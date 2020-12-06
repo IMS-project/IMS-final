@@ -35,7 +35,7 @@
                          <td>{{$st->id}}</td>
                              <td>{{$st->placement->student->user->first_name}} {{$st->placement->student->user->last_name}}</td>
                          <td>{{$st->placement->company->name}}</td>
-                         {{-- <td>{{$st->placement->departments->department_name}}</td> --}}
+                         {{-- <td>{{$st->placement->department->department_name}}</td> --}}
         
                                 
                                 @endforeach

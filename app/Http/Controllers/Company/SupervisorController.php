@@ -70,7 +70,7 @@ class SupervisorController extends Controller
         $id = $user->id;
         $supervisor->user_id = $id;
         $supervisor->company_id = $comid->company_id;
-        $supervisor->department_id = $request->department;
+        $supervisor->companydepartment_id = $request->department;
         $supervisor->save();
         Flash::success(' saved successfully');
         $supervisor = Supervisor::all(); 

@@ -5,15 +5,14 @@
         <h4>
            company information
         </h4>
-</section>
+     </section>
    <div class="content">
        @include('adminlte-templates::common.errors')
        <div class="box box-primary">
            <div class="box-body">
            <div class="row">
                    {!! Form::model($company, ['route' => ['companies.update', $company->id], 'method' => 'patch']) !!}
-                   
-                        {{-- @include('companies.fields') --}}
+
                         <div class="form-group col-sm-8">
                             {!! Form::label('name', 'Name:') !!}
                             {!! Form::text('name', null, ['class' => 'form-control']) !!}

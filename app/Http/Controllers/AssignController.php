@@ -41,11 +41,10 @@ class AssignController extends Controller
      */
     public function store(Request $request)
     {
-    $count=0;
+       $count=0;
        
         foreach($request->student as $s){
-
-            
+   
         $stid = Assign::all()->where('placement_id',$s)->first();
       
         if($stid){
@@ -70,7 +69,7 @@ class AssignController extends Controller
     
  }
  else{
-    Flash::success('You have assigned. . .');
+    Flash::success('You have assigned successfully. .');
     return back();
  }
        
