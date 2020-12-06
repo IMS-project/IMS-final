@@ -1,0 +1,476 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\a;
+use Illuminate\Http\Request;
+
+class SuperAttendanceController extends Controller
+{
+   
+
+
+////
+
+
+
+public function InsertClassAttendance(Request $request){
+    $student = $request->all();
+       //echo "<pre>",print_r($student); die;
+       $atten_date = $request->attendance_date;
+       $atten_class = $request->class_id;
+       $supervisor_id = $request->supervisor_id;
+  
+       //here we chek if the todys attendance is mark or not if its mark then return error message else we mark
+  
+       $attendance_date = Attendance::join('classes','classes.class_code','=','attendance.class_id')
+                                      ->where('attendances.attendance_date',$atten_date)
+                                      ->where('atendances.supervisor_id',$supervisor_id)
+                                      ->where('attendances.class_id',$atten_class)->first();
+
+      if ($attendance_date){
+          Flash::erroe('sorry , Today Attendance Already Taken, by this'.$atten_date.'and class!');
+          return redirect()->back();
+      }
+       else{
+          foreach ($request->student_id as $key => $markattendance){
+              $insert_date[]=[
+                  'student_id' => $markattendance,
+                  'supervisor_id' => $request->supervisor_id,
+                  'field_area_id'=> $request->field_area_id,
+                  'semester_id' => $request->semester_id,
+                  'class_id' => $request->class_id,
+                  'month' => $request->month,
+                  'year' => $request->year,
+                  'day' => $request->day,
+                  'attendance_status' => $request->attendance_status[$markattendance],
+                  'attendance_date' => $request->attendance_date,
+              ];
+          }
+          Attendance::insert($insert_data);
+          Flash::success('Attendance Marked Succesfully!');
+          return redirect(url('attendance/list',$supervisor_id));
+      }
+  }
+  
+  
+  
+  
+  
+  
+  public function SupervisorEditAttendance(Request $request, $edit_date,$class_id,$semester_id,$supervisor_id){
+    
+         $edited_date = Attendance::join('class','classes.classes.class_code','=','attendances.class_id')
+                                    ->join('semester','semesters.id','=','attendances.semester_id')
+                                    ->where('attendances_date ,$edit_date')
+                                    ->where('class_id', $class_id)
+                                    ->where('semester_id', $semester_id)
+                                    -->where('supervisor_id', $supervisor_id) // this is an option where close
+                                    ->first();
+  
+                                    //dd($edited_dates);die;
+                                 $edit_attendances = Atendance::join('admissions','admissions_id','=','attendances.student_id')
+                                    ->join('classes','classes.class_code','=','attendances.class_id')
+                                    ->join('class_schedule','class_schedule.class_id','=','admissions.class_code')
+                                    ->join('supervisors','supervisors.superviosr_id','=','attendances.supervisor_id')
+                                    ->join('semestes','semesters.id','=','attendances.semeste_id')
+                                    ->join('courses','courses.id','=','attendances.course_id')
+                                    ->join('rolls','rolls.roll_id','=','attendances.student_id')
+                                        ->select(
+                                            'admissions.first_name as student_first_name',
+                                            'admissions.last_name as studnet_last_name',
+                                            'admissions.image',
+                                            'supervisors.first name as supervisor_first _name',
+                                            'supervisors.last name as supervisor_last_name',
+                                            'rolls.user name as roll_id',
+                                            'coures.course_nams',
+                                            'semesters.semester_name',
+                                            'semesters_id as semester_id',
+                                            'attendances.attendance_status',
+                                            'attndances.attendance_id',
+                                            'attendances.semester_id',
+                                            'attendances.class_id',
+                                            'classes.id as class_id',
+                                            'calsses.class_code',
+                                            'classes.class_name'
+                                        )
+                         ->where('attendances.attendance_date',$edit_date)
+                         ->where('attendances.class_id',$class_id)
+                         ->where('atendances.semester_id',$semester_id)
+                        -> where('supervisors.supervisor',$supervisor_id)
+                         ->get();
+                                        
+                      //dd(edit_aattendances);
+                      
+                      $class_name = classschedule::join('classes',
+                      'classes.class code','=','class schedule.class_id')
+                      ->join('semester','semester.id','=','class_schedule.semester_id')
+                      ->join('degrees','degrres.degree_id','=','class.schedule.semester_id')
+                      ->join('supervisors','supervisors.supervisor_id','=','class_schedule.supervisor_id')
+                      ->first();
+                      //dd(class_name);
+                 return view('supervisors.supervisors.edit',compact('class_name'))
+                 ->with('edit_atttendances',$edit_attendances)
+                 ->with('edited_date',$edited_date);     
+  
+                                        
+  
+  }
+  public function AttendanceList(Request $request, $supervisor_id) 
+  { 
+     $class_id = $request->class_id;
+     $course_id = $request->course_id;
+     $semester_id = $request->semester_id;
+     $department_id = $request->department_id;
+     $supervisor_id = $request->supevisor_id;
+     $attend_date = date('d-m-Y');
+  
+  $attendances = Attendance::join('admissions','admissions.id','=','attendances.student_id')
+              ->join('classes','classes.class_code','=','attendances.class_id')
+              ->join('class_schedule','class_schedule.class_id')
+              ->join('supervisors','supervisors.supervisor_id','=','admissions.class_id')
+              ->join('semesters','semesters_id','=','attendaces.semester_id')
+              ->join('courses','course_id','=','attendances.course_id')
+              ->join('rolls','rolls.roll_id','=','attendances.student_id')
+              ->select(
+                  'admissions.first_name as student_first_name',
+                  'admissions.last_name as student_last_name',
+                  'admissions.image',
+                  'supervisors.first_name as supervisor_last_name',
+                  'supervisors.last_name as supervisor_last_name',
+                  'rolls.username as roll_id',
+                  'courses.course_name',
+                  'semesters.semester_name',
+                  'semesters.id as semester_id',
+                  'classes.id as class_id',
+                  'classes.class_code as class_code',
+                  'attendances.attendance_date',
+                  'attendances.attendace_status',
+                  'class.class_name'
+              )   
+                        ->where('attendances.attendance_date', $atend_date)
+                        ->where('attendances.supervisor_id', $supervisor_id)
+                        ->get();
+                       // (dd$attendace);die;
+                      $class_name = classSchedule::join('classes','classes.class_code','=',
+                        'class_schedule.class_id')
+                       ->join('semesters','semester.id','=','class_schedule.semester_id')
+                       ->join('degrees.degree_id','=','class_schedule.semester_id')
+                       ->join('supervisor','supervisors.superviso_id','=','class_schedule.supervisor_id')
+                       ->where('class_schedule.supervisor_id', $supervisor_id)
+                       ->first();
+  
+                      //$(class_name):die;
+                      $class = ClassSchedule::join('classes','classes.class_code','=','class_schedule.class_id')
+                                              ->where('class_schedule.supervisor_id',$supervisor_id) //we are getting class inside class schedule
+                                              //->where('class_schedule.course_id',$supervisor_id_id)
+                                              //->groupBy('class_id')
+                                              ->orderBy('classes.id','ASC)
+                                              ->get();
+           $departments = ClassSchedule::join('departments',
+                      'departments.department_id','=', class_schedule.department_id')
+                           ->where('class_schedule.supervisor_id',$supervisor)
+                            //->where('class_schedule.course_id',$supervisor_id)
+                           //->groupBy('class_id')
+                           ->orderBy('departments.department_id','ASC')
+                            ->get();
+          $field_areas = ClassSchedule::join('field_area','field_areas.field_area_id','=','class_schedule.field_area_id')
+                       ->where('class_schedule.supervisor_id',$supervisor_id)
+                          //->where('class_schedule.course_id',$supervisor_id_id)
+                            //->groupBy('class_id')
+                           ->orderdBy('field_areas.field_area_id','ASC')
+                           ->get();
+               $semesters = classSchedule::join('semesters','semesters.id','=','class_schedule.semester_id')
+                                                       ->join('degrees','degrees.degree_id','=','class_schedule.semester_id')
+                                                       ->where('class_schedule.supervisor_id',$supervisor_id)
+                                                       //->where('class_schedule.course_id',$class_name->supervisor_id
+                                                       ->groupBy('semesters.id')
+                                                       ->orderBy('semestes.id','ASC')
+                                                       ->get();
+              $courses = classSchedule::join('courses','courses.id','=','class_schedule.course_id')
+                                        ->join('degrees','degrees.degree_id','=','class_schedule.semester_id')
+                                        ->where('class_schedule.supervisor_id', $supervisor_id)->orderBy('courses.id','ASC')
+                                        ->get();
+                                        
+                                        $students = ROll::join('admississions','admissions.id','=','rolls.student_id')
+                                        ->join('classes','classes.class_id','=','admissions.class_id')
+                                        ->join('class_schedule','class_schedule_id','=','admisissons.class_code')
+                                        ->join('courses','course.id','=','class_schedule.course_id')
+                                        ->join('supervisors','supervisors.supervisor_id','=','class_schedulesupervisor_id')
+                                        ->where('admissions.class_code',$class_id)
+                                        ->select('admissions.first_name as student_firtname',
+                                                 'admissions.last_name as student_lastname',
+                                                 'admissions.id as student_id',
+                                                 'rolls.username as roll_id',
+                                                 'supervisors.firt_name as supervisor_firstname',
+                                                 'supervisors.last_name as supervisor_lastname',
+                                                 'supervisors.supervisor_id',
+                                                 'classes.class_name',
+                                                 'classes.id as class_code',
+                                                 'courses.id as course_id',
+                                                 'courses.course_name')
+                                                 ->get();
+  
+                                        return view('supervisors.attendances.attendanceList',
+                                        compact('classes','semesters','departments','field_area','class_name','students'))
+                                        ->with('attendances', $attendances);
+              }
+          
+                
+  
+                                                          
+  
+                              
+  
+                      
+  public function SupervisorUpdateAttendance(Request $request){
+  
+      // $student = $request->all();
+       //  $supervisor_id = $request->get('supervisor_id');
+         // //echo '<pre>'',print_r($student); die;
+         //$attendace_date = $request->get('attendance_date');
+  
+         foreach ($request->attendance_id as $key=>$id){
+           $update_data=[
+               'attendance_status' => $request->attendance_status[$id],
+               'edit_date' => $request->attendance_date
+              ];
+           //echo'<pre>',print_r($update_data);die;
+           $attendance = Attendance::where(['attendance_id'=>$id, 'attendance_date' => $request->attendance_date])->first(); $attendance->update($update_data);
+           
+           
+  }
+  
+  Flash::success('Attendance updateed Successfully!');
+      //return redirect(route('supervisors.attendance.attendanceList'));
+       return redirect()->back();
+  }public function InsertClassAttendance(Request $request){
+  $student = $request->all();
+     //echo "<pre>",print_r($student); die;
+     $atten_date = $request->attendance_date;
+     $atten_class = $request->class_id;
+     $supervisor_id = $request->supervisor_id;
+
+     //here we chek if the todys attendance is mark or not if its mark then return error message else we mark
+
+     $attendance_date = Attendance::join('classes','classes.class_code','=','attendance.class_id')
+                                    ->where('attendances.attendance_date',$atten_date)
+                                    ->where('atendances.supervisor_id',$supervisor_id)
+                                    ->where('attendances.class_id',$atten_class)->first();
+
+    if ($attendance_date){
+        Flash::erroe('sorry , Today Attendance Already Taken, by this'.$atten_date.'and class!');
+        return redirect()->back();
+    } else{
+        foreach ($request->student_id as $key => $markattendance){
+            $insert_date[]=[
+                'student_id' => $markattendance,
+                'supervisor_id' => $request->supervisor_id,
+                'field_area_id'=> $request->field_area_id,
+                'semester_id' => $request->semester_id,
+                'class_id' => $request->class_id,
+                'month' => $request->month,
+                'year' => $request->year,
+                'day' => $request->day,
+                'attendance_status' => $request->attendance_status[$markattendance],
+                'attendance_date' => $request->attendance_date,
+            ];
+        }
+        Attendance::insert($insert_data);
+        Flash::success('Attendance Marked Succesfully!');
+        return redirect(url('attendance/list',$supervisor_id));
+    }
+}
+
+
+
+
+
+
+public function SupervisorEditAttendance(Request $request, $edit_date,$class_id,$semester_id,$supervisor_id){
+  
+       $edited_date = Attendance::join('class','classes.classes.class_code','=','attendances.class_id')
+                                  ->join('semester','semesters.id','=','attendances.semester_id')
+                                  ->where('attendances_date ,$edit_date')
+                                  ->where('class_id', $class_id)
+                                  ->where('semester_id', $semester_id)
+                                  -->where('supervisor_id', $supervisor_id) // this is an option where close
+                                  ->first();
+
+                                  //dd($edited_dates);die;
+                               $edit_attendances = Atendance::join('admissions','admissions_id','=','attendances.student_id')
+                                  ->join('classes','classes.class_code','=','attendances.class_id')
+                                  ->join('class_schedule','class_schedule.class_id','=','admissions.class_code')
+                                  ->join('supervisors','supervisors.superviosr_id','=','attendances.supervisor_id')
+                                  ->join('semestes','semesters.id','=','attendances.semeste_id')
+                                  ->join('courses','courses.id','=','attendances.course_id')
+                                  ->join('rolls','rolls.roll_id','=','attendances.student_id')
+                                      ->select(
+                                          'admissions.first_name as student_first_name',
+                                          'admissions.last_name as studnet_last_name',
+                                          'admissions.image',
+                                          'supervisors.first name as supervisor_first _name',
+                                          'supervisors.last name as supervisor_last_name',
+                                          'rolls.user name as roll_id',
+                                          'coures.course_nams',
+                                          'semesters.semester_name',
+                                          'semesters_id as semester_id',
+                                          'attendances.attendance_status',
+                                          'attndances.attendance_id',
+                                          'attendances.semester_id',
+                                          'attendances.class_id',
+                                          'classes.id as class_id',
+                                          'calsses.class_code',
+                                          'classes.class_name'
+                                      )
+                       ->where('attendances.attendance_date',$edit_date)
+                       ->where('attendances.class_id',$class_id)
+                       ->where('atendances.semester_id',$semester_id)
+                      -> where('supervisors.supervisor',$supervisor_id)
+                       ->get();
+                                      
+                    //dd(edit_aattendances);
+                    
+                    $class_name = classschedule::join('classes',
+                    'classes.class code','=','class schedule.class_id')
+                    ->join('semester','semester.id','=','class_schedule.semester_id')
+                    ->join('degrees','degrres.degree_id','=','class.schedule.semester_id')
+                    ->join('supervisors','supervisors.supervisor_id','=','class_schedule.supervisor_id')
+                    ->first();
+                    //dd(class_name);
+               return view('supervisors.supervisors.edit',compact('class_name'))
+               ->with('edit_atttendances',$edit_attendances)
+               ->with('edited_date',$edited_date);     
+
+                                      
+
+}
+public function AttendanceList(Request $request, $supervisor_id) 
+{ 
+   $class_id = $request->class_id;
+   $course_id = $request->course_id;
+   $semester_id = $request->semester_id;
+   $department_id = $request->department_id;
+   $supervisor_id = $request->supevisor_id;
+   $attend_date = date('d-m-Y');
+
+$attendances = Attendance::join('admissions','admissions.id','=','attendances.student_id')
+            ->join('classes','classes.class_code','=','attendances.class_id')
+            ->join('class_schedule','class_schedule.class_id')
+            ->join('supervisors','supervisors.supervisor_id','=','admissions.class_id')
+            ->join('semesters','semesters_id','=','attendaces.semester_id')
+            ->join('courses','course_id','=','attendances.course_id')
+            ->join('rolls','rolls.roll_id','=','attendances.student_id')
+            ->select(
+                'admissions.first_name as student_first_name',
+                'admissions.last_name as student_last_name',
+                'admissions.image',
+                'supervisors.first_name as supervisor_last_name',
+                'supervisors.last_name as supervisor_last_name',
+                'rolls.username as roll_id',
+                'courses.course_name',
+                'semesters.semester_name',
+                'semesters.id as semester_id',
+                'classes.id as class_id',
+                'classes.class_code as class_code',
+                'attendances.attendance_date',
+                'attendances.attendace_status',
+                'class.class_name'
+            )   
+                      ->where('attendances.attendance_date', $atend_date)
+                      ->where('attendances.supervisor_id', $supervisor_id)
+                      ->get();
+                     // (dd$attendace);die;
+                    $class_name = classSchedule::join('classes','classes.class_code','=',
+                      'class_schedule.class_id')
+                     ->join('semesters','semester.id','=','class_schedule.semester_id')
+                     ->join('degrees.degree_id','=','class_schedule.semester_id')
+                     ->join('supervisor','supervisors.superviso_id','=','class_schedule.supervisor_id')
+                     ->where('class_schedule.supervisor_id', $supervisor_id)
+                     ->first();
+
+                    //$(class_name):die;
+                    $class = ClassSchedule::join('classes','classes.class_code','=','class_schedule.class_id')
+                                            ->where('class_schedule.supervisor_id',$supervisor_id) //we are getting class inside class schedule
+                                            //->where('class_schedule.course_id',$supervisor_id_id)
+                                            //->groupBy('class_id')
+                                            ->orderBy('classes.id','ASC)
+                                            ->get();
+         $departments = ClassSchedule::join('departments',
+                    'departments.department_id','=', class_schedule.department_id')
+                         ->where('class_schedule.supervisor_id',$supervisor)
+                          //->where('class_schedule.course_id',$supervisor_id)
+                         //->groupBy('class_id')
+                         ->orderBy('departments.department_id','ASC')
+                          ->get();
+        $field_areas = ClassSchedule::join('field_area','field_areas.field_area_id','=','class_schedule.field_area_id')
+                     ->where('class_schedule.supervisor_id',$supervisor_id)
+                        //->where('class_schedule.course_id',$supervisor_id_id)
+                          //->groupBy('class_id')
+                         ->orderdBy('field_areas.field_area_id','ASC')
+                         ->get();
+             $semesters = classSchedule::join('semesters','semesters.id','=','class_schedule.semester_id')
+                                                     ->join('degrees','degrees.degree_id','=','class_schedule.semester_id')
+                                                     ->where('class_schedule.supervisor_id',$supervisor_id)
+                                                     //->where('class_schedule.course_id',$class_name->supervisor_id
+                                                     ->groupBy('semesters.id')
+                                                     ->orderBy('semestes.id','ASC')
+                                                     ->get();
+            $courses = classSchedule::join('courses','courses.id','=','class_schedule.course_id')
+                                      ->join('degrees','degrees.degree_id','=','class_schedule.semester_id')
+                                      ->where('class_schedule.supervisor_id', $supervisor_id)->orderBy('courses.id','ASC')
+                                      ->get();
+                                      
+                                      $students = ROll::join('admississions','admissions.id','=','rolls.student_id')
+                                      ->join('classes','classes.class_id','=','admissions.class_id')
+                                      ->join('class_schedule','class_schedule_id','=','admisissons.class_code')
+                                      ->join('courses','course.id','=','class_schedule.course_id')
+                                      ->join('supervisors','supervisors.supervisor_id','=','class_schedulesupervisor_id')
+                                      ->where('admissions.class_code',$class_id)
+                                      ->select('admissions.first_name as student_firtname',
+                                               'admissions.last_name as student_lastname',
+                                               'admissions.id as student_id',
+                                               'rolls.username as roll_id',
+                                               'supervisors.firt_name as supervisor_firstname',
+                                               'supervisors.last_name as supervisor_lastname',
+                                               'supervisors.supervisor_id',
+                                               'classes.class_name',
+                                               'classes.id as class_code',
+                                               'courses.id as course_id',
+                                               'courses.course_name')
+                                               ->get();
+
+                                      return view('supervisors.attendances.attendanceList',
+                                      compact('classes','semesters','departments','field_area','class_name','students'))
+                                      ->with('attendances', $attendances);
+            }
+        
+              
+
+                                                        
+
+                            
+
+                    
+public function SupervisorUpdateAttendance(Request $request){
+
+    // $student = $request->all();
+     //  $supervisor_id = $request->get('supervisor_id');
+       // //echo '<pre>'',print_r($student); die;
+       //$attendace_date = $request->get('attendance_date');
+
+       foreach ($request->attendance_id as $key=>$id){
+         $update_data=[
+             'attendance_status' => $request->attendance_status[$id],
+             'edit_date' => $request->attendance_date
+            ];
+         //echo'<pre>',print_r($update_data);die;
+         $attendance = Attendance::where(['attendance_id'=>$id, 'attendance_date' => $request->attendance_date])->first(); $attendance->update($update_data);
+         
+         
+}
+
+Flash::success('Attendance updateed Successfully!');
+    //return redirect(route('supervisors.attendance.attendanceList'));
+     return redirect()->back();
+}
