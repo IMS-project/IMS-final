@@ -15,7 +15,7 @@ class CreateCompanydepartmentsTable extends Migration
     {
         Schema::create('companydepartments', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('department_name')->unique();
+            $table->string('department_name');
             $table->bigInteger('offer_capacity');
             $table->float('mini_grade');
             $table->string('other_skills');

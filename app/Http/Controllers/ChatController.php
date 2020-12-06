@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Attendance;
+use App\Chat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Supervisor;
 use Flash;
-use Carbon\Carbon;
-class AttendanceController extends Controller
+class ChatController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -27,7 +26,7 @@ class AttendanceController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -38,51 +37,35 @@ class AttendanceController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
-    public function present($id){
         $user = Supervisor::where('user_id',Auth::id())->first();
-        $attendance = new Attendance;
-        $attendance->supervisor_id = $user->id;
-        $attendance->student_id =$id;
-        $attendance->status = "Present";
-        $attendance->date= Carbon::now()->toDateString();
-        $attendance->save();
-        Flash::success('Submitted successfully');
-        return back();
+        $chat = new Chat;
+        $chat->sender = $user->id;
+        $chat->receiver =$request->id;
+        $chat->body =$request->message;
+        $chat->save();
+        Flash::success('message sent successfully');
+        return redirect(route('showlist'));
+        
     }
 
-    public function absent($id){
-        $user = Supervisor::where('user_id',Auth::id())->first();
-        $attendance = new Attendance;
-        $attendance->supervisor_id = $user->id;
-        $attendance->student_id =$id;
-        $attendance->status = "Absent";
-        $attendance->date= Carbon::now()->toDateString();
-        $attendance->save();
-        Flash::success('Submitted successfully');
-        return back();
-
-
-    }
     /**
      * Display the specified resource.
      *
-     * @param  \App\Attendance  $attendance
+     * @param  \App\Chat  $chat
      * @return \Illuminate\Http\Response
      */
-    public function show(Attendance $attendance)
+    public function show($id)
     {
-        //
+        return view('Chats.create')->with('id',$id);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Attendance  $attendance
+     * @param  \App\Chat  $chat
      * @return \Illuminate\Http\Response
      */
-    public function edit(Attendance $attendance)
+    public function edit(Chat $chat)
     {
         //
     }
@@ -91,10 +74,10 @@ class AttendanceController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Attendance  $attendance
+     * @param  \App\Chat  $chat
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Attendance $attendance)
+    public function update(Request $request, Chat $chat)
     {
         //
     }
@@ -102,10 +85,10 @@ class AttendanceController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Attendance  $attendance
+     * @param  \App\Chat  $chat
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Attendance $attendance)
+    public function destroy(Chat $chat)
     {
         //
     }

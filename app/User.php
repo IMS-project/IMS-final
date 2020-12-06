@@ -42,6 +42,9 @@ class User extends Authenticatable
     public function student(){
         return $this->hasOne('App\Student');
     }
+    public function chat(){
+        return $this->hasOne('App\Chat');
+    }
    
 }
 

@@ -30,7 +30,6 @@
                                 <th>Contact</th> 
                             </tr>
                         </thead>
-                
                         <tbody>
                             
                             @foreach ($students as $st)
@@ -42,10 +41,11 @@
         
                          <td>
                             <div class='btn-group'>
-                                <a href="" class="btn btn-success">Present</a>
-                                <a href="" class="btn btn-danger">Absent</a> 
+                                <a href="{{ route('present',[$st->id]) }}" class="btn btn-success">Present</a>
+                                <a href="{{ route('absent',[$st->id]) }}" class="btn btn-danger">Absent</a> 
                                 
                             </div>
+                            <td><a href="{{ route('message.show',$st->id)}}" class="btn btn-primary"><i class="fa fa-paper-plane" aria-hidden="true"></i>Send message</a></td>
                         </td>
                                 @endforeach
                                 
