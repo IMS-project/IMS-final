@@ -51,7 +51,7 @@ class StudentController extends Controller
             'first_name' =>'required|regex:/^[\pL\s\-]+$/u',
             'last_name' => 'required|regex:/^[\pL\s\-]+$/u',
             'sex' => 'required',
-            'phone' => 'required|regex:/(0)[0-9]/|not_regex:/[a-z]/|digits:10',
+            'phone' => 'required|regex:/(09)[0-9]/|not_regex:/[a-z]/|digits:10',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:6',
             

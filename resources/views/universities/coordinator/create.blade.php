@@ -55,21 +55,7 @@
                 </select>
             </div>
             </div>
-            
-
-           {{-- <div class="form-group row">
-              <lable for = "role" class = "col-sm-1 col-form-label">user type</lable>
-                <div class="col-sm-6">
-                 <select name="role" type ="text" class="form-control" value="{{ old('role') }}">
-                    @foreach($roles as $rol)
-                    <option value="{{ $rol->id }}">{{$rol->name}}</option>
-                     @endforeach
-                 </select> 
-               </div>
-            </div> --}}
-        
-
-                
+                  
             <div class="form-group row">
                 <lable for = "university" class = "col-sm-1 col-form-label">university</lable>
                 <div class="col-sm-6">
@@ -94,16 +80,4 @@
     <div class="col-sm-2"></div>
 </div>
 </div>
-<script>
-    const grade = document.getElementById('grade');
-    const submitBtn = document.getElementById('submitBtn');
-    grade.addEventListener('change', () => {
-        if(grade.value > 4){
-            submitBtn.classList.add('disabled');
-        }
-        else {
-            submitBtn.classList.remove('disabled');
-        }
-    })
-</script>
 @endsection()
