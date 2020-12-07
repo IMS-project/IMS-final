@@ -35,7 +35,7 @@ class AdvisorController extends Controller
     {
         //
         $role = Role::orderBy('name')->get();
-        $department = Department::orderBy('created_at')->get();
+        $department = Department::all();
         return view('universities.advisor.create')->with('roles',$role)
                                                   ->with('departments' ,$department);
 

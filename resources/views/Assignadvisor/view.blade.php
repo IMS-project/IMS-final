@@ -36,6 +36,7 @@
                                   {{$student->user->first_name}} {{$student->user->last_name}}
                                 </td>
                             <td>{{$student->placement->company->name}}</td>
+                            
                             {{-- <td>{{$student->placement->department->department_name}}</td> --}}
                             
                             @endif

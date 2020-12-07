@@ -87,7 +87,7 @@ class companydepartmentcontoller extends Controller
     public function edit($id)
     {
         $department =Companydepartment::find($id);
-        return view('companydepartments.edit')->with('departments',$departdepartment);
+        return view('companydepartments.edit')->with('departments',$department);
     }
 
     /**

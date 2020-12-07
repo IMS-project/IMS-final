@@ -27,8 +27,8 @@ class Companydepartment extends Model
     public function applicant(){
         return $this->hasMany('App\Applicant');
     }
-    public function placement(){
-        return $this->hasOne('App\placement');
+    public function studentplacement(){
+        return $this->hasOne('App\Studentplacement');
     }
     public function assign(){
         return $this->hasOne('App\Assign');

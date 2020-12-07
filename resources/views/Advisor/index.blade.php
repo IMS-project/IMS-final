@@ -25,18 +25,21 @@
                                 <th>Full Name</th>   
                                 <th>company</th>   
                                 <th>department</th>   
+                                <th>Contact</th>
                             </tr>
                         </thead>
                 
                         <tbody>
-                            
-                            @foreach ($students as $st)
+                           
+                            @foreach($students as $st)
+                            {{-- {{dd($st->studentplacement->student->user->first_name)}} --}}
                          <tr>
-                         <td>{{$st->id}}</td>
-                             <td>{{$st->placement->student->user->first_name}} {{$st->placement->student->user->last_name}}</td>
-                         <td>{{$st->placement->company->name}}</td>
-        
-                                
+                        <td>{{$st->studentplacement->student->id}}</td>
+                         <td>{{$st->studentplacement->student->user->first_name}} {{$st->studentplacement->student->user->last_name}}</td>
+                         <td>{{$st->studentplacement->company->name}}</td>
+                         <td>{{$st->studentplacement->companydepartment->department_name}}</td>
+                            <td><a href="{{ route('sendmessage.show',$st->studentplacement->student->user->id)}}" class="btn btn-primary"><i class="fa fa-paper-plane" aria-hidden="true"></i>Send message</a></td>
+                        
                                 @endforeach
                                 
                             </tr>

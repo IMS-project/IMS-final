@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Assign;
 use Illuminate\Support\Facades\Auth;
 use Flash; 
-use App\placement;
+use App\Studentplacement;
 use App\Student;
 
 class studentAdvisorController extends Controller

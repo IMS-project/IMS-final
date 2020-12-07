@@ -97,7 +97,6 @@ class SupervisorController extends Controller
 
     public function edit($id)
     {
-        //
         $supervisor = Supervisor::find($id);
           //dd($supervisor)
           $userid = $supervisor->user_id;
@@ -121,7 +120,7 @@ class SupervisorController extends Controller
         $comid = CompCoordinator::all()->first();
 
         $supervisor = Supervisor::find($id);
-        $user = User::find($id);
+        $user = User::where('id',$supervisor->user_id)->first();
         $user->first_name = $request->first_name;
         $user->last_name = $request->last_name;
         $user->sex = $request->sex;

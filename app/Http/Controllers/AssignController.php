@@ -45,7 +45,7 @@ class AssignController extends Controller
        
         foreach($request->student as $s){
    
-        $stid = Assign::all()->where('placement_id',$s)->first();
+        $stid = Assign::all()->where('studentplacement_id',$s)->first();
       
         if($stid){
         $count =1;
@@ -54,7 +54,7 @@ class AssignController extends Controller
         {
                 $assign = new Assign();
                 $assign->advisor_id =$request->advisor;
-                $assign->placement_id = $s;
+                $assign->studentplacement_id = $s;
                 $assign->save();
                
     

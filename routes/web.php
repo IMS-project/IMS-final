@@ -23,6 +23,7 @@
     Route::get('/present/{id}', 'AttendanceController@present')->name('present');//for the approve function
     Route::get('/absent/{id}', 'AttendanceController@absent')->name('absent');//for the approve function
     Route::resource('/message', 'ChatController');//for the approve function
+    Route::resource('/sendmessage', 'Advisorcontroller');
 
 
     Route::get('/list/{id}', 'ApplicationController@list')->name('list');

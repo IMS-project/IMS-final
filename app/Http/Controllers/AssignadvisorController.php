@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Applicant;
 use App\Student;
-use App\placement;
+use App\Studentplacement;
 use App\Advisor;
 use App\Company;
 use Flash;
@@ -75,14 +75,14 @@ class AssignadvisorController extends Controller
                 foreach($student as $row)
                 {
                 $compid = $comp->id;
-                $place = Placement::all()->where('student_id',$row->id)
+                $place = Studentplacement::all()->where('student_id',$row->id)
                                         ->where('company_id',$comp->id)->count();
                 $count = $count + $place;
                 } 
                 $countArray[$comp->id]=$count;
                 $count=0;
             }
-         $placement = Placement::all();
+         $placement = Studentplacement::all();
         return view('Assignadvisor.view')->with('placementcount',$countArray)
                     ->with('id',$id)
                     ->with('placement',$placement)

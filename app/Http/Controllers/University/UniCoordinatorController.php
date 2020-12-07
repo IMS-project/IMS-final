@@ -142,8 +142,9 @@ class UniCoordinatorController extends Controller
         $coordinator->university_id = $request->university;
         $coordinator->save();
         Flash::success(' updated successfully');
-        $universities = University::all();
-        return view('universities.index')->with('universities', $universities);
+        $coordinator = UniCoordinator::all(); 
+        return view('universities.coordinator.index')->with('cor', $coordinator );
+        
 
     }
 

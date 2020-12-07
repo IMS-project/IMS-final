@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Studentplacement;
 use Illuminate\Http\Request;
-use App\Applicant;
-use App\Student;
-use App\placement;
 use Flash;
 use App\Assignsupervisor;
 use App\Companydepartment;
+use App\Applicant;
+use App\Student;
 use Illuminate\Support\Facades\Auth;
-class placementController extends Controller
+class StudentplacementController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -23,12 +23,9 @@ class placementController extends Controller
     }
     public function index()
     {
-        // $department =Companydepartment::all()->first();
         $student = Student::where('user_id', Auth::id())->first();
-        $applicant = Applicant::where('student_id',$student->id)->where('status','pending')->get();
-        // dd($applicant);
+        $applicant =Applicant::where('student_id',$student->id)->where('status','pending');
         return view('placements.index')->with('applicants',$applicant);
-        
     }
 
     /**
@@ -57,16 +54,12 @@ class placementController extends Controller
                 $count =1;
                 }
                 else{
-
-                
                     $assignsuper = new Assignsupervisor();
                     
                     $assignsuper->supervisor_id = $request->supervisor;
-                    $assignsuper->studentplacement_id = $stud;
+                    $assignsuper->placement_id = $stud;
                     $assignsuper->save();
-            }
-        
-        
+            }  
 
         }
         if($count==1){
@@ -80,18 +73,17 @@ class placementController extends Controller
             Flash::success('You have assigned successfully. . .');
             return back();
          }
-               
-        
-        
+                    
     }
+    
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Studentplacement  $studentplacement
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Studentplacement $studentplacement)
     {
         //
     }
@@ -99,10 +91,10 @@ class placementController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Studentplacement  $studentplacement
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Studentplacement $studentplacement)
     {
         //
     }
@@ -111,10 +103,10 @@ class placementController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Studentplacement  $studentplacement
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Studentplacement $studentplacement)
     {
         //
     }
@@ -122,10 +114,10 @@ class placementController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Studentplacement  $studentplacement
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Studentplacement $studentplacement)
     {
         //
     }

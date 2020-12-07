@@ -93,7 +93,7 @@
             <div class="form-group row">
                 <lable for = "year" class = "col-sm-1 col-form-label"><h5>Class Year:</h5></lable>
                 <div class="col-sm-6">
-                    <input type="text" name="year" class="form-control" id="year" placeholder="year" required>
+                    <input type="text" name="year" class="form-control" id="year" placeholder="eg. first ,1st" required>
                 </div>
             </div>
             <div class="form-group row">

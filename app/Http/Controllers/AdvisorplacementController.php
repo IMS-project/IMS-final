@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Applicant;
 use App\Student;
-use App\placement;
+use App\Studentplacement;
 use App\Advisor;
 use Flash;
 use DB;
@@ -35,7 +35,7 @@ class AdvisorplacementController extends Controller
                                     ->get()->toArray();
         $advisor = Advisor::where('university_id', $unicor->university_id)->where('department_id', $students[0]->department_id);
         dd($advisor);
-        $placed = Placement::select('company_id')->groupBy('company_id')->get()->toArray();
+        $placed = Studentplacement::select('company_id')->groupBy('company_id')->get()->toArray();
         $advisor->company_id =$placed;
         $advisor->save();
     }

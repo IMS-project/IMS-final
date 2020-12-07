@@ -25,7 +25,6 @@ class User extends Authenticatable
     public function role(){
         return $this->belongsToMany('App\Role');
     }
-
     public function coordinator(){
         return $this->hasOne('App\UniCoordinator');
     }

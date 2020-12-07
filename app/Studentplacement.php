@@ -4,21 +4,17 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class placement extends Model
+class Studentplacement extends Model
 {
-    const CREATED_AT = 'created_at';
-    const UPDATED_AT = 'updated_at';
-    protected $dates = ['deleted_at'];
-    
     protected $fillable=['student_id', 'company_id','companydepartment_id','duration_id','status'];
-
+   
     public function student(){
         return $this->belongsTo('App\Student');
     }
     public function company(){
         return $this->belongsTo('App\Company');
     }
-    public function department(){
+    public function companydepartment(){
         return $this->belongsTo('App\Companydepartment');
     }
     public function duration(){

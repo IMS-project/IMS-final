@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Company;
 use App\Student;
 use App\User;
-use App\Placement;
+use App\Studentplacement;
 use App\Duration;
 use DB;
 use Flash;
@@ -33,7 +33,7 @@ class ApplicantController extends Controller
         
         // dd($limit);
         $student = Student::all()->where('user_id',Auth::id())->first();
-        $exist = Placement::all()->where('student_id', $student->id);
+        $exist = Studentplacement::all()->where('student_id', $student->id);
         $companies=[];
         if($exist->isEmpty()){
             
@@ -86,7 +86,7 @@ class ApplicantController extends Controller
         $count = 0 ;
                 foreach($stid as $row)
                     {
-                        $try = $row->companydepartment_id;
+                        $try = $row->department_id;
                         if($try==$request->departments)
                         {
                             $count = 1;
@@ -124,7 +124,6 @@ class ApplicantController extends Controller
      */
     public function show($id)
     { 
-
         $applicant = Student::where('user_id',Auth::id())->first();
         $appdpt = Applicant::where('student_id',$applicant->id)->get();
         $limit = Applicant::where('student_id',$applicant->id)->get()->count();
@@ -137,7 +136,7 @@ class ApplicantController extends Controller
         $cp = [];
         foreach($placements as $depart){
             
-            $c[$depart->id]= $depart->applicant()->count();
+             $c[$depart->id]= $depart->applicant()->count();
             $cp[$depart->id]= $depart->placement()->count();
         }
         

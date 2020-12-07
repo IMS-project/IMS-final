@@ -31,12 +31,12 @@
                             </tr>
                         </thead>
                         <tbody>
-                            
+                           
                             @foreach ($students as $st)
                          <tr>
-                         <td>{{$st->id}}</td>
-                             <td>{{$st->placement->student->user->first_name}} {{$st->placement->student->user->last_name}}</td>
-                         <td>{{$st->placement->company->name}}</td>
+                         <td>{{$st->studentplacement->student->user->id}}</td>
+                         <td>{{$st->studentplacement->student->user->first_name}} {{$st->studentplacement->student->user->last_name}}</td>
+                         <td>{{$st->studentplacement->company->name}}</td>
                          {{-- <td>{{$st->placement->department->department_name}}</td> --}}
         
                          <td>
@@ -45,7 +45,7 @@
                                 <a href="{{ route('absent',[$st->id]) }}" class="btn btn-danger">Absent</a> 
                                 
                             </div>
-                            <td><a href="{{ route('message.show',$st->id)}}" class="btn btn-primary"><i class="fa fa-paper-plane" aria-hidden="true"></i>Send message</a></td>
+                            <td><a href="{{ route('message.show',$st->studentplacement->student->user->id)}}" class="btn btn-primary"><i class="fa fa-paper-plane" aria-hidden="true"></i>Send message</a></td>
                         </td>
                                 @endforeach
                                 

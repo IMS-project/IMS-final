@@ -35,10 +35,4 @@
             </div></div></div>
                     <a href="{{ route('Supervisor.index') }}" class="btn btn-primary">Back</a>
                 </div>
-                
-            </div>
-        </div>
-    </div>
-
-
 @endsection

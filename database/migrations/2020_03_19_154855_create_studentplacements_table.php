@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePlacementsTable extends Migration
+class CreateStudentplacementsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreatePlacementsTable extends Migration
      */
     public function up()
     {
-        Schema::create('placements', function (Blueprint $table) {
+        Schema::create('studentplacements', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('student_id');
             $table->unsignedBigInteger('company_id');
@@ -21,11 +21,11 @@ class CreatePlacementsTable extends Migration
             $table->unsignedBigInteger('duration_id');
             $table->string('status');
             $table->timestamps();
-
             $table->foreign('student_id')->references('id')->on('students')->onDelete('cascade');
             $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade');
             $table->foreign('companydepartment_id')->references('id')->on('companydepartments')->onDelete('cascade');
             $table->foreign('duration_id')->references('id')->on('durations')->onDelete('cascade');
+
         });
     }
 
@@ -36,6 +36,6 @@ class CreatePlacementsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('placements');
+        Schema::dropIfExists('studentplacements');
     }
 }

@@ -6,7 +6,9 @@ use App\Chat;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Supervisor;
+use App\User;
 use Flash;
+use App\Student;
 class ChatController extends Controller
 {
     /**
@@ -38,8 +40,10 @@ class ChatController extends Controller
     public function store(Request $request)
     {
         $user = Supervisor::where('user_id',Auth::id())->first();
+       
+        $users = Student::where('user_id',$request->id);
         $chat = new Chat;
-        $chat->sender = $user->id;
+        $chat->sender = Auth::id();
         $chat->receiver =$request->id;
         $chat->body =$request->message;
         $chat->save();
