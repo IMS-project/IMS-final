@@ -41,7 +41,10 @@ class User extends Authenticatable
     public function student(){
         return $this->hasOne('App\Student');
     }
-    public function chat(){
+    public function receiver(){
+        return $this->hasOne('App\Chat');
+    }
+    public function sender(){
         return $this->hasOne('App\Chat');
     }
    

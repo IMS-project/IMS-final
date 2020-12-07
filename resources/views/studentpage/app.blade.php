@@ -141,8 +141,8 @@
                                     <li class="{{ Request::is('studentsupervisor*') ? 'active' : '' }}">
                                         <a href="{{ route('studentsupervisor.index') }}"><i class="fa fa-file" aria-hidden="true"></i><span>Report</span></a>
                                         </li>
-                                        <li class="{{ Request::is('studentsupervisor*') ? 'active' : '' }}">
-                                            <a href="{{ route('studentsupervisor.index') }}"><i class="fa fa-inbox"></i> <span>Messages</span></a>
+                                        <li class="{{ Request::is('inboxdmessage*') ? 'active' : '' }}">
+                                            <a href="{{ route('inboxdmessage.index') }}"><i class="fa fa-inbox"></i> <span>Messages</span></a>
                                             </li>
                 
                 </ul>

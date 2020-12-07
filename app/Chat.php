@@ -6,7 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Chat extends Model
 {
-    public function user(){
+    public function sender(){
+        return $this->belongsTo('App\User');
+    }
+    public function receiver(){
         return $this->belongsTo('App\User');
     }
 }
