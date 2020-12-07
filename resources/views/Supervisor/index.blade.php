@@ -26,7 +26,7 @@
                                 <th>Full Name</th>   
                                 <th>company</th>   
                                 {{-- <th>department</th> --}}
-                                <th>Attendnce</th>  
+                                <th><a href="">Attendnce</a></th>  
                                 <th>Contact</th> 
                             </tr>
                         </thead>

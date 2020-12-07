@@ -30,10 +30,8 @@
                                  
                                  <td>{{$users[$message->sender]}}</td>
                                 
-                             <td>{{$message->body}}</td>
-                     
-                                    {{-- <td><a href="{{ route('offer_company.show']) }}">{{ $company->name }}</a></td> --}}
-                                    
+                              <td><a href="">{{$message->body}}</a></td>
+                          
                                     @endforeach
                                     
                                 </tr>

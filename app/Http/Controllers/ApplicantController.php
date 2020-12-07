@@ -86,7 +86,7 @@ class ApplicantController extends Controller
         $count = 0 ;
                 foreach($stid as $row)
                     {
-                        $try = $row->department_id;
+                        $try = $row->companydepartment_id;
                         if($try==$request->departments)
                         {
                             $count = 1;
@@ -137,13 +137,10 @@ class ApplicantController extends Controller
         foreach($placements as $depart){
             
              $c[$depart->id]= $depart->applicant()->count();
-            $cp[$depart->id]= $depart->placement()->count();
+            $cp[$depart->id]= $depart->studentplacement()->count();
         }
-        
-        $placement =Company::find($id)->placement()->count();
         return view('studentpage.show')->with('company', $company)
                                         ->with('applicants',$c)
-                                        ->with('placed',$placement)
                                         ->with('departments',$departments)
                                         ->with('department',$department)
                                         ->with('durations',$duration)

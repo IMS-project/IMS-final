@@ -74,7 +74,7 @@
                                         <a href="#" class="btn btn-default btn-flat">Profile</a>
                                     </div>
                                     <div class="pull-right">
-                                        <a href="{{ url('/logout') }}" class="btn btn-default btn-flat"
+                                        <a href="{{ url('/logout') }}" class="btn btn-primary btn-flat"
                                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa fa-sign-out" aria-hidden="true"></i>
                                             Sign out
                                         </a>
@@ -142,7 +142,7 @@
                                         <a href="{{ route('studentsupervisor.index') }}"><i class="fa fa-file" aria-hidden="true"></i><span>Report</span></a>
                                         </li>
                                         <li class="{{ Request::is('inboxdmessage*') ? 'active' : '' }}">
-                                            <a href="{{ route('inboxdmessage.index') }}"><i class="fa fa-inbox"></i> <span>Messages</span></a>
+                                            <a href="{{ route('inboxdmessage.index') }}"><i class="fa fa-envelope-o"></i><span >Message</span></a>
                                             </li>
                 
                 </ul>
