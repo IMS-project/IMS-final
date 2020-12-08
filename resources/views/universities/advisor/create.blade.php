@@ -59,17 +59,7 @@
             </div>
             </div>
             
-            <!-- <div class="form-group row">
-                <lable for = "phone" class = "col-sm-1 col-form-label">user type</lable>
-                 <div class="col-sm-6">
-                   <select name="role" type ="text" class="form-control" value="{{ old('role') }}">
-                      @foreach($roles as $rol)
-                        <option value="{{ $rol->id }}">{{$rol->name}}</option>
-                    
-                     @endforeach
-                  </select> 
-                </div>
-            </div> -->
+            
         
             <div class="form-group row">
                 <lable for = "phone" class = "col-sm-1 col-form-label">Department</lable>

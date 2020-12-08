@@ -26,10 +26,9 @@ class SupervisorController extends Controller
 
     public function index()
     {
-            $user = CompCoordinator::where('user_id',Auth::id())->first(); 
-            $supervisor = Supervisor::where('company_id',$user->company_id)->get();
-            return view('companies.supervisor.index')
-            ->with('supervisors', $supervisor);
+        $user = CompCoordinator::where('user_id',Auth::id())->first(); 
+        $supervisor = Supervisor::where('company_id',$user->company_id)->get();
+        return view('companies.supervisor.index')->with('supervisors', $supervisor);
     }
     public function create()
     {
@@ -56,7 +55,7 @@ class SupervisorController extends Controller
 
         // User::create($data);
         $supervisor = new Supervisor;
-        $comid = CompCoordinator::all()->first();
+        $comid = CompCoordinator::where('user_id',Auth::id())->first();
 
         $user->first_name = $request->first_name;
         $user->last_name = $request->last_name;
@@ -73,8 +72,9 @@ class SupervisorController extends Controller
         $supervisor->companydepartment_id = $request->department;
         $supervisor->save();
         Flash::success(' saved successfully');
-        $supervisor = Supervisor::all(); 
-        return redirect()->route('Supervisor.index')->with('supervisors', $supervisor);
+        $user = CompCoordinator::where('user_id',Auth::id())->first(); 
+        $supervisor = Supervisor::where('company_id',$user->company_id)->get();
+        return view('companies.supervisor.index')->with('supervisors', $supervisor);
     
     }
 

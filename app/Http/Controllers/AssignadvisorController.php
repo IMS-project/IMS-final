@@ -26,8 +26,7 @@ class AssignadvisorController extends Controller
     }
 
     public function index()
-    { 
-
+    {
         $unicor = UniCoordinator::where('user_id', Auth::id())->first();
         $advisors = Advisor::where('university_id', $unicor->university_id)->get();
         return view('Assignadvisor.index')->with('advisors',$advisors);

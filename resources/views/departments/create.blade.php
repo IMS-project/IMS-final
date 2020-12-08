@@ -23,7 +23,7 @@
                     <input type="text" name="name" class="form-control" id="name" placeholder="department name" required>
                    </div>
                 </div>       
-            </div>
+            
                 <!-- User Id Field -->
 
                 <div class="form-group row">
@@ -34,8 +34,9 @@
                 </div>
 
               </form>
-            </div>
+            
         </div>
+         </div>
         <div class="col-sm-2"></div>
      </div>
 @endsection

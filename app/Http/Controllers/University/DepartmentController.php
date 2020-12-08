@@ -22,7 +22,8 @@ class DepartmentController extends Controller
     }
     public function index()
     {
-        $department = Department::all();
+        $user = UniCoordinator::where('user_id',Auth::id())->first();
+        $department = Department::where('university_id',$user->university_id)->get();
         // dd($department);
         return view('departments.index')->with('departments',$department);
     }
@@ -40,7 +41,11 @@ class DepartmentController extends Controller
         $department->university_id = $unid->university_id;
         $department->save();
         Flash::success('department saved successfully.');
-        return redirect(route('departments.index'))->with('departments', $department );
+        // return redirect(route('departments.index'))->with('departments', $department );
+        $user = UniCoordinator::where('user_id',Auth::id())->first();
+        $department = Department::where('university_id',$user->university_id)->get();
+        // dd($department);
+        return view('departments.index')->with('departments',$department);
 
     }
     public function show($id)
@@ -82,12 +87,9 @@ class DepartmentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $unid = UniCoordinator::all()->first();
+        $unid = UniCoordinator::where('user_id',Auth::id())->first();
         $department =Department::find($id);
-      
-        // $userid=  $department->user_id;
-        // $unid=   $department->university_id;
-        // $user = User::find($userid);
+        // dd($department);
         $department->department_name = $request->department_name;
         $department->university_id = $unid->university_id;
         $department->save();
@@ -104,7 +106,7 @@ class DepartmentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
         $department =Department::find($id);
         $department->delete();
         return redirect(route('departments.index'));

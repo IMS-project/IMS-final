@@ -62,7 +62,6 @@
     Route::resource('company', 'University\CompanyController');
     Route::resource('CompCoordinator','Company\CompCoordinatorController');
     Route::resource('Supervisor','Company\SupervisorController');
-
     Route::resource('departments',  'University\DepartmentController');
     Route::resource('companydepartments',  'Company\companydepartmentcontoller');
     Route::resource('Internship',  'Company\InternshipController');

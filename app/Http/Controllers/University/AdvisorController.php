@@ -13,7 +13,7 @@ use App\Department;
 use App\Advisor;
 use App\UniCoordinator;
 use Flash;
-
+use Illuminate\Support\Facades\Auth;
 class AdvisorController extends Controller
 {
     public function __construct()
@@ -24,20 +24,17 @@ class AdvisorController extends Controller
     }
     public function index()
     {
-       // $role = Role::orderBy('name')->get();
-       // $university = University::orderBy('created_at')->get();
+       $user =UniCoordinator::where('user_id',Auth::id())->first();
 
-        $advisor = Advisor::all();
+        $advisor = Advisor::where('university_id',$user->university_id)->get();
         return view('universities.advisor.index')
         ->with('advisors', $advisor);
     }
     public function create()
     {
-        //
-        $role = Role::orderBy('name')->get();
-        $department = Department::all();
-        return view('universities.advisor.create')->with('roles',$role)
-                                                  ->with('departments' ,$department);
+        $user =UniCoordinator::where('user_id',Auth::id())->first();
+        $department = Department::where('university_id',$user->university_id)->get();
+        return view('universities.advisor.create')->with('departments' ,$department);
 
     }
 
@@ -74,7 +71,7 @@ class AdvisorController extends Controller
         $user->save();
         
         $id = $user->id;
-        $unid = UniCoordinator::all()->first();
+        $unid = UniCoordinator::where('user_id',Auth::id())->first();
         $advisor->user_id = $id;
         $advisor->university_id = $unid->university_id;
         $advisor->department_id = $request->department;
