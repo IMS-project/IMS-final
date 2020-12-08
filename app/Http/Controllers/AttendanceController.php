@@ -49,7 +49,9 @@ class AttendanceController extends Controller
         $attendance->date= Carbon::now()->toDateString();
         $attendance->save();
         Flash::success('Submitted successfully');
-        return back();
+
+        $status = Attendance::all();
+        return view('Supervisor.status')->with('attendance',$status);
     }
 
     public function absent($id){

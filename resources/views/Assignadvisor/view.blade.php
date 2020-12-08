@@ -29,13 +29,13 @@
                             <input type="hidden" name="advisor" value="{{$id}}">
                             @foreach($students as $student)
                             <tr>
-                            @if ($student->placement)
+                            @if ($student->studentplacement)
                                 
                             <td>
-                                <input type="checkbox"  name="student[]"  value="{{$student->placement->id}}" >
+                                <input type="checkbox"  name="student[]"  value="{{$student->studentplacement->id}}" >
                                   {{$student->user->first_name}} {{$student->user->last_name}}
                                 </td>
-                            <td>{{$student->placement->company->name}}</td>
+                            <td>{{$student->studentplacement->company->name}}</td>
                             
                             {{-- <td>{{$student->placement->department->department_name}}</td> --}}
                             

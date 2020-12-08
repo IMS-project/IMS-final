@@ -48,19 +48,39 @@ class AssignsupervisorController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request){
-            
-        // dd($request->student);
-        foreach($request->student as $stud){
+    public function store(Request $request)
+    {
+    
+        $count=0;
+       dd($request->student);
+        foreach($request->student as $s){
+   
+        $stid =Assignsupervisor::all()->where('studentplacement_id',$s)->first();
+      
+        if($stid){
+        $count =1;
+        }
+        else
+        {
             $assignsuper = new Assignsupervisor();
             // dd($stud);
             $assignsuper->supervisor_id = $request->supervisor;
             $assignsuper->studentplacement_id = $request->student;
             $assignsuper->save();
-        }
-        
-        return back('assigned successfully');
+                            }
+                            
+                        }
+                if($count==1){
 
+                
+                    Flash::warning('You have Already assigned . . .');
+                    return back();
+                    
+                }
+                else{
+                    Flash::success('You have assigned successfully. .');
+                    return back();
+                }
     }
 
     /**

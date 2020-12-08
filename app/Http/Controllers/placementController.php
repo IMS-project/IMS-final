@@ -52,7 +52,7 @@ class placementController extends Controller
         $count=0;
         foreach($request->student as $stud){
 
-            $stid = Assignsupervisor::all()->where('placement_id',$stud)->first();
+            $stid = Assignsupervisor::all()->where('studentplacement_id',$stud)->first();
             if($stid){
                 $count =1;
                 }

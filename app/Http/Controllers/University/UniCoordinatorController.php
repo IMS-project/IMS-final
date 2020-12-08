@@ -40,7 +40,7 @@ class UniCoordinatorController extends Controller
      */
     public function create()
     {  $role =Role::orderBy('name')->get(); 
-       $university = University::orderBy('created_at')->get();
+       $university = University::orderBy('created_at','desc')->get();
         return view('universities.coordinator.create')->with('roles',$role)->with('universities',$university);
     }
 

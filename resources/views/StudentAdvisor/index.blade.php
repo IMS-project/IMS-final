@@ -23,7 +23,7 @@
                             <tbody>
                                 
                                <tr>
-                                   <td> {{$students->placement->assign->advisor->user->first_name}} {{$students->placement->assign->advisor->user->last_name}}</td>
+                                   <td> {{$students->studentplacement->assign->advisor->user->first_name}} {{$students->studentplacement->assign->advisor->user->last_name}}</td>
                                </tr>           
                                 </tr>
                             

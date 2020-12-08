@@ -27,7 +27,7 @@
                             <tbody>
                                 
                                <tr>
-                                   <td> {{$students->placement->assignsupervisor->supervisor->user->first_name}} {{$students->placement->assignsupervisor->supervisor->user->last_name}}</td>
+                                   <td> {{$students->studentplacement->assignsupervisor->supervisor->user->first_name}} {{$students->studentplacement->assignsupervisor->supervisor->user->last_name}}</td>
                                </tr>
                                
                           

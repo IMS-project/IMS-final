@@ -19,6 +19,8 @@ class studentAdvisorController extends Controller
     public function index()
     {
         $student = Student::where('user_id',Auth::id())->first();
+        $chek= $student->studentplacement->assign->advisor;
+        // dd($chek);
         return view('StudentAdvisor.index')->with('students',$student);
     }
 

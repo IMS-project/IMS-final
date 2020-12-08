@@ -17,7 +17,7 @@
                         <table class="table table-bordered" id="companies-table">
                             <thead>
                                 <tr>
-                                    <th>SN</th>
+                                    <th>From</th>
                                      
                                     <th>Body</th>   
                                 </tr>

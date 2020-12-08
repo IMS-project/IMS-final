@@ -138,11 +138,14 @@
                                 <li class="{{ Request::is('studentsupervisor*') ? 'active' : '' }}">
                                     <a href="{{ route('studentsupervisor.index') }}"><i class="fa fa-user"></i><span>Supervisor</span></a>
                                     </li>
-                                    <li class="{{ Request::is('studentsupervisor*') ? 'active' : '' }}">
-                                        <a href="{{ route('studentsupervisor.index') }}"><i class="fa fa-file" aria-hidden="true"></i><span>Report</span></a>
+                                    <li >
+                                        <a href="#"><i class="fa fa-file" aria-hidden="true"></i><span>Report</span></a>
                                         </li>
                                         <li class="{{ Request::is('inboxdmessage*') ? 'active' : '' }}">
-                                            <a href="{{ route('inboxdmessage.index') }}"><i class="fa fa-envelope-o"></i><span >Message</span></a>
+                                            <a href="{{ route('inboxdmessage.index') }}"><i class="fa fa-envelope-o"></i>
+                                                <button type="button" class="btn btn-primary">
+                                                    Message <span class="badge badge-light">4</span>
+                                                  </button></a>
                                             </li>
                 
                 </ul>
