@@ -2,12 +2,12 @@
 
 @section('content')
     <section class="content-header">
-        <h4 class="pull-left">Company list</h4>
-        
+         
         <h1 class="pull-right">
            <a class="btn btn-primary pull-right" style=
-           "margin-top: -10px;margin-bottom: 5px" href="{{ route('company.create') }}"><i class="fa fa-plus-circle">Add New</i></a>
+           "margin-top: -5px;margin-bottom: 5px" href="{{ route('company.create') }}"><i class="fa fa-plus">Add New</i></a>
         </h1>
+        <h4 class="pull-left">Company list</h4>
     </section>
     <div class="content">
         <div class="clearfix"></div>

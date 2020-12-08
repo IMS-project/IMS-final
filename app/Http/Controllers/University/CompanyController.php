@@ -15,7 +15,7 @@ class CompanyController extends Controller
     {
         $this->middleware('auth');
         $this->middleware('university');
-        $this->middleware('prevent-back-history');
+        // $this->middleware('prevent-back-history');
     }
     public function index(Request $request)
     {

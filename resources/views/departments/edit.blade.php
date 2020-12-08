@@ -3,7 +3,7 @@
 @section('content')
     <section class="content-header">
         <h1>
-            Departments
+           Edit department
         </h1>
         {{-- <a href="{{ route('')}}"></a><button class="btn btn-primary"> View List</button> --}}
    </section>

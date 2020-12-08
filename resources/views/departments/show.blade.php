@@ -23,12 +23,10 @@
 
                 </tbody>
                 </table>
-            </div></div>
-     </div>      
-                    <a href="{{ route('departments.index') }}" class="btn btn-primary">Back</a>
-                </div>
-                
             </div>
         </div>
+     </div>      
+                    <a href="{{ route('departments.index') }}" class="btn btn-primary">Back</a>
+                
     </div>
 @endsection

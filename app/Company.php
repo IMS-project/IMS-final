@@ -20,7 +20,7 @@ class Company extends Model
 
    // protected $guarded=[];
    public function department(){
-        return $this->hasOne('App\Department');
+        return $this->hasMany('App\Companydepartment');
     }
     public function duration(){
         return $this->hasOne('App\Duration');
@@ -45,8 +45,8 @@ class Company extends Model
     public function applicant(){
         return $this->hasMany('App\Applicant');
     }
-    public function placement(){
-        return $this->hasOne('App\placement');
+    public function studentplacement(){
+        return $this->hasOne('App\Studentplacement');
     }
     public function assign(){
         return $this->hasOne('App\Assign');

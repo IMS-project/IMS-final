@@ -20,6 +20,14 @@
     Route::get('/reject/{id}', 'ApplicationController@reject')->name('reject');//for the reject function
     Route::get('/automatic', 'ApplicationController@automatic')->name('automatic');//for the approve function
     
+    Route::get('/present/{id}', 'AttendanceController@present')->name('present');//for the approve function
+    Route::get('/absent/{id}', 'AttendanceController@absent')->name('absent');//for the approve function
+    Route::resource('/message', 'ChatController');//for the approve function
+    Route::resource('/sendmessage', 'Advisorcontroller');
+    Route::resource('/inboxdmessage', 'Automaticcontroller');
+
+
+
     Route::get('/list/{id}', 'ApplicationController@list')->name('list');
     Route::get('/assign', 'AssignController@store')->name('assign');//for the application function
     Route::get('/assignsuper', 'placementController@store')->name('assignsuper');//for the application function
@@ -54,7 +62,6 @@
     Route::resource('company', 'University\CompanyController');
     Route::resource('CompCoordinator','Company\CompCoordinatorController');
     Route::resource('Supervisor','Company\SupervisorController');
-
     Route::resource('departments',  'University\DepartmentController');
     Route::resource('companydepartments',  'Company\companydepartmentcontoller');
     Route::resource('Internship',  'Company\InternshipController');

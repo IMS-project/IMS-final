@@ -4,10 +4,11 @@
 
 <section class="content-header">
     <h4>
-     university user
-    </h4>
     <a class="btn btn-primary pull-right" style=
-    "margin-top: -10px;margin-bottom: 5px" href="{{ route('UniCoordinator.create') }}"><i class="fa fa-plus-circle">Add NEW</i></a>
+    "margin-top: -5px;margin-bottom: 5px" href="{{ route('UniCoordinator.create') }}"><i class="fa fa-plus">Add New</i></a>
+    
+        university user
+       </h4>
 </section>
 
 <div class="content">
@@ -24,7 +25,7 @@
                     <table class="table table-bordered table-striped" id="universities-table">
                             <thead>
                                 <tr>
-                                    <th>Id</th>
+                                    <th>SN</th>
                                     <th>First Name</th>
                                     <th>From Univesity </th>
                                     <th colspan="3">Action</th>

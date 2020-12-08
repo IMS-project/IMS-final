@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Applicant;
 use App\Student;
-use App\placement;
+use App\Studentplacement;
 use App\Advisor;
 use App\Company;
 use Flash;
@@ -26,8 +26,7 @@ class AssignadvisorController extends Controller
     }
 
     public function index()
-    { 
-
+    {
         $unicor = UniCoordinator::where('user_id', Auth::id())->first();
         $advisors = Advisor::where('university_id', $unicor->university_id)->get();
         return view('Assignadvisor.index')->with('advisors',$advisors);
@@ -66,31 +65,23 @@ class AssignadvisorController extends Controller
         $addp = $advisor->department_id;
         $adui = $advisor->university_id;
         $company = Company::all();
-        //dd($company[0]);
         $student = Student::where('university_id',$adui)->where('department_id',$addp)->get();
         
         $count = 0;
         $countArray=[];
-
-        
             foreach($company as $comp)
             {
                 foreach($student as $row)
                 {
                 $compid = $comp->id;
-                $place = Placement::all()->where('student_id',$row->id)
+                $place = Studentplacement::all()->where('student_id',$row->id)
                                         ->where('company_id',$comp->id)->count();
                 $count = $count + $place;
                 } 
                 $countArray[$comp->id]=$count;
                 $count=0;
             }
-        //  dd($countArray);
-        //  dd($student);
-        //  $placement = Placement::find('company_id')->student()->groupBy('company_id');
-         $placement = Placement::all();//->where('student_id',$student->id)->groupBy('company_id')->get();
-        // dd($placement);
-
+         $placement = Studentplacement::all();
         return view('Assignadvisor.view')->with('placementcount',$countArray)
                     ->with('id',$id)
                     ->with('placement',$placement)

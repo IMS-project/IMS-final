@@ -11,7 +11,7 @@ use App\Internship;
 use App\Department;
 use App\Company;
 use Flash;
-use App\Placement;
+use App\Studentplacement;
 use App\Student;
 use App\CompCoordinator;
 class InternshipController extends Controller
@@ -26,7 +26,7 @@ class InternshipController extends Controller
     {  
         $student = Student::where('user_id', Auth::id())->first();
         $compcor = CompCoordinator::where('user_id',Auth::id())->first();
-        $applicant =Placement::all()->where('company_id',$compcor->company_id);
+        $applicant =Studentplacement::all()->where('company_id',$compcor->company_id);
         //  dd($applicant->student->user);
         return view('companies.internships.index')->with('posts',$applicant);
     }  

@@ -51,7 +51,7 @@ class StudentController extends Controller
             'first_name' =>'required|regex:/^[\pL\s\-]+$/u',
             'last_name' => 'required|regex:/^[\pL\s\-]+$/u',
             'sex' => 'required',
-            'phone' => 'required|regex:/(0)[0-9]/|not_regex:/[a-z]/|digits:10',
+            'phone' => 'required|regex:/(09)[0-9]/|not_regex:/[a-z]/|digits:10',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:6',
             
@@ -93,7 +93,7 @@ class StudentController extends Controller
            Mail::to($request->email)->send(new WelcomeMail($details));
 
            Flash::success('saved successfully.');
-           $student = Student::all();
+           $student =Student::orderBy('created_at','desc')->paginate(8);
            return view('universities.student.index')->with('students', $student);
 
     }
@@ -166,7 +166,7 @@ class StudentController extends Controller
         $student->grade = $request->grade;
         $student->save();
         Flash::success('updated successfully.');
-        $student = Student::all();
+        $student =Student::orderBy('created_at','desc')->paginate(8);
         return view('universities.student.index')->with('students', $student);
 
 

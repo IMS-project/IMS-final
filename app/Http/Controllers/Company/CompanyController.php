@@ -38,13 +38,6 @@ class CompanyController extends Controller
             
             ]);
 
-        //     $check = request('name');
-        //     $comid = Company::all()->where('name',$check);
-
-        //    if($comid){
-        //        return "already exists";
-        //    }
-        //    else{
             Company::create($data); // this is to save the data
             $company= new Company();
              $company->name= request('name');

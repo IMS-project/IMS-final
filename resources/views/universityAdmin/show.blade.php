@@ -15,19 +15,14 @@
                             <tr>
                                 <th>NAme</th>
                                 <th>Address</th>
-                                <th>Offer_capacity</th>
-                                <th>CGPA</th>
-                                <th>Other_skills</th>
-
+                                
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                                 <td>{{ $company->name }}</td>
                                 <td>{{ $company->address }}</td>
-                                <td>{{ $company->offer_capacity }}</td>
-                                <td>{{ $company->mini_grade}}</td>
-                                <td>{{ $company->other_skills }}</td>
+                               
                                 
                         
                             </tr>
@@ -39,7 +34,5 @@
                     <a href="{{ route('company.index') }}" class="btn btn-primary">Back</a>
                 </div>
                 
-            </div>
-        </div>
-    </div>
+           
 @endsection

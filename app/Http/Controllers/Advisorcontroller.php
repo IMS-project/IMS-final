@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Assign;
 use App\Student;
 use App\Advisor;
+use App\Chat;
+use Flash;
 class Advisorcontroller extends Controller
 {
     /**
@@ -23,8 +25,7 @@ class Advisorcontroller extends Controller
     public function index()
     {   
        $user = Advisor::where('user_id',Auth::id())->first();
-        $student = Assign::where('advisor_id',$user->id)->get();
-        // dd( $student);
+        $student = Assign::where('advisor_id',$user->id)->get(); 
         return view('Advisor.index')->with('students',$student);
     }
 
@@ -38,7 +39,7 @@ class Advisorcontroller extends Controller
     }
     public function create()
     {
-        //
+       
     }
 
     /**
@@ -49,7 +50,14 @@ class Advisorcontroller extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = Advisor::where('user_id',Auth::id())->first();
+        $chat = new Chat;
+        $chat->sender = Auth::id();;
+        $chat->receiver =$request->id;
+        $chat->body =$request->message;
+        $chat->save();
+        Flash::success('message sent successfully');
+        return redirect(route('show'));
     }
 
     /**
@@ -60,7 +68,7 @@ class Advisorcontroller extends Controller
      */
     public function show($id)
     {
-        //
+        return view('Advisor.createmessage')->with('id',$id);
     }
 
     /**

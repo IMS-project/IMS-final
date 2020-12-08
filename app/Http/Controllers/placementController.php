@@ -23,12 +23,10 @@ class placementController extends Controller
     }
     public function index()
     {
-        $department =Companydepartment::all()->first();
-        //  dd($department->id);
+        // $department =Companydepartment::all()->first();
         $student = Student::where('user_id', Auth::id())->first();
-        $applicant =Applicant::all()->where('student_id',$student->id);
-        // $stid = Applicant::all()->where('student_id',$applicant->student_id);
-        //dd($applicant);
+        $applicant = Applicant::where('student_id',$student->id)->where('status','pending')->get();
+        // dd($applicant);
         return view('placements.index')->with('applicants',$applicant);
         
     }
@@ -51,11 +49,10 @@ class placementController extends Controller
      */
     public function store(Request $request)
     {
-        // dd($request->student);
         $count=0;
         foreach($request->student as $stud){
 
-            $stid = Assignsupervisor::all()->where('placement_id',$stud)->first();
+            $stid = Assignsupervisor::all()->where('studentplacement_id',$stud)->first();
             if($stid){
                 $count =1;
                 }
@@ -63,11 +60,10 @@ class placementController extends Controller
 
                 
                     $assignsuper = new Assignsupervisor();
-                    // dd($stud);
+                    
                     $assignsuper->supervisor_id = $request->supervisor;
-                    $assignsuper->placement_id = $stud;
+                    $assignsuper->studentplacement_id = $stud;
                     $assignsuper->save();
-                    // Flash::success('Assigned succesfully');
             }
         
         

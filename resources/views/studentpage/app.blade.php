@@ -21,7 +21,7 @@
         
         <!-- Google Font -->
         <link rel="stylesheet"
-              href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
       </head>
 
 
@@ -74,7 +74,7 @@
                                         <a href="#" class="btn btn-default btn-flat">Profile</a>
                                     </div>
                                     <div class="pull-right">
-                                        <a href="{{ url('/logout') }}" class="btn btn-default btn-flat"
+                                        <a href="{{ url('/logout') }}" class="btn btn-primary btn-flat"
                                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fa fa-sign-out" aria-hidden="true"></i>
                                             Sign out
                                         </a>
@@ -138,7 +138,15 @@
                                 <li class="{{ Request::is('studentsupervisor*') ? 'active' : '' }}">
                                     <a href="{{ route('studentsupervisor.index') }}"><i class="fa fa-user"></i><span>Supervisor</span></a>
                                     </li>
-                            
+                                    <li >
+                                        <a href="#"><i class="fa fa-file" aria-hidden="true"></i><span>Report</span></a>
+                                        </li>
+                                        <li class="{{ Request::is('inboxdmessage*') ? 'active' : '' }}">
+                                            <a href="{{ route('inboxdmessage.index') }}"><i class="fa fa-envelope-o"></i>
+                                                <button type="button" class="btn btn-primary">
+                                                    Message <span class="badge badge-light">4</span>
+                                                  </button></a>
+                                            </li>
                 
                 </ul>
     

@@ -40,7 +40,7 @@ class UniCoordinatorController extends Controller
      */
     public function create()
     {  $role =Role::orderBy('name')->get(); 
-       $university = University::orderBy('created_at')->get();
+       $university = University::orderBy('created_at','desc')->get();
         return view('universities.coordinator.create')->with('roles',$role)->with('universities',$university);
     }
 
@@ -142,8 +142,9 @@ class UniCoordinatorController extends Controller
         $coordinator->university_id = $request->university;
         $coordinator->save();
         Flash::success(' updated successfully');
-        $universities = University::all();
-        return view('universities.index')->with('universities', $universities);
+        $coordinator = UniCoordinator::all(); 
+        return view('universities.coordinator.index')->with('cor', $coordinator );
+        
 
     }
 

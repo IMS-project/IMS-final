@@ -4,7 +4,7 @@
 @section('content')
 <section class="content-header">
     <h1>
-  Students
+  Edit Student
     </h1>
 {{-- <a href="{{ route('')}}"></a><button class="btn btn-primary"> View List</button> --}}
 </section>
@@ -86,20 +86,20 @@
             <div class="form-group row">
                 <lable for = "year" class = "col-sm-1 col-form-label"><h5>Class Year:</h5></lable>
                 <div class="col-sm-6">
-                    <input type="text" name="year" class="form-control" value="{{$students->class_year}}" id="year" placeholder="year" required>
+                    <input type="text" name="year" class="form-control" value="{{$students->class_year}}" id="year" placeholder="eg.fourth" required>
                 </div>
             </div>
             <div class="form-group row">
                 <lable for = "grade" class = "col-sm-1 col-form-label"><h5>Grade:</h5></lable>
                 <div class="col-sm-6">
-                    <input type="number" name="grade" class="form-control" value="{{$students->grade}}"id="grade" placeholder="grade" required>
+                    <input type="float" name="grade" class="form-control" value="{{$students->grade}}"id="grade" placeholder="grade" required id="grade">
                 </div>
             </div>
             
 <!--    ----update---- -->
                 <div class="form-group row">
                   <div class="col-sm-6 pull-right">
-                    <button class="btn btn-success" type="submit"> update</button>
+                    <button class="btn btn-success" type="submit" id="submitBtn"> update</button>
                     <a href="{{ route('Student.index') }}" class="btn btn-default">Cancel</a>
                  </div>
                </div>
@@ -109,6 +109,19 @@
     <div class="col-sm-2"></div>
 </div>
 </div>
+<script>
+    const grade = document.getElementById('grade');
+    const submitBtn = document.getElementById('submitBtn');
+    grade.addEventListener('input', (event) => {
+        if(grade.value >4 ||grade.value<1 ){
+            grade.value = null;
+            submitBtn.classList.add('disabled');
+        }
+        else {
+            submitBtn.classList.remove('disabled');
+        }
+    })
+</script>
 @endsection()
 
 

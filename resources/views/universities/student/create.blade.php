@@ -13,9 +13,8 @@
     <div class="box box-primary">
       <div class="box-body">
 
-        <form method="post" action="{{ route('Student.store')}}">
-            {{csrf_field()}}
-
+        <form method="post" action="{{ route('Student.store')}}" class="form-horizontal form-bordered">
+        <input type="hidden" name="_token" value="{{ csrf_token() }}" >
             <div class="form-group row">
                 <lable for = "first name" class = "col-sm-1 col-form-label"><h5>First Name:</h5></lable>
                 <div class="col-sm-6">
@@ -94,7 +93,7 @@
             <div class="form-group row">
                 <lable for = "year" class = "col-sm-1 col-form-label"><h5>Class Year:</h5></lable>
                 <div class="col-sm-6">
-                    <input type="text" name="year" class="form-control" id="year" placeholder="year" required>
+                    <input type="text" name="year" class="form-control" id="year" placeholder="eg. first ,1st" required>
                 </div>
             </div>
             <div class="form-group row">
@@ -122,7 +121,7 @@
     const grade = document.getElementById('grade');
     const submitBtn = document.getElementById('submitBtn');
     grade.addEventListener('input', (event) => {
-        if(grade.value >4){
+        if(grade.value >4 ||grade.value<1 ){
             grade.value = null;
             submitBtn.classList.add('disabled');
         }

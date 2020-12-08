@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Assignsupervisor;
-use App\placement;
+use App\Studentplacement;
 use App\Company;
 use App\Supervisor;
 use App\CompCoordinator;
@@ -28,7 +28,7 @@ class AssignsupervisorController extends Controller
     {
         $comp =CompCoordinator::where('user_id',Auth::id())->first();
         $super = Supervisor::where('company_id',$comp->company_id)->get();
-        $placement = placement::all();
+        $placement = Studentplacement::all();
         return view('Assignsupervisor.index')->with('supervisor',$super)->with('placements',$placement);
     }
 
@@ -48,21 +48,39 @@ class AssignsupervisorController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request){
-            
-        // dd($request->student);
-        foreach($request->student as $stud){
+    public function store(Request $request)
+    {
+    
+        $count=0;
+       dd($request->student);
+        foreach($request->student as $s){
+   
+        $stid =Assignsupervisor::all()->where('studentplacement_id',$s)->first();
+      
+        if($stid){
+        $count =1;
+        }
+        else
+        {
             $assignsuper = new Assignsupervisor();
             // dd($stud);
             $assignsuper->supervisor_id = $request->supervisor;
-            $assignsuper->placement_id = $request->student;
+            $assignsuper->studentplacement_id = $request->student;
             $assignsuper->save();
-        
+                            }
+                            
+                        }
+                if($count==1){
 
-        }
-        
-        return back('assigned successfully');
-
+                
+                    Flash::warning('You have Already assigned . . .');
+                    return back();
+                    
+                }
+                else{
+                    Flash::success('You have assigned successfully. .');
+                    return back();
+                }
     }
 
     /**
@@ -74,7 +92,7 @@ class AssignsupervisorController extends Controller
     public function show($id)
     {
          $super = Supervisor::find($id);
-         $placement =placement::where('company_id',$super->company_id)->get();
+         $placement =Studentplacement::where('company_id',$super->company_id)->get();
          return view('Assignsupervisor.show')->with('placements',$placement)->with('id',$id);
 
     }

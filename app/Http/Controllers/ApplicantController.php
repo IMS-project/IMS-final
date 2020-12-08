@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Company;
 use App\Student;
 use App\User;
-use App\Placement;
+use App\Studentplacement;
 use App\Duration;
 use DB;
 use Flash;
@@ -33,7 +33,7 @@ class ApplicantController extends Controller
         
         // dd($limit);
         $student = Student::all()->where('user_id',Auth::id())->first();
-        $exist = Placement::all()->where('student_id', $student->id);
+        $exist = Studentplacement::all()->where('student_id', $student->id);
         $companies=[];
         if($exist->isEmpty()){
             
@@ -69,39 +69,52 @@ class ApplicantController extends Controller
     {
         $applicant = new Applicant();
         $student = Student::where('user_id', Auth::id())->first();
+        $department = Companydepartment::where('company_id', $request->company)->where('id',$request->departments)->first();
+
+        $appcount = Applicant::where('company_id',$request->company)->where('companydepartment_id',$request->departments)->get()->count();
+        // dd($appcount<$department->offer_capacity-4);
+       
+        if($appcount<$department->offer_capacity+50){
 
         $applicant->student_id = $student->id;
         $applicant->company_id = $request->company;
-        $applicant->department_id = $request->departments;
+        $applicant->companydepartment_id = $request->departments;
         $applicant->duration_id = $request->durations;
         $applicant->status = "pending";
         
         $stid = Applicant::all()->where('student_id',$applicant->student_id);
         $count = 0 ;
-    foreach($stid as $row)
-        {
-            $try = $row->department_id;
-            if($try==$request->departments)
-            {
-                $count = 1;
-            } 
-        }
-        if($count==1)
-        {
-            Flash::warning('You have Already Applied . . .');
-            return Redirect()->route('offer_company.index') ;
-        } 
-        else
-        {
-            $applicant->save();
-            Flash::success('Application successful.');
-        }
-    
+                foreach($stid as $row)
+                    {
+                        $try = $row->companydepartment_id;
+                        if($try==$request->departments)
+                        {
+                            $count = 1;
+                        } 
+                    }
+                    if($count==1)
+                    {
+                        Flash::warning('You have Already Applied . . .');
+                        return Redirect()->route('offer_company.index') ;
+                    } 
+                    else
+                    {
+                        $applicant->save();
+                        Flash::success('Application successful.');
+                    }
+                
+                    $companies =Company::all();
+                    $applicant = Applicant::all()->where('status', 'pending');
+                return view('studentpage.index')->with('applicants',$applicant)->with('companies',$companies);
+}
+    else
+    {
+        Flash::warning('Already reached maximum limit');
         $companies =Company::all();
         $applicant = Applicant::all()->where('status', 'pending');
        return view('studentpage.index')->with('applicants',$applicant)->with('companies',$companies);
     }
-
+}
 
     /**
      * Display the specified resource.
@@ -111,7 +124,6 @@ class ApplicantController extends Controller
      */
     public function show($id)
     { 
-
         $applicant = Student::where('user_id',Auth::id())->first();
         $appdpt = Applicant::where('student_id',$applicant->id)->get();
         $limit = Applicant::where('student_id',$applicant->id)->get()->count();
@@ -119,18 +131,20 @@ class ApplicantController extends Controller
         $duration = Duration::all();
         $company = Company::find($id);
         $department =  Companydepartment::where('company_id',$id)->get();
-        $count =  Companydepartment::where('company_id',$id)->get();  
-        $student = Company::find($id)->applicant()->count();
-        
-        $placement =Company::find($id)->placement()->count();
-       
-
+        $placements = Companydepartment::where('company_id',$id)->get();
+        $c =[];
+        $cp = [];
+        foreach($placements as $depart){
+            
+             $c[$depart->id]= $depart->applicant()->count();
+            $cp[$depart->id]= $depart->studentplacement()->count();
+        }
         return view('studentpage.show')->with('company', $company)
-                                        ->with('applicants',$student)
-                                        ->with('placed',$placement)
+                                        ->with('applicants',$c)
                                         ->with('departments',$departments)
                                         ->with('department',$department)
                                         ->with('durations',$duration)
+                                        ->with('placements',$cp)
                                         ->with('limits',$limit);
     }
 

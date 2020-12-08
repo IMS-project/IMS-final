@@ -14,10 +14,11 @@
          <div class="box box-primary">
              <div class="box-body">
                      
-                <table class="table" id="companies-table">
+                <table class="table table-bordered table-striped" id="companies-table">
                     <thead>
-                        <tr>Name</th>
-                            
+                        <th>Full Name</th>
+                        <th>Company</th>
+                        <th>Department</th>
                             
                         </tr>
                     </thead>
@@ -28,35 +29,37 @@
                             <input type="hidden" name="advisor" value="{{$id}}">
                             @foreach($students as $student)
                             <tr>
-                            @if ($student->placement)
+                            @if ($student->studentplacement)
                                 
                             <td>
-                                <input type="checkbox"  name="student[]"  value="{{$student->placement->id}}" >{{$student->user->first_name}}
+                                <input type="checkbox"  name="student[]"  value="{{$student->studentplacement->id}}" >
+                                  {{$student->user->first_name}} {{$student->user->last_name}}
                                 </td>
+                            <td>{{$student->studentplacement->company->name}}</td>
+                            
+                            {{-- <td>{{$student->placement->department->department_name}}</td> --}}
+                            
                             @endif
                         </tr>
                             @endforeach 
                              
-                            <button class="btn btn-success pull-right" type="submit"><i class="fa fa-plus-circle" aria-hidden="true"></i>
+                            <button class="btn btn-success pull-right" type="submit"><i class="fa fa-plus" aria-hidden="true"></i>
                                 Assign</button> 
                         </tr>
-                        
-                            
-                            </form>
-
-                    </tbody>                 
-                </table>                                
-             </div>
+                    </tbody>
+                </table>
+            </div>
          </div>
+     
              
-             <section class="content-header">
-                <a class="btn btn-primary pull-left"  href="{{ route('Assignadvisor.index') }}">Back</a>
-            </section>
-         </div>
+        <section class="content-header">
+        <a class="btn btn-primary pull-left"  href="{{ route('Assignadvisor.index') }}">Back</a>
+        </section>
+    </div>
          <div class="text-center">
             
          </div>
-     </div>
+ 
  @endsection
  
  

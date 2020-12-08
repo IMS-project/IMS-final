@@ -19,7 +19,9 @@
         <div class="clearfix"></div>
         <div class="box box-primary">
             <div class="box-body">
-                    {{-- @include('universities.table') --}}
+                <table class="table table-bordered">
+                    <td><h4>students industrial internship</h4> </td>
+                                    </table>
             </div>
         </div>
         <div class="text-center">

@@ -2,7 +2,8 @@
 
 @section('content')
     <section class="content-header">
-        <h1 class="pull-left">Advisors at the department</h1>
+        <caption><h4>List of Advisors</h4></caption>
+        
     </section>
     <div class="content">
         <div class="clearfix"></div>

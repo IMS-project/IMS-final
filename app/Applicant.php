@@ -15,7 +15,7 @@ class Applicant extends Model
     public function company(){
         return $this->belongsTo('App\Company');
     }
-    public function department(){
+    public function companydepartment(){
         return $this->belongsTo('App\Companydepartment');
     }
     public function user(){

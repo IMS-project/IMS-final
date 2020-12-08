@@ -2,29 +2,15 @@
 
 @section('content')
     <section class="content-header">
-        <h1>
+        <h4>
            companys information
-        </h1>
+        </h4>
 </section>
-
-
-   
    <div class="content">
        @include('adminlte-templates::common.errors')
        <div class="box box-primary">
            <div class="box-body">
-
-           <div class="row">
-                   {!! Form::model($company, ['route' => ['company.update', $company->id], 'method' => 'patch']) !!}
-
-                        {{-- @include('companies.fields') --}}
-                        @section('content')
-                    <div class="content">
-                        @include('adminlte-templates::common.errors')
-                    <div class="box box-primary">
-                        <div class="box-body">
-
-                    <form method="post" action="{{ route('company.update', $company->id)}}">
+                    <form method="post" action="{{ route('company.update', $company->id)}}" class="form-horizontal form-bordered" >
                             {{csrf_field()}}
                             @method('PUT')
                         <div class="form-group row">
@@ -40,31 +26,18 @@
                                 </div>
                             </div>
 
-
-                        
-                
-                        <!--    ---- student id ---- -->
-                       
+<!--    ----register ---- -->
           <div class="form-group row">
             <div class="col-sm-6 pull-right">
               <button class="btn btn-success" type="submit"> update</button>
               <a href="{{ route('company.index') }}" class="btn btn-default">Cancel</a>
           </div>
-          </div>
-              
-      
-
+        </div>
       </form>
-
+                        </div></div></div>
   </div>
   <div class="col-sm-2"></div>
 </div>
-</div>
-@endsection()
-
-                   {!! Form::close() !!}
-               </div>
-           </div>
-       </div>
-   </div>
+</div>        
+   
 @endsection

@@ -26,10 +26,9 @@ class SupervisorController extends Controller
 
     public function index()
     {
-            $user = CompCoordinator::where('user_id',Auth::id())->first(); 
-            $supervisor = Supervisor::where('company_id',$user->company_id)->get();
-            return view('companies.supervisor.index')
-            ->with('supervisors', $supervisor);
+        $user = CompCoordinator::where('user_id',Auth::id())->first(); 
+        $supervisor = Supervisor::where('company_id',$user->company_id)->get();
+        return view('companies.supervisor.index')->with('supervisors', $supervisor);
     }
     public function create()
     {
@@ -56,7 +55,7 @@ class SupervisorController extends Controller
 
         // User::create($data);
         $supervisor = new Supervisor;
-        $comid = CompCoordinator::all()->first();
+        $comid = CompCoordinator::where('user_id',Auth::id())->first();
 
         $user->first_name = $request->first_name;
         $user->last_name = $request->last_name;
@@ -70,11 +69,12 @@ class SupervisorController extends Controller
         $id = $user->id;
         $supervisor->user_id = $id;
         $supervisor->company_id = $comid->company_id;
-        $supervisor->department_id = $request->department;
+        $supervisor->companydepartment_id = $request->department;
         $supervisor->save();
         Flash::success(' saved successfully');
-        $supervisor = Supervisor::all(); 
-        return redirect()->route('Supervisor.index')->with('supervisors', $supervisor);
+        $user = CompCoordinator::where('user_id',Auth::id())->first(); 
+        $supervisor = Supervisor::where('company_id',$user->company_id)->get();
+        return view('companies.supervisor.index')->with('supervisors', $supervisor);
     
     }
 
@@ -97,7 +97,6 @@ class SupervisorController extends Controller
 
     public function edit($id)
     {
-        //
         $supervisor = Supervisor::find($id);
           //dd($supervisor)
           $userid = $supervisor->user_id;
@@ -121,7 +120,7 @@ class SupervisorController extends Controller
         $comid = CompCoordinator::all()->first();
 
         $supervisor = Supervisor::find($id);
-        $user = User::find($id);
+        $user = User::where('id',$supervisor->user_id)->first();
         $user->first_name = $request->first_name;
         $user->last_name = $request->last_name;
         $user->sex = $request->sex;

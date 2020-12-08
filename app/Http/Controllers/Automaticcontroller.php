@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Chat;
+use App\User;
+use App\Student;
+use Illuminate\Support\Facades\Auth;
 class Automaticcontroller extends Controller
 {
     /**
@@ -13,7 +16,18 @@ class Automaticcontroller extends Controller
      */
     public function index()
     {
+       
+        $student =Student::where('user_id',Auth::id())->first();
+        $chat = Chat::orderBy('created_at')->where('receiver',Auth::id())->get();
         
+        $user = [];
+        foreach($chat as $s){
+           $name = User::select('first_name')->where('id',$s->sender)->first();
+        //    dd($name);
+           $user[$s->sender] =$name->first_name;
+        }
+        
+        return view('studentpage.inbox')->with('messages',$chat)->with('users',$user);
     }
 
     /**

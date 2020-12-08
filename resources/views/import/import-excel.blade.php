@@ -17,9 +17,9 @@
     <div class="box box-primary">
         <div class="box-body">
 
-            <form style="#a1a1a1;margin-top: 8px;padding: 5px;" action="{{ url('/import/import-excel') }}" method="post" enctype="multipart/form-data">
+            <form style="#a1a1a1;margin-top: 8px;padding: 5px;" action="{{ url('/import/import-excel') }}" method="post" enctype="multipart/form-data" class="form-horizontal form-bordered">
 
-                @csrf
+                <input type="hidden" name="_token" value="{{ csrf_token() }}" >
                 <input type="file" name="import_file" class="form-group" />
                 <button class="btn btn-success pull-right"><i class="fa fa-upload" aria-hidden="true"></i>
                     upload files</button>

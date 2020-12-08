@@ -3,12 +3,10 @@
 @section('content')
     <section class="content-header">
         <h1>
-            University
+          Edit-university
         </h1>
 </section>
 
-
-   
    <div class="content">
        @include('adminlte-templates::common.errors')
        <div class="box box-primary">
@@ -20,12 +18,12 @@
                   
 
 <!--name field-->
-<div class="form-group col-sm-6">
+<div class="form-group col-sm-8">
     {!! Form::label('name', 'Name:') !!}
     {!! Form::text('name', null, ['class' => 'form-control']) !!}
 </div>
 <!-- Address Field -->
-<div class="form-group col-sm-6">
+<div class="form-group col-sm-8">
     {!! Form::label('address', 'Address:') !!}
     {!! Form::text('address', null, ['class' => 'form-control']) !!}
 </div>

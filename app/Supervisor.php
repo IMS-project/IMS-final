@@ -12,7 +12,7 @@ class Supervisor extends Model
     protected $dates = ['deleted_at'];
 
     // protected $table= 'supervisors';
-    protected $fillable=['user_id', 'company_id','department_id'];
+    protected $fillable=['user_id', 'company_id','companydepartment_id'];
   
 
     public function user(){
@@ -24,10 +24,13 @@ class Supervisor extends Model
     public function company(){    
         return $this->belongsTo('App\Company');
     }
-    public function department(){    
+    public function companydepartment(){    
         return $this->belongsTo('App\Companydepartment');
     }
     public function assign(){    
         return $this->belongsTo('App\Assignsupervisor');
+    }
+    public function attendance(){
+        return $this->hasOne('App\Attendance');
     }
 }

@@ -3,9 +3,10 @@
 @section('content')
 
 <section class="content-header">
-    <h4> company user </h4>
+    <h4> 
         <a class="btn btn-primary pull-right" style=
-    "margin-top: -12px;margin-bottom:5px" href="{{ route('CompCoordinator.create') }}"><i class="fa fa-plus-circle">Add NEW</i></a>
+    "margin-top: -5px;margin-bottom:5px" href="{{ route('CompCoordinator.create') }}"><i class="fa fa-plus">Add New</i></a>
+   company user </h4>
 </section>
 
 <div class="content">
@@ -22,7 +23,7 @@
         <table class="table table-bordered table-striped" id="companies-table">
                 <thead>
                     <tr>
-                        <th>Id</th>
+                        <th>SN</th>
                         <th>First Name</th>
                         <th>company</th>
                         <th colspan="3">Action</th>

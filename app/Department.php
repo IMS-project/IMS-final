@@ -8,7 +8,7 @@ class Department extends Model
 {
     //
     protected $fillable = [
-        'name','university_id',
+        'department_name','university_id',
     ];
 
     public function university()

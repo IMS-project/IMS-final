@@ -25,7 +25,6 @@ class User extends Authenticatable
     public function role(){
         return $this->belongsToMany('App\Role');
     }
-
     public function coordinator(){
         return $this->hasOne('App\UniCoordinator');
     }
@@ -41,6 +40,12 @@ class User extends Authenticatable
     }
     public function student(){
         return $this->hasOne('App\Student');
+    }
+    public function receiver(){
+        return $this->hasOne('App\Chat');
+    }
+    public function sender(){
+        return $this->hasOne('App\Chat');
     }
    
 }

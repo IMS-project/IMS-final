@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Company;
 use App\Student;
 use App\User;
-use App\Placement;
+use App\Studentplacement;
 use DB;
 use Flash;
 use Illuminate\Support\Facades\Auth;
@@ -25,7 +25,7 @@ class AcceptanceController extends Controller
     public function index()
     {
         $student = Student::where('user_id', Auth::id())->first();
-        $accept = Placement::all()->where('student_id',$student->id);
+        $accept = Studentplacement::all()->where('student_id',$student->id);
         // $stid = Applicant::all()->where('student_id',$applicant->student_id);
         // dd($accept);
         return view('Acceptance.index')->with('applicants',$accept);

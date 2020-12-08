@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Assign;
 use Illuminate\Support\Facades\Auth;
 use Flash; 
-use App\placement;
+use App\Studentplacement;
 use App\Student;
 
 class studentAdvisorController extends Controller
@@ -19,12 +19,8 @@ class studentAdvisorController extends Controller
     public function index()
     {
         $student = Student::where('user_id',Auth::id())->first();
-       
-        // // $assign = Assign::where('placement->student_id',$student->id)->get();
-        // $assign = Assign::all();
-        // $placed =placement::all();
-        // //  dd($student->placement->assign);
-
+        $chek= $student->studentplacement->assign->advisor;
+        // dd($chek);
         return view('StudentAdvisor.index')->with('students',$student);
     }
 

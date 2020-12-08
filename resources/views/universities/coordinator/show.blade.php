@@ -1,12 +1,10 @@
 @extends('superAdmin.app')
 @section('content')
-    <section class="content-header"> <h1> Coordinator</h1></section>
+    <section class="content-header"> <h4> User-details</h4></section>
   <div class="content">
      <div class="box box-primary">
          <div class="box-body">
             <div class="row" style="padding-left: 20px">
-
-
                 <div class="table-responsive">
                     <table class="table table-bordered" id="companies-table">
                         <thead>
@@ -27,26 +25,17 @@
                                 
                                 <td>{{ $users->email }}</td>
                                 <td>{{ $users->phone }}</td>
-                              
-                               
                                 {{-- <td>{{ $cor->$department->department_name }}</td> --}}
                                 <td>{{ $university->name }}</td>
                             </tr>
                         </tbody>
                     </table>
                     </div>
-            </div></div></div>
-
-                    <a href="{{ route('UniCoordinator.index') }}" class="btn btn-primary">Back</a>
-
-
-            
-                
-                </div>
-                
             </div>
         </div>
     </div>
 
-
+     <a href="{{ route('UniCoordinator.index') }}" class="btn btn-primary">Back</a>
+    
+ </div>
 @endsection

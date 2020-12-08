@@ -22,11 +22,11 @@
                                 <th>CGPA</th>
                                 <th>Department</th>
                                  {{-- <th>company</th> --}}
-                                 <th>comp-department</th>
+                                 {{-- <th>comp-department</th> --}}
                                  {{-- <th>company</th> --}}
                                 <th colspan="3">Action</th>
                                 <th><a class="btn btn-primary pull-right" style=
-                                    "margin-top: -7px;margin-bottom: 5px" href="{{ route('automatic')}}"><i class="fa fa-plus-circle">Automatic</i></a></th> 
+                                    "margin-top: -7px;margin-bottom: 5px" href="{{ route('automatic')}}"><i class="fa fa-plus">Automatic</i></a></th> 
                                 
                             </tr>
                         </thead>
@@ -42,10 +42,10 @@
                                 <td>{{$app->student->grade}}</td>
                                 <td>{{$app->student->department->department_name}}</td>
                                 {{-- <td>{{$app->company->name}}</td> --}}
-                                <td>{{$app->department->department_name}}</td>
+                                {{-- <td>{{$app->department->department_name}}</td> --}}
                                 <td>
                                     <div class='btn-group'>
-                                        <a href="{{route('approve',[$app->student_id, $app->department_id, $app->duration_id]) }}" class="btn btn-success">Approve</a>
+                                        <a href="{{route('approve',[$app->student_id, $app->companydepartment_id, $app->duration_id]) }}" class="btn btn-success">Approve</a>
                                         <a href="{{ route('reject',[$app->id]) }}" class="btn btn-danger">Reject</a> 
                                         
                                     </div>

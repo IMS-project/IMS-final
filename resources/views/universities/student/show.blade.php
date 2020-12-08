@@ -2,7 +2,7 @@
 @extends('universityAdmin.app')
 
 @section('content')
-    <section class="content-header"> <h1>student details </h1></section>
+    <section class="content-header"> <h4>student details </h4></section>
 
   <div class="content">
      <div class="box box-primary">

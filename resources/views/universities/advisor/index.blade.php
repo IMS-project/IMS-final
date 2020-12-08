@@ -7,7 +7,7 @@
  Advisors
    
     <a class="btn btn-primary pull-right" style=
-    "margin-top: -5px;margin-bottom: 5px" href="{{ route('Advisor.create') }}"><i class="fa fa-plus-circle">Add NEW</i></a>
+    "margin-top: -5px;margin-bottom: 5px" href="{{ route('Advisor.create') }}"><i class="fa fa-plus">Add New</i></a>
 </h4>
 </section>
 
