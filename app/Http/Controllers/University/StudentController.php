@@ -34,9 +34,10 @@ class StudentController extends Controller
 
     public function create()
     {
+        $unid = UniCoordinator::where('user_id',Auth::id())->first();
         $role = Role::orderBy('name')->get();
         $university = University::orderBy('created_at')->get();
-        $dep = Department::all();
+        $dep = Department::where('university_id',$unid->university_id)->get();
         // dd( $university);
         return view('universities.student.create')->with('roles',$role)
                                                   ->with('universities' ,$university)

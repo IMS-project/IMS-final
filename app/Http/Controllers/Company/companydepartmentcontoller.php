@@ -26,8 +26,8 @@ class companydepartmentcontoller extends Controller
     }
     public function index()
     {
-        $comid =CompCoordinator::where('user_id',Auth::id())->first();
-        $department = Companydepartment::where('company_id',$comid->company_id)->get();
+        $user =CompCoordinator::where('user_id', Auth::id())->first();
+        $department = Companydepartment::where('company_id',$user->company_id)->get();
         // dd($department);
         return view('companydepartments.index')->with('departments',$department);
     }

@@ -25,7 +25,7 @@ class placementController extends Controller
     {
         // $department =Companydepartment::all()->first();
         $student = Student::where('user_id', Auth::id())->first();
-        $applicant = Applicant::where('student_id',$student->id)->where('status','pending')->get();
+        $applicant = Applicant::where('student_id',$student->id)->get();
         // dd($applicant);
         return view('placements.index')->with('applicants',$applicant);
         

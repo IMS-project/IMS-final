@@ -32,9 +32,9 @@
     
                                    <td> {{$row->company->name}}</td>
                                     <td>{{$row->status}}</td>
-                                    @if($row->status=="approved")
+                                    {{-- @if($row->status=="approved")
                                     <td><a href="{{ route('accept',[$row->company->id,$row->department_id]) }}" class="btn btn-success">accept</a></td>
-                                    @endif
+                                    @endif --}}
                                 </tr>
                                 @endforeach
                             </tbody>

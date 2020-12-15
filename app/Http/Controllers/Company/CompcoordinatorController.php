@@ -125,8 +125,8 @@ class CompCoordinatorController extends Controller
         $user->password = Hash::make($request->password);
         $user->save();
         Flash::success(' updated successfully');
-        $companies =Company::all();
-        return view('companies.index')->with('companies',$companies);
+        $compcordinator = CompCoordinator::all();
+        return view('companies.coordinator.index')->with('compcord', $compcordinator);
     }
     public function destroy($id)
     {
