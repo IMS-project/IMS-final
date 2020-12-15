@@ -1,5 +1,4 @@
 @extends('universityAdmin.app')
-
 @section('content')
     <section class="content-header">
         <h4 class="pull-left"><i class="fa fa-calendar" aria-hidden="true"></i> upcomming events</h1>
