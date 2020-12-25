@@ -30,6 +30,7 @@ class StudentController extends Controller
     {
         $student =Student::orderBy('created_at','desc')->paginate(8);
         return view('universities.student.index')->with('students', $student);
+        // return response()->json($student, 200);
     }
 
     public function create()
@@ -113,10 +114,12 @@ class StudentController extends Controller
          $user = User::find($userid);
          $university = University::find($unid);
          //dd($role);
-        return view('universities.student.show')->with('users', $user)
-        ->with('students',$student)
-        ->with('university',$university)
-        ->with('department', $department);
+        // return view('universities.student.show')->with('users', $user)
+        // ->with('students',$student)
+        // ->with('university',$university)
+        // ->with('department', $department);
+
+        return response()->json($student);
     }
 
  

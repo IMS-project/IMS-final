@@ -24,7 +24,7 @@ namespace App\Http\Controllers\University;
             
             $this->middleware('auth');
             $this->middleware('admin');
-            $this->middleware('prevent-back-history');
+            // $this->middleware('prevent-back-history');
             
         }
 
